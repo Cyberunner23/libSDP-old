@@ -8,7 +8,7 @@ OPTION(IS_DEV_BUILD "Set to ON if its a development build for libSDP, set to OFF
 
 OPTION(COMPILE_CRYPTOPP_LIB_SHARED "Build cryptopp as a shared lib (setting this to OFF will compile statically)" ON)
 
-SET(EXTERNAL_LIB_ALREADY_CLONED OFF CACHE BOOL "Sets if the external libraries were already cloned")
+SET(EXTERNAL_LIB_ALREADY_CLONED OFF CACHE BOOL "Sets if the external libraries were already cloned") #Add FORCE to reset if needed.
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
@@ -38,6 +38,7 @@ SET(SOURCE_FILES
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR})
 
+
 ADD_LIBRARY(libSDP ${SOURCE_FILES})
 
 
@@ -48,10 +49,11 @@ if(IS_BUILD_ISOLATED)
     find_package(Git)
 
     IF(GIT_FOUND)
-        MESSAGE("Cloning and compiling internal libraries.")
+        MESSAGE("Git found, attempting to clone and compile internal libraries.")
     ELSE(GIT_FOUND)
         MESSAGE(FATAL_ERROR "Git needs to be installes in order to continue.")
     ENDIF(GIT_FOUND)
+
 
     IF(EXTERNAL_LIB_ALREADY_CLONED)
         MESSAGE("Internal libraries already cloned, skipping.")
@@ -78,8 +80,8 @@ if(IS_BUILD_ISOLATED)
         )
         ADD_DEPENDENCIES(libSDP CRYPTOPP-CMAKE_BUILD_STEP)
 
-        #CryptoPP-Cmake includes
-        INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/lib/CryptoPP-Cmake/include)
+
+
 
         #Download CVT
         ADD_CUSTOM_TARGET(CVT_DOWNLOAD_STEP
@@ -105,6 +107,8 @@ if(IS_BUILD_ISOLATED)
         SET(EXTERNAL_LIB_ALREADY_CLONED ON CACHE BOOL "Sets if the external libraries were already cloned" FORCE)
 
     ENDIF(EXTERNAL_LIB_ALREADY_CLONED)
+
+    INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/lib/CryptoPP-Cmake/include)###########
 
 
     IF(IS_DEV_BUILD)
@@ -138,6 +142,9 @@ ELSE(IS_BUILD_ISOLATED)
         )
         ADD_DEPENDENCIES(libSDP CVT_RUN)
     ENDIF(IS_DEV_BUILD)
+
+
+    #TODO: put includes here
 
 
     #Link CryptoPP
