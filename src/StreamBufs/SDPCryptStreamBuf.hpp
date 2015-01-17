@@ -44,7 +44,7 @@ public:
     SDPCryptStreamBuf(std::ostream *cryptOut);
     ~SDPCryptStreamBuf() throw(); //dirty fix to remove "exception specification in declaration does not match previous declaration" error
 
-    void setEncryptionAlgorithm(SDPEncryptionAlgorithmBase cryptAlgorithm);
+    void setEncryptionAlgorithm(SDPEncryptionAlgorithmBase *cryptAlgorithm);
 
     void setEncryptionKeyEncoded();
     void setIVEncoded();

@@ -24,7 +24,7 @@ namespace IO{
 
 class SDPVer{
 
-private:
+public:
 
     struct SDPVerStruct{
         int major = <VER_MAJOR>;
@@ -38,8 +38,6 @@ private:
         int minor = 0;
         int patch = 5;
     }SDPSpecVer;
-
-public:
 
     SDPVerStruct getSDPVer(){
         return SDPLibVer;

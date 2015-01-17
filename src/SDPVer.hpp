@@ -18,7 +18,8 @@ Copyright 2014 Alex Frappier Lachapelle
 #define SDPVER_HPP
 
 #ifdef USE_IN_SOUL_ENGINE
-namespace SE::IO{
+namespace SE{
+namespace IO{
 #endif
 
 class SDPVer{
@@ -26,31 +27,17 @@ class SDPVer{
 public:
 
     struct SDPVerStruct{
-        int major;
-        int minor;
-        int patch;
-        int build;
-    };
+        int major = 0;
+        int minor = 0;
+        int patch = 1;
+        int build = 141;
+    }SDPLibVer;
 
     struct SDPSpecVerStruct{
-        unsigned char major;
-        unsigned char minor;
-        unsigned char patch;
-    };
-
-
-    SDPVer(){
-
-        SDPLibVer.major = 0;
-        SDPLibVer.minor = 0;
-        SDPLibVer.patch = 1;
-        SDPLibVer.build = 395;
-
-        SDPSpecVer.major = 0;
-        SDPSpecVer.minor = 0;
-        SDPSpecVer.patch = 5;
-
-    }
+        int major = 0;
+        int minor = 0;
+        int patch = 5;
+    }SDPSpecVer;
 
     SDPVerStruct getSDPVer(){
         return SDPLibVer;
@@ -60,15 +47,12 @@ public:
         return SDPSpecVer;
     }
 
-private:
-
-    SDPVerStruct SDPLibVer;
-    SDPSpecVerStruct SDPSpecVer;
-
 };
 
 #ifdef USE_IN_SOUL_ENGINE
-};
+}
+}
 #endif
 
 #endif // SDPVER_HPP
+
