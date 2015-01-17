@@ -2,7 +2,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
 PROJECT(libSDP)
 
 #TODO: using ${CMAKE_CURRENT_SOURCE_DIR} -> using ${SOULENGINE_SOURCE_DIR} for lib path finding.
-#TODO: mane an include dir for people to use.
+#TODO: make an include dir for people to use.
 
 #----------------------------------------------------------
 #Set options here.
@@ -116,8 +116,7 @@ if(NOT DEFINED SOULENGINE_SOURCE_DIR)
         #If CVT is already downloaded and compiled then just run it.
         IF(CVT_ALREADY_CLONED)
 
-            #Run CVT
-            MESSAGE("CVT")
+            #Run CVT]
             ADD_CUSTOM_TARGET(CVT_RUN
                 COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tools/CVT/build/CVT -ib -sop ../../src/SDPVer.hpp -stp ../template.hpp -spp ../progress.txt
                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tools/CVT/
@@ -149,7 +148,6 @@ if(NOT DEFINED SOULENGINE_SOURCE_DIR)
             )
 
             #Run CVT
-            MESSAGE("CVT")
             ADD_CUSTOM_TARGET(CVT_RUN
                 COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tools/CVT/build/CVT -ib -sop ../../src/SDPVer.hpp -stp ../template.hpp -spp ../progress.txt
                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tools/CVT/
