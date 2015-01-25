@@ -26,9 +26,9 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "filters.h"
 #include "files.h"
 
-#include "src/RawFileIO.hpp"
-#include "src/StreamBufs/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp"
-#include "src/StreamBufs/DefaultAlgorithms/SDPAES256GCMAlgorithm.hpp"
+#include "RawFileIO.hpp"
+#include "SDPEncryptionAlgorithmBase.hpp"
+#include "SDPAES256GCMAlgorithm.hpp"
 
 //TODO: implement seeking
 

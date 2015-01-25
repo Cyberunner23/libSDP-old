@@ -178,6 +178,7 @@ int SDPCryptStreamBuf::getNextChar(bool doAdvance){
         //check how many bytes were really read, if
         //that number is not what we expect, something
         //went wrong
+        //TODO: change var type to hold a 64 bit num.
         int gCount = inStream->gcount();
         if(gCount != numEncryptedBytes){
             return traits_type::eof();

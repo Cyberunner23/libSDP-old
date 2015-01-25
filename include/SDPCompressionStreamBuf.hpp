@@ -25,9 +25,9 @@ Copyright 2014 Alex Frappier Lachapelle
 
 #include "zlib.h"
 
-#include "src/RawFileIO.hpp"
-#include "src/StreamBufs/AlgorithmBase/SDPCompressionAlgorithmBase.hpp"
-#include "src/StreamBufs/DefaultAlgorithms/SDPZlibCompressionAlgorithm.hpp"
+#include "RawFileIO.hpp"
+#include "SDPCompressionAlgorithmBase.hpp"
+#include "SDPZlibCompressionAlgorithm.hpp"
 
 //FIXME?: use of >> in a istream causes an error and to prematurely return eof.
 //TODO: MAJOR Cleanup!

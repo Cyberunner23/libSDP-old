@@ -17,6 +17,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #ifndef SDPVER_HPP
 #define SDPVER_HPP
 
+
 #ifdef USE_IN_SOUL_ENGINE
 namespace SE{
 namespace IO{
@@ -34,9 +35,9 @@ public:
     }SDPLibVer;
 
     struct SDPSpecVerStruct{
-        int major = 0;
-        int minor = 0;
-        int patch = 5;
+        uint_least64_t major = 0;
+        uint_least64_t minor = 0;
+        uint_least64_t patch = 5;
     }SDPSpecVer;
 
     SDPVerStruct getSDPVer(){

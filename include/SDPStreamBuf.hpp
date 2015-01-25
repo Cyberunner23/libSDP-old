@@ -29,8 +29,8 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "hex.h"
 #include "sha3.h"
 
-#include "src/RawFileIO.hpp"
-#include "src/SDPVer.hpp"
+#include "RawFileIO.hpp"
+#include "SDPVer.hpp"
 
 //FIXME: use a better way to detect eof while parsing SDP
 //TODO: implement eof detection for hash compute loop

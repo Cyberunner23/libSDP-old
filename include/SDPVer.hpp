@@ -14,46 +14,46 @@ Copyright 2014 Alex Frappier Lachapelle
    limitations under the License.
 */
 
-#ifndef SDP_H
-#define SDP_H
-
-#include <stdint.h>
-#include <string>
-
-#include "SDPVer.hpp"
+#ifndef SDPVER_HPP
+#define SDPVER_HPP
 
 
 #ifdef USE_IN_SOUL_ENGINE
-namespace SE::IO::SDP{
+namespace SE{
+namespace IO{
 #endif
 
-class SDP{
-
-    //TODO: Endian checking
-    //TODO: Finish SDPStreamBuf
-    //TODO: Make definitions for SDPCryptStreamBuf
-    //TODO: MAke definitions for SDPCompressionStreamBuf
+class SDPVer{
 
 public:
 
-    //Vars
+    struct SDPVerStruct{
+        int major = 0;
+        int minor = 0;
+        int patch = 1;
+        int build = 154;
+    }SDPLibVer;
 
+    struct SDPSpecVerStruct{
+        uint_least64_t major = 0;
+        uint_least64_t minor = 0;
+        uint_least64_t patch = 5;
+    }SDPSpecVer;
 
-    //Funcs
+    SDPVerStruct getSDPVer(){
+        return SDPLibVer;
+    }
 
-    void setEncryptKey(std::string AES256Key, std::string IV);//key and IV sent to CryptoStreamBuf
-
-
-private:
-
-    //Vars
-
-    //Funcs
+    SDPSpecVerStruct getSDPSpecVer(){
+        return SDPSpecVer;
+    }
 
 };
 
 #ifdef USE_IN_SOUL_ENGINE
 }
+}
 #endif
 
-#endif // SDP_H
+#endif // SDPVER_HPP
+

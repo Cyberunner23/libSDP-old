@@ -21,7 +21,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include <memory>
 #include <stdint.h>
 
-#include "src/Endianness.hpp"
+#include "Endianness.hpp"
 
 class RawFileIO{
 

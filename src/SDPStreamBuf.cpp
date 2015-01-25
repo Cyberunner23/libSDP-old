@@ -35,9 +35,9 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::istream &inStream, 
     }
 
     //Get in file spec version and check compatibility
-    rawFileIO.read(SDPFileProps.SDPSpecVerInFile.major, &inStream);
-    rawFileIO.read(SDPFileProps.SDPSpecVerInFile.minor, &inStream);
-    rawFileIO.read(SDPFileProps.SDPSpecVerInFile.patch, &inStream);
+    rawFileIO.read(SDPFileProps.SDPSpecVerInFile.major, &inStream, RawFileIO::Endian::BIG__ENDIAN);
+    rawFileIO.read(SDPFileProps.SDPSpecVerInFile.minor, &inStream, RawFileIO::Endian::BIG__ENDIAN);
+    rawFileIO.read(SDPFileProps.SDPSpecVerInFile.patch, &inStream, RawFileIO::Endian::BIG__ENDIAN);
 
     if(SDPFileProps.SDPSpecVerInFile.major != SDPVersion.getSDPSpecVer().major){
         return SDP_UNSUPPORTED_SPEC;

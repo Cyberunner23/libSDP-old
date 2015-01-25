@@ -1,6 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
 PROJECT(libSDP)
 
+#TODO: Major cleanup.
 #TODO: using ${CMAKE_CURRENT_SOURCE_DIR} -> using ${SOULENGINE_SOURCE_DIR} for lib path finding.
 #TODO: make an include dir for people to use.
 
@@ -8,56 +9,56 @@ PROJECT(libSDP)
 #Set options here.
 #----------------------------------------------------------
 OPTION(COMPILE_LIBSDP_LIB_SHARED   "Build libSDP as a shared lib (setting this to OFF will compile statically)" ON)
-OPTION(COMPILE_CRYPTOPP_LIB_SHARED "Build cryptopp as a shared lib (setting this to OFF will compile statically)" ON)
+OPTION(BUILD_SODIUM_SHARED         "Build libsodium-CMake as a shared lib (setting this to OFF will compile statically)")
 #SET(SOULENGINE_SOURCE_DIR "" PATH "Top level directory of Soul Engine (Will be set by Soul Engine's CMakeLists.txt, setting this will cause ${PROJECT_NAME} to use Soul Engine's libraries.)")
+
 
 #----------------------------------------------------------
 #Internal/Dev vars.
 #----------------------------------------------------------
 SET(IS_DEV_BUILD                ON CACHE BOOL  "Set to ON if its a development build for libSDP, set to OFF otherwise.")
 SET(CVT_ALREADY_CLONED          OFF CACHE BOOL "Sets if CVT was already cloned") #Add FORCE to reset if needed.
-SET(EXTERNAL_LIB_ALREADY_CLONED OFF CACHE BOOL "Sets if the external libraries were already cloned") #Add FORCE to reset if needed.
+SET(EXTERNAL_LIB_ALREADY_CLONED OFF CACHE BOOL "Sets if the external libraries were already cloned" FORCE) #Add FORCE to reset if needed.
 
 #----------------------------------------------------------
 #Compiler settings.
 #----------------------------------------------------------
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
 #----------------------------------------------------------
 #Source and Include Files.
 #----------------------------------------------------------
 SET(SOURCE_FILES
-    src/SDPVer.hpp
-    src/SDP.hpp
-    src/SDP.cpp
-    src/Endianness.hpp
     src/Endianness.cpp
-    src/RawFileIO.hpp
     src/RawFileIO.cpp
-    src/StreamBufs/SDPCompressionStreamBuf.hpp
-    src/StreamBufs/SDPCompressionStreamBuf.cpp
-    src/StreamBufs/SDPCryptStreamBuf.hpp
-    src/StreamBufs/SDPCryptStreamBuf.cpp
-    src/StreamBufs/SDPStreamBuf.hpp
-    src/StreamBufs/SDPStreamBuf.cpp
-    src/StreamBufs/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
-    src/StreamBufs/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
-    src/StreamBufs/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
-    src/StreamBufs/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
-    src/StreamBufs/DefaultAlgorithms/SDPAES256GCMAlgorithm.hpp
-    src/StreamBufs/DefaultAlgorithms/SDPAES256GCMAlgorithm.cpp
-    src/StreamBufs/DefaultAlgorithms/SDPZlibCompressionAlgorithm.hpp
-    src/StreamBufs/DefaultAlgorithms/SDPZlibCompressionAlgorithm.cpp
+    src/SDPCompressionStreamBuf.cpp
+    src/SDPCryptStreamBuf.cpp
+    src/SDPStreamBuf.cpp
+    src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
+    src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
 )
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+SET(HEADER_FILES
+    include/Endianness.hpp
+    include/RawFileIO.hpp
+    include/SDPCompressionStreamBuf.hpp
+    include/SDPCryptStreamBuf.hpp
+    include/SDPStreamBuf.hpp
+    include/SDPVer.hpp
+    include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
+    include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
+)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/AlgorithmBase)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms)
+
 
 #----------------------------------------------------------
 #Main Library
 #----------------------------------------------------------
 IF(COMPILE_LIBSDP_LIB_SHARED)
-    ADD_LIBRARY(libSDP SHARED ${SOURCE_FILES})
+    ADD_LIBRARY(SDP SHARED ${SOURCE_FILES} ${HEADER_FILES})
 ELSE(COMPILE_LIBSDP_LIB_SHARED)
-    ADD_LIBRARY(libSDP STATIC ${SOURCE_FILES})
+    ADD_LIBRARY(SDP STATIC ${SOURCE_FILES} ${HEADER_FILES})
 ENDIF(COMPILE_LIBSDP_LIB_SHARED)
 
 #----------------------------------------------------------
@@ -82,33 +83,33 @@ if(NOT DEFINED SOULENGINE_SOURCE_DIR)
         MESSAGE("Internal libraries already cloned, skipping.")
     ELSE(EXTERNAL_LIB_ALREADY_CLONED)
 
-        #Download CryptoPP-Cmake
-        ADD_CUSTOM_TARGET(CRYPTOPP-CMAKE_DOWNLOAD_STEP
-            COMMAND ${GIT_EXECUTABLE} clone https://github.com/Cyberunner23/CryptoPP-Cmake.git
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/
+        #Download libsodium-Cmake
+        ADD_CUSTOM_TARGET(LIBSODIUM-CMAKE_DOWNLOAD_STEP
+            COMMAND ${GIT_EXECUTABLE} clone https://github.com/Cyberunner23/libsodium-CMake.git
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/
         )
 
-        #Configure CryptoPP-Cmake
-        ADD_CUSTOM_TARGET(CRYPTOPP-CMAKE_CONFIGURE_STEP
-            COMMAND ${CMAKE_COMMAND} . -DCOMPILE_CRYPTOPP_LIB_SHARED=${COMPILE_CRYPTOPP_LIB_SHARED}
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/CryptoPP-Cmake/
-            DEPENDS CRYPTOPP-CMAKE_DOWNLOAD_STEP
+        #Configure libsodium-Cmake
+        ADD_CUSTOM_TARGET(LIBSODIUM-CMAKE_CONFIGURE_STEP
+            COMMAND ${CMAKE_COMMAND} -DBUILD_SODIUM_SHARED=${BUILD_SODIUM_SHARED} ..
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/build
+            DEPENDS LIBSODIUM-CMAKE_DOWNLOAD_STEP
         )
 
-        #Build CryptoPP-Cmake
-        ADD_CUSTOM_TARGET(CRYPTOPP-CMAKE_BUILD_STEP
+        #Build libsodium-Cmake
+        ADD_CUSTOM_TARGET(LIBSODIUM-CMAKE_BUILD_STEP
             COMMAND ${CMAKE_COMMAND} --build .
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/CryptoPP-Cmake/
-            DEPENDS CRYPTOPP-CMAKE_CONFIGURE_STEP
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/build/
+            DEPENDS LIBSODIUM-CMAKE_CONFIGURE_STEP
         )
-        ADD_DEPENDENCIES(libSDP CRYPTOPP-CMAKE_BUILD_STEP)
+        ADD_DEPENDENCIES(SDP LIBSODIUM-CMAKE_BUILD_STEP)
 
         SET(EXTERNAL_LIB_ALREADY_CLONED ON CACHE BOOL "Sets if the external libraries were already cloned" FORCE)
 
     ENDIF(EXTERNAL_LIB_ALREADY_CLONED)
 
     #Include CryptoPP-Cmake even if download and compile is not needed.
-    INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/lib/CryptoPP-Cmake/include)
+    INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/include)
 
     #If libSDP is being developped then get CVT and run it.
     IF(IS_DEV_BUILD)
@@ -121,7 +122,7 @@ if(NOT DEFINED SOULENGINE_SOURCE_DIR)
                 COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tools/CVT/build/CVT -ib -sop ../../src/SDPVer.hpp -stp ../template.hpp -spp ../progress.txt
                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tools/CVT/
             )
-            ADD_DEPENDENCIES(libSDP CVT_RUN)
+            ADD_DEPENDENCIES(SDP CVT_RUN)
 
         #If CVT is not already downloaded and compiled then
         #download, compile and run it.
@@ -153,7 +154,7 @@ if(NOT DEFINED SOULENGINE_SOURCE_DIR)
                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tools/CVT/
                 DEPENDS CVT_BUILD_STEP
             )
-            ADD_DEPENDENCIES(libSDP CVT_RUN)
+            ADD_DEPENDENCIES(SDP CVT_RUN)
 
             SET(CVT_ALREADY_CLONED ON CACHE BOOL "Sets if CVT was already cloned" FORCE)
 
@@ -166,9 +167,9 @@ if(NOT DEFINED SOULENGINE_SOURCE_DIR)
 
     #Link CryptoPP
     IF(COMPILE_CRYPTOPP_LIB_SHARED)
-        TARGET_LINK_LIBRARIES(libSDP ${CMAKE_CURRENT_SOURCE_DIR}/lib/CryptoPP-Cmake/build/libcryptopp.so)
+        TARGET_LINK_LIBRARIES(SDP ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/CryptoPP-Cmake/build/libcryptopp.so)
     ELSE(COMPILE_CRYPTOPP_LIB_SHARED)
-        TARGET_LINK_LIBRARIES(libSDP ${CMAKE_CURRENT_SOURCE_DIR}/lib/CryptoPP-Cmake/build/libcryptopp.a)
+        TARGET_LINK_LIBRARIES(SDP ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/CryptoPP-Cmake/build/libcryptopp.a)
     ENDIF(COMPILE_CRYPTOPP_LIB_SHARED)
 
 
