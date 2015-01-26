@@ -19,16 +19,16 @@ Copyright 2014 Alex Frappier Lachapelle
 
 #include <iostream>
 
-#include "aes.h"
-#include "gcm.h"
-#include "hex.h"
-#include "modes.h"
-#include "filters.h"
-#include "files.h"
+//#include "aes.h"
+//#include "gcm.h"
+//#include "hex.h"
+//#include "modes.h"
+//#include "filters.h"
+//#include "files.h"
 
 #include "RawFileIO.hpp"
-#include "SDPEncryptionAlgorithmBase.hpp"
-#include "SDPAES256GCMAlgorithm.hpp"
+//#include "SDPEncryptionAlgorithmBase.hpp"
+//#include "SDPAES256GCMAlgorithm.hpp"
 
 //TODO: implement seeking
 

@@ -31,7 +31,7 @@ public:
         int major = 0;
         int minor = 0;
         int patch = 1;
-        int build = 218;
+        int build = 229;
     }SDPLibVer;
 
     struct SDPSpecVerStruct{

@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <string>
 
-#include "hex.h"
+//#include "hex.h"
 
 class SDPEncryptionAlgorithmBase{
 
