@@ -6,7 +6,7 @@ PROJECT(libSDP)
 #TODO: make an include dir for people to use.
 
 #----------------------------------------------------------
-#Set options here.
+####################### OPTIONS ###########################
 #----------------------------------------------------------
 OPTION(COMPILE_LIBSDP_LIB_SHARED   "Build libSDP as a shared lib (setting this to OFF will compile statically)" ON)
 OPTION(BUILD_SODIUM_SHARED         "Build libsodium-CMake as a shared lib (setting this to OFF will compile statically)")
@@ -14,19 +14,19 @@ OPTION(BUILD_SODIUM_SHARED         "Build libsodium-CMake as a shared lib (setti
 
 
 #----------------------------------------------------------
-#Internal/Dev vars.
+#################### INTERNAL/DEV VARS ####################
 #----------------------------------------------------------
 SET(IS_DEV_BUILD                ON CACHE BOOL  "Set to ON if its a development build for libSDP, set to OFF otherwise.")
-SET(CVT_ALREADY_CLONED          OFF CACHE BOOL "Sets if CVT was already cloned") #Add FORCE to reset if needed.
-SET(EXTERNAL_LIB_ALREADY_CLONED OFF CACHE BOOL "Sets if the external libraries were already cloned" FORCE) #Add FORCE to reset if needed.
+SET(CVT_ALREADY_CLONED          OFF CACHE BOOL "Sets if CVT was already cloned")# FORCE) #Add FORCE to reset if needed.
+SET(EXTERNAL_LIB_ALREADY_CLONED OFF CACHE BOOL "Sets if the external libraries were already cloned")# FORCE) #Add FORCE to reset if needed.
 
 #----------------------------------------------------------
-#Compiler settings.
+##################### COMPILER FLAGS ######################
 #----------------------------------------------------------
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
 #----------------------------------------------------------
-#Source and Include Files.
+#################### SOURCE / HEADERS #####################
 #----------------------------------------------------------
 SET(SOURCE_FILES
     src/Endianness.cpp
@@ -36,6 +36,10 @@ SET(SOURCE_FILES
     src/SDPStreamBuf.cpp
     src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
     src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
+    src/DefaultAlgorithms/lz4/lz4.c
+    src/DefaultAlgorithms/lz4/lz4frame.c
+    src/DefaultAlgorithms/lz4/lz4hc.c
+    src/DefaultAlgorithms/lz4/xxhash.c
 )
 SET(HEADER_FILES
     include/Endianness.hpp
@@ -46,20 +50,46 @@ SET(HEADER_FILES
     include/SDPVer.hpp
     include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
     include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
+    include/DefaultAlgorithms/lz4/lz4.h
+    include/DefaultAlgorithms/lz4/lz4frame.h
+    include/DefaultAlgorithms/lz4/lz4frame_static.h
+    include/DefaultAlgorithms/lz4/lz4hc.h
+    include/DefaultAlgorithms/lz4/xxhash.h
+    include/DefaultAlgorithms/zlib/crc32.h
+    include/DefaultAlgorithms/zlib/deflate.h
+    include/DefaultAlgorithms/zlib/gzguts.h
+    include/DefaultAlgorithms/zlib/inffast.h
+    include/DefaultAlgorithms/zlib/inffixed.h
+    include/DefaultAlgorithms/zlib/inflate.h
+    include/DefaultAlgorithms/zlib/inftrees.h
+    include/DefaultAlgorithms/zlib/trees.h
+    include/DefaultAlgorithms/zlib/zconf.h
+    include/DefaultAlgorithms/zlib/zlib.h
+    include/DefaultAlgorithms/zlib/zutil.h
 )
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/AlgorithmBase)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/lz4)
 
 
 #----------------------------------------------------------
-#Main Library
+######################### LIBRARY #########################
 #----------------------------------------------------------
+
+ADD_DEFINITIONS(-DLZ4_VERSION=r126)
+
 IF(COMPILE_LIBSDP_LIB_SHARED)
     ADD_LIBRARY(SDP SHARED ${SOURCE_FILES} ${HEADER_FILES})
 ELSE(COMPILE_LIBSDP_LIB_SHARED)
     ADD_LIBRARY(SDP STATIC ${SOURCE_FILES} ${HEADER_FILES})
 ENDIF(COMPILE_LIBSDP_LIB_SHARED)
+
+SET_TARGET_PROPERTIES(SDP PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
+    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
+    PROJECT_LABEL "libSDP"
+)
 
 #----------------------------------------------------------
 #Is the library being compiled inside SoulEngine checker.
@@ -119,7 +149,7 @@ if(NOT DEFINED SOULENGINE_SOURCE_DIR)
 
             #Run CVT
             ADD_CUSTOM_TARGET(CVT_RUN
-                COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tools/CVT/build/CVT -ib -sop ../../src/SDPVer.hpp -stp ../template.hpp -spp ../progress.txt
+                COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tools/CVT/build/CVT -ib -sop ../../include/SDPVer.hpp -stp ../template.hpp -spp ../progress.txt
                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tools/CVT/
             )
             ADD_DEPENDENCIES(SDP CVT_RUN)
