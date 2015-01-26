@@ -40,6 +40,21 @@ SET(SOURCE_FILES
     src/DefaultAlgorithms/lz4/lz4frame.c
     src/DefaultAlgorithms/lz4/lz4hc.c
     src/DefaultAlgorithms/lz4/xxhash.c
+    src/DefaultAlgorithms/zlib/adler32.c
+    src/DefaultAlgorithms/zlib/compress.c
+    src/DefaultAlgorithms/zlib/crc32.c
+    src/DefaultAlgorithms/zlib/deflate.c
+    src/DefaultAlgorithms/zlib/gzclose.c
+    src/DefaultAlgorithms/zlib/gzlib.c
+    src/DefaultAlgorithms/zlib/gzread.c
+    src/DefaultAlgorithms/zlib/gzwrite.c
+    src/DefaultAlgorithms/zlib/infback.c
+    src/DefaultAlgorithms/zlib/inffast.c
+    src/DefaultAlgorithms/zlib/inflate.c
+    src/DefaultAlgorithms/zlib/inftrees.c
+    src/DefaultAlgorithms/zlib/trees.c
+    src/DefaultAlgorithms/zlib/uncompr.c
+    src/DefaultAlgorithms/zlib/zutil.c
 )
 SET(HEADER_FILES
     include/Endianness.hpp
