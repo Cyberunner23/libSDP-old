@@ -1,10 +1,9 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
-PROJECT(libSDP)
+PROJECT(libSDP C CXX)
 
 #TODO: Major cleanup.
 #TODO: using ${CMAKE_CURRENT_SOURCE_DIR} -> using ${SOULENGINE_SOURCE_DIR} for lib path finding.
 #TODO: make an include dir for people to use.
-#FIXME: zconf.h not generating...
 
 #----------------------------------------------------------
 ####################### OPTIONS ###########################
@@ -37,6 +36,7 @@ SET(SOURCE_FILES
     src/SDPStreamBuf.cpp
     src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
     src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
+
     src/DefaultAlgorithms/lz4/lz4.c
     src/DefaultAlgorithms/lz4/lz4frame.c
     src/DefaultAlgorithms/lz4/lz4hc.c
@@ -150,8 +150,8 @@ if(MSVC)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-configure_file(	${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/zlib/zconf.h.cmakein
-		${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/zlib/zconf.h @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/zlib/zconf.h.cmakein
+	${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/zlib/zconf.h @ONLY)
 
 
 

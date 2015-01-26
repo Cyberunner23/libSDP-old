@@ -14,6 +14,7 @@ Copyright 2014 Alex Frappier Lachapelle
    limitations under the License.
 */
 
+#include <sodium/utils.h>
 #include "SDPCryptStreamBuf.hpp"
 
 
@@ -121,25 +122,21 @@ int SDPCryptStreamBuf::sync(){
 }
 
 
-void SDPCryptStreamBuf::encodeHex(std::string decoded, std::string &encoded){
+void SDPCryptStreamBuf::hexToBin(std::string hex, std::string &bin){
 
-    CryptoPP::HexEncoder encoder;
-    encoder.Put((byte*)decoded.data(), decoded.size());
-    encoder.MessageEnd();
+	size_t finalBinLength;
+	const char** hexEnd;
 
-    encoded.resize(encoder.MaxRetrievable());
-    encoder.Get((byte*)encoded.data(), encoded.size());
-
+	bin.resize(bin.size() * 3 + 1);
+	sodium_hex2bin((unsigned char*)bin.data(), (bin.size() * 3 + 1), hex.c_str(), hex.size(), NULL, &finalBinLength, hexEnd);
+	bin.resize(finalBinLength);
 }
 
-void SDPCryptStreamBuf::decodeHex(std::string encoded, std::string &decoded){
+void SDPCryptStreamBuf::binToHex(std::string bin, std::string &hex){
 
-    CryptoPP::HexDecoder decoder;
-    decoder.Put((byte*)encoded.data(), encoded.size());
-    decoder.MessageEnd();
-
-    decoded.resize(decoder.MaxRetrievable());
-    decoder.Get((byte*)decoded.data(), decoded.size());
+	hex.resize(hex.size() + 3 +1);
+	sodium_bin2hex((char*)hex.data(), (bin.size() * 3 +1), (unsigned char*)bin.c_str(), bin.size());
+	hex.shrink_to_fit();
 
 }
 

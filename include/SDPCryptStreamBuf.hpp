@@ -27,10 +27,11 @@ Copyright 2014 Alex Frappier Lachapelle
 //#include "files.h"
 
 #include "RawFileIO.hpp"
-//#include "SDPEncryptionAlgorithmBase.hpp"
+#include "SDPEncryptionAlgorithmBase.hpp"
 //#include "SDPAES256GCMAlgorithm.hpp"
 
 //TODO: implement seeking
+//TODO: Finish binToHex and HexToBin conversion.
 
 class SDPCryptStreamBuf : public std::streambuf{
 
@@ -84,14 +85,14 @@ private:
     std::istream *inStream;
     std::ostream *outStream;
 
-    SDPAES256GCMAlgorithm defaultCryptAlgorithm;
+    //SDPAES256GCMAlgorithm defaultCryptAlgorithm;
 
     //Funcs
 
-    //turns AABBCC to 0xAA oxBB 0xCC
-    void encodeHex(std::string decoded, std::string &encoded);
+    //turns AABBCC to 0xAA 0xBB 0xCC
+    void hexToBin(std::string hex, std::string &bin);
     //turns 0xAA 0xBB 0xCC to AABBCC
-    void decodeHex(std::string encoded, std::string &decoded);
+    void binToHex(std::string bin, std::string &hex);
 
     int getNextChar(bool doAdvance);
     int_type setNextChar(int_type ch);
