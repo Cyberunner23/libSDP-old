@@ -34,70 +34,137 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/DefaultAlgorithms/zlib/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/LICENSE" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/ChecksumImpl.cs" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/ChecksumImpl.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/CircularBuffer.cs" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/CircularBuffer.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/CodecBase.cs" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/CodecBase.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/Deflater.cs" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/Deflater.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/DotZLib.cs" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/DotZLib.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/GZipStream.cs" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/GZipStream.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/Inflater.cs" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/Inflater.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/AssemblyInfo.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib.build" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib.build" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/DotZLib.csproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/DotZLib.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib.sln" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib.sln" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/LICENSE_1_0.txt" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/LICENSE_1_0.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/UnitTests.cs" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/UnitTests.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/bld_ml32.bat" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/bld_ml32.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/bld_ml64.bat" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/bld_ml64.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/gcc_gvmat64/gvmat64.S" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/gcc_gvmat64/gvmat64.S" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/gvmat64.asm" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/gvmat64.asm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/inffas32.asm" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/inffas32.asm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/inffas8664.c" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/inffas8664.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/inffasx64.asm" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/inffasx64.asm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/match686.asm" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/match686.asm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/miniunz.vcproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/miniunz.vcproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/miniunz.vcxproj.filters" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/miniunz.vcxproj.filters" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/miniunz.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/miniunz.vcxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/miniunz.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/miniunz.vcxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/minizip.vcproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/minizip.vcproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/minizip.vcxproj.filters" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/minizip.vcxproj.filters" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/minizip.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/minizip.vcxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/minizip.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/minizip.vcxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/readme.txt" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/readme.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/readme.txt" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/readme.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/readme.txt" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/readme.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/readme.txt" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/readme.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/testzlib/testzlib.c" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/testzlib/testzlib.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/testzlib/testzlib.txt" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/testzlib/testzlib.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/testzlib.vcproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/testzlib.vcproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlib.vcxproj.filters" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlib.vcxproj.filters" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlib.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlib.vcxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/testzlib.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/testzlib.vcxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/testzlibdll.vcproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/testzlibdll.vcproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlibdll.vcxproj.filters" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlibdll.vcxproj.filters" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlibdll.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlibdll.vcxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/testzlibdll.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/testzlibdll.vcxproj" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/buffer_demo.adb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/mtest.adb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/read.adb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/test.adb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/zlib-streams.adb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/zlib-streams.ads" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/zlib-thin.adb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/zlib-thin.ads" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/zlib.adb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/zlib.ads" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/ada/zlib.gpr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/amd64/amd64-match.S" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/asm686/README.686" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/asm686/match.S" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/blast/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/blast/README" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/blast/blast.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/blast/blast.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/blast/test.pk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/blast/test.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/delphi/ZLib.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/delphi/ZLibConst.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/delphi/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/delphi/zlibd32.mak" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib.build" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib.chm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib.sln" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/AssemblyInfo.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/ChecksumImpl.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/CircularBuffer.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/CodecBase.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/Deflater.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/DotZLib.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/DotZLib.csproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/GZipStream.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/Inflater.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/DotZLib/UnitTests.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/LICENSE_1_0.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/dotzlib/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/gcc_gvmat64/gvmat64.S" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/infback9/README" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/infback9/infback9.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/infback9/infback9.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/infback9/inffix9.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/infback9/inflate9.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/infback9/inftree9.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/infback9/inftree9.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/inflate86/inffas86.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/inflate86/inffast.S" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/bld_ml64.bat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/gvmat64.asm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/inffas8664.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/inffasx64.asm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx64/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/bld_ml32.bat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/inffas32.asm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/match686.asm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/masmx86/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/Makefile.am" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/MiniZip64_Changes.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/MiniZip64_info.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/configure.ac" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/crypt.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/ioapi.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/ioapi.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/iowin32.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/iowin32.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/make_vms.com" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/miniunz.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/miniunzip.1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/minizip.1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/minizip.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/minizip.pc.in" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/mztools.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/mztools.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/unzip.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/unzip.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/zip.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/minizip/zip.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/pascal/example.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/pascal/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/pascal/zlibd32.mak" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/pascal/zlibpas.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/puff/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/puff/README" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/puff/puff.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/puff/puff.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/puff/pufftest.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/puff/zeros.raw" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/testzlib/testzlib.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/testzlib/testzlib.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/untgz/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/untgz/Makefile.msc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/untgz/untgz.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/miniunz.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/miniunz.vcxproj.filters" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/minizip.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/minizip.vcxproj.filters" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlib.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlib.vcxproj.filters" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlibdll.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/testzlibdll.vcxproj.filters" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlib.rc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibstat.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibstat.vcxproj.filters" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.def" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.sln" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.vcxproj.filters" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/miniunz.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/minizip.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/testzlib.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/testzlibdll.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlib.rc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibstat.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibvc.def" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibvc.sln" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibvc.vcxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/miniunz.vcproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/minizip.vcproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/testzlib.vcproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/testzlibdll.vcproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlib.rc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibstat.vcproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibvc.def" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibvc.sln" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibvc.vcproj" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlib.rc" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlib.rc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlib.rc" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlib.rc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlib.rc" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlib.rc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibstat.vcproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibstat.vcproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibstat.vcxproj.filters" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibstat.vcxproj.filters" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibstat.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibstat.vcxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibstat.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibstat.vcxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.def" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.def" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibvc.def" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibvc.def" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibvc.def" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibvc.def" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.sln" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.sln" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibvc.sln" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibvc.sln" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibvc.sln" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibvc.sln" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibvc.vcproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc9/zlibvc.vcproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.vcxproj.filters" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.vcxproj.filters" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc10/zlibvc.vcxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibvc.vcxproj" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/vstudio/vc11/zlibvc.vcxproj" />
     </list>
     <ignored path="libSDP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -118,11 +185,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56651884">
+            <state vertical-scroll-proportion="0.0">
               <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.contrib" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/README.contrib">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.67627496">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -387,6 +464,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="zlib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libSDP" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libSDP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DefaultAlgorithms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zlib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contrib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -708,7 +811,13 @@
       <option name="project" value="LOCAL" />
       <updated>1422283050940</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Zlib's license file. + Added Zlib's .c files to CMakeLists.txt">
+      <created>1422283419826</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1422283419826</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -733,14 +842,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3268817" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47096774" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3236559" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23328067" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23328067" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3268817" sideWeight="0.50394946" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -800,7 +909,8 @@
     <MESSAGE value="Fixed a typo and removed the &quot;MESSAGE(&quot;CVT&quot;)&quot; used for debug/testing the CmakeLists.txt" />
     <MESSAGE value="Fixed yet another dumb typo..." />
     <MESSAGE value="Started embedding lz4 and zlib in libSDP. + Some other small edits." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started embedding lz4 and zlib in libSDP. + Some other small edits." />
+    <MESSAGE value="Added Zlib's license file. + Added Zlib's .c files to CMakeLists.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Zlib's license file. + Added Zlib's .c files to CMakeLists.txt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -809,14 +919,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1239,8 +1341,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56651884">
+        <state vertical-scroll-proportion="0.0">
           <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DefaultAlgorithms/zlib/contrib/README.contrib">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.67627496">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
