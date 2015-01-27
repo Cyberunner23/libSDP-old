@@ -18,6 +18,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #define SDPCRYPTSTREAMBUF_H
 
 #include <iostream>
+#include <vector>
 
 //#include "aes.h"
 //#include "gcm.h"
@@ -88,11 +89,6 @@ private:
     //SDPAES256GCMAlgorithm defaultCryptAlgorithm;
 
     //Funcs
-
-    //turns AABBCC to 0xAA 0xBB 0xCC
-    void hexToBin(std::string hex, std::string &bin);
-    //turns 0xAA 0xBB 0xCC to AABBCC
-    void binToHex(std::string bin, std::string &hex);
 
     int getNextChar(bool doAdvance);
     int_type setNextChar(int_type ch);

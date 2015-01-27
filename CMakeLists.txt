@@ -1,9 +1,9 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
 PROJECT(libSDP C CXX)
 
-#TODO: Major cleanup.
+#TODO: MAJOR cleanup.
 #TODO: using ${CMAKE_CURRENT_SOURCE_DIR} -> using ${SOULENGINE_SOURCE_DIR} for lib path finding.
-#TODO: make an include dir for people to use.
+#TODO: Add include dirs of externallibs to SDP's include dir.
 
 #----------------------------------------------------------
 ####################### OPTIONS ###########################
@@ -30,13 +30,13 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 #----------------------------------------------------------
 SET(SOURCE_FILES
     src/Endianness.cpp
+    src/HexBinTool.cpp
     src/RawFileIO.cpp
     src/SDPCompressionStreamBuf.cpp
     src/SDPCryptStreamBuf.cpp
     src/SDPStreamBuf.cpp
     src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
     src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
-
     src/DefaultAlgorithms/lz4/lz4.c
     src/DefaultAlgorithms/lz4/lz4frame.c
     src/DefaultAlgorithms/lz4/lz4hc.c
@@ -59,6 +59,7 @@ SET(SOURCE_FILES
 )
 SET(HEADER_FILES
     include/Endianness.hpp
+    include/HexBinTool.hpp
     include/RawFileIO.hpp
     include/SDPCompressionStreamBuf.hpp
     include/SDPCryptStreamBuf.hpp
@@ -167,6 +168,28 @@ SET_TARGET_PROPERTIES(SDP PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
     PROJECT_LABEL "libSDP"
 )
+
+
+
+#Testing stuff
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/include)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/AlgorithmBase)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/lz4)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/zlib)
+
+SET(TEST_SOURCE
+    test/main.cpp
+)
+ADD_EXECUTABLE(TEST ${TEST_SOURCE})
+SET_TARGET_PROPERTIES(TEST PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test
+)
+
+TARGET_LINK_LIBRARIES(TEST ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/lib/libsodium.a)
+
 
 #----------------------------------------------------------
 #Is the library being compiled inside SoulEngine checker.

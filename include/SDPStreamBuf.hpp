@@ -25,10 +25,9 @@ Copyright 2014 Alex Frappier Lachapelle
 #include <unordered_map>
 #include <utility>
 
-//#include "cryptlib.h"
-//#include "hex.h"
-//#include "sha3.h"
+#include "sodium.h"
 
+#include "HexBinTool.hpp"
 #include "RawFileIO.hpp"
 #include "SDPVer.hpp"
 

@@ -25,7 +25,7 @@ SDPCryptStreamBuf::SDPCryptStreamBuf(std::istream *cryptIn){
     inStream  = cryptIn;
     outStream = nullptr;
 
-    cryptOptions.cryptAlgorithm = &defaultCryptAlgorithm;
+    //cryptOptions.cryptAlgorithm = &defaultCryptAlgorithm;
     cryptOptions.encryptionKeyDecoded = "0000000000000000"
                                         "0000000000000000"
                                         "0000000000000000"
@@ -50,7 +50,7 @@ SDPCryptStreamBuf::SDPCryptStreamBuf(std::ostream *cryptOut){
     inStream  = nullptr;
     outStream = cryptOut;
 
-    cryptOptions.cryptAlgorithm = &defaultCryptAlgorithm;
+    //cryptOptions.cryptAlgorithm = &defaultCryptAlgorithm;
     cryptOptions.encryptionKeyDecoded = "0000000000000000"
                                         "0000000000000000"
                                         "0000000000000000"
@@ -62,7 +62,7 @@ SDPCryptStreamBuf::SDPCryptStreamBuf(std::ostream *cryptOut){
     unencryptedBuffer.resize(cryptOptions.blockSize);
     encryptedBuffer.resize(cryptOptions.blockSize);
 
-    defaultCryptAlgorithm.onInit();
+    //defaultCryptAlgorithm.onInit();
 
 }
 
@@ -122,25 +122,6 @@ int SDPCryptStreamBuf::sync(){
 }
 
 
-void SDPCryptStreamBuf::hexToBin(std::string hex, std::string &bin){
-
-	size_t finalBinLength;
-	const char** hexEnd;
-
-	bin.resize(bin.size() * 3 + 1);
-	sodium_hex2bin((unsigned char*)bin.data(), (bin.size() * 3 + 1), hex.c_str(), hex.size(), NULL, &finalBinLength, hexEnd);
-	bin.resize(finalBinLength);
-}
-
-void SDPCryptStreamBuf::binToHex(std::string bin, std::string &hex){
-
-	hex.resize(hex.size() + 3 +1);
-	sodium_bin2hex((char*)hex.data(), (bin.size() * 3 +1), (unsigned char*)bin.c_str(), bin.size());
-	hex.shrink_to_fit();
-
-}
-
-
 int SDPCryptStreamBuf::getNextChar(bool doAdvance){
 
     //if nextChar was not reset (in underflow), return the buffered char.
@@ -166,10 +147,8 @@ int SDPCryptStreamBuf::getNextChar(bool doAdvance){
         if(numEncryptedBytes > cryptOptions.blockSize){
             return traits_type::eof();
         }else{
-
             encryptedBuffer.resize(numEncryptedBytes);
             inStream->read((char*) encryptedBuffer.data(), numEncryptedBytes);
-
         }
 
         //check how many bytes were really read, if

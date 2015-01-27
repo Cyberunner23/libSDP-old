@@ -84,7 +84,7 @@ private:
     std::istream *inStream;
     std::ostream *outStream;
 
-    SDPZlibCompressionAlgorithm defaultCompressionAlgorithm;
+    //SDPZlibCompressionAlgorithm defaultCompressionAlgorithm;
 
     SDPCompressionOptions compressionOptions;
 

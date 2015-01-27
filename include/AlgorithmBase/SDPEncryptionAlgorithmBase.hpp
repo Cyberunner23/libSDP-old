@@ -37,8 +37,6 @@ protected:
 
     //funcs
 
-    void decodeHex(std::string encoded, std::string &decode);
-
 
 private:
 

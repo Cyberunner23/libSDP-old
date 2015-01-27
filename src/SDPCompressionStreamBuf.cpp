@@ -26,12 +26,12 @@ SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::istream *compressedIn){
 
     this->compressionOptions.blockSize             = 1024*64;
     this->compressionOptions.blockSizeWithOverhead = 1024*64*1.5;//useless to set this here?
-    this->compressionOptions.compressionAlgorithm  = &defaultCompressionAlgorithm;
+    //this->compressionOptions.compressionAlgorithm  = &defaultCompressionAlgorithm;
 
     uncompressedBuffer.resize(this->compressionOptions.blockSize);
     compressedBuffer.resize(this->compressionOptions.blockSize);
 
-    this->defaultCompressionAlgorithm.onInit();
+    //this->defaultCompressionAlgorithm.onInit();
 
     nextChar = traits_type::eof();
 
@@ -44,12 +44,12 @@ SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::ostream *compressedOut){
 
     this->compressionOptions.blockSize             = 1024*64;
     this->compressionOptions.blockSizeWithOverhead = 1024*64*1.5;
-    this->compressionOptions.compressionAlgorithm  = &defaultCompressionAlgorithm;
+    //this->compressionOptions.compressionAlgorithm  = &defaultCompressionAlgorithm;
 
     uncompressedBuffer.reserve(this->compressionOptions.blockSize);
     compressedBuffer.reserve(this->compressionOptions.blockSize);
 
-    this->defaultCompressionAlgorithm.onInit();
+    //this->defaultCompressionAlgorithm.onInit();
 
 }
 

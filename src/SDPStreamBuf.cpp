@@ -14,6 +14,7 @@ Copyright 2014 Alex Frappier Lachapelle
    limitations under the License.
 */
 
+#include <sodium/crypto_hash_sha512.h>
 #include "SDPStreamBuf.hpp"
 
 
@@ -91,21 +92,22 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::istream &inStream, 
             tmpSubFileProps.SDPSubFileHash = "";
         }else{
 
-            CryptoPP::SHA3 sha3Hash(CryptoPP::SHA3_512::DIGESTSIZE);
-            byte digest[sha3Hash.DigestSize()];
+            crypto_hash_sha512_state hashState;
+			crypto_hash_sha512_init(&hashState);
+
+			HexBinTool hexBinTool;
+
+            std::string digest;
+			digest.resize(crypto_hash_sha512_BYTES);
 
             for(uint_least64_t i = 0; i < tmpSubFileProps.SDPSubFileSize; i++){
                 unsigned char tmpChar;
                 rawFileIO.read(tmpChar, &inStream);
-                sha3Hash.Update((byte*) tmpChar, 1);
+				crypto_hash_sha512_update(&hashState, reinterpret_cast<const unsigned char*>(tmpChar), 1);
             }
 
-            sha3Hash.Final(digest);
-
-            CryptoPP::HexEncoder encoder;
-            encoder.Attach(new CryptoPP::StringSink(tmpSubFileProps.SDPSubFileHash));
-            encoder.Put(digest, sizeof(digest));
-            encoder.MessageEnd();
+			crypto_hash_sha512_final(&hashState, (unsigned char*)digest.data());
+            hexBinTool.binToHex(digest, tmpSubFileProps.SDPSubFileHash);
 
         }
 
