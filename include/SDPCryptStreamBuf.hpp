@@ -18,6 +18,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #define SDPCRYPTSTREAMBUF_H
 
 #include <iostream>
+#include <memory>
 #include <vector>
 
 //#include "aes.h"
@@ -32,7 +33,6 @@ Copyright 2014 Alex Frappier Lachapelle
 //#include "SDPAES256GCMAlgorithm.hpp"
 
 //TODO: implement seeking
-//TODO: Finish binToHex and HexToBin conversion.
 
 class SDPCryptStreamBuf : public std::streambuf{
 
@@ -42,16 +42,15 @@ public:
 
     //Funcs
 
-    SDPCryptStreamBuf(std::istream *cryptIn);
-    SDPCryptStreamBuf(std::ostream *cryptOut);
-    ~SDPCryptStreamBuf() throw(); //dirty fix to remove "exception specification in declaration does not match previous declaration" error
+    SDPCryptStreamBuf(std::istream *cryptIn,  std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
+    SDPCryptStreamBuf(std::ostream *cryptOut, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
+    ~SDPCryptStreamBuf() /*throw()*/; //dirty fix to remove "exception specification in declaration does not match previous declaration" error
 
     void setEncryptionAlgorithm(SDPEncryptionAlgorithmBase *cryptAlgorithm);
 
-    void setEncryptionKeyEncoded();
-    void setIVEncoded();
-    void setEncryptionKeyDecoded();
-    void setIVDecoded();
+    void setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex);
+	void setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);
+	void setNonce(std::string nonce, bool isNonceInHex);
 
 
 protected:
@@ -68,12 +67,12 @@ private:
 
     //Vars
 
-    struct SDPCryptOptions{
-        SDPEncryptionAlgorithmBase *cryptAlgorithm;
-        std::string encryptionKeyDecoded;
-        std::string IVDecoded;
-        uint_least64_t blockSize;
-    }cryptOptions;
+
+    std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm;
+	bool 										isStreamCipher;
+	uint_least64_t 								bufferSize;
+	uint_least64_t 								bufferSizeWithOverhead;
+
 
     int  nextChar;
 
@@ -91,6 +90,8 @@ private:
     //Funcs
 
     int getNextChar(bool doAdvance);
+	bool fillAndDecryptBuffer();
+
     int_type setNextChar(int_type ch);
 
 

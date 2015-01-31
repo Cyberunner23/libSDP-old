@@ -29,7 +29,7 @@ size_t RawFileIO::read(uint8_t &val, std::istream *inStream){
 
     val = tmpUint8;
 
-    return inStream->gcount();
+    return (size_t)inStream->gcount();
 }
 
 size_t RawFileIO::read(uint_least16_t &val, std::istream *inStream, Endian fileEndian){
@@ -43,7 +43,7 @@ size_t RawFileIO::read(uint_least16_t &val, std::istream *inStream, Endian fileE
         val = endian.byteSwap(tmpUint16);
     }
 
-    return inStream->gcount();
+    return (size_t)inStream->gcount();
 }
 
 size_t RawFileIO::read(uint_least32_t &val, std::istream *inStream, Endian fileEndian){
@@ -57,7 +57,7 @@ size_t RawFileIO::read(uint_least32_t &val, std::istream *inStream, Endian fileE
         val = endian.byteSwap(tmpUint32);
     }
 
-    return inStream->gcount();
+    return (size_t)inStream->gcount();
 }
 
 size_t RawFileIO::read(uint_least64_t &val, std::istream *inStream, Endian fileEndian){
@@ -71,7 +71,7 @@ size_t RawFileIO::read(uint_least64_t &val, std::istream *inStream, Endian fileE
         val = endian.byteSwap(tmpUint64);
     }
 
-    return inStream->gcount();
+    return (size_t)inStream->gcount();
 }
 
 

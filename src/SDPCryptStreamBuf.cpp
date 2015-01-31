@@ -18,56 +18,68 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPCryptStreamBuf.hpp"
 
 
-SDPCryptStreamBuf::SDPCryptStreamBuf(std::istream *cryptIn){
+SDPCryptStreamBuf::SDPCryptStreamBuf(std::istream *cryptIn, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm)
+	: hasFirstBlockBeenRead(false),
+	  inStream(cryptIn),
+	  outStream(nullptr),
+	  cryptAlgorithm(cryptAlgorithm),
+	  nextChar(traits_type::eof())
+	{
 
-    hasFirstBlockBeenRead = false;
+	this->cryptAlgorithm->onInit();
 
-    inStream  = cryptIn;
-    outStream = nullptr;
+	isStreamCipher 		   = this->cryptAlgorithm->getIsStreamCipher();
+	bufferSize     		   = this->cryptAlgorithm->getBufferSize();
+	bufferSizeWithOverhead = this->cryptAlgorithm->getBufferSizeWithOverhead();
 
-    //cryptOptions.cryptAlgorithm = &defaultCryptAlgorithm;
-    cryptOptions.encryptionKeyDecoded = "0000000000000000"
-                                        "0000000000000000"
-                                        "0000000000000000"
-                                        "0000000000000000";
-    cryptOptions.IVDecoded            = "0000000000000000"
-                                        "00000000";
-    cryptOptions.blockSize            = 1024*64;
-
-    unencryptedBuffer.resize(this->cryptOptions.blockSize);
-    encryptedBuffer.resize(this->cryptOptions.blockSize);
-
-    cryptOptions.cryptAlgorithm->onInit();
-
-    nextChar = traits_type::eof();
+	if(!isStreamCipher){
+		encryptedBuffer.resize(bufferSize);
+		unencryptedBuffer.resize(bufferSize);
+	}
 
 }
 
-SDPCryptStreamBuf::SDPCryptStreamBuf(std::ostream *cryptOut){
+SDPCryptStreamBuf::SDPCryptStreamBuf(std::ostream *cryptOut, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm)
+	: hasFirstBlockBeenRead(false),
+	  inStream(nullptr),
+	  outStream(cryptOut),
+	  cryptAlgorithm(cryptAlgorithm),
+	  nextChar(traits_type::eof())
+	{
 
-    hasFirstBlockBeenRead = false;
+	this->cryptAlgorithm->onInit();
 
-    inStream  = nullptr;
-    outStream = cryptOut;
+	isStreamCipher 		   = this->cryptAlgorithm->getIsStreamCipher();
+	bufferSize     		   = this->cryptAlgorithm->getBufferSize();
+	bufferSizeWithOverhead = this->cryptAlgorithm->getBufferSizeWithOverhead();
 
-    //cryptOptions.cryptAlgorithm = &defaultCryptAlgorithm;
-    cryptOptions.encryptionKeyDecoded = "0000000000000000"
-                                        "0000000000000000"
-                                        "0000000000000000"
-                                        "0000000000000000";
-    cryptOptions.IVDecoded            = "0000000000000000"
-                                        "00000000";
-    cryptOptions.blockSize            = 1024*64;
-
-    unencryptedBuffer.resize(cryptOptions.blockSize);
-    encryptedBuffer.resize(cryptOptions.blockSize);
-
-    //defaultCryptAlgorithm.onInit();
+	if(!isStreamCipher){
+		encryptedBuffer.resize(bufferSize);
+		unencryptedBuffer.resize(bufferSize);
+	}
 
 }
 
-SDPCryptStreamBuf::~SDPCryptStreamBuf() throw(){
-    cryptOptions.cryptAlgorithm->onExit();
+SDPCryptStreamBuf::~SDPCryptStreamBuf() /*throw()*/{
+    cryptAlgorithm->onExit();
+}
+
+
+void SDPCryptStreamBuf::setEncryptionAlgorithm(SDPEncryptionAlgorithmBase *cryptAlgorithm){
+	//TODO: implement this.
+}
+
+
+void SDPCryptStreamBuf::setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex){
+	cryptAlgorithm->setEncryptionKeyAndNonce(encryptionKey, isEncryptionKeyInHex, nonce, isNonceInHex);
+}
+
+void SDPCryptStreamBuf::setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex){
+	cryptAlgorithm->setEncryptionKey(encryptionKey, isEncryptionKeyInHex);
+}
+
+void SDPCryptStreamBuf::setNonce(std::string nonce, bool isNonceInHex){
+	cryptAlgorithm->setNonce(nonce, isNonceInHex);
 }
 
 
@@ -79,12 +91,12 @@ SDPCryptStreamBuf::int_type SDPCryptStreamBuf::overflow(int_type ch){
 
 SDPCryptStreamBuf::int_type SDPCryptStreamBuf::underflow(){
 
-    return getNextChar(false);
+    return (int_type)getNextChar(false);
 }
 
 SDPCryptStreamBuf::int_type SDPCryptStreamBuf::uflow(){
 
-    return getNextChar(true);
+    return (int_type)getNextChar(true);
 }
 
 SDPCryptStreamBuf::int_type SDPCryptStreamBuf::pbackfail(int_type ch){
@@ -95,28 +107,29 @@ SDPCryptStreamBuf::int_type SDPCryptStreamBuf::pbackfail(int_type ch){
 
 int SDPCryptStreamBuf::sync(){
 
-    //TODO?: add chunk size checking
     //send whats left in the buffer to be encrypted
+	if(!isStreamCipher){
 
-    if(outStream && unencryptedBuffer.size() != 0){
+		if(outStream && unencryptedBuffer.size() != 0){
 
-        RawFileIO rawFileIO;
+			RawFileIO rawFileIO;
 
-        //encrypt whats left
-        encryptedBuffer.resize(cryptOptions.blockSize);
-        uint_least64_t numBytesEncrypted = cryptOptions.cryptAlgorithm->encrypt((char*) unencryptedBuffer.data(), (char*) encryptedBuffer.data(), unencryptedBuffer.size());
-        encryptedBuffer.resize(numBytesEncrypted);
+			//encrypt whats left
+			encryptedBuffer.resize(cryptAlgorithm->getBufferSizeWithOverhead());
+			uint_least64_t numBytesEncrypted = cryptAlgorithm->encrypt(unencryptedBuffer.data(), encryptedBuffer.data(), unencryptedBuffer.size());
+			encryptedBuffer.resize(numBytesEncrypted);
 
-        //write block size
-        rawFileIO.write(numBytesEncrypted, outStream, RawFileIO::BIG__ENDIAN);
-        //write block data
-        outStream->write((char*) encryptedBuffer.data(), encryptedBuffer.size());
+			//write block size
+			rawFileIO.write(numBytesEncrypted, outStream, RawFileIO::BIG__ENDIAN);
+			//write block data
+			outStream->write((char *)encryptedBuffer.data(), encryptedBuffer.size());
 
-    }
+		}
+	}
 
-    outStream->flush();
+	cryptAlgorithm->onSync();
 
-    cryptOptions.cryptAlgorithm->onSync();
+	outStream->flush();
 
     return 0;
 }
@@ -129,50 +142,115 @@ int SDPCryptStreamBuf::getNextChar(bool doAdvance){
         return nextChar;
     }
 
-    if(bufferIterator == unencryptedBuffer.end() || !hasFirstBlockBeenRead){
+	if(isStreamCipher){
 
-        RawFileIO rawFileIO;
+		RawFileIO rawFileIO;
 
-        unencryptedBuffer.clear();
-        encryptedBuffer.clear();
+		unsigned char readByte;
+		if(rawFileIO.read(readByte, inStream) != sizeof (unsigned char)){
+			return traits_type::eof();
+		}
 
-        uint_least64_t numEncryptedBytes;
+		if(cryptAlgorithm->decryptStream(readByte, (unsigned char)nextChar)){
+			return nextChar;
+		}else{
+			return traits_type::eof();
+		}
 
-        //check encrypted data size
-        if(rawFileIO.read(numEncryptedBytes, inStream, RawFileIO::BIG__ENDIAN) != sizeof numEncryptedBytes){
-            return traits_type::eof();
-        }
+	}else{
 
-        //check if numEncryptedBytes makes sense, if so, read the data
-        if(numEncryptedBytes > cryptOptions.blockSize){
-            return traits_type::eof();
-        }else{
-            encryptedBuffer.resize(numEncryptedBytes);
-            inStream->read((char*) encryptedBuffer.data(), numEncryptedBytes);
-        }
+		if(bufferIterator == unencryptedBuffer.end() || !hasFirstBlockBeenRead){
 
-        //check how many bytes were really read, if
-        //that number is not what we expect, something
-        //went wrong
-        //TODO: change var type to hold a 64 bit num.
-        int gCount = inStream->gcount();
-        if(gCount != numEncryptedBytes){
-            return traits_type::eof();
-        }
+			if(!fillAndDecryptBuffer()){
+				return traits_type::eof();
+			}
 
-        //do decryption
+			bufferIterator = unencryptedBuffer.begin();
+			nextChar       = *bufferIterator;
+			bufferIterator++;
 
-    }
+			hasFirstBlockBeenRead = true;
 
+			return nextChar;
 
+		}else{
 
-    return nextChar;
+			nextChar = *bufferIterator;
+			bufferIterator++;
+
+			return nextChar;
+		}
+	}
 }
+
+bool SDPCryptStreamBuf::fillAndDecryptBuffer(){
+
+	RawFileIO rawFileIO;
+
+	unencryptedBuffer.clear();
+	encryptedBuffer.clear();
+
+	//check encrypted data size
+	uint_least64_t numEncryptedBytes;
+	if(rawFileIO.read(numEncryptedBytes, inStream, RawFileIO::BIG__ENDIAN) != sizeof numEncryptedBytes){
+		return false;
+	}
+
+	//check if numEncryptedBytes makes sense, if so, read the data
+	if(numEncryptedBytes > cryptAlgorithm->getBufferSize()){
+		return false;
+	}else{
+		encryptedBuffer.resize(numEncryptedBytes);
+		inStream->read((char*) encryptedBuffer.data(), numEncryptedBytes);
+	}
+
+	//check how many bytes were really read, if
+	//that number is not what we told it to read,
+	//something went wrong
+	if(inStream->gcount() != numEncryptedBytes){
+		return false;
+	}
+
+	//do decryption
+	unencryptedBuffer.resize(cryptAlgorithm->getBufferSizeWithOverhead());
+	uint_least64_t numDecryptedBytes = cryptAlgorithm->decrypt(encryptedBuffer.data(), unencryptedBuffer.data(), numEncryptedBytes);
+	unencryptedBuffer.resize(numDecryptedBytes);
+
+	return true;
+}
+
 
 SDPCryptStreamBuf::int_type SDPCryptStreamBuf::setNextChar(int_type ch){
 
-    //TODO: Implement this
+	RawFileIO rawFileIO;
 
+	if(isStreamCipher){
+
+		unsigned char writeByte = 0;
+		cryptAlgorithm->encryptStream((unsigned char)ch, writeByte);
+
+		rawFileIO.write(writeByte, outStream);
+
+	}else{
+
+		unencryptedBuffer.emplace_back(ch);
+
+		if(unencryptedBuffer.size() == cryptAlgorithm->getBufferSize()){
+
+			encryptedBuffer.resize(cryptAlgorithm->getBufferSizeWithOverhead());
+
+			uint_least64_t numEncryptedBytes = cryptAlgorithm->encrypt(unencryptedBuffer.data(), encryptedBuffer.data(), unencryptedBuffer.size());
+
+			//write encrypted chunk size
+			rawFileIO.write(numEncryptedBytes, outStream, RawFileIO::BIG__ENDIAN);
+			//write encrypted data
+			outStream->write((char*)encryptedBuffer.data(), numEncryptedBytes);
+
+			unencryptedBuffer.clear();
+			encryptedBuffer.clear();
+
+		}
+	}
 
     return traits_type::to_int_type(ch);
 }

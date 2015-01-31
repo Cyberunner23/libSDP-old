@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" line="24" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true">
     <generated>
+      <config projectName="libSDP" targetName="CryptoPP-CMake" />
       <config projectName="libSDP" targetName="CVT_GET" />
-      <config projectName="libSDP" targetName="CryptoPP-Cmake2" />
+      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_CONFIGURE_STEP" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_BUILD_STEP" />
       <config projectName="libSDP" targetName="CVT_RUN" />
-      <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
+      <config projectName="libSDP" targetName="CVT_BUILD_STEP" />
       <config projectName="libSDP" targetName="cryptopp" />
       <config projectName="libSDP" targetName="CryptoPP-Cmake" />
       <config projectName="libSDP" targetName="SDP" />
-      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_GET" />
+      <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_DOWNLOAD_STEP" />
       <config projectName="libSDP" targetName="libSDP" />
       <config projectName="SDP" targetName="libSDP" />
-      <config projectName="libSDP" targetName="CryptoPP-CMake" />
-      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_BUILD_STEP" />
-      <config projectName="libSDP" targetName="CVT_DOWNLOAD_STEP" />
-      <config projectName="libSDP" targetName="CVT" />
-      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_CONFIGURE_STEP" />
-      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE" />
-      <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
-      <config projectName="libSDP" targetName="CVT_BUILD_STEP" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_DOWNLOAD_STEP" />
+      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE" />
+      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_BUILD_STEP" />
       <config projectName="libSDP" targetName="CVT_" />
-      <config projectName="libSDP" targetName="TEST" />
+      <config projectName="libSDP" targetName="CVT" />
+      <config projectName="libSDP" targetName="CryptoPP-Cmake2" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_CONFIGURE_STEP" />
-      <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_DOWNLOAD_STEP" />
+      <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
+      <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
+      <config projectName="libSDP" targetName="CVT_DOWNLOAD_STEP" />
+      <config projectName="libSDP" targetName="TEST" />
+      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_GET" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true" GENERATION_PASS_SYSTEM_ENVIRONMENT="true">
@@ -34,19 +37,17 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Worked on migration.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/HexBinTool.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/HexBinTool.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Continued working on migration. Finished cryptstreambuf migration block cipher -&gt; block cipher / stream cipher modes. + bunch of other stuff...">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RawFileIO.cpp" afterPath="$PROJECT_DIR$/src/RawFileIO.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" afterPath="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" afterPath="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" afterPath="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp" afterPath="$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" afterPath="$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" afterPath="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPStreamBuf.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPStreamBuf.hpp" afterPath="$PROJECT_DIR$/include/SDPStreamBuf.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPVer.hpp" afterPath="$PROJECT_DIR$/include/SDPVer.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/progress.txt" afterPath="$PROJECT_DIR$/tools/progress.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -69,15 +70,41 @@
     <favorites_list name="libSDP" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.32473254">
+    <splitter split-orientation="horizontal" split-proportion="0.37765634">
       <split-first>
         <leaf>
-          <file leaf-file-name="SDPStreamBuf.hpp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
+          <file leaf-file-name="SDPEncryptionAlgorithmBase.hpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6446281">
-                  <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#75#94#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="RawFileIO.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/RawFileIO.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SDPCryptStreamBuf.hpp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.2594235">
+                  <caret line="73" column="55" selection-start-line="73" selection-start-column="55" selection-end-line="73" selection-end-column="55" />
+                  <folding>
+                    <element signature="e#0#597#0" expanded="false" />
+                    <element signature="e#656#675#0" expanded="true" />
+                    <element signature="e#836#860#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -86,36 +113,34 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="SDPStreamBuf.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
+          <file leaf-file-name="SDPCryptStreamBuf.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="102" column="19" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
+                <state vertical-scroll-proportion="82.86207">
+                  <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
                   <folding>
-                    <element signature="e#599#637#0" expanded="true" />
+                    <element signature="e#599#624#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SDPEncryptionAlgorithmBase.cpp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="SDPEncryptionAlgorithmBase.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+                <state vertical-scroll-proportion="-0.31707317">
+                  <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SDPEncryptionAlgorithmBase.hpp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp">
+          <file leaf-file-name="SDPCompressionAlgorithmBase.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.8264463">
-                  <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
-                  <folding>
-                    <element signature="e#75#94#0" expanded="true" />
-                  </folding>
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -141,7 +166,6 @@
         <option value="$PROJECT_DIR$/include/RawFileIO.hpp" />
         <option value="$PROJECT_DIR$/include/DefaultAlgorithms/SDPZlibCompressionAlgorithm.hpp" />
         <option value="$PROJECT_DIR$/include/DefaultAlgorithms/SDPAES256GCMAlgorithm.hpp" />
-        <option value="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" />
         <option value="$PROJECT_DIR$/extlibs/libsodium-CMake/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/build/.gitignore" />
         <option value="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/FAQ" />
@@ -150,15 +174,18 @@
         <option value="$PROJECT_DIR$/test/main.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" />
-        <option value="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
         <option value="$PROJECT_DIR$/src/HexBinTool.cpp" />
         <option value="$PROJECT_DIR$/include/HexBinTool.hpp" />
-        <option value="$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp" />
-        <option value="$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp" />
         <option value="$PROJECT_DIR$/include/SDPStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/src/SDPStreamBuf.cpp" />
-        <option value="$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" />
+        <option value="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" />
+        <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" />
         <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" />
+        <option value="$PROJECT_DIR$/src/RawFileIO.cpp" />
+        <option value="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
+        <option value="$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp" />
+        <option value="$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" />
+        <option value="$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp" />
       </list>
     </option>
   </component>
@@ -174,6 +201,25 @@
     <option name="y" value="27" />
     <option name="width" value="1922" />
     <option name="height" value="1054" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>C/C++</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Unused codeC/C++</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -254,6 +300,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AlgorithmBase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libSDP" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libSDP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="include" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -300,7 +364,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../LIBS/libsodium-Cmake" />
     <property name="FullScreen" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="ignore_missing_gitignore" value="true" />
   </component>
@@ -431,7 +495,13 @@
       <option name="project" value="LOCAL" />
       <updated>1422289977456</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Continued working on migration. Migrated Hex-&gt;Bin/Bin-&gt;Hex functions + placed them in a separate class for convenience.">
+      <created>1422324323069</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1422324323069</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -458,12 +528,13 @@
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18924731" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21182796" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20537634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13225806" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14946237" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16324382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13270143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3935484" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -471,11 +542,10 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16774194" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -493,9 +563,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16324382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -528,7 +598,8 @@
     <MESSAGE value="Removed test folder." />
     <MESSAGE value="Continued migration and fixed zconf.h generation." />
     <MESSAGE value="Worked on migration." />
-    <option name="LAST_COMMIT_MESSAGE" value="Worked on migration." />
+    <MESSAGE value="Continued working on migration. Migrated Hex-&gt;Bin/Bin-&gt;Hex functions + placed them in a separate class for convenience." />
+    <option name="LAST_COMMIT_MESSAGE" value="Continued working on migration. Migrated Hex-&gt;Bin/Bin-&gt;Hex functions + placed them in a separate class for convenience." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -539,42 +610,15 @@
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
-          <folding>
-            <element signature="e#832#856#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -596,7 +640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="105" selection-start-line="12" selection-start-column="105" selection-end-line="12" selection-end-column="105" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -604,7 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -612,7 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="57" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -620,7 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -663,14 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -818,7 +850,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33207548">
           <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -826,9 +857,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="64" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
-          <folding>
-            <marker date="1422321357113" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -836,7 +865,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1635" column="30" selection-start-line="1635" selection-start-column="29" selection-end-line="1635" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -844,7 +872,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2231405">
           <caret line="9" column="98" selection-start-line="9" selection-start-column="98" selection-end-line="9" selection-end-column="98" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,38 +879,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4214876">
           <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding>
-            <element signature="e#43#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.661157">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding>
-            <element signature="e#656#675#0" expanded="true" />
-            <element signature="e#818#842#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4077135">
-          <caret line="121" column="1" selection-start-line="121" selection-start-column="1" selection-end-line="121" selection-end-column="1" />
-          <folding>
-            <element signature="e#599#624#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -891,9 +886,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="86" column="6" selection-start-line="86" selection-start-column="6" selection-end-line="86" selection-end-column="6" />
-          <folding>
-            <element signature="e#668#685#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -901,42 +894,105 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12396694">
           <caret line="32" column="22" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6446281">
-          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="102" column="19" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
-            <element signature="e#599#637#0" expanded="true" />
+            <element signature="e#599#637#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.055325035">
+          <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding>
+            <element signature="e#646#664#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8425532">
+          <caret line="176" column="31" selection-start-line="176" selection-start-column="31" selection-end-line="176" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/CLucene/store/IndexOutput.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56170213">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="82.86207">
+          <caret line="82" column="1" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
+          <folding>
+            <element signature="e#599#624#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.31707317">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8264463">
-          <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
             <element signature="e#75#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RawFileIO.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2594235">
+          <caret line="73" column="55" selection-start-line="73" selection-start-column="55" selection-end-line="73" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#597#0" expanded="false" />
+            <element signature="e#656#675#0" expanded="true" />
+            <element signature="e#836#860#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -61,7 +61,7 @@ SDPCompressionStreamBuf::~SDPCompressionStreamBuf(){
 void SDPCompressionStreamBuf::SDPSetCompressionOptions(SDPCompressionOptions compressionOptions){
 
     this->compressionOptions = compressionOptions;
-    this->compressionOptions.compressionAlgorithm->setBlockSize(this->compressionOptions.blockSize);
+    //this->compressionOptions.compressionAlgorithm->setBlockSize(this->compressionOptions.blockSize);
 
     this->compressionOptions.compressionAlgorithm->onInit();
 
@@ -101,7 +101,7 @@ int SDPCompressionStreamBuf::sync(){
         compressedBuffer.resize(this->compressionOptions.blockSizeWithOverhead);//add overhead comprensation
 
         uint_least64_t numCompressedBytes;
-        numCompressedBytes = this->compressionOptions.compressionAlgorithm->compress((char*) uncompressedBuffer.data(), (char*) compressedBuffer.data(), uncompressedBuffer.size());
+        numCompressedBytes = this->compressionOptions.compressionAlgorithm->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedBuffer.size());
 
         this->compressionOptions.compressionAlgorithm->onSync();
 
@@ -174,7 +174,7 @@ int SDPCompressionStreamBuf::getNextChar(bool doAdvance){
             compressedBuffer.resize(numCompressedBytes);
             inStream->read((char*) compressedBuffer.data(), numCompressedBytes);
 
-            gCount = (int) inStream->gcount();
+            gCount = (unsigned int) inStream->gcount();
 
             //do some better error reporting...
             if(gCount != numCompressedBytes){
@@ -189,7 +189,7 @@ int SDPCompressionStreamBuf::getNextChar(bool doAdvance){
             uncompressedBuffer.resize(this->compressionOptions.blockSize);
 
             uint_least64_t numBytesUncompressed;
-            numBytesUncompressed = this->compressionOptions.compressionAlgorithm->decompress((char*) compressedBuffer.data(), (char*) uncompressedBuffer.data(), compressedBuffer.size());
+            numBytesUncompressed = this->compressionOptions.compressionAlgorithm->decompress(compressedBuffer.data(), uncompressedBuffer.data(), compressedBuffer.size());
 
             uncompressedBuffer.resize(numBytesUncompressed);
 
@@ -229,7 +229,7 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::setNextChar(int_type 
         compressedBuffer.resize(this->compressionOptions.blockSizeWithOverhead);
 
         uint_least64_t numCompressedBytes;
-        numCompressedBytes = this->compressionOptions.compressionAlgorithm->compress((char*) uncompressedBuffer.data(), (char*) compressedBuffer.data(), uncompressedBuffer.size());
+        numCompressedBytes = this->compressionOptions.compressionAlgorithm->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedBuffer.size());
 
         //check if we encountered an unompressible block.
         //if the num of compressed bytes is bigger or equal than the

@@ -61,6 +61,7 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::istream &inStream, 
         if(rawFileIO.read(tmpSubFileNameLength, &inStream, RawFileIO::Endian::BIG__ENDIAN) != sizeof tmpSubFileNameLength){
             break; //if sub file corrupted or incomplete, stop reading
         }
+
         tmpSubFileProps.SDPSubFileName.resize(tmpSubFileNameLength +1);
         inStream.read((char*) tmpSubFileProps.SDPSubFileName.data(), tmpSubFileNameLength);
         if(inStream.gcount() != tmpSubFileNameLength){
@@ -72,6 +73,7 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::istream &inStream, 
         if(rawFileIO.read(tmpFlagChar, &inStream) != sizeof tmpFlagChar){
             break; //if sub file corrupted or incomplete, stop reading
         }
+
         if(tmpFlagChar == 0x01 || tmpFlagChar == 0x02 || tmpFlagChar == 0x04 || tmpFlagChar == 0x08 || tmpFlagChar == 0x20){
             tmpSubFileProps.SDPSubFileDataProps = static_cast<SDPSubFileDataPropsEnum> (tmpFlagChar);
         }else{
