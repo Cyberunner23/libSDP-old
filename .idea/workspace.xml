@@ -7,7 +7,7 @@
     <generated>
       <config projectName="libSDP" targetName="CVT_GET" />
       <config projectName="libSDP" targetName="CryptoPP-Cmake2" />
-      <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
+      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_CONFIGURE_STEP" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_BUILD_STEP" />
       <config projectName="libSDP" targetName="CVT_RUN" />
       <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
@@ -21,10 +21,10 @@
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_BUILD_STEP" />
       <config projectName="libSDP" targetName="CVT_" />
       <config projectName="libSDP" targetName="CVT" />
-      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_CONFIGURE_STEP" />
-      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE" />
-      <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_CONFIGURE_STEP" />
       <config projectName="libSDP" targetName="CVT_BUILD_STEP" />
+      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE" />
+      <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
+      <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_CONFIGURE_STEP" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_DOWNLOAD_STEP" />
       <config projectName="libSDP" targetName="CVT_DOWNLOAD_STEP" />
       <config projectName="libSDP" targetName="TEST" />
@@ -37,20 +37,8 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp" />
+    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Removed CVT">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" afterPath="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp" afterPath="$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" afterPath="$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" afterPath="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPStreamBuf.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPVer.hpp" afterPath="$PROJECT_DIR$/include/SDPVer.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/main.cpp" afterPath="$PROJECT_DIR$/test/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/progress.txt" afterPath="$PROJECT_DIR$/tools/progress.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -128,8 +116,8 @@
       <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49295774">
-              <caret line="200" column="38" selection-start-line="200" selection-start-column="38" selection-end-line="200" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.18611522">
+              <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -546,7 +534,13 @@
       <option name="project" value="LOCAL" />
       <updated>1422675910134</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Continued working on migration. Continued cryptstreambuf migration block cipher -&gt; block cipher / stream cipher modes. + bunch of other stuff...">
+      <created>1424094997629</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1424094997629</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -571,13 +565,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21075268" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20537634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13225806" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2081545" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20115851" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20860215" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20115851" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3268817" sideWeight="0.50394946" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16774194" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -586,7 +581,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3935484" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21075268" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -769,6 +763,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24705882">
           <caret line="36" column="139" selection-start-line="36" selection-start-column="139" selection-end-line="36" selection-end-column="139" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -913,6 +908,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1033,8 +1029,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49295774">
-          <caret line="200" column="38" selection-start-line="200" selection-start-column="38" selection-end-line="200" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.18611522">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
           <folding />
         </state>
       </provider>
