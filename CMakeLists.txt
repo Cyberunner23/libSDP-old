@@ -8,11 +8,13 @@ PROJECT(libSDP C CXX)
 #----------------------------------------------------------
 ####################### OPTIONS ###########################
 #----------------------------------------------------------
-OPTION(COMPILE_LIBSDP_LIB_SHARED   "Build libSDP as a shared lib (setting this to OFF will compile statically)" ON)
-OPTION(BUILD_SODIUM_SHARED         "Build libsodium-CMake as a shared lib (setting this to OFF will compile statically)")
-#SET(SOULENGINE_SOURCE_DIR "" PATH "Top level directory of Soul Engine (Will be set by Soul Engine's CMakeLists.txt, setting this will cause ${PROJECT_NAME} to use Soul Engine's libraries.)")
-SET(BUILD_SODIUM_SHARED ON)
+OPTION(LIBSDP_BUILD_SHARED_LIBRARIES    "Build libSDP as a shared lib (setting this to OFF will compile statically)" ON)
+OPTION(LIBSODIUM_BUILD_SHARED_LIBRARIES "Build libsodium-CMake as a shared lib (setting this to OFF will compile statically)")
+OPTION(LIBSODIUM_CMAKE_DIR "Directory where libsodium-CMake is placed. (Don't set this if libsodium-CMake is in extlibs/)" "")
 
+SET(LIBSODIUM_CMAKE_DIR "")
+#SET(SOULENGINE_SOURCE_DIR "" PATH "Top level directory of Soul Engine (Will be set by Soul Engine's CMakeLists.txt, setting this will cause ${PROJECT_NAME} to use Soul Engine's libraries.)")
+#SET(LIBSODIUM_BUILD_SHARED_LIBRARIES ON)
 #----------------------------------------------------------
 #################### INTERNAL/DEV VARS ####################
 #----------------------------------------------------------
@@ -158,102 +160,58 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/zlib/zconf.
 
 
 
-IF(COMPILE_LIBSDP_LIB_SHARED)
-    ADD_LIBRARY(SDP SHARED ${SOURCE_FILES} ${HEADER_FILES})
-ELSE(COMPILE_LIBSDP_LIB_SHARED)
-    ADD_LIBRARY(SDP STATIC ${SOURCE_FILES} ${HEADER_FILES})
-ENDIF(COMPILE_LIBSDP_LIB_SHARED)
+IF(LIBSDP_BUILD_SHARED_LIBRARIES)
+    ADD_LIBRARY(libSDP SHARED ${SOURCE_FILES} ${HEADER_FILES})
+ELSE(LIBSDP_BUILD_SHARED_LIBRARIES)
+    ADD_LIBRARY(libSDP STATIC ${SOURCE_FILES} ${HEADER_FILES})
+ENDIF(LIBSDP_BUILD_SHARED_LIBRARIES)
 
-SET_TARGET_PROPERTIES(SDP PROPERTIES
+SET_TARGET_PROPERTIES(libSDP PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
     ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
     PROJECT_LABEL "libSDP"
 )
 
 
+#----------------------------------------------------------
+################## EXTERNAL DEPENDENCIES ##################
+#----------------------------------------------------------
+
+######################## libsodium #######################
+#If directory not specified, use files from extlibs folder
+IF(LIBSODIUM_CMAKE_DIR STREQUAL "")
+    MESSAGE("Building libsodium-Cmake from internal directories.")
+    ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake)
+    INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/include)
+    ADD_DEPENDENCIES(libSDP sodium)
+    TARGET_LINK_LIBRARIES(libSDP ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/lib/${LIBSODIUM_LIB_NAME})
+ELSEIF(LIBSODIUM_CMAKE_DIR STREQUAL "")
+    MESSAGE("Building libsodium-Cmake from exterior directories.")
+    ADD_SUBDIRECTORY(${LIBSODIUM_CMAKE_DIR})
+    INCLUDE_DIRECTORIES(${LIBSODIUM_CMAKE_DIR}/include)
+    ADD_DEPENDENCIES(libSDP sodium)
+    TARGET_LINK_LIBRARIES(libSDP ${LIBSODIUM_CMAKE_DIR}/lib/${LIBSODIUM_LIB_NAME})
+ENDIF(LIBSODIUM_CMAKE_DIR STREQUAL "")
+
 
 #Testing stuff
 
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/include)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/AlgorithmBase)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/lz4)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/zlib)
-
-SET(TEST_SOURCE
-    test/main.cpp
-)
-ADD_EXECUTABLE(TEST ${TEST_SOURCE})
-SET_TARGET_PROPERTIES(TEST PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test
-)
-
-TARGET_LINK_LIBRARIES(TEST ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/lib/libsodium.so)
-TARGET_LINK_LIBRARIES(TEST ${CMAKE_CURRENT_SOURCE_DIR}/lib/libSDP.so)
-
-
-#----------------------------------------------------------
-#Is the library being compiled inside SoulEngine checker.
-#----------------------------------------------------------
-
-#If library not used inside SoulEngine (on its own)
-#Download and compile dependencies.
-if(NOT DEFINED SOULENGINE_SOURCE_DIR)
-
-    #Find Git
-    INCLUDE(FindGit)
-    find_package(Git)
-    IF(GIT_FOUND)
-        MESSAGE("Git found, attempting to clone and compile internal libraries and tools.")
-    ELSE(GIT_FOUND)
-        MESSAGE(FATAL_ERROR "Git needs to be installes in order to continue.")
-    ENDIF(GIT_FOUND)
-
-    #If dependencies already downloaded and compiled then skip.
-    IF(EXTERNAL_LIB_ALREADY_CLONED)
-        MESSAGE("Internal libraries already cloned, skipping.")
-    ELSE(EXTERNAL_LIB_ALREADY_CLONED)
-
-        #Download libsodium-Cmake
-        ADD_CUSTOM_TARGET(LIBSODIUM-CMAKE_DOWNLOAD_STEP
-            COMMAND ${GIT_EXECUTABLE} clone https://github.com/Cyberunner23/libsodium-CMake.git
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/
-        )
-
-        #Configure libsodium-Cmake
-        ADD_CUSTOM_TARGET(LIBSODIUM-CMAKE_CONFIGURE_STEP
-            COMMAND ${CMAKE_COMMAND} -DBUILD_SODIUM_SHARED=${BUILD_SODIUM_SHARED} ..
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/build
-            DEPENDS LIBSODIUM-CMAKE_DOWNLOAD_STEP
-        )
-
-        #Build libsodium-Cmake
-        ADD_CUSTOM_TARGET(LIBSODIUM-CMAKE_BUILD_STEP
-            COMMAND ${CMAKE_COMMAND} --build .
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/build/
-            DEPENDS LIBSODIUM-CMAKE_CONFIGURE_STEP
-        )
-        ADD_DEPENDENCIES(SDP LIBSODIUM-CMAKE_BUILD_STEP)
-
-        SET(EXTERNAL_LIB_ALREADY_CLONED ON CACHE BOOL "Sets if the external libraries were already cloned" FORCE)
-
-    ENDIF(EXTERNAL_LIB_ALREADY_CLONED)
-
-    #Include CryptoPP-Cmake even if download and compile is not needed.
-    INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/include)
-
-#TODO: Put a better comment here...
-ELSE(NOT DEFINED SOULENGINE_SOURCE_DIR)
-
-    #TODO: put includes here
+#INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/include)
+#INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
+#INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/AlgorithmBase)
+#INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms)
+#INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/lz4)
+#INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/zlib)
+#
+#SET(TEST_SOURCE
+#    test/main.cpp
+#)
+#ADD_EXECUTABLE(TEST ${TEST_SOURCE})
+#SET_TARGET_PROPERTIES(TEST PROPERTIES
+#    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test
+#)
+#
+#TARGET_LINK_LIBRARIES(TEST ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/lib/libsodium.so)
+#TARGET_LINK_LIBRARIES(TEST ${CMAKE_CURRENT_SOURCE_DIR}/lib/libSDP.so)
 
 
-    #Link CryptoPP
-    IF(COMPILE_CRYPTOPP_LIB_SHARED)
-        TARGET_LINK_LIBRARIES(libSDP ${CMAKE_CURRENT_SOURCE_DIR}/../../external/CryptoPP-Cmake/build/libcryptopp.so)
-    ELSE(COMPILE_CRYPTOPP_LIB_SHARED)
-        TARGET_LINK_LIBRARIES(libSDP ${CMAKE_CURRENT_SOURCE_DIR}/../../external/CryptoPP-Cmake/build/libcryptopp.a)
-    ENDIF(COMPILE_CRYPTOPP_LIB_SHARED)
-
-ENDIF(NOT DEFINED SOULENGINE_SOURCE_DIR)
