@@ -1,3 +1,19 @@
+/*
+Copyright 2014 Alex Frappier Lachapelle
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+
 #ifndef SDPENCRYPTIONALGORITHMBASE_H
 #define SDPENCRYPTIONALGORITHMBASE_H
 
@@ -25,16 +41,16 @@ public:
     virtual uint_least64_t encrypt(unsigned char* unencryptedBuffer, unsigned char* encryptedBuffer, uint_least64_t unencryptedBufferSize) = 0;
 
 	//These functions will only be used if isStreamCipher = true
-	virtual bool decryptStream(unsigned char encryptedChar,   unsigned char unencryptedChar) = 0;
-	virtual bool encryptStream(unsigned char unencryptedChar, unsigned char encryptedChar) = 0;
+	virtual bool decryptStream(unsigned char *encryptedChar,   unsigned char *unencryptedChar) = 0;
+	virtual bool encryptStream(unsigned char *unencryptedChar, unsigned char *encryptedChar) = 0;
 
 	virtual void onInit() = 0;
 	virtual void onExit() = 0;
     virtual void onSync() = 0;
 
-    virtual void setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex);
-	virtual void setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);
-	virtual void setNonce(std::string nonce, bool isNonceInHex);
+    virtual int setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex);
+	virtual int setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);
+	virtual int setNonce(std::string nonce, bool isNonceInHex);
 
 	bool 		   getIsStreamCipher();
 	uint_least64_t getBufferSize();
@@ -52,7 +68,15 @@ protected:
 	//true = stream cipher, false = block cipher.
 	void setIsStreamCipher(bool isStreamCipher);
 
-	//Should be set somewhere in the algorithm's constructor or onInit?
+	//Should be set somewhere in the algorithm's constructor or onInit
+	//Sets the supported key length in bits for the algorithm.
+	void setEncryptionKeyWidthInBits(unsigned encryptionKeyWidthInBits);
+
+	//Should be set somewhere in the algorithm's constructor or onInit
+	//Sets the supported nonce length in bits for the algorithm.
+	void setNonceWidthInBits(unsigned int nonceWidthInBits);
+
+	//Should be set somewhere in the algorithm's constructor or onInit? after setIsStreamCipher(true/false)
 	//Sets the maximum buffer size supported by the algorithm.
 	//Used when isStreamCipher = false
 	void setMaxBufferSize(uint_least64_t maxBufferSize);
@@ -74,6 +98,9 @@ private:
 
 	//true = stream cipher, false = block cipher
 	bool isStreamCipher;
+
+	unsigned int encryptionKeyWidthInBits;
+	unsigned int nonceWidthInBits;
 
 	//Maximum buffer size supported by the algorithm.
 	//Used when isStreamCipher = false

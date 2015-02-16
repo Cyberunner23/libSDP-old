@@ -21,13 +21,6 @@ Copyright 2014 Alex Frappier Lachapelle
 #include <memory>
 #include <vector>
 
-//#include "aes.h"
-//#include "gcm.h"
-//#include "hex.h"
-//#include "modes.h"
-//#include "filters.h"
-//#include "files.h"
-
 #include "RawFileIO.hpp"
 #include "SDPEncryptionAlgorithmBase.hpp"
 //#include "SDPAES256GCMAlgorithm.hpp"
@@ -44,9 +37,9 @@ public:
 
     SDPCryptStreamBuf(std::istream *cryptIn,  std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
     SDPCryptStreamBuf(std::ostream *cryptOut, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
-    ~SDPCryptStreamBuf() /*throw()*/; //dirty fix to remove "exception specification in declaration does not match previous declaration" error
+    ~SDPCryptStreamBuf();
 
-    void setEncryptionAlgorithm(SDPEncryptionAlgorithmBase *cryptAlgorithm);
+    void setEncryptionAlgorithm(std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
 
     void setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex);
 	void setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);

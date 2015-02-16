@@ -175,10 +175,9 @@ std::streamsize SDPStreamBuf::xsputn(const char* charArray, std::streamsize numC
 
 }
 
-SDPStreamBuf::int_type overflow(SDPStreamBuf::int_type ch = SDPStreamBuf::traits_type::eof()){
+SDPStreamBuf::int_type SDPStreamBuf::overflow(SDPStreamBuf::int_type ch /*= SDPStreamBuf::traits_type::eof()*/){
 
 }
-
 
 std::streamsize SDPStreamBuf::showmanyc(){
 
@@ -196,44 +195,16 @@ SDPStreamBuf::int_type SDPStreamBuf::uflow(){
 
 }
 
+
 SDPStreamBuf::int_type SDPStreamBuf::pbackfail(int_type ch){
 
 }
-
 
 int SDPStreamBuf::sync(){
 
 }
 
+
 std::streampos SDPStreamBuf::seekpos(std::streampos streamPos, std::ios_base::openmode mode){
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

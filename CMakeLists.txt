@@ -11,7 +11,7 @@ PROJECT(libSDP C CXX)
 OPTION(COMPILE_LIBSDP_LIB_SHARED   "Build libSDP as a shared lib (setting this to OFF will compile statically)" ON)
 OPTION(BUILD_SODIUM_SHARED         "Build libsodium-CMake as a shared lib (setting this to OFF will compile statically)")
 #SET(SOULENGINE_SOURCE_DIR "" PATH "Top level directory of Soul Engine (Will be set by Soul Engine's CMakeLists.txt, setting this will cause ${PROJECT_NAME} to use Soul Engine's libraries.)")
-
+SET(BUILD_SODIUM_SHARED ON)
 
 #----------------------------------------------------------
 #################### INTERNAL/DEV VARS ####################
@@ -37,6 +37,7 @@ SET(SOURCE_FILES
     src/SDPStreamBuf.cpp
     src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
     src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
+    src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp
     src/DefaultAlgorithms/lz4/lz4.c
     src/DefaultAlgorithms/lz4/lz4frame.c
     src/DefaultAlgorithms/lz4/lz4hc.c
@@ -67,6 +68,7 @@ SET(HEADER_FILES
     include/SDPVer.hpp
     include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
     include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
+    include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp
     include/DefaultAlgorithms/lz4/lz4.h
     include/DefaultAlgorithms/lz4/lz4frame.h
     include/DefaultAlgorithms/lz4/lz4frame_static.h
@@ -188,7 +190,8 @@ SET_TARGET_PROPERTIES(TEST PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test
 )
 
-TARGET_LINK_LIBRARIES(TEST ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/lib/libsodium.a)
+TARGET_LINK_LIBRARIES(TEST ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/lib/libsodium.so)
+TARGET_LINK_LIBRARIES(TEST ${CMAKE_CURRENT_SOURCE_DIR}/lib/libSDP.so)
 
 
 #----------------------------------------------------------
@@ -296,11 +299,11 @@ if(NOT DEFINED SOULENGINE_SOURCE_DIR)
     #Library linking:
 
     #Link CryptoPP
-    IF(COMPILE_CRYPTOPP_LIB_SHARED)
-        TARGET_LINK_LIBRARIES(SDP ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/CryptoPP-Cmake/build/libcryptopp.so)
-    ELSE(COMPILE_CRYPTOPP_LIB_SHARED)
-        TARGET_LINK_LIBRARIES(SDP ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/CryptoPP-Cmake/build/libcryptopp.a)
-    ENDIF(COMPILE_CRYPTOPP_LIB_SHARED)
+    #IF(COMPILE_CRYPTOPP_LIB_SHARED)
+    #    TARGET_LINK_LIBRARIES(SDP ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/CryptoPP-Cmake/build/libcryptopp.so)
+    #ELSE(COMPILE_CRYPTOPP_LIB_SHARED)
+    #    TARGET_LINK_LIBRARIES(SDP ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/CryptoPP-Cmake/build/libcryptopp.a)
+    #ENDIF(COMPILE_CRYPTOPP_LIB_SHARED)
 
 
 #TODO: Put a better comment here...

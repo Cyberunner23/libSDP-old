@@ -60,13 +60,19 @@ SDPCryptStreamBuf::SDPCryptStreamBuf(std::ostream *cryptOut, std::shared_ptr<SDP
 
 }
 
-SDPCryptStreamBuf::~SDPCryptStreamBuf() /*throw()*/{
+SDPCryptStreamBuf::~SDPCryptStreamBuf(){
     cryptAlgorithm->onExit();
 }
 
 
-void SDPCryptStreamBuf::setEncryptionAlgorithm(SDPEncryptionAlgorithmBase *cryptAlgorithm){
-	//TODO: implement this.
+void SDPCryptStreamBuf::setEncryptionAlgorithm(std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm){
+
+	this->cryptAlgorithm->onSync();
+	this->cryptAlgorithm->onExit();
+
+	this->cryptAlgorithm = cryptAlgorithm;
+	this->cryptAlgorithm->onInit();
+
 }
 
 
@@ -115,7 +121,7 @@ int SDPCryptStreamBuf::sync(){
 			RawFileIO rawFileIO;
 
 			//encrypt whats left
-			encryptedBuffer.resize(cryptAlgorithm->getBufferSizeWithOverhead());
+			encryptedBuffer.resize(bufferSizeWithOverhead);
 			uint_least64_t numBytesEncrypted = cryptAlgorithm->encrypt(unencryptedBuffer.data(), encryptedBuffer.data(), unencryptedBuffer.size());
 			encryptedBuffer.resize(numBytesEncrypted);
 
@@ -151,7 +157,7 @@ int SDPCryptStreamBuf::getNextChar(bool doAdvance){
 			return traits_type::eof();
 		}
 
-		if(cryptAlgorithm->decryptStream(readByte, (unsigned char)nextChar)){
+		if(cryptAlgorithm->decryptStream(&readByte, reinterpret_cast<unsigned char*>(nextChar))){
 			return nextChar;
 		}else{
 			return traits_type::eof();
@@ -212,7 +218,7 @@ bool SDPCryptStreamBuf::fillAndDecryptBuffer(){
 	}
 
 	//do decryption
-	unencryptedBuffer.resize(cryptAlgorithm->getBufferSizeWithOverhead());
+	unencryptedBuffer.resize(bufferSizeWithOverhead);
 	uint_least64_t numDecryptedBytes = cryptAlgorithm->decrypt(encryptedBuffer.data(), unencryptedBuffer.data(), numEncryptedBytes);
 	unencryptedBuffer.resize(numDecryptedBytes);
 
@@ -227,7 +233,7 @@ SDPCryptStreamBuf::int_type SDPCryptStreamBuf::setNextChar(int_type ch){
 	if(isStreamCipher){
 
 		unsigned char writeByte = 0;
-		cryptAlgorithm->encryptStream((unsigned char)ch, writeByte);
+		cryptAlgorithm->encryptStream(reinterpret_cast<unsigned char*>(ch), &writeByte);
 
 		rawFileIO.write(writeByte, outStream);
 
@@ -237,7 +243,7 @@ SDPCryptStreamBuf::int_type SDPCryptStreamBuf::setNextChar(int_type ch){
 
 		if(unencryptedBuffer.size() == cryptAlgorithm->getBufferSize()){
 
-			encryptedBuffer.resize(cryptAlgorithm->getBufferSizeWithOverhead());
+			encryptedBuffer.resize(bufferSizeWithOverhead);
 
 			uint_least64_t numEncryptedBytes = cryptAlgorithm->encrypt(unencryptedBuffer.data(), encryptedBuffer.data(), unencryptedBuffer.size());
 

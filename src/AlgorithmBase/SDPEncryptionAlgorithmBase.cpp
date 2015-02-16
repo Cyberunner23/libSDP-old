@@ -1,3 +1,19 @@
+/*
+Copyright 2014 Alex Frappier Lachapelle
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+
 #include "SDPEncryptionAlgorithmBase.hpp"
 
 SDPEncryptionAlgorithmBase::SDPEncryptionAlgorithmBase(){
@@ -9,7 +25,7 @@ SDPEncryptionAlgorithmBase::~SDPEncryptionAlgorithmBase(){
 }
 
 
-void SDPEncryptionAlgorithmBase::setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex){
+int SDPEncryptionAlgorithmBase::setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex){
 
 	HexBinTool hexBinTool;
 
@@ -19,14 +35,24 @@ void SDPEncryptionAlgorithmBase::setEncryptionKeyAndNonce(std::string encryption
         encryptionKeyInBin = encryptionKey;
     }
 
+	if(encryptionKeyInBin.size() != encryptionKeyWidthInBits/8){
+		return -1;
+	}
+
     if(isNonceInHex){
 		hexBinTool.hexToBin(nonce, nonceInBin);
     }else{
         nonceInBin = nonce;
     }
+
+	if(nonceInBin.size() != nonceWidthInBits/8){
+		return -2;
+	}
+
+	return 0;
 }
 
-void SDPEncryptionAlgorithmBase::setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex){
+int SDPEncryptionAlgorithmBase::setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex){
 
 	HexBinTool hexBinTool;
 
@@ -34,10 +60,12 @@ void SDPEncryptionAlgorithmBase::setEncryptionKey(std::string encryptionKey, boo
 		hexBinTool.hexToBin(encryptionKey, encryptionKeyInBin);
 	}else{
 		encryptionKeyInBin = encryptionKey;
-}
+	}
+
+	return encryptionKeyInBin.size() != encryptionKeyWidthInBits/8 ? -1 : 0;
 }
 
-void SDPEncryptionAlgorithmBase::setNonce(std::string nonce, bool isNonceInHex){
+int SDPEncryptionAlgorithmBase::setNonce(std::string nonce, bool isNonceInHex){
 
 	HexBinTool hexBinTool;
 
@@ -46,6 +74,8 @@ void SDPEncryptionAlgorithmBase::setNonce(std::string nonce, bool isNonceInHex){
 	}else{
 		nonceInBin = nonce;
 	}
+
+	return nonceInBin.size() != nonceWidthInBits/8 ? -1 : 0;
 }
 
 
@@ -64,6 +94,14 @@ uint_least64_t SDPEncryptionAlgorithmBase::getBufferSizeWithOverhead(){
 
 void SDPEncryptionAlgorithmBase::setIsStreamCipher(bool isStreamCipher){
 	this->isStreamCipher = isStreamCipher;
+}
+
+void SDPEncryptionAlgorithmBase::setEncryptionKeyWidthInBits(unsigned encryptionKeyWidthInBits){
+	this->encryptionKeyWidthInBits = encryptionKeyWidthInBits;
+}
+
+void SDPEncryptionAlgorithmBase::setNonceWidthInBits(unsigned int nonceWidthInBits){
+	this->nonceWidthInBits = nonceWidthInBits;
 }
 
 void SDPEncryptionAlgorithmBase::setMaxBufferSize(uint_least64_t maxBufferSize){
