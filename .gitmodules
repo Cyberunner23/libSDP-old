@@ -1,3 +1,6 @@
 [submodule "extlibs/libsodium-CMake"]
 	path = extlibs/libsodium-CMake
 	url = https://github.com/Cyberunner23/libsodium-CMake.git
+[submodule "extlibs/zlib"]
+	path = extlibs/zlib
+	url = https://github.com/Cyberunner23/zlib.git
