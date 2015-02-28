@@ -19,6 +19,7 @@ OPTION(LIBSODIUM_BUILD_SHARED_LIBRARIES "Build libsodium-CMake as a shared lib (
 
 SET(LIBSODIUM_CMAKE_DIR "" CACHE STRING "Directory where libsodium-CMake is placed. (Don't set this if libsodium-CMake is in extlibs/)")
 SET(ZLIB_CMAKE_DIR      "" CACHE STRING "Directory where zlib is placed. (Don't set this if zlib is in extlibs/)")
+SET(LZ4_CMAKE_DIR       "" CACHE STRING "Directory where lz4 is placed. (Don't set this if lz4 is in extlibs/)")
 
 #SET(SOULENGINE_SOURCE_DIR "" PATH "Top level directory of Soul Engine (Will be set by Soul Engine's CMakeLists.txt, setting this will cause ${PROJECT_NAME} to use Soul Engine's libraries.)")
 #SET(LIBSODIUM_BUILD_SHARED_LIBRARIES ON)
@@ -87,19 +88,6 @@ SET_TARGET_PROPERTIES(libSDP PROPERTIES
 
 ######################## libsodium #######################
 #If directory not specified, use files from extlibs folder
-#IF(LIBSODIUM_CMAKE_DIR STREQUAL "")
-#    MESSAGE("Building libsodium-Cmake from internal directories.")
-#    ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake)
-#    INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/include)
-#    ADD_DEPENDENCIES(libSDP sodium)
-#    TARGET_LINK_LIBRARIES(libSDP ${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/lib/${LIBSODIUM_LIB_NAME})
-#ELSEIF(LIBSODIUM_CMAKE_DIR STREQUAL "")
-#    MESSAGE("Building libsodium-Cmake from exterior directories.")
-#    ADD_SUBDIRECTORY(${LIBSODIUM_CMAKE_DIR})
-#    INCLUDE_DIRECTORIES(${LIBSODIUM_CMAKE_DIR}/include)
-#    ADD_DEPENDENCIES(libSDP sodium)
-#    TARGET_LINK_LIBRARIES(libSDP ${LIBSODIUM_CMAKE_DIR}/lib/${LIBSODIUM_LIB_NAME})
-#ENDIF(LIBSODIUM_CMAKE_DIR STREQUAL "")
 
 IF(LIBSODIUM_CMAKE_DIR STREQUAL "")
     SET(LIBSODIUM_CMAKE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake")
@@ -112,23 +100,6 @@ TARGET_LINK_LIBRARIES(libSDP sodium)
 
 ########################## zlib ##########################
 #If directory not specified, use files from extlibs folder
-#IF(ZLIB_CMAKE_DIR STREQUAL "")
-#    MESSAGE("Building zlib from internal directories.")
-#    SET(DISABLE_EXAMPLE_BINARIES ON)
-#    SET(BUILD_SHARED_LIBS OFF)
-#    SET(SKIP_INSTALL_ALL ON)
-#    ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/zlib)
-#    INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/zlib)
-#    TARGET_LINK_LIBRARIES(libSDP zlibstatic)
-#ELSEIF(ZLIB_CMAKE_DIR STREQUAL "")
-#    MESSAGE("Building zlib from exterior directories.")
-#    SET(DISABLE_EXAMPLE_BINARIES ON)
-#    SET(BUILD_SHARED_LIBS OFF)
-#    SET(SKIP_INSTALL_ALL ON)
-#    ADD_SUBDIRECTORY(${ZLIB_CMAKE_DIR})
-#    INCLUDE_DIRECTORIES(${ZLIB_CMAKE_DIR})
-#    TARGET_LINK_LIBRARIES(libSDP zlibstatic)
-#ENDIF(ZLIB_CMAKE_DIR STREQUAL "")
 
 IF(ZLIB_CMAKE_DIR STREQUAL "")
     SET(ZLIB_CMAKE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extlibs/zlib")
@@ -141,6 +112,22 @@ SET(SKIP_INSTALL_ALL ON)
 ADD_SUBDIRECTORY(${ZLIB_CMAKE_DIR})
 INCLUDE_DIRECTORIES(${ZLIB_CMAKE_DIR})
 TARGET_LINK_LIBRARIES(libSDP zlibstatic)
+
+########################## lz4 ###########################
+#If directory not specified, use files from extlibs folder
+
+IF(LZ4_CMAKE_DIR STREQUAL "")
+    SET(LZ4_CMAKE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extlibs/lz4")
+    MESSAGE("Building lz4 from ${LZ4_CMAKE_DIR}")
+ENDIF()
+
+SET(BUILD_TOOLS OFF)
+SET(BUILD_LIBS  ON)
+ADD_SUBDIRECTORY(${LZ4_CMAKE_DIR}/cmake_unofficial/)
+INCLUDE_DIRECTORIES (${LZ4_DIR})
+ADD_DEPENDENCIES(libSDP liblz4)
+TARGET_LINK_LIBRARIES(libSDP liblz4)
+
 
 #Testing stuff
 
