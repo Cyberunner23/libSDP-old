@@ -37,22 +37,28 @@ public:
     ~SDPEncryptionAlgorithmBase();
 
 	//These functions will only be used if isStreamCipher = false
-    virtual uint_least64_t decrypt(unsigned char* encryptedBuffer,   unsigned char* decryptedBuffer, uint_least64_t encryptedBufferSize) = 0;
-    virtual uint_least64_t encrypt(unsigned char* unencryptedBuffer, unsigned char* encryptedBuffer, uint_least64_t unencryptedBufferSize) = 0;
+    virtual uint_least64_t decrypt(unsigned char* encryptedBuffer,   unsigned char* decryptedBuffer, uint_least64_t encryptedBufferSize,   uint_least64_t chunkNum) = 0;
+    virtual uint_least64_t encrypt(unsigned char* unencryptedBuffer, unsigned char* encryptedBuffer, uint_least64_t unencryptedBufferSize, uint_least64_t chunkNum) = 0;
 
 	//These functions will only be used if isStreamCipher = true
-	virtual bool decryptStream(unsigned char *encryptedChar,   unsigned char *unencryptedChar) = 0;
-	virtual bool encryptStream(unsigned char *unencryptedChar, unsigned char *encryptedChar) = 0;
+	virtual bool decryptStream(unsigned char *encryptedChar,   unsigned char *unencryptedChar, uint_least64_t charNum) = 0;
+	virtual bool encryptStream(unsigned char *unencryptedChar, unsigned char *encryptedChar,   uint_least64_t charNum) = 0;
 
 	virtual void onInit() = 0;
 	virtual void onExit() = 0;
     virtual void onSync() = 0;
+	//Rewind to the beginning of the stream and reset the encryption algorithm's internal
+	//data structures if necessary. (this MUST be defined even if seeking is not supported)
+	virtual void onRewind() = 0;
+
+
 
     virtual int setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex);
 	virtual int setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);
 	virtual int setNonce(std::string nonce, bool isNonceInHex);
 
 	bool 		   getIsStreamCipher();
+	bool		   getIsSeekingSupported();
 	uint_least64_t getBufferSize();
 	uint_least64_t getBufferSizeWithOverhead();
 
@@ -67,6 +73,10 @@ protected:
 	//Should be set somewhere in the algorithm's constructor or onInit?
 	//true = stream cipher, false = block cipher.
 	void setIsStreamCipher(bool isStreamCipher);
+
+	//Should be set somewhere in the algorithm's constructor or onInit?
+	//true = seeking supported, false = seeking not supported.
+	void setIsSeekingSupported(bool isSeekingSupported);
 
 	//Should be set somewhere in the algorithm's constructor or onInit
 	//Sets the supported key length in bits for the algorithm.
@@ -98,6 +108,9 @@ private:
 
 	//true = stream cipher, false = block cipher
 	bool isStreamCipher;
+
+	//true = seeking supported, false = seeking not supported.
+	bool isSeekingSupported;
 
 	unsigned int encryptionKeyWidthInBits;
 	unsigned int nonceWidthInBits;

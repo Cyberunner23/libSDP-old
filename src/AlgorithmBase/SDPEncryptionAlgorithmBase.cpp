@@ -83,6 +83,10 @@ bool SDPEncryptionAlgorithmBase::getIsStreamCipher(){
 	return isStreamCipher;
 }
 
+bool SDPEncryptionAlgorithmBase::getIsSeekingSupported(){
+	return isSeekingSupported;
+}
+
 uint_least64_t SDPEncryptionAlgorithmBase::getBufferSize(){
 	return bufferSize;
 }
@@ -94,6 +98,10 @@ uint_least64_t SDPEncryptionAlgorithmBase::getBufferSizeWithOverhead(){
 
 void SDPEncryptionAlgorithmBase::setIsStreamCipher(bool isStreamCipher){
 	this->isStreamCipher = isStreamCipher;
+}
+
+void SDPEncryptionAlgorithmBase::setIsSeekingSupported(bool isSeekingSupported){
+	this->isSeekingSupported = isSeekingSupported;
 }
 
 void SDPEncryptionAlgorithmBase::setEncryptionKeyWidthInBits(unsigned encryptionKeyWidthInBits){
@@ -121,3 +129,4 @@ bool SDPEncryptionAlgorithmBase::setPreferedBufferSize(uint_least64_t preferedBu
 void SDPEncryptionAlgorithmBase::setPreferedBufferSizeWithOverhead(uint_least64_t preferedBufferSizeWithOverhead){
 	bufferSizeWithOverhead = preferedBufferSizeWithOverhead;
 }
+
