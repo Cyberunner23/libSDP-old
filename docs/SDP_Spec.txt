@@ -8,7 +8,7 @@ SDP (Soul Data Pack) File spec Rev. 3 :
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 / SDP FILE HEADER:                                                                                                                               /
 /                                                                                                                                                /
-/       MagicNumber = 0x53445041                                                                                                                 /
+/       MagicNumber = 0x53445041 (SDPA)                                                                                                          /
 /       //SDP Spec                                                                                                                               /
 /       uint8     : Rev. (Currently Rev. 3)                                                                                                      /
 /       uint64    : Size of extra field.                                                                                                         /
