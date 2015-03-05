@@ -22,6 +22,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include <stdint.h>
 
 #include "Endianness.hpp"
+#include "typedefs.hpp"
 
 class RawFileIO{
 
@@ -41,17 +42,17 @@ public:
 
     //Reads a value from a file and converts it to the system's
     //endianness if necessary
-    size_t read(uint8_t &val, std::istream *inStream);
-    size_t read(uint_least16_t &val, std::istream *inStream, Endian fileEndian);
-    size_t read(uint_least32_t &val, std::istream *inStream, Endian fileEndian);
-    size_t read(uint_least64_t &val, std::istream *inStream, Endian fileEndian);
+    size_t read(uint8 &val,  std::shared_ptr<std::istream> inStream);
+    size_t read(uint16 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
+    size_t read(uint32 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
+    size_t read(uint64 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
 
     //Writes a value from a file and converts it to the system's
     //endianness if necessary
-    void write(uint8_t val, std::ostream *outStream);
-    void write(uint_least16_t val, std::ostream *outStream, Endian fileEndian);
-    void write(uint_least32_t &val, std::ostream *outStream, Endian fileEndian);
-    void write(uint_least64_t &val, std::ostream *outStream, Endian fileEndian);
+    void write(uint8  &val, std::shared_ptr<std::ostream> outStream);
+    void write(uint16 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
+    void write(uint32 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
+    void write(uint64 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
 
 
 private:

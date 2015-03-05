@@ -14,42 +14,18 @@ Copyright 2014 Alex Frappier Lachapelle
    limitations under the License.
 */
 
-#include <sodium/crypto_hash_sha512.h>
+#include <sodium/crypto_hash_sha256.h>
 #include "SDPStreamBuf.hpp"
 
 
 
 #ifndef SDP_DISABLE_READ
 
-SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::istream &inStream, bool skipHashCheck){
+SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::shared_ptr<std::iostream> inOutStream){
 
-    //----------------------------------------------????
-    if(isWritingToSDP){
-        return SDP_ALREADY_CREATING_SDP;
-    }
-
-    //Check magic word
-    for(int i = 0; i <= 3; i++){
-        unsigned char tmpChar;
-        rawFileIO.read(tmpChar, &inStream);
-        if(tmpChar != magicWord[i]) return SDP_BAD_MAGIC_WORD;
-    }
-
-    //Get in file spec version and check compatibility
-    rawFileIO.read(SDPFileProps.SDPSpecVerInFile.major, &inStream, RawFileIO::Endian::BIG__ENDIAN);
-    rawFileIO.read(SDPFileProps.SDPSpecVerInFile.minor, &inStream, RawFileIO::Endian::BIG__ENDIAN);
-    rawFileIO.read(SDPFileProps.SDPSpecVerInFile.patch, &inStream, RawFileIO::Endian::BIG__ENDIAN);
-
-    if(SDPFileProps.SDPSpecVerInFile.major != SDPVersion.getSDPSpecVer().major){
-        return SDP_UNSUPPORTED_SPEC;
-    }else if(SDPFileProps.SDPSpecVerInFile.minor != SDPVersion.getSDPSpecVer().minor){
-        return SDP_UNSUPPORTED_SPEC;
-    }else if(SDPFileProps.SDPSpecVerInFile.patch != SDPVersion.getSDPSpecVer().patch){
-        return SDP_UNSUPPORTED_SPEC;
-    }
-
-
-    int subFileCount = 0;
+    //Check file header.
+	if(!isSDPFileHeaderValid(inOutStream))
+		return SDP_INVALID_FILE_HEADER;
 
     //read subFile header and fill SDPSubFilePropsSytuct + SDPSubFileList
     while(true){
@@ -125,7 +101,7 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::istream &inStream, 
     return SDP_NO_ERROR;
 }
 
-void SDPStreamBuf::closeSDP(){
+/*void SDPStreamBuf::closeSDP(){ //put this king of stuff in flush()
 
     SDPFileProps.numSubFiles            = 0;
     //SDPFileProps.SDPFileName            = "";
@@ -136,10 +112,18 @@ void SDPStreamBuf::closeSDP(){
     inStream.close();
     isReadingSDP = false;
 
+}*/
+
+void SDPStreamBuf::setSubContainer(std::string &SubContainerFileName){
+    currentSubFileInUse = SDPSubFileName;
 }
 
-void SDPStreamBuf::SDPSetSubFile(std::string &SDPSubFileName){
-    currentSubFileInUse = SDPSubFileName;
+SDPStreamBuf::SDPSubContainerInfoStruct* SDPStreamBuf::getCurrentSubContainerInfo(){
+	return &SDPFileInfo.currentSubContainerInUse;
+}
+
+SDPStreamBuf::SDPFileInfoStruct* SDPStreamBuf::getSDPFileInfo(){
+	return &SDPFileInfo;
 }
 
 SDPStreamBuf::SDPFilePropsStruct SDPStreamBuf::getSDPFileProps(){
@@ -207,4 +191,58 @@ int SDPStreamBuf::sync(){
 
 std::streampos SDPStreamBuf::seekpos(std::streampos streamPos, std::ios_base::openmode mode){
 
+}
+
+
+bool SDPStreamBuf::isSDPFileHeaderValid(std::shared_ptr<std::istream> inStream){
+
+	bool isHeaderValid = true;
+	HexBinTool hexBinTool;
+
+	//Check magic word.
+	uint32 magicWordInFile;
+	if(rawFileIO.read(magicWordInFile, inStream, RawFileIO::BIG__ENDIAN) != sizeof(magicWordInFile) || magicWordInFile != magicWord)
+		isHeaderValid = false;
+	SDPFileInfo.SDPFileHeader.magicNumber = magicWordInFile;
+
+	//Check spec rev.
+	uint8 SDPSpecRevInFile;
+	if(rawFileIO.read(SDPSpecRevInFile, inStream) != sizeof(SDPSpecRevInFile) || SDPSpecRevInFile != SDPVersion.SDPSpecRev)
+		isHeaderValid = false;
+	SDPFileInfo.SDPFileHeader.SDPSpecRev = SDPSpecRevInFile;
+
+	//check size of and read extra field
+	uint64 extraFieldSizeInFile;
+	if(rawFileIO.read(extraFieldSizeInFile, inStream, RawFileIO::BIG__ENDIAN) != sizeof(extraFieldSizeInFile))
+		isHeaderValid = false;
+	SDPFileInfo.SDPFileHeader.extraField.resize(extraFieldSizeInFile);
+	inStream.get()->read((char*)SDPFileInfo.SDPFileHeader.extraField.data(), extraFieldSizeInFile);
+	if(inStream.get()->gcount() != extraFieldSizeInFile)
+		isHeaderValid = false;
+
+	//Get expected header hash.
+	std::string expectedHashInFile;
+	expectedHashInFile.resize(crypto_hash_sha256_BYTES);
+	inStream.get()->read((char*)expectedHashInFile.data(), crypto_hash_sha256_BYTES);
+	if(inStream.get()->gcount() != crypto_hash_sha256_BYTES)
+		isHeaderValid = false;
+	hexBinTool.binToHex(expectedHashInFile, SDPFileInfo.SDPFileHeader.expectedHeaderHash);
+
+	//Compute actual header file.
+	uchar digest[crypto_hash_sha256_BYTES];
+	crypto_hash_sha256_state sha256Hash;
+
+	crypto_hash_sha256_init(&sha256Hash);
+	crypto_hash_sha256_update(&sha256Hash, (unsigned char*)SDPFileInfo.SDPFileHeader.magicNumber,    sizeof((unsigned char*)SDPFileInfo.SDPFileHeader.magicNumber));
+	crypto_hash_sha256_update(&sha256Hash, (unsigned char*)SDPFileInfo.SDPFileHeader.SDPSpecRev,     sizeof((unsigned char*)SDPFileInfo.SDPFileHeader.SDPSpecRev));
+	crypto_hash_sha256_update(&sha256Hash, (unsigned char*)SDPFileInfo.SDPFileHeader.extraFieldSize, sizeof((unsigned char*)SDPFileInfo.SDPFileHeader.extraFieldSize));
+	crypto_hash_sha256_update(&sha256Hash, SDPFileInfo.SDPFileHeader.extraField.data(),              sizeof(SDPFileInfo.SDPFileHeader.extraField.data()));
+	crypto_hash_sha256_final(&sha256Hash,  digest);
+
+	//Compare expected and actual header hash.
+	hexBinTool.binToHex(expectedHashInFile, SDPFileInfo.SDPFileHeader.actualHeaderHash);
+	if(SDPFileInfo.SDPFileHeader.actualHeaderHash.compare(SDPFileInfo.SDPFileHeader.expectedHeaderHash) != 0)
+		isHeaderValid = false;
+
+	return isHeaderValid;
 }

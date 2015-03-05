@@ -18,6 +18,8 @@ Copyright 2014 Alex Frappier Lachapelle
 #define SDPVER_HPP
 
 
+#include "typedefs.hpp"
+
 #ifdef USE_IN_SOUL_ENGINE
 namespace SE{
 namespace IO{
@@ -27,26 +29,14 @@ class SDPVer{
 
 public:
 
-    struct SDPVerStruct{
+	//Vars
+    static const struct SDPLibVerStruct{
         int major = 0;
-        int minor = 0;
-        int patch = 1;
-        int build = 296;
-    }SDPLibVer;
+        int minor = 1;
+        int patch = 2;
+    }static const SDPLibVer;
 
-    struct SDPSpecVerStruct{
-        uint_least64_t major = 0;
-        uint_least64_t minor = 0;
-        uint_least64_t patch = 5;
-    }SDPSpecVer;
-
-    SDPVerStruct getSDPVer(){
-        return SDPLibVer;
-    }
-
-    SDPSpecVerStruct getSDPSpecVer(){
-        return SDPSpecVer;
-    }
+	static const uint8 SDPSpecRev = 1;
 
 };
 

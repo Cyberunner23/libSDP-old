@@ -19,6 +19,7 @@ Copyright 2014 Alex Frappier Lachapelle
 
 #include <fstream>
 #include <memory>
+#include <stdint.h>
 #include <streambuf>
 #include <string>
 #include <vector>
@@ -30,6 +31,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "HexBinTool.hpp"
 #include "RawFileIO.hpp"
 #include "SDPVer.hpp"
+#include "typedefs.hpp"
 
 //FIXME: use a better way to detect eof while parsing SDP
 //TODO: implement eof detection for hash compute loop
@@ -46,68 +48,123 @@ public:
 
     //Vars
 
+	struct SDPFileHeaderStruct{
+		uint32 					   	magicNumber;
+		uint8  					   	SDPSpecRev;
+		uint64 				       	extraFieldSize;
+		std::vector<unsigned char> 	extraField;
+		std::string 			   	expectedHeaderHash;
+		std::string 			   	actualHeaderHash;
+		auto						clear = [this](){
+										magicNumber    = 0;
+										SDPSpecRev     = 0;
+										extraFieldSize = 0;
+										extraField.clear();
+										expectedHeaderHash.clear();
+										actualHeaderHash.clear();
+									};
+	};
+
+	struct SDPSubContainerHeaderStruct{
+		uint64 		fileNameLength;
+		std::string fileName;
+		bool 		isContainingSubContainer;
+
+		enum subContainerTypeEnum{
+			RAW_DATA		= 0x01,
+			COMPRESSED_DATA = 0x02,
+			ENCRYPTED_DATA  = 0x03
+		} subContainerType;
+
+		enum compressionAlgorithmIDEnum{
+			COMPRESSION_DETERMINED_BY_API_CALL = 0x00,
+			COMPRESSION_ZLIB				   = 0x01,
+			COMPRESSION_LZ4					   = 0x02
+		} compressionAlgorithmID;
+
+		enum encryptionAlgorithmIDEnum{
+			ENCRYPTION_DETERMINED_BY_API_CALL = 0x00,
+			ENCRYPTION_XSALSA20	   		   	  = 0x01,
+			ENCRYPTION_XSALSA20_WITH_POLY1305 = 0x02,
+			ENCRYPTION_SALSA20				  = 0x03,
+			ENCRYPTION_CHACHA20               = 0x04,
+			ENCRYPTION_AES_128_CTR            = 0x05,
+		}encryptionAlgorithmID;
+
+		uint64 					   	extraFieldSize;
+		std::vector<unsigned char> 	extraField;
+		uint64 					   	subContainerDataSize;
+		std::string 			   	expectedSubContainerDataHash;
+		std::string 			   	actualSubContainerDataHash;
+		std::string 			   	expectedSubContainerHeaderHash;
+		std::string 			   	actualSubContainerHeaderHash;
+		auto 					   	clear = [this](){
+										fileNameLength = 0;
+										fileName.clear();
+										isContainingSubContainer = false;
+										subContainerType = RAW_DATA;
+										compressionAlgorithmID = COMPRESSION_DETERMINED_BY_API_CALL;
+										encryptionAlgorithmID  = ENCRYPTION_DETERMINED_BY_API_CALL;
+										extraFieldSize = 0;
+										extraField.clear();
+										subContainerDataSize = 0;
+										expectedSubContainerDataHash.clear();
+										actualSubContainerDataHash.clear();
+										expectedSubContainerHeaderHash.clear();
+										actualSubContainerHeaderHash.clear();
+									};
+	};
+
+	struct SDPFileInfoStruct{
+		SDPFileHeaderStruct 								 	   	SDPFileHeader;
+		std::unordered_map<std::string, SDPSubContainerInfoStruct> 	subContainersInSDPFile;
+		uint64 												 		numOfSubContainers;
+		SDPSubContainerInfoStruct 						     		currentSubContainerInUse;
+		auto 												 		clear = [this](){
+															 	 		SDPFileHeader.clear();
+															 	 		subContainersInSDPFile.clear();
+															 	 		numOfSubContainers = 0;
+															 	 		currentSubContainerInUse.clear();
+																	};
+	};
+
+	struct SDPSubContainerInfoStruct{
+		std::string 				subContainerFileName;
+		SDPSubContainerHeaderStruct subContainerHeader;
+		bool 						isContainingSubContainer;
+		SDPSubContainerInfoStruct   subContainerData; //for when the SubContainer contains another Subcontainer.
+		uint64						begDataPos;
+		uint64						endDataPos;
+		auto 						clear = [this](){
+										subContainerFileName.clear();
+										subContainerHeader.clear();
+										isContainingSubContainer = false;
+										subContainerData.clear();
+										begDataPos = 0;
+										endDataPos = 0;
+									};
+	};
+
     enum SDPStreamBufErrEnum{
         SDP_NO_ERROR,
-        SDP_BAD_MAGIC_WORD,
-        SDP_UNSUPPORTED_SPEC,
-        SDP_ALREADY_CREATING_SDP,
-        SDP_ALREADY_READING_SDP
-    };
-
-    struct SDPFilePropsStruct{
-        SDPVer::SDPSpecVerStruct SDPSpecVerInFile;
-        int numSubFiles;
-    };
-
-    enum SDPSubFileDataPropsEnum{
-        SDP_NONE                     = 1,
-        SDP_COMPRESSED               = 2,
-        SDP_ENCRYPTED                = 4,
-        SDP_COMPRESSED_AND_ENCRYPTED = 8,
-        SDP_NULL                     = 32
-    };
-
-    struct SDPSubFilePropsStruct{
-        std::string             SDPSubFileName;
-        std::string             SDPSubFileHash;
-        uint_least64_t          SDPSubFileSize; //of raw data
-        uint_least64_t          dataBegPos;     //of raw data
-        uint_least64_t          dataEndPos;     //of raw data
-        SDPSubFileDataPropsEnum SDPSubFileDataProps;
-    };
+        SDP_INVALID_FILE_HEADER
+	};
 
 
     //Funcs
 
-
-#ifndef SDP_DISABLE_READ //Why would any one want this? Anyways the option is here, also, probably the bad way to do this...
-
     //SDP reading funcs
 
-    SDPStreamBufErrEnum openSDP(std::istream &inStream, bool skipHashCheck);
-    void                closeSDP();
+	SDPStreamBufErrEnum openSDP(std::shared_ptr<std::iostream> inOutStream);
+	SDPFileInfoStruct* getSDPFileInfo();
 
-    void SDPSetSubFile(std::string &SDPSubFileName);
-
-    SDPFilePropsStruct      getSDPFileProps();
-    SDPSubFilePropsStruct   getSDPSubFileProps(std::string SDPSubFileName);
-
-#endif //SDP_DISABLE_READ
-
-
-#ifndef SDP_DISABLE_WRITE //Again, the option is here...
-
-    //Add sub files to existing sdp
-    //SDPStreamBufErrEnum openSDP(std::iostream &outStream, bool skipHashCheck);
-    //void                closeSDP();
+	void 					   setSubContainer(std::string &SubContainerFileName);
+	SDPSubContainerInfoStruct* getCurrentSubContainerInfo();
 
     //SDP creation
     SDPStreamBufErrEnum createSDP(std::string SDPFileName);
-    SDPFilePropsStruct  packSDP();
 
-    SDPSubFilePropsStruct addFileToSDP(std::string SDPSubFileName);
-
-#endif //SDP_DISABLE_WRITE
+    //SDPSubFilePropsStruct addFileToSDP(std::string SDPSubFileName);
 
 
 protected:
@@ -116,37 +173,32 @@ protected:
     virtual int_type        overflow(int_type ch = traits_type::eof());
 
     virtual std::streamsize showmanyc();
-    virtual std::streamsize xsgetn(char* charArray, std::streamsize numChars);
-    virtual int_type        underflow();
-    virtual int_type        uflow();
+	virtual std::streamsize xsgetn(char* charArray, std::streamsize numChars);
+	virtual int_type        underflow();
+	virtual int_type        uflow();
     virtual int_type        pbackfail(int_type ch);
 
-    virtual int sync();
+	virtual int sync();
     virtual std::streampos seekpos(std::streampos streamPos, std::ios_base::openmode mode);
 
 
 private:
 
-    //Vars
+	//Vars
 
-    SDPVer SDPVersion;
+	static const uint32 magicWord = 0x53445041;
+	SDPVer SDPVersion;
+
+	SDPFileInfoStruct SDPFileInfo;
+
+	std::shared_ptr<std::istream> SDPInStream;
+	std::shared_ptr<std::ostream> SDPOutStream;
     RawFileIO rawFileIO;
 
-    SDPFilePropsStruct SDPFileProps;
-    std::string currentSubFileInUse;
-
-    std::ifstream inStream;
-    std::ofstream *SDPWriteStream;
-
-    bool isReadingSDP  = false;
-    bool isWritingToSDP = false;
-
-    std::unordered_map<std::string, SDPSubFilePropsStruct> SDPSubFileList;
-
-    const char magicWord[4] {'S', 'D', 'P', 'A'};
 
     //Funcs
 
+	bool isSDPFileHeaderValid(std::shared_ptr<std::istream> inStream);
 
 
 };

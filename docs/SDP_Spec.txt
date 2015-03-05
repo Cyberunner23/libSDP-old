@@ -1,5 +1,5 @@
 
-SDP (Soul Data Pack) File spec Rev. 3 :
+SDP (Soul Data Pack) File spec Rev. 1 :
 	by: Alex Frappier Lachapelle
 
 *Note that the data in the headers are in big endian.
@@ -10,10 +10,10 @@ SDP (Soul Data Pack) File spec Rev. 3 :
 /                                                                                                                                                /
 /       MagicNumber = 0x53445041 (SDPA)                                                                                                          /
 /       //SDP Spec                                                                                                                               /
-/       uint8     : Rev. (Currently Rev. 3)                                                                                                      /
-/       uint64    : Size of extra field.                                                                                                         /
-/       uchar*    : Extra field.                                                                                                                 /
-/       32x uchar : Expected SHA-256 hash of SDP file header.                                                                                    /
+/       uint8  : SDP Spec Rev. (Currently Rev. 1)                                                                                                /
+/       uint64 : Size of extra field.                                                                                                            /
+/       uchar* : Extra field.                                                                                                                    /
+/       string : Expected SHA-256 hash of SDP file header.                                                                                       /
 /                                                                                                                                                /
 /       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////       /
 /       | SDP Sub-Container                                                                                                              /       /
@@ -22,7 +22,7 @@ SDP (Soul Data Pack) File spec Rev. 3 :
 /       |                                                                                                                                /       /
 /       |       uint64       : Size of the name for the file stored in the container.                                                    /       /
 /       |                           (Value ignored if the Sub-Container is in another Sub-Container)                                     /       /
-/       |       uchar*       : Name of the file stored in the container.                                                                 /       /
+/       |       string       : Name of the file stored in the container.                                                                 /       /
 /       |                           (Contents ignored if the Sub-Container is in another Sub-Container)                                  /       /
 /       |       uint8 (bool) : Does Sub-Container contain another Sub-Container : 0x00 False (Does not contain another Sub-Container)    /       /
 /       |                                                                       : 0xFF True  (Does contain another Sub-Container)        /       /
@@ -40,15 +40,16 @@ SDP (Soul Data Pack) File spec Rev. 3 :
 /       |                                                                                          0x03 Salsa20                          /       /
 /       |                                                                                          0x04 ChaCha20                         /       /
 /       |                                                                                          0x05 AES 128 (CTR mode)               /       /
-/       |       uint64       : Size of extra field.                                                                                      /       /
-/       |       uchar*       : Extra field.                                                                                              /       /
-/       |       uint64       : Sub-Container data size.                                                                                  /       /
-/       |       32x uchar    : Expected SHA-256 hash of SDP Sub-Container Data.                                                          /       /
+/       |       uint64    : Size of extra field.                                                                                         /       /
+/       |       string    : Extra field.                                                                                                 /       /
+/       |       uint64    : Sub-Container data size.                                                                                     /       /
+/       |       string    : Expected SHA-256 hash of SDP Sub-Container Data.                                                             /       /
+/       |       string    : Expected SHA-256 hash of SDP Sub-Container header. (This hash includes all values in the                     /       /
+/       |                                                                       header except the hash itself.)                          /       /
 /       |                                                                                                                                /       /
 /       | END OF HEADER----------------------------------------------------------------------------------------------------------------- /       /
 /       |                                                                                                                                /       /
-/       |       32x uchar : Expected SHA-256 hash of SDP Sub-Container header.                                                           /       /
-/       |       uchar*    : Sub-Container data. (Can be another Sub-Container)                                                           /       /
+/       |       vector<uchar> : Sub-Container data. (Can be another Sub-Container)                                                       /       /
 /       |                                                                                                                                /       /
 /       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////       /
 /                                                                                                                                                /
@@ -65,7 +66,7 @@ SDP (Soul Data Pack) File spec Rev. 3 :
 /       |                                                                 |       /
 /       |       uint64 : Compressed data size.                            |       /
 /       |       uint64 : Uncompressed data size.                          |       /
-/       |       uchar* : Compressed data.                                 |       /
+/       |       vector<uchar> : Compressed data.                          |       /
 /       |                                                                 |       /
 /       |//////////////////////////////////////////////////////////////////       /
 /                                                                                 /
@@ -82,7 +83,7 @@ SDP (Soul Data Pack) File spec Rev. 3 :
 /       |                                                                 |       /
 /       |       uint64 : Encrypted data size.                             |       /
 /       |       uint64 : Unencrypted data size.                           |       /
-/       |       uchar* : Encrypted data.                                  |       /
+/       |       vector<uchar> : Encrypted data.                           |       /
 /       |                                                                 |       /
 /       |//////////////////////////////////////////////////////////////////       /
 /                                                                                 /

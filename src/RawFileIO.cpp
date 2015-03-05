@@ -16,26 +16,27 @@ Copyright 2014 Alex Frappier Lachapelle
 
 #include "RawFileIO.hpp"
 
+
 RawFileIO::RawFileIO(){
     isSysBigEndian = endian.isSysBigEndian();
 }
 
 
 //no need to swap bytes, there's only one.
-size_t RawFileIO::read(uint8_t &val, std::istream *inStream){
+size_t RawFileIO::read(uint8 &val, std::shared_ptr<std::istream> inStream){
 
     uint8_t tmpUint8;
-    inStream->read(reinterpret_cast<char*> (&tmpUint8), 1);
+    inStream.get()->read(reinterpret_cast<char*> (&tmpUint8), 1);
 
     val = tmpUint8;
 
-    return (size_t)inStream->gcount();
+    return (size_t)inStream.get()->gcount();
 }
 
-size_t RawFileIO::read(uint_least16_t &val, std::istream *inStream, Endian fileEndian){
+size_t RawFileIO::read(uint16 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian){
 
     uint_least16_t tmpUint16;
-    inStream->read(reinterpret_cast<char*> (&tmpUint16), 2);
+    inStream.get()->read(reinterpret_cast<char*> (&tmpUint16), 2);
 
     if(isFileAndSysEndianSame(fileEndian)){
         val = tmpUint16;
@@ -43,13 +44,13 @@ size_t RawFileIO::read(uint_least16_t &val, std::istream *inStream, Endian fileE
         val = endian.byteSwap(tmpUint16);
     }
 
-    return (size_t)inStream->gcount();
+    return (size_t)inStream.get()->gcount();
 }
 
-size_t RawFileIO::read(uint_least32_t &val, std::istream *inStream, Endian fileEndian){
+size_t RawFileIO::read(uint32 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian){
 
     uint_least32_t tmpUint32;
-    inStream->read(reinterpret_cast<char*> (&tmpUint32), 4);
+    inStream.get()->read(reinterpret_cast<char*> (&tmpUint32), 4);
 
     if(isFileAndSysEndianSame(fileEndian)){
         val = tmpUint32;
@@ -57,13 +58,13 @@ size_t RawFileIO::read(uint_least32_t &val, std::istream *inStream, Endian fileE
         val = endian.byteSwap(tmpUint32);
     }
 
-    return (size_t)inStream->gcount();
+    return (size_t)inStream.get()->gcount();
 }
 
-size_t RawFileIO::read(uint_least64_t &val, std::istream *inStream, Endian fileEndian){
+size_t RawFileIO::read(uint64 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian){
 
     uint_least64_t tmpUint64;
-    inStream->read(reinterpret_cast<char*> (&tmpUint64), 8);
+    inStream.get()->read(reinterpret_cast<char*> (&tmpUint64), 8);
 
     if(isFileAndSysEndianSame(fileEndian)){
         val = tmpUint64;
@@ -71,50 +72,47 @@ size_t RawFileIO::read(uint_least64_t &val, std::istream *inStream, Endian fileE
         val = endian.byteSwap(tmpUint64);
     }
 
-    return (size_t)inStream->gcount();
+    return (size_t)inStream.get()->gcount();
 }
 
 
-void RawFileIO::write(uint8_t val, std::ostream *outStream){
-    outStream->write(reinterpret_cast<const char*> (&val), 1);
+void RawFileIO::write(uint8 &val, std::shared_ptr<std::ostream> outStream){
+    outStream.get()->write(reinterpret_cast<const char*> (&val), 1);
 }
 
-void RawFileIO::write(uint_least16_t val, std::ostream *outStream, Endian fileEndian){
+void RawFileIO::write(uint16 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian){
 
     if(isFileAndSysEndianSame(fileEndian)){
-        outStream->write(reinterpret_cast<const char*> (&val), sizeof val);
+        outStream.get()->write(reinterpret_cast<const char*> (&val), sizeof val);
     }else{
         uint_least16_t tmp = endian.byteSwap(val);
-        outStream->write(reinterpret_cast<const char*> (&tmp), sizeof val);
+        outStream.get()->write(reinterpret_cast<const char*> (&tmp), sizeof val);
     }
 }
 
-void RawFileIO::write(uint_least32_t &val, std::ostream *outStream, Endian fileEndian){
+void RawFileIO::write(uint32 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian){
 
     if(isFileAndSysEndianSame(fileEndian)){
-        outStream->write(reinterpret_cast<const char*> (&val), 4);
+        outStream.get()->write(reinterpret_cast<const char*> (&val), 4);
     }else{
         uint_least32_t tmp = endian.byteSwap(val);
-        outStream->write(reinterpret_cast<const char*> (&tmp), sizeof val);
+        outStream.get()->write(reinterpret_cast<const char*> (&tmp), sizeof val);
     }
 }
 
-void RawFileIO::write(uint_least64_t &val, std::ostream *outStream, Endian fileEndian){
+void RawFileIO::write(uint64 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian){
 
     if(isFileAndSysEndianSame(fileEndian)){
-        outStream->write(reinterpret_cast<const char*> (&val), 8);
+        outStream.get()->write(reinterpret_cast<const char*> (&val), 8);
     }else{
         uint_least64_t tmp = endian.byteSwap(val);
-        outStream->write(reinterpret_cast<const char*> (&tmp), 8);
+        outStream.get()->write(reinterpret_cast<const char*> (&tmp), 8);
     }
 }
 
 
 bool RawFileIO::isFileAndSysEndianSame(Endian fileEndian){
-
-    if((isSysBigEndian && fileEndian == BIG__ENDIAN) || (!isSysBigEndian && fileEndian == LITTLE__ENDIAN)){
+    if((isSysBigEndian && fileEndian == BIG__ENDIAN) || (!isSysBigEndian && fileEndian == LITTLE__ENDIAN))
         return true;
-    }
-
     return false;
 }
