@@ -125,7 +125,9 @@ bool SDPStreamBuf::getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPF
         isHeaderValid = false;
 
     //Check spec rev.
-    if(rawFileIO.read(SDPFileHeader.SDPSpecRev, inStream) != sizeof(SDPFileHeader.SDPSpecRev) || SDPFileHeader.SDPSpecRev != SDPVersion.SDPSpecRev)
+    if(rawFileIO.read(SDPFileHeader.SDPSpecRev.major, inStream) != sizeof(SDPFileHeader.SDPSpecRev.major) || SDPFileHeader.SDPSpecRev.major != SDPVersion.SDPSpecRev.major)
+        isHeaderValid = false;
+    if(rawFileIO.read(SDPFileHeader.SDPSpecRev.minor, inStream) != sizeof(SDPFileHeader.SDPSpecRev.minor) || SDPFileHeader.SDPSpecRev.minor != SDPVersion.SDPSpecRev.minor)
         isHeaderValid = false;
 
     //check size of and read extra field
@@ -147,12 +149,13 @@ bool SDPStreamBuf::getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPF
     //Compute actual header file.
     uchar digest[crypto_hash_sha256_BYTES];
     crypto_hash_sha256_state sha256Hash;
-
+    //NOTE: This reinterpret_cast mess it to avoid "cast to pointer from integer of different size" warnings.
     crypto_hash_sha256_init(&sha256Hash);
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.magicNumber),    sizeof(reinterpret_cast<uchar*>(SDPFileHeader.magicNumber)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.SDPSpecRev),     sizeof(reinterpret_cast<uchar*>(SDPFileHeader.SDPSpecRev)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.extraFieldSize), sizeof(reinterpret_cast<uchar*>(SDPFileHeader.extraFieldSize)));
-    crypto_hash_sha256_update(&sha256Hash, SDPFileHeader.extraField.data(),                        sizeof(SDPFileHeader.extraField.data()));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.magicNumber),          sizeof(reinterpret_cast<uchar*>(SDPFileHeader.magicNumber)));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.SDPSpecRev.major),     sizeof(reinterpret_cast<uchar*>(SDPFileHeader.SDPSpecRev.major)));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.SDPSpecRev.minor),     sizeof(reinterpret_cast<uchar*>(SDPFileHeader.SDPSpecRev.minor)));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.extraFieldSize),       sizeof(reinterpret_cast<uchar*>(SDPFileHeader.extraFieldSize)));
+    crypto_hash_sha256_update(&sha256Hash, SDPFileHeader.extraField.data(),                              sizeof(SDPFileHeader.extraField.data()));
     crypto_hash_sha256_final(&sha256Hash,  digest);
 
     //Compare expected and actual header hash.
@@ -181,15 +184,15 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
         isHeaderValid = false;
 
     //Does this sub-container contain another one?
-    uint8 isContainingSubContainerChar;
-    if(rawFileIO.read(isContainingSubContainerChar, inStream) != sizeof(isContainingSubContainerChar))
-        isHeaderValid = false;
-    if(isContainingSubContainerChar == 0x00)
-        SDPSubContainerHeader.isContainingSubContainer = false;
-    else if(isContainingSubContainerChar == 0xFF)
-        SDPSubContainerHeader.isContainingSubContainer = true;
-    else
-        isHeaderValid = false;
+    //uint8 isContainingSubContainerChar;
+    //if(rawFileIO.read(isContainingSubContainerChar, inStream) != sizeof(isContainingSubContainerChar))
+    //    isHeaderValid = false;
+    //if(isContainingSubContainerChar == 0x00)
+    //    SDPSubContainerHeader.isContainingSubContainer = false;
+    //else if(isContainingSubContainerChar == 0xFF)
+    //    SDPSubContainerHeader.isContainingSubContainer = true;
+    //else
+    //    isHeaderValid = false;
 
     //Get sub-container type
     uint8 subContainerTypeChar;
@@ -250,7 +253,7 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
     crypto_hash_sha256_init(&sha256Hash);
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerHeader.fileNameLength),                            sizeof(reinterpret_cast<uchar*>(SDPSubContainerHeader.fileNameLength)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<const uchar*>(SDPSubContainerHeader.fileName.data()),                     sizeof(reinterpret_cast<const uchar*>(SDPSubContainerHeader.fileName.data())));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(isContainingSubContainerChar),                                    sizeof(reinterpret_cast<uchar*>(isContainingSubContainerChar)));
+    //crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(isContainingSubContainerChar),                                    sizeof(reinterpret_cast<uchar*>(isContainingSubContainerChar)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(subContainerTypeChar),                                            sizeof(reinterpret_cast<uchar*>(subContainerTypeChar)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(compressionAlgorithmIDChar),                                      sizeof(reinterpret_cast<uchar*>(compressionAlgorithmIDChar)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(encryptionAlgorithmIDChar),                                       sizeof(reinterpret_cast<uchar*>(encryptionAlgorithmIDChar)));
@@ -281,12 +284,6 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
     //Compare expected and actual sub-container data hash.
     if(SDPSubContainerHeader.actualSubContainerDataHash != SDPSubContainerHeader.expectedSubContainerDataHash)
         isHeaderValid = false;
-
-    //is sub-container has another sub-container in it, parse it. (recursive)
-    if(SDPSubContainerHeader.isContainingSubContainer)
-        getSDPSubContainerHeader(inStream, *SDPSubContainerHeader.subContainerHeader);
-    else
-        SDPSubContainerHeader.subContainerHeader = nullptr;
 
     inStream.get()->seekg(posBeforeHashCheck, inStream.get()->beg);//Return to the end of the top sub-container's header.
 

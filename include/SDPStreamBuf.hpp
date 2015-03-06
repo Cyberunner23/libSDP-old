@@ -48,20 +48,17 @@ public:
     //Vars
 
     struct SDPFileHeaderStruct{
-        uint32             magicNumber;
-        uint8              SDPSpecRev;
-        uint64             extraFieldSize;
-        std::vector<uchar> extraField;
-        std::string        expectedHeaderHash;
-        std::string        actualHeaderHash;
+        uint32                   magicNumber;
+        SDPVer::SDPSpecRevStruct SDPSpecRev;
+        uint64                   extraFieldSize;
+        std::vector<uchar>       extraField;
+        std::string              expectedHeaderHash;
+        std::string              actualHeaderHash;
     };
 
     struct SDPSubContainerHeaderStruct{
         uint64                                       fileNameLength;
         std::string                                  fileName;
-        bool                                         isContainingSubContainer;
-        //For when theres another sub-container inside this one.
-        std::shared_ptr<SDPSubContainerHeaderStruct> subContainerHeader;
 
         enum subContainerTypeEnum : uint8{
             RAW_DATA        = 0x01,
@@ -97,8 +94,6 @@ public:
         std::string                                subContainerFileName;
         SDPSubContainerHeaderStruct                subContainerHeader;
         bool                                       isHeaderValid;
-        bool                                       isContainingSubContainer;
-        std::shared_ptr<SDPSubContainerInfoStruct> subContainerInfo; //for when the SubContainer contains another Subcontainer.
         uint64                                     begDataPos;
         uint64                                     endDataPos;
     };
