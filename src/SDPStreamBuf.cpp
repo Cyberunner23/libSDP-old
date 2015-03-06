@@ -118,7 +118,7 @@ bool SDPStreamBuf::getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPF
     bool isHeaderValid = true;
     HexBinTool hexBinTool;
 
-    memset(&SDPFileHeader, 0, sizeof(SDPFileHeaderStruct));
+    SDPFileHeader = {};
 
     //Check magic word.
     if(rawFileIO.read(SDPFileHeader.magicNumber, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPFileHeader.magicNumber) || SDPFileHeader.magicNumber != magicWord)
@@ -171,7 +171,7 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
     bool isHeaderValid = true;
     HexBinTool hexBinTool;
 
-    memset(&SDPSubContainerHeader, 0, sizeof(SDPSubContainerHeaderStruct)); // hacky struct reset.
+    SDPSubContainerHeader = {};
 
     //Get size of the name for the file stored in the sub-container.
     if(rawFileIO.read(SDPSubContainerHeader.fileNameLength, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPSubContainerHeader.fileNameLength))
