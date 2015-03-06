@@ -11,7 +11,7 @@ SDP (Soul Data Pack) File spec Rev. 2.0 :
 /       MagicNumber = 0x53445041 (SDPA)                                                                                                          /
 /       //SDP Spec                                                                                                                               /
 /       uint8         : SDP Spec Rev. Major (Currently 2)                                                                                        /
-/       uint8         : SDP Spec Rev. Minor (Currently 0)                                                                                        /
+/       uint8         : SDP Spec Rev. Minor (Currently 1)                                                                                        /
 /       uint64        : Size of extra field.                                                                                                     /
 /       vector<uchar> : Extra field.                                                                                                             /
 /       string        : Expected SHA-256 hash of SDP file header.                                                                                /
@@ -25,8 +25,6 @@ SDP (Soul Data Pack) File spec Rev. 2.0 :
 /       |                          (Value ignored if the Sub-Container is in another Sub-Container)                                      |       /
 /       |       string       : Name of the file stored in the container.                                                                 |       /
 /       |                          (Contents ignored if the Sub-Container is in another Sub-Container)                                   |       /
-/       |       uint8 (bool) : Does Sub-Container contain another Sub-Container : 0x00 False (Does not contain another Sub-Container)    |       /
-/       |                                                                       : 0xFF True  (Does contain another Sub-Container)        |       /
 /       |       uint8        : Sub-Container type. : 0x01 Raw data.                                                                      |       /
 /       |                                            0x02 Compressed data.                                                               |       /
 /       |                                            0x03 Encrypted data.                                                                |       /

@@ -183,17 +183,6 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
     if(inStream.get()->gcount() != SDPSubContainerHeader.fileNameLength)
         isHeaderValid = false;
 
-    //Does this sub-container contain another one?
-    //uint8 isContainingSubContainerChar;
-    //if(rawFileIO.read(isContainingSubContainerChar, inStream) != sizeof(isContainingSubContainerChar))
-    //    isHeaderValid = false;
-    //if(isContainingSubContainerChar == 0x00)
-    //    SDPSubContainerHeader.isContainingSubContainer = false;
-    //else if(isContainingSubContainerChar == 0xFF)
-    //    SDPSubContainerHeader.isContainingSubContainer = true;
-    //else
-    //    isHeaderValid = false;
-
     //Get sub-container type
     uint8 subContainerTypeChar;
     if(rawFileIO.read(subContainerTypeChar, inStream) != sizeof(subContainerTypeChar))
@@ -253,7 +242,6 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
     crypto_hash_sha256_init(&sha256Hash);
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerHeader.fileNameLength),                            sizeof(reinterpret_cast<uchar*>(SDPSubContainerHeader.fileNameLength)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<const uchar*>(SDPSubContainerHeader.fileName.data()),                     sizeof(reinterpret_cast<const uchar*>(SDPSubContainerHeader.fileName.data())));
-    //crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(isContainingSubContainerChar),                                    sizeof(reinterpret_cast<uchar*>(isContainingSubContainerChar)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(subContainerTypeChar),                                            sizeof(reinterpret_cast<uchar*>(subContainerTypeChar)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(compressionAlgorithmIDChar),                                      sizeof(reinterpret_cast<uchar*>(compressionAlgorithmIDChar)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(encryptionAlgorithmIDChar),                                       sizeof(reinterpret_cast<uchar*>(encryptionAlgorithmIDChar)));
