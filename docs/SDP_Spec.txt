@@ -1,6 +1,6 @@
 
 SDP (Soul Data Pack) File spec Rev. 2.0 :
-	by: Alex Frappier Lachapelle
+    by: Alex Frappier Lachapelle
 
 *Note that the data in the headers are in big endian.
 
