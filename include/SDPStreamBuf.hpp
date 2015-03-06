@@ -57,8 +57,8 @@ public:
     };
 
     struct SDPSubContainerHeaderStruct{
-        uint64                                       fileNameLength;
-        std::string                                  fileName;
+        uint64      fileNameLength;
+        std::string fileName;
 
         enum subContainerTypeEnum : uint8{
             RAW_DATA        = 0x01,
@@ -91,11 +91,11 @@ public:
     };
 
     struct SDPSubContainerInfoStruct{
-        std::string                                subContainerFileName;
-        SDPSubContainerHeaderStruct                subContainerHeader;
-        bool                                       isHeaderValid;
-        uint64                                     begDataPos;
-        uint64                                     endDataPos;
+        std::string                 subContainerFileName;
+        SDPSubContainerHeaderStruct subContainerHeader;
+        bool                        isHeaderValid;
+        uint64                      begDataPos;
+        uint64                      endDataPos;
     };
 
     struct SDPFileInfoStruct{
