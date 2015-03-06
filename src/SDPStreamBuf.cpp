@@ -187,7 +187,7 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
     uint8 subContainerTypeChar;
     if(rawFileIO.read(subContainerTypeChar, inStream) != sizeof(subContainerTypeChar))
         isHeaderValid = false;
-    if(subContainerTypeChar < 0x01 || subContainerTypeChar > 0x03)
+    if(subContainerTypeChar < 0x01 || subContainerTypeChar > 0x04)
         isHeaderValid = false;
     SDPSubContainerHeader.subContainerType = static_cast<SDPSubContainerHeaderStruct::subContainerTypeEnum> (subContainerTypeChar);
 

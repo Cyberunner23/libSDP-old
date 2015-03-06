@@ -45,9 +45,11 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
+    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Fixed some odd spacing.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPStreamBuf.hpp" afterPath="$PROJECT_DIR$/include/SDPStreamBuf.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPStreamBuf.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPVer.hpp" afterPath="$PROJECT_DIR$/include/SDPVer.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/SDP_Spec.txt" afterPath="$PROJECT_DIR$/docs/SDP_Spec.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -93,8 +95,8 @@
             <file leaf-file-name="SDPStreamBuf.cpp" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.29954615">
-                    <caret line="173" column="31" selection-start-line="173" selection-start-column="31" selection-end-line="173" selection-end-column="31" />
+                  <state vertical-scroll-proportion="0.24508321">
+                    <caret line="189" column="65" selection-start-line="189" selection-start-column="65" selection-end-line="189" selection-end-column="65" />
                     <folding>
                       <element signature="e#599#637#0" expanded="true" />
                     </folding>
@@ -122,7 +124,7 @@
     <favorites_list name="libSDP" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.570347">
+    <splitter split-orientation="horizontal" split-proportion="0.3488959">
       <split-first>
         <leaf>
           <file leaf-file-name="SDPCryptStreamBuf.hpp" pinned="false" current-in-tab="false">
@@ -148,15 +150,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SDPStreamBuf.hpp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="SDPStreamBuf.hpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.40133038">
-                  <caret line="93" column="36" selection-start-line="93" selection-start-column="36" selection-end-line="93" selection-end-column="36" />
-                  <caret line="94" column="36" selection-start-line="94" selection-start-column="36" selection-end-line="94" selection-end-column="36" />
-                  <caret line="95" column="36" selection-start-line="95" selection-start-column="36" selection-end-line="95" selection-end-column="36" />
-                  <caret line="96" column="36" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
-                  <caret line="97" column="36" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
                   <folding>
                     <element signature="e#646#664#0" expanded="true" />
                   </folding>
@@ -164,10 +162,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SDPVer.hpp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="SDPVer.hpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
+                <state vertical-scroll-proportion="0.6607539">
                   <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
                   <folding />
                 </state>
@@ -181,8 +179,8 @@
           <file leaf-file-name="SDP_Spec.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.36141908">
-                  <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+                <state vertical-scroll-proportion="-0.039911307">
+                  <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
                   <folding />
                 </state>
               </provider>
@@ -232,11 +230,11 @@
         <option value="$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp" />
         <option value="$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
+        <option value="$PROJECT_DIR$/tools/.gitignore" />
+        <option value="$PROJECT_DIR$/include/SDPStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/docs/SDP_Spec.txt" />
         <option value="$PROJECT_DIR$/include/SDPVer.hpp" />
-        <option value="$PROJECT_DIR$/tools/.gitignore" />
         <option value="$PROJECT_DIR$/src/SDPStreamBuf.cpp" />
-        <option value="$PROJECT_DIR$/include/SDPStreamBuf.hpp" />
       </list>
     </option>
   </component>
@@ -768,7 +766,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425682244269</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fixed some odd spacing.">
+      <created>1425682306259</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1425682306259</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -838,7 +842,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Continued migration and fixed zconf.h generation." />
     <MESSAGE value="Worked on migration." />
     <MESSAGE value="Continued working on migration. Migrated Hex-&gt;Bin/Bin-&gt;Hex functions + placed them in a separate class for convenience." />
     <MESSAGE value="Continued working on migration. Continued cryptstreambuf migration block cipher -&gt; block cipher / stream cipher modes. + bunch of other stuff..." />
@@ -863,7 +866,8 @@
     <MESSAGE value="Forgot to remove the recursive tag in the sub-container header + reflected changes in SDPStreambuf + incremented minor of spec." />
     <MESSAGE value="Removed unused files in the tools dir." />
     <MESSAGE value="Used a cleaner way to reset the structs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Used a cleaner way to reset the structs." />
+    <MESSAGE value="Fixed some odd spacing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some odd spacing." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1257,14 +1261,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1281,35 +1277,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
+    <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29954615">
-          <caret line="173" column="31" selection-start-line="173" selection-start-column="31" selection-end-line="173" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
           <folding>
-            <element signature="e#599#637#0" expanded="true" />
+            <element signature="e#646#664#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36141908">
-          <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+        <state vertical-scroll-proportion="-0.039911307">
+          <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
+    <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40133038">
-          <caret line="93" column="36" selection-start-line="93" selection-start-column="36" selection-end-line="93" selection-end-column="36" />
-          <caret line="94" column="36" selection-start-line="94" selection-start-column="36" selection-end-line="94" selection-end-column="36" />
-          <caret line="95" column="36" selection-start-line="95" selection-start-column="36" selection-end-line="95" selection-end-column="36" />
-          <caret line="96" column="36" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
-          <caret line="97" column="36" selection-start-line="97" selection-start-column="36" selection-end-line="97" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.24508321">
+          <caret line="189" column="65" selection-start-line="189" selection-start-column="65" selection-end-line="189" selection-end-column="65" />
           <folding>
-            <element signature="e#646#664#0" expanded="true" />
+            <element signature="e#599#637#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6607539">
+          <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,5 +1,5 @@
 
-SDP (Soul Data Pack) File spec Rev. 2.0 :
+SDP (Soul Data Pack) File spec Rev. 2.2 :
     by: Alex Frappier Lachapelle
 
 *Note that the data in the headers are in big endian.
@@ -11,7 +11,7 @@ SDP (Soul Data Pack) File spec Rev. 2.0 :
 /       MagicNumber = 0x53445041 (SDPA)                                                                                                          /
 /       //SDP Spec                                                                                                                               /
 /       uint8         : SDP Spec Rev. Major (Currently 2)                                                                                        /
-/       uint8         : SDP Spec Rev. Minor (Currently 1)                                                                                        /
+/       uint8         : SDP Spec Rev. Minor (Currently 2)                                                                                        /
 /       uint64        : Size of extra field.                                                                                                     /
 /       vector<uchar> : Extra field.                                                                                                             /
 /       string        : Expected SHA-256 hash of SDP file header.                                                                                /
@@ -28,6 +28,7 @@ SDP (Soul Data Pack) File spec Rev. 2.0 :
 /       |       uint8        : Sub-Container type. : 0x01 Raw data.                                                                      |       /
 /       |                                            0x02 Compressed data.                                                               |       /
 /       |                                            0x03 Encrypted data.                                                                |       /
+/       |                                            0x04 Compressed and encrypted data.                                                 |       /
 /       |       uint8        : Compression algorithm ID. (Value ignored if compression not used) : 0x00 (Compression algorithm to be     |       /
 /       |                                                                                                determined with API call.)      |       /
 /       |                                                                                          0x01 zlib                             |       /

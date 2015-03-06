@@ -38,7 +38,7 @@ public:
 
     static const struct SDPSpecRevStruct{
         uint8 major = 2;
-        uint8 minor = 1;
+        uint8 minor = 2;
     }SDPSpecRev;
 
 };
