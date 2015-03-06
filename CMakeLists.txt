@@ -56,6 +56,7 @@ SET(HEADER_FILES
     include/SDPCryptStreamBuf.hpp
     include/SDPStreamBuf.hpp
     include/SDPVer.hpp
+    include/typedefs.hpp
     include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
     include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
     include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp
