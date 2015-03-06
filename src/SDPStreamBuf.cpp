@@ -243,9 +243,9 @@ bool SDPStreamBuf::getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream
     crypto_hash_sha256_init(&sha256Hash);
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.fileNameLength),                            sizeof(reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.fileNameLength)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<const uchar*>(SDPSubContainerInfo.subContainerHeader.fileName.data()),                     sizeof(reinterpret_cast<const uchar*>(SDPSubContainerInfo.subContainerHeader.fileName.data())));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(subContainerTypeChar),                                            sizeof(reinterpret_cast<uchar*>(subContainerTypeChar)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(compressionAlgorithmIDChar),                                      sizeof(reinterpret_cast<uchar*>(compressionAlgorithmIDChar)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(encryptionAlgorithmIDChar),                                       sizeof(reinterpret_cast<uchar*>(encryptionAlgorithmIDChar)));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(subContainerTypeChar),                                                             sizeof(reinterpret_cast<uchar*>(subContainerTypeChar)));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(compressionAlgorithmIDChar),                                                       sizeof(reinterpret_cast<uchar*>(compressionAlgorithmIDChar)));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(encryptionAlgorithmIDChar),                                                        sizeof(reinterpret_cast<uchar*>(encryptionAlgorithmIDChar)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.extraFieldSize),                            sizeof(reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.extraFieldSize)));
     crypto_hash_sha256_update(&sha256Hash, SDPSubContainerInfo.subContainerHeader.extraField.data(),                                                   sizeof(SDPSubContainerInfo.subContainerHeader.extraField.data()));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.subContainerDataSize),                      sizeof(reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.subContainerDataSize)));

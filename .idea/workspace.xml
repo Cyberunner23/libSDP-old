@@ -48,7 +48,6 @@
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPStreamBuf.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPStreamBuf.hpp" afterPath="$PROJECT_DIR$/include/SDPStreamBuf.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -94,8 +93,10 @@
             <file leaf-file-name="SDPStreamBuf.cpp" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.3192133">
-                    <caret line="245" column="134" selection-start-line="245" selection-start-column="134" selection-end-line="245" selection-end-column="134" />
+                  <state vertical-scroll-proportion="0.37367624">
+                    <caret line="245" column="151" selection-start-line="245" selection-start-column="151" selection-end-line="245" selection-end-column="151" />
+                    <caret line="246" column="151" selection-start-line="246" selection-start-column="151" selection-end-line="246" selection-end-column="151" />
+                    <caret line="247" column="151" selection-start-line="247" selection-start-column="151" selection-end-line="247" selection-end-column="151" />
                     <folding>
                       <element signature="e#599#637#0" expanded="true" />
                     </folding>
@@ -773,7 +774,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425682911954</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="getSDPSubContainerHeader -&gt; getSDPSubContainerInfo">
+      <created>1425683761365</created>
+      <option name="number" value="00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1425683761365</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -843,7 +850,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Continued working on migration. Continued cryptstreambuf migration block cipher -&gt; block cipher / stream cipher modes. + bunch of other stuff..." />
     <MESSAGE value="Making dependencies as submodules." />
     <MESSAGE value="Changed CmakeLists.txt to use library from submodule." />
     <MESSAGE value="Made zlib an external dependency + made external dependency path checking more efficient." />
@@ -868,7 +874,8 @@
     <MESSAGE value="Fixed some odd spacing." />
     <MESSAGE value="Added compressed and encrypted tag to sub-container type in the header. + reflected changes in SDPStreamBuf." />
     <MESSAGE value="Forgot to add the typedefs to the CMakeLists..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Forgot to add the typedefs to the CMakeLists..." />
+    <MESSAGE value="getSDPSubContainerHeader -&gt; getSDPSubContainerInfo" />
+    <option name="LAST_COMMIT_MESSAGE" value="getSDPSubContainerHeader -&gt; getSDPSubContainerInfo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1288,16 +1295,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3192133">
-          <caret line="245" column="134" selection-start-line="245" selection-start-column="134" selection-end-line="245" selection-end-column="134" />
-          <folding>
-            <element signature="e#599#637#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.7782705">
@@ -1313,6 +1310,18 @@
         <state vertical-scroll-proportion="0.35920176">
           <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37367624">
+          <caret line="245" column="151" selection-start-line="245" selection-start-column="151" selection-end-line="245" selection-end-column="151" />
+          <caret line="246" column="151" selection-start-line="246" selection-start-column="151" selection-end-line="246" selection-end-column="151" />
+          <caret line="247" column="151" selection-start-line="247" selection-start-column="151" selection-end-line="247" selection-end-column="151" />
+          <folding>
+            <element signature="e#599#637#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
