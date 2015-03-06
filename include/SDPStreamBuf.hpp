@@ -167,7 +167,7 @@ private:
     bool getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPFileHeaderStruct &SDPFileHeader);
     //Read the sub-container's header at current stream position
     //returns true if header is valid, false otherwise.
-    bool getSDPSubContainerHeader(std::shared_ptr<std::istream> inStream, SDPSubContainerHeaderStruct &SDPSubContainerHeader);
+    bool getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream, SDPSubContainerInfoStruct &SDPSubContainerInfo);
 
 
 };

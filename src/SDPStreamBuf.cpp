@@ -166,21 +166,22 @@ bool SDPStreamBuf::getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPF
     return isHeaderValid;
 }
 
-bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStream, SDPSubContainerHeaderStruct &SDPSubContainerHeader){
+bool SDPStreamBuf::getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream, SDPSubContainerInfoStruct &SDPSubContainerInfo){
+
+    //Check Sub-Container header.
+    SDPSubContainerInfo = {};
 
     bool isHeaderValid = true;
     HexBinTool hexBinTool;
 
-    SDPSubContainerHeader = {};
-
     //Get size of the name for the file stored in the sub-container.
-    if(rawFileIO.read(SDPSubContainerHeader.fileNameLength, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPSubContainerHeader.fileNameLength))
+    if(rawFileIO.read(SDPSubContainerInfo.subContainerHeader.fileNameLength, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPSubContainerInfo.subContainerHeader.fileNameLength))
         isHeaderValid = false;
 
     //Get the name for the file stored in the sub-container.
-    SDPSubContainerHeader.fileName.resize(SDPSubContainerHeader.fileNameLength);
-    inStream.get()->read((char*)SDPSubContainerHeader.fileName.data(), SDPSubContainerHeader.fileNameLength);
-    if(inStream.get()->gcount() != SDPSubContainerHeader.fileNameLength)
+    SDPSubContainerInfo.subContainerHeader.fileName.resize(SDPSubContainerInfo.subContainerHeader.fileNameLength);
+    inStream.get()->read((char*)SDPSubContainerInfo.subContainerHeader.fileName.data(), SDPSubContainerInfo.subContainerHeader.fileNameLength);
+    if(inStream.get()->gcount() != SDPSubContainerInfo.subContainerHeader.fileNameLength)
         isHeaderValid = false;
 
     //Get sub-container type
@@ -189,7 +190,7 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
         isHeaderValid = false;
     if(subContainerTypeChar < 0x01 || subContainerTypeChar > 0x04)
         isHeaderValid = false;
-    SDPSubContainerHeader.subContainerType = static_cast<SDPSubContainerHeaderStruct::subContainerTypeEnum> (subContainerTypeChar);
+    SDPSubContainerInfo.subContainerHeader.subContainerType = static_cast<SDPSubContainerHeaderStruct::subContainerTypeEnum> (subContainerTypeChar);
 
     //Get compression algorithm ID.
     uint8 compressionAlgorithmIDChar;
@@ -197,7 +198,7 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
         isHeaderValid = false;
     if(compressionAlgorithmIDChar < 0x00 || compressionAlgorithmIDChar > 0x02)
         isHeaderValid = false;
-    SDPSubContainerHeader.compressionAlgorithmID = static_cast<SDPSubContainerHeaderStruct::compressionAlgorithmIDEnum> (compressionAlgorithmIDChar);
+    SDPSubContainerInfo.subContainerHeader.compressionAlgorithmID = static_cast<SDPSubContainerHeaderStruct::compressionAlgorithmIDEnum> (compressionAlgorithmIDChar);
 
     //Get Encryption Algorithm ID.
     uint8 encryptionAlgorithmIDChar;
@@ -205,18 +206,18 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
         isHeaderValid = false;
     if(encryptionAlgorithmIDChar < 0x00 || encryptionAlgorithmIDChar > 0x05)
         isHeaderValid = false;
-    SDPSubContainerHeader.encryptionAlgorithmID = static_cast<SDPSubContainerHeaderStruct::encryptionAlgorithmIDEnum> (encryptionAlgorithmIDChar);
+    SDPSubContainerInfo.subContainerHeader.encryptionAlgorithmID = static_cast<SDPSubContainerHeaderStruct::encryptionAlgorithmIDEnum> (encryptionAlgorithmIDChar);
 
     //Get size of extra field and its contents
-    if(rawFileIO.read(SDPSubContainerHeader.extraFieldSize, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPSubContainerHeader.extraFieldSize))
+    if(rawFileIO.read(SDPSubContainerInfo.subContainerHeader.extraFieldSize, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPSubContainerInfo.subContainerHeader.extraFieldSize))
         isHeaderValid = false;
-    SDPSubContainerHeader.extraField.resize(SDPSubContainerHeader.extraFieldSize);
-    inStream.get()->read((char*)SDPSubContainerHeader.extraField.data(), SDPSubContainerHeader.extraFieldSize);
-    if(inStream.get()->gcount() != SDPSubContainerHeader.extraFieldSize)
+    SDPSubContainerInfo.subContainerHeader.extraField.resize(SDPSubContainerInfo.subContainerHeader.extraFieldSize);
+    inStream.get()->read((char*)SDPSubContainerInfo.subContainerHeader.extraField.data(), SDPSubContainerInfo.subContainerHeader.extraFieldSize);
+    if(inStream.get()->gcount() != SDPSubContainerInfo.subContainerHeader.extraFieldSize)
         isHeaderValid = false;
 
     //Get size of sub-container data
-    if(rawFileIO.read(SDPSubContainerHeader.subContainerDataSize, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPSubContainerHeader.subContainerType))
+    if(rawFileIO.read(SDPSubContainerInfo.subContainerHeader.subContainerDataSize, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPSubContainerInfo.subContainerHeader.subContainerType))
         isHeaderValid = false;
 
     //Get expected hash of sub-container data.
@@ -225,7 +226,7 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
     inStream.get()->read((char*)expectedSubContainerDataHash.data(), crypto_hash_sha256_BYTES);
     if(inStream.get()->gcount() != crypto_hash_sha256_BYTES)
         isHeaderValid = false;
-    hexBinTool.binToHex(expectedSubContainerDataHash, SDPSubContainerHeader.expectedSubContainerDataHash);
+    hexBinTool.binToHex(expectedSubContainerDataHash, SDPSubContainerInfo.subContainerHeader.expectedSubContainerDataHash);
 
     //Get expected hash of sub-container header.
     std::string expectedSubContainerHeaderHash;
@@ -233,27 +234,27 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
     inStream.get()->read((char*)expectedSubContainerHeaderHash.data(), crypto_hash_sha256_BYTES);
     if(inStream.get()->gcount() != crypto_hash_sha256_BYTES)
         isHeaderValid = false;
-    hexBinTool.binToHex(expectedSubContainerHeaderHash, SDPSubContainerHeader.expectedSubContainerHeaderHash);
+    hexBinTool.binToHex(expectedSubContainerHeaderHash, SDPSubContainerInfo.subContainerHeader.expectedSubContainerHeaderHash);
 
     //Compute actual hash of sub-container header.
     uchar digest[crypto_hash_sha256_BYTES];
     crypto_hash_sha256_state sha256Hash;
     //NOTE: This reinterpret_cast mess it to avoid "cast to pointer from integer of different size" warnings.
     crypto_hash_sha256_init(&sha256Hash);
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerHeader.fileNameLength),                            sizeof(reinterpret_cast<uchar*>(SDPSubContainerHeader.fileNameLength)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<const uchar*>(SDPSubContainerHeader.fileName.data()),                     sizeof(reinterpret_cast<const uchar*>(SDPSubContainerHeader.fileName.data())));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.fileNameLength),                            sizeof(reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.fileNameLength)));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<const uchar*>(SDPSubContainerInfo.subContainerHeader.fileName.data()),                     sizeof(reinterpret_cast<const uchar*>(SDPSubContainerInfo.subContainerHeader.fileName.data())));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(subContainerTypeChar),                                            sizeof(reinterpret_cast<uchar*>(subContainerTypeChar)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(compressionAlgorithmIDChar),                                      sizeof(reinterpret_cast<uchar*>(compressionAlgorithmIDChar)));
     crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(encryptionAlgorithmIDChar),                                       sizeof(reinterpret_cast<uchar*>(encryptionAlgorithmIDChar)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerHeader.extraFieldSize),                            sizeof(reinterpret_cast<uchar*>(SDPSubContainerHeader.extraFieldSize)));
-    crypto_hash_sha256_update(&sha256Hash, SDPSubContainerHeader.extraField.data(),                                                   sizeof(SDPSubContainerHeader.extraField.data()));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerHeader.subContainerDataSize),                      sizeof(reinterpret_cast<uchar*>(SDPSubContainerHeader.subContainerDataSize)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<const uchar*>(SDPSubContainerHeader.expectedSubContainerDataHash.data()), sizeof(reinterpret_cast<const uchar*>(SDPSubContainerHeader.expectedSubContainerDataHash.data())));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.extraFieldSize),                            sizeof(reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.extraFieldSize)));
+    crypto_hash_sha256_update(&sha256Hash, SDPSubContainerInfo.subContainerHeader.extraField.data(),                                                   sizeof(SDPSubContainerInfo.subContainerHeader.extraField.data()));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.subContainerDataSize),                      sizeof(reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.subContainerDataSize)));
+    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<const uchar*>(SDPSubContainerInfo.subContainerHeader.expectedSubContainerDataHash.data()), sizeof(reinterpret_cast<const uchar*>(SDPSubContainerInfo.subContainerHeader.expectedSubContainerDataHash.data())));
     crypto_hash_sha256_final(&sha256Hash,  digest);
 
     //Compare expected and actual sub-container header hash.
-    hexBinTool.binToHex(std::string(reinterpret_cast<char*>(digest), crypto_hash_sha256_BYTES), SDPSubContainerHeader.actualSubContainerHeaderHash);
-    if(SDPSubContainerHeader.actualSubContainerHeaderHash != SDPSubContainerHeader.expectedSubContainerHeaderHash)
+    hexBinTool.binToHex(std::string(reinterpret_cast<char*>(digest), crypto_hash_sha256_BYTES), SDPSubContainerInfo.subContainerHeader.actualSubContainerHeaderHash);
+    if(SDPSubContainerInfo.subContainerHeader.actualSubContainerHeaderHash != SDPSubContainerInfo.subContainerHeader.expectedSubContainerHeaderHash)
         isHeaderValid = false;
 
     //Compute actual hash for sub-container data
@@ -261,19 +262,26 @@ bool SDPStreamBuf::getSDPSubContainerHeader(std::shared_ptr<std::istream> inStre
     uchar digestData[crypto_hash_sha256_BYTES];
     pos_type posBeforeHashCheck = inStream.get()->tellg();
 
-    for(int i = 0; i < SDPSubContainerHeader.subContainerDataSize; i++){
+    for(int i = 0; i < SDPSubContainerInfo.subContainerHeader.subContainerDataSize; i++){
         uchar tmp = 0;
         inStream.get()->read(reinterpret_cast<char*>(tmp), sizeof(reinterpret_cast<char*>(tmp)));
         crypto_hash_sha256_update(&sha256HashData, &tmp, sizeof(&tmp));
     }
     crypto_hash_sha256_final(&sha256HashData, digestData);
-    hexBinTool.binToHex(std::string(reinterpret_cast<char*>(digestData)), SDPSubContainerHeader.actualSubContainerDataHash);
+    hexBinTool.binToHex(std::string(reinterpret_cast<char*>(digestData)), SDPSubContainerInfo.subContainerHeader.actualSubContainerDataHash);
 
     //Compare expected and actual sub-container data hash.
-    if(SDPSubContainerHeader.actualSubContainerDataHash != SDPSubContainerHeader.expectedSubContainerDataHash)
+    if(SDPSubContainerInfo.subContainerHeader.actualSubContainerDataHash != SDPSubContainerInfo.subContainerHeader.expectedSubContainerDataHash)
         isHeaderValid = false;
 
     inStream.get()->seekg(posBeforeHashCheck, inStream.get()->beg);//Return to the end of the top sub-container's header.
+
+
+    //Fill the rest of sub-container info
+    SDPSubContainerInfo.subContainerFileName = SDPSubContainerInfo.subContainerHeader.fileName;
+    SDPSubContainerInfo.isHeaderValid        = isHeaderValid;
+    SDPSubContainerInfo.begDataPos           = (uint64)inStream.get()->tellg();
+    SDPSubContainerInfo.endDataPos           = (uint64)inStream.get()->tellg() + SDPSubContainerInfo.subContainerHeader.subContainerDataSize;
 
     return isHeaderValid;
 }
