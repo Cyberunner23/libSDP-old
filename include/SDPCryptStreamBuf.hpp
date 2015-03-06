@@ -75,8 +75,8 @@ private:
     std::vector<unsigned char>           unencryptedBuffer;
     std::vector<unsigned char>           encryptedBuffer;
 
-    std::istream *inStream;
-    std::ostream *outStream;
+    std::shared_ptr<std::istream> inStream;
+    std::shared_ptr<std::ostream> outStream;
 
     //SDPAES256GCMAlgorithm defaultCryptAlgorithm;
 

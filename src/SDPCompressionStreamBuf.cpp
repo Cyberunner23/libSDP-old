@@ -17,7 +17,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPCompressionStreamBuf.hpp"
 
 
-SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::istream *compressedIn){
+SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::istream> compressedIn){
 
     hasFirstBlockBeenRead = false;
 
@@ -37,7 +37,7 @@ SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::istream *compressedIn){
 
 }
 
-SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::ostream *compressedOut){
+SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::ostream> compressedOut){
 
     inStream  = nullptr;
     outStream = compressedOut;
@@ -113,14 +113,16 @@ int SDPCompressionStreamBuf::sync(){
             //write block size
             rawFileIO.write(this->compressionOptions.blockSize, outStream, RawFileIO::BIG__ENDIAN);
             //Write is compressed tag (false)
-            rawFileIO.write(0x00, outStream);
+			uint8 falseTag = 0x00;
+            rawFileIO.write(falseTag, outStream);
             //Write block data
             outStream->write((char*) uncompressedBuffer.data(), this->compressionOptions.blockSize);
         }else{
             //write compressed block size
             rawFileIO.write(numCompressedBytes, outStream, RawFileIO::BIG__ENDIAN);
             //write is compressed block (true)
-            rawFileIO.write(0xFF, outStream);
+			uint8 trueTag;
+            rawFileIO.write(trueTag, outStream);
             //Write block data
             outStream->write((char*) compressedBuffer.data(), numCompressedBytes);
         }
@@ -239,14 +241,16 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::setNextChar(int_type 
             //write block size
             rawFileIO.write(this->compressionOptions.blockSize, outStream, RawFileIO::BIG__ENDIAN);
             //Write is compressed tag (false)
-            rawFileIO.write(0x00, outStream);
+			uint8 falseTag = 0x00;
+            rawFileIO.write(falseTag, outStream);
             //Write block data
             outStream->write((char*) uncompressedBuffer.data(), this->compressionOptions.blockSize);
         }else{
             //write compressed block size
             rawFileIO.write(numCompressedBytes, outStream, RawFileIO::BIG__ENDIAN);
             //write is compressed block (true)
-            rawFileIO.write(0xFF, outStream);
+			uint8 trueTag = 0xFF;
+            rawFileIO.write(trueTag, outStream);
             //Write block data
             outStream->write((char*) compressedBuffer.data(), numCompressedBytes);
         }

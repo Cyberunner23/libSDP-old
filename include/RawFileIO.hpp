@@ -42,7 +42,7 @@ public:
 
     //Reads a value from a file and converts it to the system's
     //endianness if necessary
-    size_t read(uint8 &val,  std::shared_ptr<std::istream> inStream);
+    size_t read(uint8  &val, std::shared_ptr<std::istream> inStream);
     size_t read(uint16 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
     size_t read(uint32 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
     size_t read(uint64 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);

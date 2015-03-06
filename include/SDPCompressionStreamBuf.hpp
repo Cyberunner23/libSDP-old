@@ -50,8 +50,8 @@ public:
 
 
     //Funcs
-    SDPCompressionStreamBuf(std::istream *compressedIn);
-    SDPCompressionStreamBuf(std::ostream *compressedOut);
+    SDPCompressionStreamBuf(std::shared_ptr<std::istream> compressedIn);
+    SDPCompressionStreamBuf(std::shared_ptr<std::ostream> compressedOut);
     ~SDPCompressionStreamBuf();
 
     void SDPSetCompressionOptions(SDPCompressionOptions compressionOptions);
@@ -81,8 +81,8 @@ private:
     std::vector<unsigned char>           uncompressedBuffer;
     std::vector<unsigned char>           compressedBuffer;
 
-    std::istream *inStream;
-    std::ostream *outStream;
+    std::shared_ptr<std::istream> inStream;
+    std::shared_ptr<std::ostream> outStream;
 
     //SDPZlibCompressionAlgorithm defaultCompressionAlgorithm;
 

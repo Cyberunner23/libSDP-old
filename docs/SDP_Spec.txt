@@ -10,10 +10,10 @@ SDP (Soul Data Pack) File spec Rev. 1 :
 /                                                                                                                                                /
 /       MagicNumber = 0x53445041 (SDPA)                                                                                                          /
 /       //SDP Spec                                                                                                                               /
-/       uint8  : SDP Spec Rev. (Currently Rev. 1)                                                                                                /
-/       uint64 : Size of extra field.                                                                                                            /
-/       uchar* : Extra field.                                                                                                                    /
-/       string : Expected SHA-256 hash of SDP file header.                                                                                       /
+/       uint8         : SDP Spec Rev. (Currently Rev. 1)                                                                                         /
+/       uint64        : Size of extra field.                                                                                                     /
+/       vector<uchar> : Extra field.                                                                                                             /
+/       string        : Expected SHA-256 hash of SDP file header.                                                                                /
 /                                                                                                                                                /
 /       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////       /
 /       | SDP Sub-Container                                                                                                              /       /
@@ -21,11 +21,11 @@ SDP (Soul Data Pack) File spec Rev. 1 :
 /       | HEADER ----------------------------------------------------------------------------------------------------------------------- /       /
 /       |                                                                                                                                /       /
 /       |       uint64       : Size of the name for the file stored in the container.                                                    /       /
-/       |                           (Value ignored if the Sub-Container is in another Sub-Container)                                     /       /
+/       |                          (Value ignored if the Sub-Container is in another Sub-Container)                                      /       /
 /       |       string       : Name of the file stored in the container.                                                                 /       /
-/       |                           (Contents ignored if the Sub-Container is in another Sub-Container)                                  /       /
+/       |                          (Contents ignored if the Sub-Container is in another Sub-Container)                                   /       /
 /       |       uint8 (bool) : Does Sub-Container contain another Sub-Container : 0x00 False (Does not contain another Sub-Container)    /       /
-/       |                                                                       : 0xFF True  (Does contain another Sub-Container)        /       /
+/       |                                                                      : 0xFF True  (Does contain another Sub-Container)         /       /
 /       |       uint8        : Sub-Container type. : 0x01 Raw data.                                                                      /       /
 /       |                                            0x02 Compressed data.                                                               /       /
 /       |                                            0x03 Encrypted data.                                                                /       /
@@ -40,12 +40,12 @@ SDP (Soul Data Pack) File spec Rev. 1 :
 /       |                                                                                          0x03 Salsa20                          /       /
 /       |                                                                                          0x04 ChaCha20                         /       /
 /       |                                                                                          0x05 AES 128 (CTR mode)               /       /
-/       |       uint64    : Size of extra field.                                                                                         /       /
-/       |       string    : Extra field.                                                                                                 /       /
-/       |       uint64    : Sub-Container data size.                                                                                     /       /
-/       |       string    : Expected SHA-256 hash of SDP Sub-Container Data.                                                             /       /
-/       |       string    : Expected SHA-256 hash of SDP Sub-Container header. (This hash includes all values in the                     /       /
-/       |                                                                       header except the hash itself.)                          /       /
+/       |       uint64        : Size of extra field.                                                                                     /       /
+/       |       vector<uchar> : Extra field.                                                                                             /       /
+/       |       uint64        : Sub-Container data size.                                                                                 /       /
+/       |       string        : Expected SHA-256 hash of SDP Sub-Container Data.                                                         /       /
+/       |       string        : Expected SHA-256 hash of SDP Sub-Container header. (This hash includes all values in the                 /       /
+/       |                                                                           header except the hash itself.)                      /       /
 /       |                                                                                                                                /       /
 /       | END OF HEADER----------------------------------------------------------------------------------------------------------------- /       /
 /       |                                                                                                                                /       /

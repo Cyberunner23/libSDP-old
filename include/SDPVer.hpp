@@ -34,7 +34,7 @@ public:
         int major = 0;
         int minor = 1;
         int patch = 2;
-    }static const SDPLibVer;
+    }SDPLibVer;
 
 	static const uint8 SDPSpecRev = 1;
 
