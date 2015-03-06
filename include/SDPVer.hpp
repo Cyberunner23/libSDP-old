@@ -31,12 +31,15 @@ public:
 
 	//Vars
     static const struct SDPLibVerStruct{
-        int major = 0;
-        int minor = 1;
-        int patch = 2;
+        uint8 major = 0;
+        uint8 minor = 1;
+        uint8 patch = 3;
     }SDPLibVer;
 
-	static const uint8 SDPSpecRev = 1;
+	static const struct SDPSpecRevStruct{
+		uint8 major = 2;
+		uint8 minor = 0;
+	};
 
 };
 
