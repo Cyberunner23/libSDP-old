@@ -175,8 +175,8 @@
       <file leaf-file-name="SDPVer.hpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7006652">
-              <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.5399113">
+              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -697,7 +697,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425679785767</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Changed tabs to spaces in SDPVer class. (To make it cleaner on github which seems to use 8 space tabs, I prefer 4 space tabs)">
+      <created>1425679985680</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1425679985680</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -791,7 +797,8 @@
     <MESSAGE value="Made Sub-Container header checking and fized various compiler errors." />
     <MESSAGE value="Updated SDP Spec. + Changed Rev. numbering from Rev# to Major and minor.  + Removed recursive sub-containers for multiple layers of compression/encryption in favor of using the api to determine layers." />
     <MESSAGE value="Changed SDPVer class to reflect changes in the SDP Spec. Rev. system. + incremented patch version for lib, added new spec." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed SDPVer class to reflect changes in the SDP Spec. Rev. system. + incremented patch version for lib, added new spec." />
+    <MESSAGE value="Changed tabs to spaces in SDPVer class. (To make it cleaner on github which seems to use 8 space tabs, I prefer 4 space tabs)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed tabs to spaces in SDPVer class. (To make it cleaner on github which seems to use 8 space tabs, I prefer 4 space tabs)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1233,8 +1240,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7006652">
-          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.5399113">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
           <folding />
         </state>
       </provider>
