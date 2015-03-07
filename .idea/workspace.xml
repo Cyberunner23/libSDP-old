@@ -45,7 +45,7 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Fixed some slight spacing derpage.">
+    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Finished implementing openSDP().">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPStreamBuf.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -93,9 +93,11 @@
             <file leaf-file-name="SDPStreamBuf.cpp" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.13615733">
-                    <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-                    <folding />
+                  <state vertical-scroll-proportion="0.4272152">
+                    <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+                    <folding>
+                      <element signature="e#599#637#0" expanded="true" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -149,8 +151,8 @@
           <file leaf-file-name="SDPStreamBuf.hpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.3592018">
-                  <caret line="162" column="34" selection-start-line="162" selection-start-column="34" selection-end-line="162" selection-end-column="34" />
+                <state vertical-scroll-proportion="0.44124168">
+                  <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
                   <folding>
                     <element signature="e#646#664#0" expanded="true" />
                   </folding>
@@ -165,7 +167,7 @@
           <file leaf-file-name="SDP_Spec.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.05986696">
+                <state vertical-scroll-proportion="-0.05986696">
                   <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
                   <folding />
                 </state>
@@ -794,7 +796,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425691984788</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Fixed an error check. +  cleaned up a struct resetting I forgot.">
+      <created>1425692352760</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1425692352760</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -864,7 +872,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Made lz4 an external dependency." />
     <MESSAGE value="Forgot to remove these directories when making the compression libs as external dependencies..." />
     <MESSAGE value="Added the ability to do seeking for the encryption algorithms (on the base class side) if it is supported by it." />
     <MESSAGE value="Made the SDP Spec... Better..." />
@@ -889,7 +896,8 @@
     <MESSAGE value="Fixed more odd spacing." />
     <MESSAGE value="Made some eos detection within the header checking." />
     <MESSAGE value="Fixed some slight spacing derpage." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some slight spacing derpage." />
+    <MESSAGE value="Fixed an error check. +  cleaned up a struct resetting I forgot." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed an error check. +  cleaned up a struct resetting I forgot." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1303,7 +1311,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05986696">
+        <state vertical-scroll-proportion="-0.05986696">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
@@ -1319,16 +1327,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13615733">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-          <folding />
+        <state vertical-scroll-proportion="0.4272152">
+          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+          <folding>
+            <element signature="e#599#637#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3592018">
-          <caret line="162" column="34" selection-start-line="162" selection-start-column="34" selection-end-line="162" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.44124168">
+          <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
           <folding>
             <element signature="e#646#664#0" expanded="true" />
           </folding>

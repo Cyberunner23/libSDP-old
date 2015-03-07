@@ -21,7 +21,8 @@ Copyright 2014 Alex Frappier Lachapelle
 
 SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::shared_ptr<std::iostream> inOutStream){
 
-    SDPFileInfo = {};
+    SDPFileInfo                    = {};
+    SDPFileInfo.numOfSubContainers = 0;
 
     //Check file header.
     if(getSDPFileHeader(inOutStream, SDPFileInfo.SDPFileHeader) != SDP_NO_ERROR)
@@ -29,9 +30,18 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::shared_ptr<std::ios
 
     while(true){
 
-
-
-        break;
+        SDPSubContainerInfoStruct tmpSubContainerInfo = {};
+        SDPStreamBufErrEnum retVal                    = getSDPSubContainerInfo(inOutStream, tmpSubContainerInfo);
+        if(retVal != SDP_EOS_REACHED){
+            //Add Sub-Container info to SDPFileInfo even in its invalid (internally marked as invalid)
+            SDPFileInfo.subContainersInSDPFile.insert(std::pair<std::string, SDPSubContainerInfoStruct>(tmpSubContainerInfo.subContainerFileName, tmpSubContainerInfo));
+            SDPFileInfo.numOfSubContainers++;
+            //Skip to the next Sub-Container header (end of the current Sub-Container's data section.)
+            inOutStream.get()->seekg(tmpSubContainerInfo.endDataPos, inOutStream.get()->beg);
+        }else{
+            //If EOS reached then ignore the incomplete header and finish with parsing headers.
+            break;
+        }
     }
 
     return SDP_NO_ERROR;
@@ -284,7 +294,8 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::getSDPSubContainerInfo(std::shar
     if(SDPSubContainerInfo.subContainerHeader.actualSubContainerDataHash != SDPSubContainerInfo.subContainerHeader.expectedSubContainerDataHash)
         isHeaderValid = false;
 
-    inStream.get()->seekg(posBeforeHashCheck, inStream.get()->beg);//Return to the end of the top sub-container's header.
+    //Return to the end of the top sub-container's header.
+    inStream.get()->seekg(posBeforeHashCheck, inStream.get()->beg);
 
 
     //Fill the rest of sub-container info
