@@ -37,13 +37,8 @@ public:
     SDPEncryptionAlgorithmBase();
     ~SDPEncryptionAlgorithmBase();
 
-	//These functions will only be used if isStreamCipher = false
-    virtual uint_least64_t decrypt(unsigned char* encryptedBuffer,   unsigned char* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum) = 0;
-    virtual uint_least64_t encrypt(unsigned char* unencryptedBuffer, unsigned char* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum) = 0;
-
-	//These functions will only be used if isStreamCipher = true
-	virtual bool decryptStream(unsigned char *encryptedChar,   unsigned char *unencryptedChar, uint64 charNum) = 0;
-	virtual bool encryptStream(unsigned char *unencryptedChar, unsigned char *encryptedChar,   uint64 charNum) = 0;
+    virtual uint64 decrypt(unsigned char* encryptedBuffer,   unsigned char* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum) = 0;
+    virtual uint64 encrypt(unsigned char* unencryptedBuffer, unsigned char* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum) = 0;
 
 	virtual void onInit() = 0;
 	virtual void onExit() = 0;
@@ -55,8 +50,8 @@ public:
 
     uint8          getEncryptionAlgorithmID();
 	bool 		   getIsStreamCipher();
-	uint_least64_t getBufferSize();
-	uint_least64_t getBufferSizeWithOverhead();
+	uint64 getBufferSize();
+	uint64 getBufferSizeWithOverhead();
 
 protected:
 

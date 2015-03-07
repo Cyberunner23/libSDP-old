@@ -104,8 +104,10 @@
           <file leaf-file-name="SDPEncryptionAlgorithmBase.hpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.4390244">
-                  <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+                <state vertical-scroll-proportion="0.518847">
+                  <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+                  <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
+                  <caret line="53" column="11" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
                   <folding>
                     <element signature="e#674#693#0" expanded="true" />
                   </folding>
@@ -539,12 +541,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00003" summary="Fixed a typo and removed the &quot;MESSAGE(&quot;CVT&quot;)&quot; used for debug/testing the CmakeLists.txt">
-      <created>1421463599993</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1421463599993</updated>
-    </task>
     <task id="LOCAL-00004" summary="Fixed yet another dumb typo...">
       <created>1421463663521</created>
       <option name="number" value="00004" />
@@ -833,7 +829,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425702117438</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Removed onRewind in SDPEncryptionAlgorithmBase, now useless.">
+      <created>1425702446943</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1425702446943</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -903,7 +905,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Changed tabs to spaces in SDP Spec. (To make it cleaner on github which seems to use 8 space tabs, I prefer 4 space tabs)" />
     <MESSAGE value="Added a isHeaderValid in the info structs. + a small edit (which will be changed later on)." />
     <MESSAGE value="Added a isHeaderValid in the info structs. + changed tabs to spaces (SDPStreamBuf) + a small edit (which will be changed later on)." />
     <MESSAGE value="Removed recursive sub-containers and updated SDP spec. version system usage to reflect changes in the spec." />
@@ -928,7 +929,8 @@
     <MESSAGE value="Added getting/setting of the encryption algorithm ID in SDPEncryptionAlgorithmBase." />
     <MESSAGE value="Removed checking of bounds for the encryption/compression algorithm ID so that user defined algorithms/IDs don't invalidate the sub-container's header." />
     <MESSAGE value="Missed some types in the uint style conversion." />
-    <option name="LAST_COMMIT_MESSAGE" value="Missed some types in the uint style conversion." />
+    <MESSAGE value="Removed onRewind in SDPEncryptionAlgorithmBase, now useless." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed onRewind in SDPEncryptionAlgorithmBase, now useless." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1367,8 +1369,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4390244">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.518847">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
+          <caret line="53" column="11" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
           <folding>
             <element signature="e#674#693#0" expanded="true" />
           </folding>
