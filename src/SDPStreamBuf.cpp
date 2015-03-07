@@ -14,9 +14,6 @@ Copyright 2014 Alex Frappier Lachapelle
    limitations under the License.
 */
 
-#include <sodium/crypto_hash_sha256.h>
-#include <string.h>
-#include <tclDecls.h>
 #include "SDPStreamBuf.hpp"
 
 
