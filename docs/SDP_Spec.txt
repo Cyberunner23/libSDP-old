@@ -11,7 +11,7 @@ SDP (Soul Data Pack) File spec Rev. 2.2 :
 /       MagicNumber = 0x53445041 (SDPA)                                                                                                          /
 /       //SDP Spec                                                                                                                               /
 /       uint8         : SDP Spec Rev. Major (Currently 2)                                                                                        /
-/       uint8         : SDP Spec Rev. Minor (Currently 2)                                                                                        /
+/       uint8         : SDP Spec Rev. Minor (Currently 3)                                                                                        /
 /       uint64        : Size of extra field.                                                                                                     /
 /       vector<uchar> : Extra field.                                                                                                             /
 /       string        : Expected SHA-256 hash of SDP file header.                                                                                /
@@ -60,21 +60,23 @@ SDP (Soul Data Pack) File spec Rev. 2.2 :
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-///////////////////////////////////////////////////////////////////////////////////
-/ Compressed data structure.                                                      /
-/                                                                                 /
-/       ///////////////////////////////////////////////////////////////////       /
-/       | Compressed data chunk. (Chunk size depends on the algorithm)    |       /
-/       |                                                                 |       /
-/       |       uint64 : Compressed data size.                            |       /
-/       |       uint64 : Uncompressed data size.                          |       /
-/       |       vector<uchar> : Compressed data.                          |       /
-/       |                                                                 |       /
-/       |//////////////////////////////////////////////////////////////////       /
-/                                                                                 /
-/       Next compressed data chunk...                                             /
-/                                                                                 /
-///////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/ Compressed data structure.                                                                                                /
+/                                                                                                                           /
+/       /////////////////////////////////////////////////////////////////////////////////////////////////////////////       /
+/       | Compressed data chunk. (Chunk size depends on the algorithm)                                              |       /
+/       |                                                                                                           |       /
+/       |       uint64        : Compressed data size.                                                               |       /
+/       |       uint64        : Uncompressed data size.                                                             |       /
+/       |       uint8 (bool)  : Is the data compressed. : 0x00 False (skip compression on incompressible blocks)    |       /
+/       |                                                 0xFF True                                                 |       /
+/       |       vector<uchar> : Compressed data.                                                                    |       /
+/       |                                                                                                           |       /
+/       |////////////////////////////////////////////////////////////////////////////////////////////////////////////       /
+/                                                                                                                           /
+/       Next compressed data chunk...                                                                                       /
+/                                                                                                                           /
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -83,8 +85,8 @@ SDP (Soul Data Pack) File spec Rev. 2.2 :
 /       ///////////////////////////////////////////////////////////////////       /
 /       | Encrypted data chunk. (Chunk size depends on the algorithm)     |       /
 /       |                                                                 |       /
-/       |       uint64 : Encrypted data size.                             |       /
-/       |       uint64 : Unencrypted data size.                           |       /
+/       |       uint64        : Encrypted data size.                      |       /
+/       |       uint64        : Unencrypted data size.                    |       /
 /       |       vector<uchar> : Encrypted data.                           |       /
 /       |                                                                 |       /
 /       |//////////////////////////////////////////////////////////////////       /

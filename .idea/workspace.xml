@@ -44,7 +44,8 @@
   <component name="ChangeListManager">
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPVer.hpp" afterPath="$PROJECT_DIR$/include/SDPVer.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/SDP_Spec.txt" afterPath="$PROJECT_DIR$/docs/SDP_Spec.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -115,7 +116,7 @@
     <favorites_list name="libSDP" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.46056783">
+    <splitter split-orientation="horizontal" split-proportion="0.34258676">
       <split-first>
         <leaf>
           <file leaf-file-name="SDPEncryptionAlgorithmBase.hpp" pinned="false" current-in-tab="false">
@@ -159,8 +160,9 @@
           <file leaf-file-name="SDP_Spec.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.7361419">
-                  <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+                <state vertical-scroll-proportion="0.7206209">
+                  <caret line="87" column="74" selection-start-line="87" selection-start-column="74" selection-end-line="87" selection-end-column="74" />
+                  <caret line="88" column="74" selection-start-line="88" selection-start-column="74" selection-end-line="88" selection-end-column="74" />
                   <folding />
                 </state>
               </provider>
@@ -171,6 +173,16 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
                   <caret line="21" column="66" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SDPVer.hpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -212,8 +224,6 @@
         <option value="$PROJECT_DIR$/src/RawFileIO.cpp" />
         <option value="$PROJECT_DIR$/include/RawFileIO.hpp" />
         <option value="$PROJECT_DIR$/tools/.gitignore" />
-        <option value="$PROJECT_DIR$/docs/SDP_Spec.txt" />
-        <option value="$PROJECT_DIR$/include/SDPVer.hpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/SDPStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp" />
@@ -225,6 +235,8 @@
         <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" />
         <option value="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
+        <option value="$PROJECT_DIR$/include/SDPVer.hpp" />
+        <option value="$PROJECT_DIR$/docs/SDP_Spec.txt" />
       </list>
     </option>
   </component>
@@ -576,12 +588,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00009" summary="Continued migration and fixed zconf.h generation.">
-      <created>1422286870473</created>
-      <option name="number" value="00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1422286870473</updated>
-    </task>
     <task id="LOCAL-00010" summary="Worked on migration.">
       <created>1422289977456</created>
       <option name="number" value="00010" />
@@ -870,7 +876,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425707196816</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Made typed uint style for SDPCompressionStreamBuf.">
+      <created>1425707475799</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1425707475799</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -940,7 +952,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Used a cleaner way to reset the structs." />
     <MESSAGE value="Fixed some odd spacing." />
     <MESSAGE value="Added compressed and encrypted tag to sub-container type in the header. + reflected changes in SDPStreamBuf." />
     <MESSAGE value="Forgot to add the typedefs to the CMakeLists..." />
@@ -965,7 +976,8 @@
     <MESSAGE value="Changed data types to uint style in SDPCompressionAlgorithmBase." />
     <MESSAGE value="Re-added encrypt/decryptStream... They're still useful... + some spacing underpage." />
     <MESSAGE value="SDPCompressionOptions -&gt; SDPCompressionAlgorithmInfoStruct." />
-    <option name="LAST_COMMIT_MESSAGE" value="SDPCompressionOptions -&gt; SDPCompressionAlgorithmInfoStruct." />
+    <MESSAGE value="Made typed uint style for SDPCompressionStreamBuf." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made typed uint style for SDPCompressionStreamBuf." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1301,14 +1313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6629464">
-          <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_hash/sha256/cp/hash_sha256.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.3529412">
@@ -1380,14 +1384,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="66" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5587583">
@@ -1396,18 +1392,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7361419">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.0348102">
           <caret line="185" column="13" selection-start-line="185" selection-start-column="13" selection-end-line="185" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="66" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7206209">
+          <caret line="87" column="74" selection-start-line="87" selection-start-column="74" selection-end-line="87" selection-end-column="74" />
+          <caret line="88" column="74" selection-start-line="88" selection-start-column="74" selection-end-line="88" selection-end-column="74" />
           <folding />
         </state>
       </provider>
