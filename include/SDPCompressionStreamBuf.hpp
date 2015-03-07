@@ -42,19 +42,21 @@ public:
 
     //Vars
 
-    struct SDPCompressionOptions{
-        SDPCompressionAlgorithmBase *compressionAlgorithm;
-        uint_least64_t blockSize;
-        uint_least64_t blockSizeWithOverhead;
+    struct SDPCompressionAlgorithmInfoStruct{
+        std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm;
+        bool                                         isStreamCompression;
+        uint64                                       bufferSize;
+        uint64                                       bufferSizeWithOverhead;
     };
 
-
     //Funcs
-    SDPCompressionStreamBuf(std::shared_ptr<std::istream> compressedIn);
-    SDPCompressionStreamBuf(std::shared_ptr<std::ostream> compressedOut);
+    SDPCompressionStreamBuf(std::shared_ptr<std::istream> compressedIn,  std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm = nullptr);
+    SDPCompressionStreamBuf(std::shared_ptr<std::ostream> compressedOut, std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm = nullptr);
     ~SDPCompressionStreamBuf();
 
-    void SDPSetCompressionOptions(SDPCompressionOptions compressionOptions);
+    //void SDPSetCompressionOptions(SDPCompressionOptions compressionOptions);
+    void                              setCompressionAlgorithm(std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm);
+    SDPCompressionAlgorithmInfoStruct getCompressionAlgorithmInfo();
 
 
 protected:
@@ -71,7 +73,6 @@ protected:
 private:
 
     //Vars
-    //uint_least64_t blockSize = 1024*64;
 
     unsigned char nextChar;
 
@@ -84,11 +85,15 @@ private:
     std::shared_ptr<std::istream> inStream;
     std::shared_ptr<std::ostream> outStream;
 
+    SDPCompressionAlgorithmInfoStruct currentCompressionAlgorithmInfo;
+
     //SDPZlibCompressionAlgorithm defaultCompressionAlgorithm;
 
-    SDPCompressionOptions compressionOptions;
+    //SDPCompressionOptions compressionOptions;
 
     //Funcs
+
+    SDPCompressionAlgorithmInfoStruct makeCompressionAlgorithmInfo(std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm);
 
     int  getNextChar(bool doAdvance);
     int_type setNextChar(int_type ch);

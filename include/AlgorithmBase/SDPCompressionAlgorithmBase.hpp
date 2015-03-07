@@ -19,14 +19,14 @@ public:
     virtual uint64 compress  (unsigned char* uncompressedBuffer, unsigned char* compressedBuffer,   uint64 uncompressedBufferSize) = 0;
 
 	//These functions will only be used if isStreamCompression = true
-	virtual bool decompressStream(unsigned char compressedChar, unsigned char decompressedChar) = 0;
+	virtual bool decompressStream(unsigned char compressedChar,   unsigned char decompressedChar) = 0;
 	virtual bool compressStream  (unsigned char uncompressedChar, unsigned char compressedChar) = 0;
 
     virtual void onInit() = 0;
     virtual void onExit() = 0;
     virtual void onSync() = 0;
 
-    bool		   getIsStreamCompression();
+    bool   getIsStreamCompression();
 	uint64 getBufferSize();
 	uint64 getBufferSizeWithOverhead();
 
@@ -37,16 +37,16 @@ protected:
 
 	//Funcs
 
-	//Should be set somewhere in the algorithm's constructor or onInit?
+	//Should be set somewhere in the algorithm's constructor
 	//true = stream compression, false = block compression.
 	void setIsStreamCompression(bool isStreamCompression);
 
-	//Should be set somewhere in the algorithm's constructor or onInit?
+	//Should be set somewhere in the algorithm's constructor
 	//Sets the maximum buffer size supported by the algorithm.
 	//Used when isStreamCompression = false
 	void setMaxBufferSize(uint64 maxBufferSize);
 
-	//Should be set somewhere in the algorithm's constructor or onInit? after setMaxBufferSize(true/false)
+	//Should be set somewhere in the algorithm's constructor after setMaxBufferSize(true/false)
 	//and setMaxBufferSize(uint64)
 	//Sets the buffer size to be used when isStreamCipher = false (block compression)
 	bool setPreferedBufferSize(uint64 preferedBufferSize);

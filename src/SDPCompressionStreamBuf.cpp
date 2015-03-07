@@ -17,54 +17,60 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPCompressionStreamBuf.hpp"
 
 
-SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::istream> compressedIn){
+SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::istream> compressedIn, std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm){
 
     hasFirstBlockBeenRead = false;
 
     inStream  = compressedIn;
     outStream = nullptr;
 
-    this->compressionOptions.blockSize             = 1024*64;
-    this->compressionOptions.blockSizeWithOverhead = 1024*64*1.5;//useless to set this here?
-    //this->compressionOptions.compressionAlgorithm  = &defaultCompressionAlgorithm;
-
-    uncompressedBuffer.resize(this->compressionOptions.blockSize);
-    compressedBuffer.resize(this->compressionOptions.blockSize);
-
-    //this->defaultCompressionAlgorithm.onInit();
+    if(compressionAlgorithm != nullptr){
+        currentCompressionAlgorithmInfo = makeCompressionAlgorithmInfo(compressionAlgorithm);
+        currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onInit();
+        uncompressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSizeWithOverhead);
+        compressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSize);
+    }else{
+        currentCompressionAlgorithmInfo.compressionAlgorithm = nullptr;
+    }
 
     nextChar = traits_type::eof();
 
 }
 
-SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::ostream> compressedOut){
+SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::ostream> compressedOut, std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm){
 
     inStream  = nullptr;
     outStream = compressedOut;
 
-    this->compressionOptions.blockSize             = 1024*64;
-    this->compressionOptions.blockSizeWithOverhead = 1024*64*1.5;
-    //this->compressionOptions.compressionAlgorithm  = &defaultCompressionAlgorithm;
-
-    uncompressedBuffer.reserve(this->compressionOptions.blockSize);
-    compressedBuffer.reserve(this->compressionOptions.blockSize);
-
-    //this->defaultCompressionAlgorithm.onInit();
-
+    if(compressionAlgorithm != nullptr){
+        currentCompressionAlgorithmInfo = makeCompressionAlgorithmInfo(compressionAlgorithm);
+        currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onInit();
+        uncompressedBuffer.reserve(currentCompressionAlgorithmInfo.bufferSize);
+        compressedBuffer.reserve(currentCompressionAlgorithmInfo.bufferSizeWithOverhead);
+    }else{
+        currentCompressionAlgorithmInfo.compressionAlgorithm = nullptr;
+    }
 }
 
 SDPCompressionStreamBuf::~SDPCompressionStreamBuf(){
-    compressionOptions.compressionAlgorithm->onExit();
+    if(currentCompressionAlgorithmInfo.compressionAlgorithm != nullptr)
+        currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onExit();
 }
 
 
-void SDPCompressionStreamBuf::SDPSetCompressionOptions(SDPCompressionOptions compressionOptions){
+void SDPCompressionStreamBuf::setCompressionAlgorithm(std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm){
 
-    this->compressionOptions = compressionOptions;
-    //this->compressionOptions.compressionAlgorithm->setBlockSize(this->compressionOptions.blockSize);
+    if(currentCompressionAlgorithmInfo.compressionAlgorithm != nullptr){
+        currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onSync();
+        currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onExit();
+    }
+    currentCompressionAlgorithmInfo = makeCompressionAlgorithmInfo(compressionAlgorithm);
+    currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onInit();
 
-    this->compressionOptions.compressionAlgorithm->onInit();
+}
 
+SDPCompressionStreamBuf::SDPCompressionAlgorithmInfoStruct SDPCompressionStreamBuf::getCompressionAlgorithmInfo(){
+    return currentCompressionAlgorithmInfo;
 }
 
 
@@ -76,12 +82,12 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::overflow(int_type ch)
 
 SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::underflow(){
 
-    return getNextChar(false);
+    return (int_type)getNextChar(false);
 }
 
 SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::uflow(){
 
-    return getNextChar(true);
+    return (int_type)getNextChar(true);
 }
 
 SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::pbackfail(int_type ch){
@@ -98,25 +104,25 @@ int SDPCompressionStreamBuf::sync(){
         RawFileIO rawFileIO;
 
         compressedBuffer.clear();
-        compressedBuffer.resize(this->compressionOptions.blockSizeWithOverhead);//add overhead comprensation
+        compressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSizeWithOverhead);//add overhead comprensation
 
         uint_least64_t numCompressedBytes;
-        numCompressedBytes = this->compressionOptions.compressionAlgorithm->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedBuffer.size());
+        numCompressedBytes = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedBuffer.size());
 
-        this->compressionOptions.compressionAlgorithm->onSync();
+        currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onSync();
 
         //check if we encountered an unompressible block.
         //if the num of compressed bytes is bigger or equal than the
         //than the input size (blockSize) then might as
         //well write the uncompressed block.
-        if(numCompressedBytes >= this->compressionOptions.blockSize){
+        if(numCompressedBytes >= currentCompressionAlgorithmInfo.bufferSize){
             //write block size
-            rawFileIO.write(this->compressionOptions.blockSize, outStream, RawFileIO::BIG__ENDIAN);
+            rawFileIO.write(currentCompressionAlgorithmInfo.bufferSize, outStream, RawFileIO::BIG__ENDIAN);
             //Write is compressed tag (false)
 			uint8 falseTag = 0x00;
             rawFileIO.write(falseTag, outStream);
             //Write block data
-            outStream->write((char*) uncompressedBuffer.data(), this->compressionOptions.blockSize);
+            outStream->write((char*) uncompressedBuffer.data(), currentCompressionAlgorithmInfo.bufferSize);
         }else{
             //write compressed block size
             rawFileIO.write(numCompressedBytes, outStream, RawFileIO::BIG__ENDIAN);
@@ -133,6 +139,19 @@ int SDPCompressionStreamBuf::sync(){
 
     return 0;
 }
+
+
+SDPCompressionStreamBuf::SDPCompressionAlgorithmInfoStruct SDPCompressionStreamBuf::makeCompressionAlgorithmInfo(std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm){
+
+    SDPCompressionAlgorithmInfoStruct compressionAlgorithmInfoStruct = {};
+    compressionAlgorithmInfoStruct.compressionAlgorithm              = compressionAlgorithm;
+    compressionAlgorithmInfoStruct.isStreamCompression               = compressionAlgorithm.get()->getIsStreamCompression();
+    compressionAlgorithmInfoStruct.bufferSize                        = compressionAlgorithm.get()->getBufferSize();
+    compressionAlgorithmInfoStruct.bufferSizeWithOverhead            = compressionAlgorithm.get()->getBufferSizeWithOverhead();
+
+    return compressionAlgorithmInfoStruct;
+}
+
 
 int SDPCompressionStreamBuf::getNextChar(bool doAdvance){
 
@@ -159,7 +178,7 @@ int SDPCompressionStreamBuf::getNextChar(bool doAdvance){
             return traits_type::eof();
         }
 
-        if(numCompressedBytes > compressionOptions.blockSize){
+        if(numCompressedBytes > currentCompressionAlgorithmInfo.bufferSize){
             return traits_type::eof();
         }
 
@@ -188,17 +207,17 @@ int SDPCompressionStreamBuf::getNextChar(bool doAdvance){
                 return traits_type::eof();
             }
 
-            uncompressedBuffer.resize(this->compressionOptions.blockSize);
+            uncompressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSize);
 
             uint_least64_t numBytesUncompressed;
-            numBytesUncompressed = this->compressionOptions.compressionAlgorithm->decompress(compressedBuffer.data(), uncompressedBuffer.data(), compressedBuffer.size());
+            numBytesUncompressed = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->decompress(compressedBuffer.data(), uncompressedBuffer.data(), compressedBuffer.size());
 
             uncompressedBuffer.resize(numBytesUncompressed);
 
         }else{ //if block is not compressed
 
-            uncompressedBuffer.resize(this->compressionOptions.blockSize);
-            inStream->read((char*) uncompressedBuffer.data(), this->compressionOptions.blockSize);
+            uncompressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSize);
+            inStream->read((char*) uncompressedBuffer.data(), currentCompressionAlgorithmInfo.bufferSize);
 
         }
 
@@ -223,28 +242,28 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::setNextChar(int_type 
 
     uncompressedBuffer.emplace_back(ch);
 
-    if (uncompressedBuffer.size() == this->compressionOptions.blockSize){
+    if (uncompressedBuffer.size() == currentCompressionAlgorithmInfo.bufferSize){
 
         RawFileIO rawFileIO;
 
         //compressedBuffer.clear();
-        compressedBuffer.resize(this->compressionOptions.blockSizeWithOverhead);
+        compressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSizeWithOverhead);
 
         uint_least64_t numCompressedBytes;
-        numCompressedBytes = this->compressionOptions.compressionAlgorithm->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedBuffer.size());
+        numCompressedBytes = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedBuffer.size());
 
         //check if we encountered an unompressible block.
         //if the num of compressed bytes is bigger or equal than the
         //than the input size (blockSize) then might as
         //well write the uncompressed block.
-        if(numCompressedBytes >= this->compressionOptions.blockSize){
+        if(numCompressedBytes >= currentCompressionAlgorithmInfo.bufferSize){
             //write block size
-            rawFileIO.write(this->compressionOptions.blockSize, outStream, RawFileIO::BIG__ENDIAN);
+            rawFileIO.write(currentCompressionAlgorithmInfo.bufferSize, outStream, RawFileIO::BIG__ENDIAN);
             //Write is compressed tag (false)
 			uint8 falseTag = 0x00;
             rawFileIO.write(falseTag, outStream);
             //Write block data
-            outStream->write((char*) uncompressedBuffer.data(), this->compressionOptions.blockSize);
+            outStream->write((char*) uncompressedBuffer.data(), currentCompressionAlgorithmInfo.bufferSize);
         }else{
             //write compressed block size
             rawFileIO.write(numCompressedBytes, outStream, RawFileIO::BIG__ENDIAN);
