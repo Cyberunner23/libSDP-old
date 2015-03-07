@@ -79,6 +79,10 @@ int SDPEncryptionAlgorithmBase::setNonce(std::string nonce, bool isNonceInHex){
 }
 
 
+uint8 SDPEncryptionAlgorithmBase::getEncryptionAlgorithmID(){
+    return encryptionAlgorithmID;
+}
+
 bool SDPEncryptionAlgorithmBase::getIsStreamCipher(){
 	return isStreamCipher;
 }
@@ -92,6 +96,10 @@ uint_least64_t SDPEncryptionAlgorithmBase::getBufferSizeWithOverhead(){
 	return bufferSizeWithOverhead;
 }
 
+
+void SDPEncryptionAlgorithmBase::setEncryptionAlgorithmID(uint8 algorithmID){
+    encryptionAlgorithmID = algorithmID;
+}
 
 void SDPEncryptionAlgorithmBase::setIsStreamCipher(bool isStreamCipher){
 	this->isStreamCipher = isStreamCipher;

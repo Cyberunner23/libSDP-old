@@ -58,6 +58,7 @@ public:
 	virtual int setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);
 	virtual int setNonce(std::string nonce, bool isNonceInHex);
 
+    uint8          getEncryptionAlgorithmID();
 	bool 		   getIsStreamCipher();
 	uint_least64_t getBufferSize();
 	uint_least64_t getBufferSizeWithOverhead();
@@ -69,6 +70,9 @@ protected:
     std::string nonceInBin;
 
     //funcs
+
+    //Should be set somewhere in the algorithm's constructor or onInit?
+    void setEncryptionAlgorithmID(uint8 algorithmID);
 
 	//Should be set somewhere in the algorithm's constructor or onInit?
 	//true = stream cipher, false = block cipher.
@@ -101,6 +105,8 @@ protected:
 private:
 
     //vars
+
+    uint8 encryptionAlgorithmID;
 
 	//true = stream cipher, false = block cipher
 	bool isStreamCipher;
