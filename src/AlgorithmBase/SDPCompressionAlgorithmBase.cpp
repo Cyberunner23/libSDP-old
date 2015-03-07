@@ -25,10 +25,6 @@ SDPCompressionAlgorithmBase::~SDPCompressionAlgorithmBase(){
 }
 
 
-bool SDPCompressionAlgorithmBase::getIsStreamCompression(){
-	return isStreamCompression;
-}
-
 uint64 SDPCompressionAlgorithmBase::getBufferSize(){
 	return bufferSize;
 }
@@ -37,10 +33,6 @@ uint64 SDPCompressionAlgorithmBase::getBufferSizeWithOverhead(){
 	return bufferSizeWithOverhead;
 }
 
-
-void SDPCompressionAlgorithmBase::setIsStreamCompression(bool isStreamCompression){
-	this->isStreamCompression = isStreamCompression;
-}
 
 void SDPCompressionAlgorithmBase::setMaxBufferSize(uint64 maxBufferSize){
 	this->maxBufferSize = maxBufferSize;

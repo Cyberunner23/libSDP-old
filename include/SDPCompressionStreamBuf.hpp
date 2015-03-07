@@ -93,7 +93,7 @@ private:
 
     SDPCompressionAlgorithmInfoStruct makeCompressionAlgorithmInfo(std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm);
 
-    int  getNextChar(bool doAdvance);
+    int      getNextChar(bool doAdvance);
     int_type setNextChar(int_type ch);
 
 };

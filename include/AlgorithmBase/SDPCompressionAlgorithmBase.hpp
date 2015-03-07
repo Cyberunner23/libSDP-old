@@ -14,19 +14,13 @@ public:
     SDPCompressionAlgorithmBase();
     ~SDPCompressionAlgorithmBase();
 
-	//These functions will only be used if isStreamCompression = false
     virtual uint64 decompress(unsigned char* compressedBuffer,   unsigned char* decompressedBuffer, uint64 compressedBufferSize,   uint64 chunkNum) = 0;
     virtual uint64 compress  (unsigned char* uncompressedBuffer, unsigned char* compressedBuffer,   uint64 uncompressedBufferSize, uint64 chunkNum) = 0;
-
-	//These functions will only be used if isStreamCompression = true
-	virtual bool decompressStream(unsigned char compressedChar,   unsigned char decompressedChar, uint64 charPos) = 0;
-	virtual bool compressStream  (unsigned char uncompressedChar, unsigned char compressedChar  , uint64 charPos) = 0;
 
     virtual void onInit() = 0;
     virtual void onExit() = 0;
     virtual void onSync() = 0;
 
-    bool   getIsStreamCompression();
 	uint64 getBufferSize();
 	uint64 getBufferSizeWithOverhead();
 
@@ -38,19 +32,17 @@ protected:
 	//Funcs
 
 	//Should be set somewhere in the algorithm's constructor
-	//true = stream compression, false = block compression.
-	void setIsStreamCompression(bool isStreamCompression);
-
-	//Should be set somewhere in the algorithm's constructor
 	//Sets the maximum buffer size supported by the algorithm.
 	//Used when isStreamCompression = false
 	void setMaxBufferSize(uint64 maxBufferSize);
 
-	//Should be set somewhere in the algorithm's constructor after setMaxBufferSize(true/false)
+	//Should be set somewhere in the algorithm's constructor after setIsStreamCompression(true/false)
 	//and setMaxBufferSize(uint64)
 	//Sets the buffer size to be used when isStreamCipher = false (block compression)
 	bool setPreferedBufferSize(uint64 preferedBufferSize);
 
+    //Should be set somewhere in the algorithm's constructor after setIsStreamCompression(true/false)
+    //and setMaxBufferSize(uint64)
 	//Buffer size including possible overhead on compression to be used when isStreamCompression = false
 	//This is in case the data is incompressible and that the algorithm introduces an overhead.
 	//This is to prevent an overflow and a SIGSEGV.
@@ -60,9 +52,6 @@ protected:
 private:
 
     //vars
-
-	//true = stream compression, false = block compression
-	bool isStreamCompression;
 
 	//Maximum buffer size supported by the algorithm, used when isStreamCompression = false
 	//Used when isStreamCompression = false
