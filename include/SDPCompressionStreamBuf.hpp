@@ -77,9 +77,9 @@ private:
 
     bool hasFirstBlockBeenRead;
 
-    std::vector<unsigned char>::iterator bufferIterator;
-    std::vector<unsigned char>           uncompressedBuffer;
-    std::vector<unsigned char>           compressedBuffer;
+    std::vector<uchar>::iterator bufferIterator;
+    std::vector<uchar>           uncompressedBuffer;
+    std::vector<uchar>           compressedBuffer;
 
     std::shared_ptr<std::istream> inStream;
     std::shared_ptr<std::ostream> outStream;

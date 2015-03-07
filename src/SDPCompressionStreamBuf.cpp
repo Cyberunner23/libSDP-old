@@ -34,7 +34,6 @@ SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::istream> c
     }
 
     currentChunkNum = 0;
-    currentCharPos  = 0;
 
     nextChar = traits_type::eof();
 
@@ -292,6 +291,60 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::setNextChar(int_type 
 
 bool SDPCompressionStreamBuf::readAndDecompressNextChunk(){
 
+    uint64 compressedDataSizeInFile;
+    uint64 uncompressedDataSizeInFile;
+    bool   isDataCompressed;
+
+    uncompressedBuffer.clear();
+    compressedBuffer.clear();
+
+    //Read compressed data size.
+    if(rawFileIO.read(compressedDataSizeInFile, inStream, RawFileIO::BIG__ENDIAN) != sizeof(compressedDataSizeInFile))
+        return false;
+    //Read uncompressed data size.
+    if(rawFileIO.read(uncompressedDataSizeInFile, inStream, RawFileIO::BIG__ENDIAN) != sizeof(uncompressedDataSizeInFile))
+        return false;
+
+    //Read is data compressed tag.
+    uint8 isDataCompressedTag;
+    if(rawFileIO.read(isDataCompressedTag, inStream) != sizeof(isDataCompressed))
+        return false;
+    if(isDataCompressedTag == 0x00)
+        isDataCompressed = false;
+    else if(isDataCompressedTag == 0xFF)
+        isDataCompressed = true;
+    else
+        return false; //error
+
+    //Read compressed/uncompressed data.
+    if(isDataCompressed){
+
+        //read compressed data
+        compressedBuffer.resize(compressedDataSizeInFile);
+        inStream.get()->read((char*)compressedBuffer.data(), compressedDataSizeInFile);
+        if(inStream.get()->gcount() != compressedDataSizeInFile)
+            return false; //Assume eos/error.
+
+        //Decompress
+        uncompressedBuffer.resize(uncompressedDataSizeInFile);
+        uint64 actualUncompressedDataSize;
+        actualUncompressedDataSize = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->decompress(compressedBuffer.data(), uncompressedBuffer.data(), compressedBuffer.size(), uncompressedDataSizeInFile, currentChunkNum);
+        if(actualUncompressedDataSize != uncompressedDataSizeInFile)
+            return false; //Uncompressed size marked in file not consistent with achtual size, error.
+
+    }else{
+
+        //read uncompressed data.
+        uncompressedBuffer.resize(uncompressedDataSizeInFile);
+        inStream.get()->read((char*)uncompressedBuffer.data(), uncompressedDataSizeInFile);
+        if(inStream.get()->gcount() != uncompressedDataSizeInFile)
+            return false;
+
+    }
+
+    currentChunkNum++;
+
+    return true;
 }
 
 bool SDPCompressionStreamBuf::compressAndWriteNextChunk(){
