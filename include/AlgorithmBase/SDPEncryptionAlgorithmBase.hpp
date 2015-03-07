@@ -37,16 +37,21 @@ public:
     SDPEncryptionAlgorithmBase();
     ~SDPEncryptionAlgorithmBase();
 
+    //These functions will only be used if isStreamCompression = false
     virtual uint64 decrypt(unsigned char* encryptedBuffer,   unsigned char* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum) = 0;
     virtual uint64 encrypt(unsigned char* unencryptedBuffer, unsigned char* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum) = 0;
+
+    //These functions will only be used if isStreamCompression = true
+    virtual bool decryptStream(unsigned char encryptedChar,   unsigned char decryptedChar) = 0;
+    virtual bool encryptStream(unsigned char unencryptedChar, unsigned char encryptedChar) = 0;
 
     virtual void onInit() = 0;
     virtual void onExit() = 0;
     virtual void onSync() = 0;
 
     virtual int setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex);
-    virtual int setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);
-    virtual int setNonce(std::string nonce, bool isNonceInHex);
+    virtual int setEncryptionKey(std::string encryptionKey,         bool isEncryptionKeyInHex);
+    virtual int setNonce(std::string nonce,                         bool isNonceInHex);
 
     uint8  getEncryptionAlgorithmID();
     bool   getIsStreamCipher();
