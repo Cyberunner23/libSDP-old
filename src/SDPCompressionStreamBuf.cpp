@@ -156,7 +156,6 @@ SDPCompressionStreamBuf::SDPCompressionAlgorithmInfoStruct SDPCompressionStreamB
 
     SDPCompressionAlgorithmInfoStruct compressionAlgorithmInfoStruct = {};
     compressionAlgorithmInfoStruct.compressionAlgorithm              = compressionAlgorithm;
-    compressionAlgorithmInfoStruct.isStreamCompression               = compressionAlgorithm.get()->getIsStreamCompression();
     compressionAlgorithmInfoStruct.bufferSize                        = compressionAlgorithm.get()->getBufferSize();
     compressionAlgorithmInfoStruct.bufferSizeWithOverhead            = compressionAlgorithm.get()->getBufferSizeWithOverhead();
 

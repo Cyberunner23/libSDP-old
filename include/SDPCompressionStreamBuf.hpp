@@ -44,7 +44,6 @@ public:
 
     struct SDPCompressionAlgorithmInfoStruct{
         std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm;
-        bool                                         isStreamCompression;
         uint64                                       bufferSize;
         uint64                                       bufferSizeWithOverhead;
     };
@@ -87,7 +86,6 @@ private:
 
     SDPCompressionAlgorithmInfoStruct currentCompressionAlgorithmInfo;
     uint64                            currentChunkNum;
-    uint64                            currentCharPos;
 
     //Funcs
 
