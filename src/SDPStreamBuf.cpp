@@ -253,16 +253,12 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::getSDPSubContainerInfo(std::shar
     uint8 compressionAlgorithmIDChar;
     if(rawFileIO.read(compressionAlgorithmIDChar, inStream) != sizeof(compressionAlgorithmIDChar))
         return SDP_EOS_REACHED; //Assume end of stream.
-    if(compressionAlgorithmIDChar < 0x00 || compressionAlgorithmIDChar > 0x02)
-        isHeaderValid = false;
     SDPSubContainerInfo.subContainerHeader.compressionAlgorithmID = static_cast<SDPSubContainerHeaderStruct::compressionAlgorithmIDEnum> (compressionAlgorithmIDChar);
 
     //Get Encryption Algorithm ID.
     uint8 encryptionAlgorithmIDChar;
     if(rawFileIO.read(encryptionAlgorithmIDChar, inStream) != sizeof(encryptionAlgorithmIDChar))
         return SDP_EOS_REACHED; //Assume end of stream.
-    if(encryptionAlgorithmIDChar < 0x00 || encryptionAlgorithmIDChar > 0x05)
-        isHeaderValid = false;
     SDPSubContainerInfo.subContainerHeader.encryptionAlgorithmID = static_cast<SDPSubContainerHeaderStruct::encryptionAlgorithmIDEnum> (encryptionAlgorithmIDChar);
 
     //Get size of extra field and its contents
