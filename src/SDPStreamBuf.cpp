@@ -107,8 +107,14 @@ SDPStreamBuf::SDPSubContainerInfoStruct SDPStreamBuf::addSubContainerToSDPFile(s
 }
 
 
-bool SDPStreamBuf::setSubContainer(std::string &SubContainerFileName){
+bool SDPStreamBuf::setSubContainer(std::string &subContainerFileName){
 
+    if(SDPFileInfo.subContainersInSDPFile.find(subContainerFileName) == SDPFileInfo.subContainersInSDPFile.end())
+        return false;
+    else
+        SDPFileInfo.currentSubContainerInUse = SDPFileInfo.subContainersInSDPFile[subContainerFileName];
+
+    return true;
 }
 
 SDPStreamBuf::SDPSubContainerInfoStruct* SDPStreamBuf::getCurrentSubContainerInfo(){

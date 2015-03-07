@@ -126,7 +126,7 @@ public:
     SDPStreamBufErrEnum       createSDP();
     SDPSubContainerInfoStruct addSubContainerToSDPFile(std::string subContainerFileName);
 
-    bool                       setSubContainer(std::string &SubContainerFileName);
+    bool                       setSubContainer(std::string &subContainerFileName);
     SDPSubContainerInfoStruct* getCurrentSubContainerInfo();
 
     //SDP creation
