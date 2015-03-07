@@ -29,11 +29,11 @@ bool SDPCompressionAlgorithmBase::getIsStreamCompression(){
 	return isStreamCompression;
 }
 
-uint_least64_t SDPCompressionAlgorithmBase::getBufferSize(){
+uint64 SDPCompressionAlgorithmBase::getBufferSize(){
 	return bufferSize;
 }
 
-uint_least64_t SDPCompressionAlgorithmBase::getBufferSizeWithOverhead(){
+uint64 SDPCompressionAlgorithmBase::getBufferSizeWithOverhead(){
 	return bufferSizeWithOverhead;
 }
 
@@ -42,11 +42,11 @@ void SDPCompressionAlgorithmBase::setIsStreamCompression(bool isStreamCompressio
 	this->isStreamCompression = isStreamCompression;
 }
 
-void SDPCompressionAlgorithmBase::setMaxBufferSize(uint_least64_t maxBufferSize){
+void SDPCompressionAlgorithmBase::setMaxBufferSize(uint64 maxBufferSize){
 	this->maxBufferSize = maxBufferSize;
 }
 
-bool SDPCompressionAlgorithmBase::setPreferedBufferSize(uint_least64_t preferedBufferSize){
+bool SDPCompressionAlgorithmBase::setPreferedBufferSize(uint64 preferedBufferSize){
 
 	if(preferedBufferSize <= maxBufferSize){
 		bufferSize = preferedBufferSize;
@@ -56,7 +56,7 @@ bool SDPCompressionAlgorithmBase::setPreferedBufferSize(uint_least64_t preferedB
 	return false;
 }
 
-void SDPCompressionAlgorithmBase::setPreferedBufferSizeWithOverhead(uint_least64_t preferedBufferSizeWithOverhead){
+void SDPCompressionAlgorithmBase::setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead){
 	this->bufferSizeWithOverhead = preferedBufferSizeWithOverhead;
 }
 
