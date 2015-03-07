@@ -33,6 +33,9 @@ SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::istream> c
         currentCompressionAlgorithmInfo.compressionAlgorithm = nullptr;
     }
 
+    currentChunkNum = 0;
+    currentCharPos  = 0;
+
     nextChar = traits_type::eof();
 
 }
@@ -50,6 +53,10 @@ SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::ostream> c
     }else{
         currentCompressionAlgorithmInfo.compressionAlgorithm = nullptr;
     }
+
+    currentChunkNum = 0;
+    currentCharPos  = 0;
+
 }
 
 SDPCompressionStreamBuf::~SDPCompressionStreamBuf(){
@@ -58,11 +65,15 @@ SDPCompressionStreamBuf::~SDPCompressionStreamBuf(){
 }
 
 
-void SDPCompressionStreamBuf::setCompressionAlgorithm(std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm){
+void SDPCompressionStreamBuf::setCompressionAlgorithm(std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm, bool resetPosCounter){
 
     if(currentCompressionAlgorithmInfo.compressionAlgorithm != nullptr){
         currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onSync();
         currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onExit();
+    }
+    if(resetPosCounter){
+        currentChunkNum = 0;
+        currentCharPos  = 0;
     }
     currentCompressionAlgorithmInfo = makeCompressionAlgorithmInfo(compressionAlgorithm);
     currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onInit();

@@ -15,12 +15,12 @@ public:
     ~SDPCompressionAlgorithmBase();
 
 	//These functions will only be used if isStreamCompression = false
-    virtual uint64 decompress(unsigned char* compressedBuffer,   unsigned char* decompressedBuffer, uint64 compressedBufferSize) = 0;
-    virtual uint64 compress  (unsigned char* uncompressedBuffer, unsigned char* compressedBuffer,   uint64 uncompressedBufferSize) = 0;
+    virtual uint64 decompress(unsigned char* compressedBuffer,   unsigned char* decompressedBuffer, uint64 compressedBufferSize,   uint64 chunkNum) = 0;
+    virtual uint64 compress  (unsigned char* uncompressedBuffer, unsigned char* compressedBuffer,   uint64 uncompressedBufferSize, uint64 chunkNum) = 0;
 
 	//These functions will only be used if isStreamCompression = true
-	virtual bool decompressStream(unsigned char compressedChar,   unsigned char decompressedChar) = 0;
-	virtual bool compressStream  (unsigned char uncompressedChar, unsigned char compressedChar) = 0;
+	virtual bool decompressStream(unsigned char compressedChar,   unsigned char decompressedChar, uint64 charPos) = 0;
+	virtual bool compressStream  (unsigned char uncompressedChar, unsigned char compressedChar  , uint64 charPos) = 0;
 
     virtual void onInit() = 0;
     virtual void onExit() = 0;

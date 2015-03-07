@@ -55,7 +55,7 @@ public:
     ~SDPCompressionStreamBuf();
 
     //void SDPSetCompressionOptions(SDPCompressionOptions compressionOptions);
-    void                              setCompressionAlgorithm(std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm);
+    void                              setCompressionAlgorithm(std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm, bool resetPosCounter = true);
     SDPCompressionAlgorithmInfoStruct getCompressionAlgorithmInfo();
 
 
@@ -86,10 +86,8 @@ private:
     std::shared_ptr<std::ostream> outStream;
 
     SDPCompressionAlgorithmInfoStruct currentCompressionAlgorithmInfo;
-
-    //SDPZlibCompressionAlgorithm defaultCompressionAlgorithm;
-
-    //SDPCompressionOptions compressionOptions;
+    uint64                            currentChunkNum;
+    uint64                            currentCharPos;
 
     //Funcs
 
