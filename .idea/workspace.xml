@@ -42,11 +42,10 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment=")">
+    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" afterPath="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" afterPath="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" afterPath="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -80,8 +79,8 @@
             <file leaf-file-name="SDPCompressionAlgorithmBase.cpp" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.18305598">
-                    <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+                  <state vertical-scroll-proportion="0.591528">
+                    <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
                     <folding />
                   </state>
                 </provider>
@@ -103,8 +102,8 @@
           <file leaf-file-name="SDPCompressionAlgorithmBase.hpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.0553098">
-                  <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+                <state vertical-scroll-proportion="0.83813745">
+                  <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
                   <folding />
                 </state>
               </provider>
@@ -139,7 +138,7 @@
           <file leaf-file-name="SDP_Spec.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.30309734">
+                <state vertical-scroll-proportion="0.3037694">
                   <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
                   <folding />
                 </state>
@@ -203,8 +202,8 @@
         <option value="$PROJECT_DIR$/docs/SDP_Spec.txt" />
         <option value="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
-        <option value="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" />
         <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" />
+        <option value="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" />
       </list>
     </option>
   </component>
@@ -556,12 +555,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00012" summary="Continued working on migration. Continued cryptstreambuf migration block cipher -&gt; block cipher / stream cipher modes. + bunch of other stuff...">
-      <created>1422675910134</created>
-      <option name="number" value="00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1422675910134</updated>
-    </task>
     <task id="LOCAL-00013" summary="Continued working on migration. Continued cryptstreambuf migration block cipher -&gt; block cipher / stream cipher modes. + bunch of other stuff...">
       <created>1424094997629</created>
       <option name="number" value="00013" />
@@ -850,7 +843,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425709439491</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Removed support for byte per byte compression, byte in byte out, no compression can happen on a single byte.">
+      <created>1425761209510</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1425761209512</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -877,6 +876,7 @@
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48817205" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.472043" sideWeight="0.49394417" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13225806" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -891,7 +891,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3935484" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48817205" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -920,7 +919,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Forgot to add the typedefs to the CMakeLists..." />
     <MESSAGE value="getSDPSubContainerHeader -&gt; getSDPSubContainerInfo" />
     <MESSAGE value="Fixed more odd spacing." />
     <MESSAGE value="Made some eos detection within the header checking." />
@@ -945,7 +943,8 @@
     <MESSAGE value="Made typed uint style for SDPCompressionStreamBuf." />
     <MESSAGE value="Added a tag in the compressed data block to tell if compression was skipped in the case that the block was incompressible." />
     <MESSAGE value="Added capability to compression algorithms to be aware of the position in the stream they're working on." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added capability to compression algorithms to be aware of the position in the stream they're working on." />
+    <MESSAGE value="Removed support for byte per byte compression, byte in byte out, no compression can happen on a single byte." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed support for byte per byte compression, byte in byte out, no compression can happen on a single byte." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1347,16 +1346,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30309734">
+        <state vertical-scroll-proportion="0.3037694">
           <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="253" column="40" selection-start-line="253" selection-start-column="40" selection-end-line="253" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1371,18 +1362,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="253" column="40" selection-start-line="253" selection-start-column="40" selection-end-line="253" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18305598">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.591528">
+          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0553098">
-          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.83813745">
+          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
           <folding />
         </state>
       </provider>

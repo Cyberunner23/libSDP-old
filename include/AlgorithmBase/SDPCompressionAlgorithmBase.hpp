@@ -46,7 +46,7 @@ protected:
 	//Buffer size including possible overhead on compression to be used when isStreamCompression = false
 	//This is in case the data is incompressible and that the algorithm introduces an overhead.
 	//This is to prevent an overflow and a SIGSEGV.
-	void setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead);
+	bool setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead);
 
 
 private:

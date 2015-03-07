@@ -48,8 +48,14 @@ bool SDPCompressionAlgorithmBase::setPreferedBufferSize(uint64 preferedBufferSiz
 	return false;
 }
 
-void SDPCompressionAlgorithmBase::setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead){
-	this->bufferSizeWithOverhead = preferedBufferSizeWithOverhead;
+bool SDPCompressionAlgorithmBase::setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead){
+
+    if(preferedBufferSizeWithOverhead <= maxBufferSize){
+        bufferSizeWithOverhead = preferedBufferSizeWithOverhead;
+        return true;
+    }
+
+    return false;
 }
 
 
