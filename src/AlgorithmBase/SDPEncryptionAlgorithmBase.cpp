@@ -112,11 +112,11 @@ void SDPEncryptionAlgorithmBase::setNonceWidthInBits(unsigned int nonceWidthInBi
 	this->nonceWidthInBits = nonceWidthInBits;
 }
 
-void SDPEncryptionAlgorithmBase::setMaxBufferSize(uint_least64_t maxBufferSize){
+void SDPEncryptionAlgorithmBase::setMaxBufferSize(uint64 maxBufferSize){
 	this->maxBufferSize = maxBufferSize;
 }
 
-bool SDPEncryptionAlgorithmBase::setPreferedBufferSize(uint_least64_t preferedBufferSize){
+bool SDPEncryptionAlgorithmBase::setPreferedBufferSize(uint64 preferedBufferSize){
 
 	if(preferedBufferSize <= maxBufferSize){
 		bufferSize = preferedBufferSize;
@@ -126,7 +126,7 @@ bool SDPEncryptionAlgorithmBase::setPreferedBufferSize(uint_least64_t preferedBu
 	return false;
 }
 
-void SDPEncryptionAlgorithmBase::setPreferedBufferSizeWithOverhead(uint_least64_t preferedBufferSizeWithOverhead){
+void SDPEncryptionAlgorithmBase::setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead){
 	bufferSizeWithOverhead = preferedBufferSizeWithOverhead;
 }
 

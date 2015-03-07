@@ -21,6 +21,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include <string>
 
 #include "HexBinTool.hpp"
+#include "typedefs.hpp"
 
 #include "sodium.h"
 
@@ -89,17 +90,17 @@ protected:
 	//Should be set somewhere in the algorithm's constructor or onInit? after setIsStreamCipher(true/false)
 	//Sets the maximum buffer size supported by the algorithm.
 	//Used when isStreamCipher = false
-	void setMaxBufferSize(uint_least64_t maxBufferSize);
+	void setMaxBufferSize(uint64 maxBufferSize);
 
 	//Should be set somewhere in the algorithm's constructor or onInit? after setIsStreamCipher(true/false)
 	//and setMaxBufferSize(uint_least64_t)
 	//Sets the buffer size to be used when isStreamCipher = false (block cipher)
-	bool setPreferedBufferSize(uint_least64_t preferedBufferSize = 1024);
+	bool setPreferedBufferSize(uint64 preferedBufferSize = 1024);
 
 	//Sets the buffer size including possible overhead. To be used when isStreamCipher = false
 	//This is in case the algorithm adds extra data on encryption like authentication tags.
 	//This is to prevent an overflow and a SIGSEGV.
-	void setPreferedBufferSizeWithOverhead(uint_least64_t preferedBufferSizeWithOverhead);
+	void setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead);
 
 
 private:
@@ -117,17 +118,17 @@ private:
 
 	//Maximum buffer size supported by the algorithm.
 	//Used when isStreamCipher = false
-	uint_least64_t maxBufferSize;
+	uint64 maxBufferSize;
 
 	//Buffer size to be used when isStreamCipher = false (block cipher)
 	//This may be smaller than the prefered buffer size if
 	//it is set to be larger than what the algorithm can handle.
-	uint_least64_t bufferSize = 0;
+	uint64 bufferSize = 0;
 
 	//Buffer size including possible overhead. To be used when isStreamCipher = false
 	//This is in case the algorithm adds extra data on encryption like authentication tags.
 	//This is to prevent an overflow and a SIGSEGV.
-	uint_least64_t bufferSizeWithOverhead = 0;
+	uint64 bufferSizeWithOverhead = 0;
 
     //funcs
 
