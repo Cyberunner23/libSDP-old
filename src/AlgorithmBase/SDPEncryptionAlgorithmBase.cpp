@@ -27,55 +27,55 @@ SDPEncryptionAlgorithmBase::~SDPEncryptionAlgorithmBase(){
 
 int SDPEncryptionAlgorithmBase::setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex){
 
-	HexBinTool hexBinTool;
+    HexBinTool hexBinTool;
 
-	if(isEncryptionKeyInHex){
-		hexBinTool.hexToBin(encryptionKey, encryptionKeyInBin);
-	}else{
+    if(isEncryptionKeyInHex){
+        hexBinTool.hexToBin(encryptionKey, encryptionKeyInBin);
+    }else{
         encryptionKeyInBin = encryptionKey;
     }
 
-	if(encryptionKeyInBin.size() != encryptionKeyWidthInBits/8){
-		return -1;
-	}
+    if(encryptionKeyInBin.size() != encryptionKeyWidthInBits/8){
+        return -1;
+    }
 
     if(isNonceInHex){
-		hexBinTool.hexToBin(nonce, nonceInBin);
+        hexBinTool.hexToBin(nonce, nonceInBin);
     }else{
         nonceInBin = nonce;
     }
 
-	if(nonceInBin.size() != nonceWidthInBits/8){
-		return -2;
-	}
+    if(nonceInBin.size() != nonceWidthInBits/8){
+        return -2;
+    }
 
-	return 0;
+    return 0;
 }
 
 int SDPEncryptionAlgorithmBase::setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex){
 
-	HexBinTool hexBinTool;
+    HexBinTool hexBinTool;
 
-	if(isEncryptionKeyInHex){
-		hexBinTool.hexToBin(encryptionKey, encryptionKeyInBin);
-	}else{
-		encryptionKeyInBin = encryptionKey;
-	}
+    if(isEncryptionKeyInHex){
+        hexBinTool.hexToBin(encryptionKey, encryptionKeyInBin);
+    }else{
+        encryptionKeyInBin = encryptionKey;
+    }
 
-	return encryptionKeyInBin.size() != encryptionKeyWidthInBits/8 ? -1 : 0;
+    return encryptionKeyInBin.size() != encryptionKeyWidthInBits/8 ? -1 : 0;
 }
 
 int SDPEncryptionAlgorithmBase::setNonce(std::string nonce, bool isNonceInHex){
 
-	HexBinTool hexBinTool;
+    HexBinTool hexBinTool;
 
-	if(isNonceInHex){
-		hexBinTool.hexToBin(nonce, nonceInBin);
-	}else{
-		nonceInBin = nonce;
-	}
+    if(isNonceInHex){
+        hexBinTool.hexToBin(nonce, nonceInBin);
+    }else{
+        nonceInBin = nonce;
+    }
 
-	return nonceInBin.size() != nonceWidthInBits/8 ? -1 : 0;
+    return nonceInBin.size() != nonceWidthInBits/8 ? -1 : 0;
 }
 
 
@@ -84,16 +84,16 @@ uint8 SDPEncryptionAlgorithmBase::getEncryptionAlgorithmID(){
 }
 
 bool SDPEncryptionAlgorithmBase::getIsStreamCipher(){
-	return isStreamCipher;
+    return isStreamCipher;
 }
 
 
 uint_least64_t SDPEncryptionAlgorithmBase::getBufferSize(){
-	return bufferSize;
+    return bufferSize;
 }
 
 uint_least64_t SDPEncryptionAlgorithmBase::getBufferSizeWithOverhead(){
-	return bufferSizeWithOverhead;
+    return bufferSizeWithOverhead;
 }
 
 
@@ -102,32 +102,32 @@ void SDPEncryptionAlgorithmBase::setEncryptionAlgorithmID(uint8 algorithmID){
 }
 
 void SDPEncryptionAlgorithmBase::setIsStreamCipher(bool isStreamCipher){
-	this->isStreamCipher = isStreamCipher;
+    this->isStreamCipher = isStreamCipher;
 }
 
 void SDPEncryptionAlgorithmBase::setEncryptionKeyWidthInBits(unsigned encryptionKeyWidthInBits){
-	this->encryptionKeyWidthInBits = encryptionKeyWidthInBits;
+    this->encryptionKeyWidthInBits = encryptionKeyWidthInBits;
 }
 
 void SDPEncryptionAlgorithmBase::setNonceWidthInBits(unsigned int nonceWidthInBits){
-	this->nonceWidthInBits = nonceWidthInBits;
+    this->nonceWidthInBits = nonceWidthInBits;
 }
 
 void SDPEncryptionAlgorithmBase::setMaxBufferSize(uint64 maxBufferSize){
-	this->maxBufferSize = maxBufferSize;
+    this->maxBufferSize = maxBufferSize;
 }
 
 bool SDPEncryptionAlgorithmBase::setPreferedBufferSize(uint64 preferedBufferSize){
 
-	if(preferedBufferSize <= maxBufferSize){
-		bufferSize = preferedBufferSize;
-		return true;
-	}
+    if(preferedBufferSize <= maxBufferSize){
+        bufferSize = preferedBufferSize;
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 void SDPEncryptionAlgorithmBase::setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead){
-	bufferSizeWithOverhead = preferedBufferSizeWithOverhead;
+    bufferSizeWithOverhead = preferedBufferSizeWithOverhead;
 }
 
