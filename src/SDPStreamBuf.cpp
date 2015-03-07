@@ -21,10 +21,10 @@ Copyright 2014 Alex Frappier Lachapelle
 
 SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::shared_ptr<std::iostream> inOutStream){
 
-    memset(&SDPFileInfo, 0, sizeof(SDPFileInfoStruct));
+    SDPFileInfo = {};
 
     //Check file header.
-    if(!getSDPFileHeader(inOutStream, SDPFileInfo.SDPFileHeader))
+    if(getSDPFileHeader(inOutStream, SDPFileInfo.SDPFileHeader) != SDP_NO_ERROR)
         return SDP_INVALID_FILE_HEADER;
 
     while(true){
