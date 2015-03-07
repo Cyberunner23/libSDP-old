@@ -59,7 +59,6 @@ public:
 	virtual int setNonce(std::string nonce, bool isNonceInHex);
 
 	bool 		   getIsStreamCipher();
-	bool		   getIsSeekingSupported();
 	uint_least64_t getBufferSize();
 	uint_least64_t getBufferSizeWithOverhead();
 
@@ -74,10 +73,6 @@ protected:
 	//Should be set somewhere in the algorithm's constructor or onInit?
 	//true = stream cipher, false = block cipher.
 	void setIsStreamCipher(bool isStreamCipher);
-
-	//Should be set somewhere in the algorithm's constructor or onInit?
-	//true = seeking supported, false = seeking not supported.
-	void setIsSeekingSupported(bool isSeekingSupported);
 
 	//Should be set somewhere in the algorithm's constructor or onInit
 	//Sets the supported key length in bits for the algorithm.
@@ -109,9 +104,6 @@ private:
 
 	//true = stream cipher, false = block cipher
 	bool isStreamCipher;
-
-	//true = seeking supported, false = seeking not supported.
-	bool isSeekingSupported;
 
 	unsigned int encryptionKeyWidthInBits;
 	unsigned int nonceWidthInBits;
