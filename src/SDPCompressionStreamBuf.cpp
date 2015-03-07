@@ -106,7 +106,7 @@ int SDPCompressionStreamBuf::sync(){
         compressedBuffer.clear();
         compressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSizeWithOverhead);//add overhead comprensation
 
-        uint_least64_t numCompressedBytes;
+        uint64 numCompressedBytes;
         numCompressedBytes = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedBuffer.size());
 
         currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onSync();
@@ -170,7 +170,7 @@ int SDPCompressionStreamBuf::getNextChar(bool doAdvance){
         uncompressedBuffer.clear();
         compressedBuffer.clear();
 
-        uint_least64_t numCompressedBytes;
+        uint64 numCompressedBytes;
 
 
         //Read compressed data size
@@ -183,7 +183,7 @@ int SDPCompressionStreamBuf::getNextChar(bool doAdvance){
         }
 
         //Read is data compressed tag
-        uint_least8_t isDataCompressedTag;
+        uint8 isDataCompressedTag;
         if(rawFileIO.read(isDataCompressedTag, inStream) != sizeof isDataCompressedTag){
             return traits_type::eof();
         }else if (isDataCompressedTag != 0x00 && isDataCompressedTag != 0xFF){
@@ -209,7 +209,7 @@ int SDPCompressionStreamBuf::getNextChar(bool doAdvance){
 
             uncompressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSize);
 
-            uint_least64_t numBytesUncompressed;
+            uint64 numBytesUncompressed;
             numBytesUncompressed = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->decompress(compressedBuffer.data(), uncompressedBuffer.data(), compressedBuffer.size());
 
             uncompressedBuffer.resize(numBytesUncompressed);
@@ -249,7 +249,7 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::setNextChar(int_type 
         //compressedBuffer.clear();
         compressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSizeWithOverhead);
 
-        uint_least64_t numCompressedBytes;
+        uint64 numCompressedBytes;
         numCompressedBytes = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedBuffer.size());
 
         //check if we encountered an unompressible block.
