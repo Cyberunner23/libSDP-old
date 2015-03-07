@@ -154,13 +154,13 @@ private:
     //Vars
 
     static const uint32 magicWord = 0x53445041;
-    SDPVer SDPVersion;
+    SDPVer              SDPVersion;
 
     SDPFileInfoStruct SDPFileInfo;
 
     std::shared_ptr<std::istream> SDPInStream;
     std::shared_ptr<std::ostream> SDPOutStream;
-    RawFileIO rawFileIO;
+    RawFileIO                     rawFileIO;
 
 
     //Funcs
