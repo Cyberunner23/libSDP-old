@@ -16,6 +16,7 @@ Copyright 2014 Alex Frappier Lachapelle
 
 #include <sodium/crypto_hash_sha256.h>
 #include <string.h>
+#include <tclDecls.h>
 #include "SDPStreamBuf.hpp"
 
 
@@ -28,6 +29,7 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::shared_ptr<std::ios
     if(getSDPFileHeader(inOutStream, SDPFileInfo.SDPFileHeader) != SDP_NO_ERROR)
         return SDP_INVALID_FILE_HEADER;
 
+    //Loop through the sub-content headers.
     while(true){
 
         SDPSubContainerInfoStruct tmpSubContainerInfo = {};
@@ -38,6 +40,40 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::shared_ptr<std::ios
             SDPFileInfo.numOfSubContainers++;
             //Skip to the next Sub-Container header (end of the current Sub-Container's data section.)
             inOutStream.get()->seekg(tmpSubContainerInfo.endDataPos, inOutStream.get()->beg);
+        }else{
+            //If EOS reached then ignore the incomplete header and finish with parsing headers.
+            break;
+        }
+    }
+
+    return SDP_NO_ERROR;
+}
+
+SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::string &fileName){
+
+    SDPFileInfo                    = {};
+    SDPFileInfo.numOfSubContainers = 0;
+
+    //Open file.
+    SDPFstream.get()->open(fileName.c_str(), std::fstream::in | std::fstream::out | std::fstream::binary);
+    if(!SDPFstream.get()->is_open())
+        return SDP_CANNOT_OPEN_FILE;
+
+    //Check file header.
+    if(getSDPFileHeader(SDPFstream, SDPFileInfo.SDPFileHeader) != SDP_NO_ERROR)
+        return SDP_INVALID_FILE_HEADER;
+
+    //Loop through the sub-content headers.
+    while(true){
+
+        SDPSubContainerInfoStruct tmpSubContainerInfo = {};
+        SDPStreamBufErrEnum retVal                    = getSDPSubContainerInfo(SDPFstream, tmpSubContainerInfo);
+        if(retVal != SDP_EOS_REACHED){
+            //Add Sub-Container info to SDPFileInfo even in its invalid (internally marked as invalid)
+            SDPFileInfo.subContainersInSDPFile.insert(std::pair<std::string, SDPSubContainerInfoStruct>(tmpSubContainerInfo.subContainerFileName, tmpSubContainerInfo));
+            SDPFileInfo.numOfSubContainers++;
+            //Skip to the next Sub-Container header (end of the current Sub-Container's data section.)
+            SDPFstream.get()->seekg(tmpSubContainerInfo.endDataPos, SDPFstream.get()->beg);
         }else{
             //If EOS reached then ignore the incomplete header and finish with parsing headers.
             break;

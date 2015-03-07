@@ -120,6 +120,7 @@ public:
     //SDP reading funcs
 
     SDPStreamBufErrEnum openSDP(std::shared_ptr<std::iostream> inOutStream);
+    SDPStreamBufErrEnum openSDP(std::string &fileName);
     SDPFileInfoStruct*  getSDPFileInfo();
 
     SDPStreamBufErrEnum       createSDP();
@@ -160,6 +161,7 @@ private:
 
     std::shared_ptr<std::istream> SDPInStream;
     std::shared_ptr<std::ostream> SDPOutStream;
+    std::shared_ptr<std::fstream> SDPFstream;
     RawFileIO                     rawFileIO;
 
 
