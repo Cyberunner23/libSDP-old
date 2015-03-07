@@ -42,8 +42,9 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Added buffer size checking for prefered buffer size with overhead.">
+    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" afterPath="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" afterPath="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -69,9 +70,11 @@
             <file leaf-file-name="SDPCompressionStreamBuf.cpp" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.27231467">
-                    <caret line="157" column="92" selection-start-line="157" selection-start-column="92" selection-end-line="157" selection-end-column="92" />
-                    <folding />
+                  <state vertical-scroll-proportion="0.5098336">
+                    <caret line="290" column="0" selection-start-line="290" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
+                    <folding>
+                      <element signature="e#8663#10458#0" expanded="false" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -99,21 +102,21 @@
     <splitter split-orientation="horizontal" split-proportion="0.5659701">
       <split-first>
         <leaf>
-          <file leaf-file-name="SDPCompressionAlgorithmBase.hpp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="SDPCompressionAlgorithmBase.hpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+                <state vertical-scroll-proportion="0.31929046">
+                  <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SDPCompressionStreamBuf.hpp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="SDPCompressionStreamBuf.hpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.48337027">
-                  <caret line="45" column="74" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="85" column="34" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
@@ -138,7 +141,7 @@
           <file leaf-file-name="SDP_Spec.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.3370289">
+                <state vertical-scroll-proportion="0.4390244">
                   <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
                   <folding />
                 </state>
@@ -200,10 +203,10 @@
         <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" />
         <option value="$PROJECT_DIR$/include/SDPVer.hpp" />
         <option value="$PROJECT_DIR$/docs/SDP_Spec.txt" />
-        <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" />
         <option value="$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" />
-        <option value="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
+        <option value="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" />
+        <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" />
       </list>
     </option>
   </component>
@@ -555,12 +558,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00014" summary="Making dependencies as submodules.">
-      <created>1424096995929</created>
-      <option name="number" value="00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1424096995929</updated>
-    </task>
     <task id="LOCAL-00015" summary="Changed CmakeLists.txt to use library from submodule.">
       <created>1424104840039</created>
       <option name="number" value="00015" />
@@ -849,7 +846,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425761462440</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Forgot a couple things when removing byte per byte compression.">
+      <created>1425762826284</created>
+      <option name="number" value="00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1425762826284</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -919,7 +922,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Fixed more odd spacing." />
     <MESSAGE value="Made some eos detection within the header checking." />
     <MESSAGE value="Fixed some slight spacing derpage." />
     <MESSAGE value="Fixed an error check. +  cleaned up a struct resetting I forgot." />
@@ -944,7 +946,8 @@
     <MESSAGE value="Added capability to compression algorithms to be aware of the position in the stream they're working on." />
     <MESSAGE value="Removed support for byte per byte compression, byte in byte out, no compression can happen on a single byte." />
     <MESSAGE value="Added buffer size checking for prefered buffer size with overhead." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added buffer size checking for prefered buffer size with overhead." />
+    <MESSAGE value="Forgot a couple things when removing byte per byte compression." />
+    <option name="LAST_COMMIT_MESSAGE" value="Forgot a couple things when removing byte per byte compression." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -965,17 +968,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#597#0" expanded="false" />
-            <element signature="e#656#675#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1259,6 +1251,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.67849225">
           <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1338,7 +1331,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3370289">
+        <state vertical-scroll-proportion="0.4390244">
           <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
           <folding />
         </state>
@@ -1354,14 +1347,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1370,18 +1355,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/include/c++/4.9.2/bits/char_traits.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41452345">
+          <caret line="386" column="32" selection-start-line="386" selection-start-column="32" selection-end-line="386" selection-end-column="32" />
+          <folding>
+            <element signature="e#12560#12562#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27231467">
-          <caret line="157" column="92" selection-start-line="157" selection-start-column="92" selection-end-line="157" selection-end-column="92" />
-          <folding />
+        <state vertical-scroll-proportion="0.5098336">
+          <caret line="290" column="0" selection-start-line="290" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
+          <folding>
+            <element signature="e#8663#10458#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48337027">
-          <caret line="45" column="74" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="34" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31929046">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
           <folding />
         </state>
       </provider>

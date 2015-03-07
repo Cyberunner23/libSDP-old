@@ -14,8 +14,8 @@ public:
     SDPCompressionAlgorithmBase();
     ~SDPCompressionAlgorithmBase();
 
-    virtual uint64 decompress(unsigned char* compressedBuffer,   unsigned char* decompressedBuffer, uint64 compressedBufferSize,   uint64 chunkNum) = 0;
-    virtual uint64 compress  (unsigned char* uncompressedBuffer, unsigned char* compressedBuffer,   uint64 uncompressedBufferSize, uint64 chunkNum) = 0;
+    virtual uint64 decompress(unsigned char* compressedBuffer,   unsigned char* decompressedBuffer, uint64 compressedBufferSize,   uint64 expectedDecompressedDataSize,  uint64 chunkNum) = 0;
+    virtual uint64 compress(unsigned char*   uncompressedBuffer, unsigned char* compressedBuffer,   uint64 uncompressedBufferSize, uint64 chunkNum) = 0;
 
     virtual void onInit() = 0;
     virtual void onExit() = 0;

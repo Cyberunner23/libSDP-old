@@ -55,7 +55,6 @@ SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::ostream> c
     }
 
     currentChunkNum = 0;
-    currentCharPos  = 0;
 
 }
 
@@ -73,7 +72,6 @@ void SDPCompressionStreamBuf::setCompressionAlgorithm(std::shared_ptr<SDPCompres
     }
     if(resetPosCounter){
         currentChunkNum = 0;
-        currentCharPos  = 0;
     }
     currentCompressionAlgorithmInfo = makeCompressionAlgorithmInfo(compressionAlgorithm);
     currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onInit();
@@ -147,7 +145,6 @@ int SDPCompressionStreamBuf::sync(){
 
     outStream->flush();
 
-
     return 0;
 }
 
@@ -163,7 +160,7 @@ SDPCompressionStreamBuf::SDPCompressionAlgorithmInfoStruct SDPCompressionStreamB
 }
 
 
-int SDPCompressionStreamBuf::getNextChar(bool doAdvance){
+SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::getNextChar(bool doAdvance){
 
     if(!doAdvance){
         return nextChar;
@@ -293,8 +290,13 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::setNextChar(int_type 
 }
 
 
+bool SDPCompressionStreamBuf::readAndDecompressNextChunk(){
 
+}
 
+bool SDPCompressionStreamBuf::compressAndWriteNextChunk(){
+
+}
 
 
 

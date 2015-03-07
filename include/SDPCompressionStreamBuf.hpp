@@ -73,7 +73,7 @@ private:
 
     //Vars
 
-    unsigned char nextChar;
+    uchar nextChar;
 
     bool hasFirstBlockBeenRead;
 
@@ -83,6 +83,7 @@ private:
 
     std::shared_ptr<std::istream> inStream;
     std::shared_ptr<std::ostream> outStream;
+    RawFileIO                     rawFileIO;
 
     SDPCompressionAlgorithmInfoStruct currentCompressionAlgorithmInfo;
     uint64                            currentChunkNum;
@@ -91,8 +92,13 @@ private:
 
     SDPCompressionAlgorithmInfoStruct makeCompressionAlgorithmInfo(std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm);
 
-    int      getNextChar(bool doAdvance);
+    int_type getNextChar(bool doAdvance);
     int_type setNextChar(int_type ch);
+
+    bool readAndDecompressNextChunk();
+    bool compressAndWriteNextChunk();
+
+
 
 };
 
