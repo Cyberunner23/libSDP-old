@@ -113,7 +113,7 @@ std::streampos SDPStreamBuf::seekpos(std::streampos streamPos, std::ios_base::op
 }
 
 
-bool SDPStreamBuf::getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPFileHeaderStruct &SDPFileHeader){
+SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPFileHeaderStruct &SDPFileHeader){
 
     bool isHeaderValid = true;
     HexBinTool hexBinTool;
@@ -121,29 +121,37 @@ bool SDPStreamBuf::getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPF
     SDPFileHeader = {};
 
     //Check magic word.
-    if(rawFileIO.read(SDPFileHeader.magicNumber, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPFileHeader.magicNumber) || SDPFileHeader.magicNumber != magicWord)
+    if(rawFileIO.read(SDPFileHeader.magicNumber, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPFileHeader.magicNumber))
+        return SDP_EOS_REACHED; //Assume end of stream.
+    if(SDPFileHeader.magicNumber != magicWord)
         isHeaderValid = false;
 
     //Check spec rev.
-    if(rawFileIO.read(SDPFileHeader.SDPSpecRev.major, inStream) != sizeof(SDPFileHeader.SDPSpecRev.major) || SDPFileHeader.SDPSpecRev.major != SDPVersion.SDPSpecRev.major)
+    //major
+    if(rawFileIO.read(SDPFileHeader.SDPSpecRev.major, inStream) != sizeof(SDPFileHeader.SDPSpecRev.major))
+        return SDP_EOS_REACHED; //Assume end of stream.
+    if(SDPFileHeader.SDPSpecRev.major != SDPVersion.SDPSpecRev.major)
         isHeaderValid = false;
-    if(rawFileIO.read(SDPFileHeader.SDPSpecRev.minor, inStream) != sizeof(SDPFileHeader.SDPSpecRev.minor) || SDPFileHeader.SDPSpecRev.minor != SDPVersion.SDPSpecRev.minor)
+    //minor
+    if(rawFileIO.read(SDPFileHeader.SDPSpecRev.minor, inStream) != sizeof(SDPFileHeader.SDPSpecRev.minor))
+        return SDP_EOS_REACHED; //Assume end of stream.
+    if(SDPFileHeader.SDPSpecRev.minor != SDPVersion.SDPSpecRev.minor)
         isHeaderValid = false;
 
     //check size of and read extra field
     if(rawFileIO.read(SDPFileHeader.extraFieldSize, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPFileHeader.extraFieldSize))
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
     SDPFileHeader.extraField.resize(SDPFileHeader.extraFieldSize);
     inStream.get()->read((char*)SDPFileHeader.extraField.data(), SDPFileHeader.extraFieldSize);
     if(inStream.get()->gcount() != SDPFileHeader.extraFieldSize)
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
 
     //Get expected header hash.
     std::string expectedHashInFile;
     expectedHashInFile.resize(crypto_hash_sha256_BYTES);
     inStream.get()->read((char*)expectedHashInFile.data(), crypto_hash_sha256_BYTES);
     if(inStream.get()->gcount() != crypto_hash_sha256_BYTES)
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
     hexBinTool.binToHex(expectedHashInFile, SDPFileHeader.expectedHeaderHash);
 
     //Compute actual header file.
@@ -163,10 +171,10 @@ bool SDPStreamBuf::getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPF
     if(SDPFileHeader.actualHeaderHash != SDPFileHeader.expectedHeaderHash)
         isHeaderValid = false;
 
-    return isHeaderValid;
+    return isHeaderValid ? SDP_NO_ERROR : SDP_INVALID_HEADER;
 }
 
-bool SDPStreamBuf::getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream, SDPSubContainerInfoStruct &SDPSubContainerInfo){
+SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream, SDPSubContainerInfoStruct &SDPSubContainerInfo){
 
     //Check Sub-Container header.
     SDPSubContainerInfo = {};
@@ -176,18 +184,18 @@ bool SDPStreamBuf::getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream
 
     //Get size of the name for the file stored in the sub-container.
     if(rawFileIO.read(SDPSubContainerInfo.subContainerHeader.fileNameLength, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPSubContainerInfo.subContainerHeader.fileNameLength))
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
 
     //Get the name for the file stored in the sub-container.
     SDPSubContainerInfo.subContainerHeader.fileName.resize(SDPSubContainerInfo.subContainerHeader.fileNameLength);
     inStream.get()->read((char*)SDPSubContainerInfo.subContainerHeader.fileName.data(), SDPSubContainerInfo.subContainerHeader.fileNameLength);
     if(inStream.get()->gcount() != SDPSubContainerInfo.subContainerHeader.fileNameLength)
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
 
     //Get sub-container type
     uint8 subContainerTypeChar;
     if(rawFileIO.read(subContainerTypeChar, inStream) != sizeof(subContainerTypeChar))
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
     if(subContainerTypeChar < 0x01 || subContainerTypeChar > 0x04)
         isHeaderValid = false;
     SDPSubContainerInfo.subContainerHeader.subContainerType = static_cast<SDPSubContainerHeaderStruct::subContainerTypeEnum> (subContainerTypeChar);
@@ -195,7 +203,7 @@ bool SDPStreamBuf::getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream
     //Get compression algorithm ID.
     uint8 compressionAlgorithmIDChar;
     if(rawFileIO.read(compressionAlgorithmIDChar, inStream) != sizeof(compressionAlgorithmIDChar))
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
     if(compressionAlgorithmIDChar < 0x00 || compressionAlgorithmIDChar > 0x02)
         isHeaderValid = false;
     SDPSubContainerInfo.subContainerHeader.compressionAlgorithmID = static_cast<SDPSubContainerHeaderStruct::compressionAlgorithmIDEnum> (compressionAlgorithmIDChar);
@@ -203,29 +211,29 @@ bool SDPStreamBuf::getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream
     //Get Encryption Algorithm ID.
     uint8 encryptionAlgorithmIDChar;
     if(rawFileIO.read(encryptionAlgorithmIDChar, inStream) != sizeof(encryptionAlgorithmIDChar))
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
     if(encryptionAlgorithmIDChar < 0x00 || encryptionAlgorithmIDChar > 0x05)
         isHeaderValid = false;
     SDPSubContainerInfo.subContainerHeader.encryptionAlgorithmID = static_cast<SDPSubContainerHeaderStruct::encryptionAlgorithmIDEnum> (encryptionAlgorithmIDChar);
 
     //Get size of extra field and its contents
     if(rawFileIO.read(SDPSubContainerInfo.subContainerHeader.extraFieldSize, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPSubContainerInfo.subContainerHeader.extraFieldSize))
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
     SDPSubContainerInfo.subContainerHeader.extraField.resize(SDPSubContainerInfo.subContainerHeader.extraFieldSize);
     inStream.get()->read((char*)SDPSubContainerInfo.subContainerHeader.extraField.data(), SDPSubContainerInfo.subContainerHeader.extraFieldSize);
     if(inStream.get()->gcount() != SDPSubContainerInfo.subContainerHeader.extraFieldSize)
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
 
     //Get size of sub-container data
     if(rawFileIO.read(SDPSubContainerInfo.subContainerHeader.subContainerDataSize, inStream, RawFileIO::BIG__ENDIAN) != sizeof(SDPSubContainerInfo.subContainerHeader.subContainerType))
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
 
     //Get expected hash of sub-container data.
     std::string expectedSubContainerDataHash;
     expectedSubContainerDataHash.resize(crypto_hash_sha256_BYTES);
     inStream.get()->read((char*)expectedSubContainerDataHash.data(), crypto_hash_sha256_BYTES);
     if(inStream.get()->gcount() != crypto_hash_sha256_BYTES)
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
     hexBinTool.binToHex(expectedSubContainerDataHash, SDPSubContainerInfo.subContainerHeader.expectedSubContainerDataHash);
 
     //Get expected hash of sub-container header.
@@ -233,7 +241,7 @@ bool SDPStreamBuf::getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream
     expectedSubContainerHeaderHash.resize(crypto_hash_sha256_BYTES);
     inStream.get()->read((char*)expectedSubContainerHeaderHash.data(), crypto_hash_sha256_BYTES);
     if(inStream.get()->gcount() != crypto_hash_sha256_BYTES)
-        isHeaderValid = false;
+        return SDP_EOS_REACHED; //Assume end of stream.
     hexBinTool.binToHex(expectedSubContainerHeaderHash, SDPSubContainerInfo.subContainerHeader.expectedSubContainerHeaderHash);
 
     //Compute actual hash of sub-container header.
@@ -266,6 +274,8 @@ bool SDPStreamBuf::getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream
         uchar tmp = 0;
         inStream.get()->read(reinterpret_cast<char*>(tmp), sizeof(reinterpret_cast<char*>(tmp)));
         crypto_hash_sha256_update(&sha256HashData, &tmp, sizeof(&tmp));
+        if(inStream.get()->gcount() != sizeof(reinterpret_cast<char*>(tmp)))
+            return SDP_EOS_REACHED; //Assume end of stream.
     }
     crypto_hash_sha256_final(&sha256HashData, digestData);
     hexBinTool.binToHex(std::string(reinterpret_cast<char*>(digestData)), SDPSubContainerInfo.subContainerHeader.actualSubContainerDataHash);
@@ -283,7 +293,7 @@ bool SDPStreamBuf::getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream
     SDPSubContainerInfo.begDataPos           = (uint64)inStream.get()->tellg();
     SDPSubContainerInfo.endDataPos           = (uint64)inStream.get()->tellg() + SDPSubContainerInfo.subContainerHeader.subContainerDataSize;
 
-    return isHeaderValid;
+    return isHeaderValid ? SDP_NO_ERROR : SDP_INVALID_HEADER;
 }
 
 

@@ -108,7 +108,10 @@ public:
 
     enum SDPStreamBufErrEnum{
         SDP_NO_ERROR,
-        SDP_INVALID_FILE_HEADER
+        SDP_CANNOT_OPEN_FILE,
+        SDP_INVALID_FILE_HEADER,
+        SDP_INVALID_HEADER,
+        SDP_EOS_REACHED
     };
 
 
@@ -163,11 +166,11 @@ private:
     //Funcs
 
     //Read the header at current stream position
-    //returns true if header is valid, false otherwise.
-    bool getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPFileHeaderStruct &SDPFileHeader);
+    //returns 0 if valid header, -1 if invalid header, -2 if eos reached.
+    SDPStreamBufErrEnum getSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPFileHeaderStruct &SDPFileHeader);
     //Read the sub-container's header at current stream position
-    //returns true if header is valid, false otherwise.
-    bool getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream, SDPSubContainerInfoStruct &SDPSubContainerInfo);
+    //returns 0 if valid header, -1 if invalid header, -2 if eos reached.
+    SDPStreamBufErrEnum getSDPSubContainerInfo(std::shared_ptr<std::istream> inStream, SDPSubContainerInfoStruct &SDPSubContainerInfo);
 
 
 };
