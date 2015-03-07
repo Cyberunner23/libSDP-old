@@ -14,7 +14,6 @@ Copyright 2014 Alex Frappier Lachapelle
    limitations under the License.
 */
 
-#include <sodium/utils.h>
 #include "SDPCryptStreamBuf.hpp"
 
 

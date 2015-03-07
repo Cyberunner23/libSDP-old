@@ -23,7 +23,6 @@ Copyright 2014 Alex Frappier Lachapelle
 
 #include "RawFileIO.hpp"
 #include "SDPEncryptionAlgorithmBase.hpp"
-//#include "SDPAES256GCMAlgorithm.hpp"
 
 //TODO: implement seeking
 
