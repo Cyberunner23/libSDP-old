@@ -47,7 +47,6 @@
   <component name="ChangeListManager">
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" afterPath="$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" afterPath="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -72,7 +71,7 @@
             <file leaf-file-name="SDPEncryptionAlgorithmBase.cpp" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="-0.4977307">
+                  <state vertical-scroll-proportion="1.9878972">
                     <caret line="82" column="33" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
                     <folding />
                   </state>
@@ -83,7 +82,7 @@
               <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0">
-                    <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+                    <caret line="254" column="55" selection-start-line="254" selection-start-column="55" selection-end-line="254" selection-end-column="55" />
                     <folding />
                   </state>
                 </provider>
@@ -105,8 +104,8 @@
           <file leaf-file-name="SDPEncryptionAlgorithmBase.hpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.67849225">
-                  <caret line="73" column="71" selection-start-line="73" selection-start-column="71" selection-end-line="73" selection-end-column="71" />
+                <state vertical-scroll-proportion="0.4390244">
+                  <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
                   <folding>
                     <element signature="e#674#693#0" expanded="true" />
                   </folding>
@@ -184,11 +183,11 @@
         <option value="$PROJECT_DIR$/include/SDPVer.hpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/SDPStreamBuf.hpp" />
-        <option value="$PROJECT_DIR$/src/SDPStreamBuf.cpp" />
         <option value="$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp" />
         <option value="$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp" />
-        <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" />
         <option value="$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" />
+        <option value="$PROJECT_DIR$/src/SDPStreamBuf.cpp" />
+        <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" />
       </list>
     </option>
   </component>
@@ -540,18 +539,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00001" summary="Fixed bug where headers from CryptoPP-Cmake were not getting included.">
-      <created>1421200847379</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1421200847379</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Seperated CryptoPP-Cmake and CVT cloning stages and fixed bugs that were caused when leaving these two stages together. + Did some better documenting. + some other stuff....">
-      <created>1421463364386</created>
-      <option name="number" value="00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1421463364386</updated>
-    </task>
     <task id="LOCAL-00003" summary="Fixed a typo and removed the &quot;MESSAGE(&quot;CVT&quot;)&quot; used for debug/testing the CmakeLists.txt">
       <created>1421463599993</created>
       <option name="number" value="00003" />
@@ -828,7 +815,25 @@
       <option name="project" value="LOCAL" />
       <updated>1425699742915</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Added getting/setting of the encryption algorithm ID in SDPEncryptionAlgorithmBase.">
+      <created>1425701752497</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1425701752497</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Removed checking of bounds for the encryption/compression algorithm ID so that user defined algorithms/IDs don't invalidate the sub-container's header.">
+      <created>1425701956267</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1425701956269</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Missed some types in the uint style conversion.">
+      <created>1425702117438</created>
+      <option name="number" value="00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1425702117438</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -898,9 +903,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Changed SDPVer class to reflect changes in the SDP Spec. Rev. system. + incremented patch version for lib, added new spec." />
-    <MESSAGE value="Changed tabs to spaces in SDPVer class. (To make it cleaner on github which seems to use 8 space tabs, I prefer 4 space tabs)" />
-    <MESSAGE value="Missed some..." />
     <MESSAGE value="Changed tabs to spaces in SDP Spec. (To make it cleaner on github which seems to use 8 space tabs, I prefer 4 space tabs)" />
     <MESSAGE value="Added a isHeaderValid in the info structs. + a small edit (which will be changed later on)." />
     <MESSAGE value="Added a isHeaderValid in the info structs. + changed tabs to spaces (SDPStreamBuf) + a small edit (which will be changed later on)." />
@@ -923,7 +925,10 @@
     <MESSAGE value="Removed useless includes." />
     <MESSAGE value="Switched SDPEncryptionAlgorithmBase to use uint style variables." />
     <MESSAGE value="Removed isSeekingSupported in SDPEncryptionAlgorithmBase, seeking is now obligatory to all encryption algorithms." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed isSeekingSupported in SDPEncryptionAlgorithmBase, seeking is now obligatory to all encryption algorithms." />
+    <MESSAGE value="Added getting/setting of the encryption algorithm ID in SDPEncryptionAlgorithmBase." />
+    <MESSAGE value="Removed checking of bounds for the encryption/compression algorithm ID so that user defined algorithms/IDs don't invalidate the sub-container's header." />
+    <MESSAGE value="Missed some types in the uint style conversion." />
+    <option name="LAST_COMMIT_MESSAGE" value="Missed some types in the uint style conversion." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1283,14 +1288,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/SDPStreamBuf.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1344,29 +1341,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67849225">
-          <caret line="73" column="71" selection-start-line="73" selection-start-column="71" selection-end-line="73" selection-end-column="71" />
-          <folding>
-            <element signature="e#674#693#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.4977307">
-          <caret line="82" column="33" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3569845">
           <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SDPStreamBuf.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="254" column="55" selection-start-line="254" selection-start-column="55" selection-end-line="254" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9878972">
+          <caret line="82" column="33" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4390244">
+          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+          <folding>
+            <element signature="e#674#693#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

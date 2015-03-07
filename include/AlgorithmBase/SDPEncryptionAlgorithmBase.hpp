@@ -48,11 +48,6 @@ public:
 	virtual void onInit() = 0;
 	virtual void onExit() = 0;
     virtual void onSync() = 0;
-	//Rewind to the beginning of the stream and reset the encryption algorithm's internal
-	//data structures if necessary. (this MUST be defined even if seeking is not supported)
-	virtual void onRewind() = 0;
-
-
 
     virtual int setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex);
 	virtual int setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);
