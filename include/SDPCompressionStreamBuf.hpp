@@ -96,7 +96,7 @@ private:
     int_type setNextChar(int_type ch);
 
     bool readAndDecompressNextChunk();
-    bool compressAndWriteNextChunk();
+    void compressAndWriteNextChunk();
 
 
 

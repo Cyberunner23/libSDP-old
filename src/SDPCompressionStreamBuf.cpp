@@ -347,7 +347,45 @@ bool SDPCompressionStreamBuf::readAndDecompressNextChunk(){
     return true;
 }
 
-bool SDPCompressionStreamBuf::compressAndWriteNextChunk(){
+void SDPCompressionStreamBuf::compressAndWriteNextChunk(){
+
+    uint64 compressedDataSize;
+    uint64 uncompressedDataSize;
+
+    compressedBuffer.clear();
+    compressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSizeWithOverhead);
+    uncompressedDataSize = uncompressedBuffer.size();
+
+    //Compress
+    compressedDataSize = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedDataSize, currentChunkNum);
+
+    //Write compressed data size (value will be ignored if data is incompressible.)
+    rawFileIO.write(compressedDataSize, outStream, RawFileIO::BIG__ENDIAN);
+    //Write uncompressed data size.
+    rawFileIO.write(uncompressedDataSize, outStream, RawFileIO::BIG__ENDIAN);
+
+    //If the compressed data is of equal size or larger than the uncompressed data.
+    //Assume incompressible chunk and write uncompressed data
+    if(compressedDataSize >= uncompressedDataSize){
+
+        //Write is data compressed tag (false).
+        uint8 falseTag = 0x00;
+        rawFileIO.write(falseTag, outStream);
+        //Write uncompressed data.
+        outStream.get()->write((char*)uncompressedBuffer.data(), uncompressedDataSize);
+
+    }else{
+
+        //Write is data compressed tag (true).
+        uint8 falseTag = 0xFF;
+        rawFileIO.write(falseTag, outStream);
+        //Write compressed data.
+        outStream.get()->write((char*)compressedBuffer.data(), compressedDataSize);
+
+    }
+
+    uncompressedBuffer.clear();
+    currentChunkNum++;
 
 }
 
