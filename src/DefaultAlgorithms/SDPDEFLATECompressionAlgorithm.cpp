@@ -40,7 +40,7 @@ uint64 SDPDEFLATECompressionAlgorithm::decompressBuffer(uchar *compressedBuffer,
 uint64 SDPDEFLATECompressionAlgorithm::compressBuffer(uchar *uncompressedBuffer, uchar *compressedBuffer, uint64 uncompressedBufferSize, uint64 chunkNum){
 
     uint64 destLen = getBufferSizeWithOverhead();
-    compress(compressedBuffer, &destLen, (int)uncompressedBuffer, uncompressedBufferSize);
+    compress(compressedBuffer, &destLen, uncompressedBuffer, uncompressedBufferSize);
 
     return destLen;
 }

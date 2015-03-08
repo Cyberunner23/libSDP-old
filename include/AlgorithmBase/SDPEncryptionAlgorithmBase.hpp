@@ -41,12 +41,12 @@ public:
     ~SDPEncryptionAlgorithmBase();
 
     //These functions will only be used if isStreamCompression = false
-    virtual uint64 decrypt(unsigned char* encryptedBuffer,   unsigned char* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum) = 0;
-    virtual uint64 encrypt(unsigned char* unencryptedBuffer, unsigned char* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum) = 0;
+    virtual uint64 decrypt(uchar* encryptedBuffer,   uchar* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum) = 0;
+    virtual uint64 encrypt(uchar* unencryptedBuffer, uchar* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum) = 0;
 
     //These functions will only be used if isStreamCompression = true
-    virtual bool decryptStream(unsigned char encryptedChar,   unsigned char decryptedChar) = 0;
-    virtual bool encryptStream(unsigned char unencryptedChar, unsigned char encryptedChar) = 0;
+    virtual bool decryptStream(uchar encryptedChar,   uchar* decryptedChar, uint64 charNum) = 0;
+    virtual bool encryptStream(uchar unencryptedChar, uchar* encryptedChar, uint64 charNum) = 0;
 
     virtual void onInit() = 0;
     virtual void onExit() = 0;

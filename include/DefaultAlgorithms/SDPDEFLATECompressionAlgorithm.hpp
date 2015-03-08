@@ -17,7 +17,6 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPCompressionAlgorithmBase.hpp"
 
 #include "zlib.h"
-#include "../../extlibs/libsodium-CMake/src/libsodium/crypto_stream/aes128ctr/portable/types.h"
 
 class SDPDEFLATECompressionAlgorithm : public SDPCompressionAlgorithmBase{
 
