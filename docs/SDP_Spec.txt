@@ -31,7 +31,7 @@ SDP (Soul Data Pack) File spec Rev. 2.2 :
 /       |                                            0x04 Compressed and encrypted data.                                                 |       /
 /       |       uint8        : Compression algorithm ID. (Value ignored if compression not used) : 0x00 (Compression algorithm to be     |       /
 /       |                                                                                                determined with API call.)      |       /
-/       |                                                                                          0x01 zlib                             |       /
+/       |                                                                                          0x01 DEFLATE (zlib)                   |       /
 /       |                                                                                          0x02 lz4                              |       /
 /       |       uint8        : Encryption Algorithm ID.  (Value ignored if encryption not used)  : 0x00 (Encryption algorithm to be      |       /
 /       |                                                                                                determined with API call.)      |       /

@@ -209,7 +209,7 @@ bool SDPCompressionStreamBuf::readAndDecompressNextChunk(){
         //Decompress
         uncompressedBuffer.resize(uncompressedDataSizeInFile);
         uint64 actualUncompressedDataSize;
-        actualUncompressedDataSize = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->decompress(compressedBuffer.data(), uncompressedBuffer.data(), compressedBuffer.size(), uncompressedDataSizeInFile, currentChunkNum);
+        actualUncompressedDataSize = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->decompressBuffer(compressedBuffer.data(), uncompressedBuffer.data(), compressedBuffer.size(), uncompressedDataSizeInFile, currentChunkNum);
         if(actualUncompressedDataSize != uncompressedDataSizeInFile)
             return false; //Uncompressed size marked in file not consistent with achtual size, error.
 
@@ -238,7 +238,7 @@ void SDPCompressionStreamBuf::compressAndWriteNextChunk(){
     uncompressedDataSize = uncompressedBuffer.size();
 
     //Compress
-    compressedDataSize = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedDataSize, currentChunkNum);
+    compressedDataSize = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->compressBuffer(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedDataSize, currentChunkNum);
 
     //Write compressed data size (value will be ignored if data is incompressible.)
     rawFileIO.write(compressedDataSize, outStream, RawFileIO::BIG__ENDIAN);

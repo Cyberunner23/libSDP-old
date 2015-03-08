@@ -46,6 +46,7 @@ SET(SOURCE_FILES
     src/SDPStreamBuf.cpp
     src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
     src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
+    src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp
     src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp
 )
 SET(HEADER_FILES
@@ -59,6 +60,7 @@ SET(HEADER_FILES
     include/typedefs.hpp
     include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
     include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
+    include/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.hpp
     include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp
 )
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
