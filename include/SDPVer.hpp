@@ -30,13 +30,13 @@ class SDPVer{
 public:
 
     //Vars
-    static const struct SDPLibVerStruct{
+    const struct SDPLibVerStruct{
         uint8 major = 0;
         uint8 minor = 1;
         uint8 patch = 3;
     }SDPLibVer;
 
-    static const struct SDPSpecRevStruct{
+    const struct SDPSpecRevStruct{
         uint8 major = 2;
         uint8 minor = 3;
     }SDPSpecRev;

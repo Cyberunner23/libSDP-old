@@ -8,26 +8,6 @@
 
 #include "sodium.h"
 
-int hexToBin(std::string hex, std::string &bin){
-	bin.resize(hex.size()/2);
-	return sodium_hex2bin((unsigned char*)bin.data(), (hex.size()/2), hex.c_str(), hex.size(), NULL, nullptr, nullptr);
-}
-
-char* binToHex(std::string bin, std::string &hex){
-	hex.resize(bin.size() * 2 + 1);
-
-	char* hexData = (char*)hex.data();
-	size_t hexMaxLength = (bin.size() * 2 + 1);
-	unsigned char* binStr = (unsigned char*)bin.c_str();
-	size_t binSize = bin.size();
-
-	char* returnVal = sodium_bin2hex(hexData, hexMaxLength, binStr, binSize);
-
-
-
-	return returnVal;
-}
-
 int main(){
 
 	/*std::string hexToBinHEX {"4142"};
@@ -45,9 +25,9 @@ int main(){
 	binToHex(binToHexBIN, binToHexHEX);
 	std::cout << "Hex: " << "\"" << binToHexHEX << "\"" << std::endl << std::endl;*/
 
-	SDPXSalsa20EncryptionAlgorithm test;
+	//SDPXSalsa20EncryptionAlgorithm test;
 
-	test.setEncryptionKeyAndNonce(
+	/*test.setEncryptionKeyAndNonce(
 		"FFFFFFFFFFFFFFFF"
 		"FFFFFFFFFFFFFFFF"
 		"FFFFFFFF0FFFFFFF"
@@ -114,7 +94,7 @@ int main(){
 	std::cout << decryptedBytes[5] << std::endl;
 	std::cout << decryptedBytes[6] << std::endl;
 	std::cout << decryptedBytes[7] << std::endl;
-	std::cout << decryptedBytes[8] << std::endl;
+	std::cout << decryptedBytes[8] << std::endl;*/
 
 
 	return 0;
