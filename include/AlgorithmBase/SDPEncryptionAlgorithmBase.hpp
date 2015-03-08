@@ -92,7 +92,7 @@ protected:
     //Should be set somewhere in the algorithm's constructor or onInit? after setIsStreamCipher(true/false)
     //and setMaxBufferSize(uint_least64_t)
     //Sets the buffer size to be used when isStreamCipher = false (block cipher)
-    bool setPreferedBufferSize(uint64 preferedBufferSize = 1024);
+    bool setPreferedBufferSize(uint64 preferedBufferSize);
 
     //Sets the buffer size including possible overhead. To be used when isStreamCipher = false
     //This is in case the algorithm adds extra data on encryption like authentication tags.
@@ -109,8 +109,8 @@ private:
     //true = stream cipher, false = block cipher
     bool isStreamCipher;
 
-    unsigned int encryptionKeyWidthInBits;
-    unsigned int nonceWidthInBits;
+    uint encryptionKeyWidthInBits;
+    uint nonceWidthInBits;
 
     //Maximum buffer size supported by the algorithm.
     //Used when isStreamCipher = false

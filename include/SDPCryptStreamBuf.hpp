@@ -32,8 +32,15 @@ public:
 
     //Vars
 
-    //Funcs
+    struct SDPEncryptionAlgorithmInfoStruct{
+        std::shared_ptr<SDPEncryptionAlgorithmBase> encryptionAlgorithm;
+        uint8                                       encryptionAlgorithmID;
+        bool                                        isStreamCipher;
+        uint64                                      bufferSize;
+        uint64                                      bufferSizeWithOverhead;
+    };
 
+    //Funcs
     SDPCryptStreamBuf(std::istream *cryptIn,  std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
     SDPCryptStreamBuf(std::ostream *cryptOut, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
     ~SDPCryptStreamBuf();
@@ -41,8 +48,8 @@ public:
     void setEncryptionAlgorithm(std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
 
     void setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex);
-	void setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);
-	void setNonce(std::string nonce, bool isNonceInHex);
+    void setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);
+    void setNonce(std::string nonce, bool isNonceInHex);
 
 
 protected:
@@ -59,32 +66,31 @@ private:
 
     //Vars
 
-
-    std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm;
-	bool 										isStreamCipher;
-	uint_least64_t 								bufferSize;
-	uint_least64_t 								bufferSizeWithOverhead;
-
-
-    int  nextChar;
+    uchar  nextChar;
 
     bool hasFirstBlockBeenRead;
 
-    std::vector<unsigned char>::iterator bufferIterator;
-    std::vector<unsigned char>           unencryptedBuffer;
-    std::vector<unsigned char>           encryptedBuffer;
+    std::vector<uchar>::iterator bufferIterator;
+    std::vector<uchar>           unencryptedBuffer;
+    std::vector<uchar>           encryptedBuffer;
 
     std::shared_ptr<std::istream> inStream;
     std::shared_ptr<std::ostream> outStream;
+    RawFileIO                     rawFileIO;
 
-    //SDPAES256GCMAlgorithm defaultCryptAlgorithm;
+    SDPEncryptionAlgorithmInfoStruct currentEncryptionAlgorithmInfo;
+    uint64                           currentChunkNum;
+    uint64                           currentCharNum;
 
     //Funcs
 
-    int getNextChar(bool doAdvance);
-	bool fillAndDecryptBuffer();
+    SDPEncryptionAlgorithmInfoStruct makeEncryptionAlgorithmInfo(std::shared_ptr<SDPEncryptionAlgorithmBase> encryptionAlgorithm);
 
+    int_type getNextChar(bool     doAdvance);
     int_type setNextChar(int_type ch);
+
+    bool readAndDecompressNextChunk();
+    void encryptAndWriteNextChunk();
 
 
 };
