@@ -25,6 +25,9 @@ Copyright 2014 Alex Frappier Lachapelle
 
 #include "sodium.h"
 
+//TODO: Refactor to use new spec.
+//TODO: Implement seeking.
+
 class SDPEncryptionAlgorithmBase{
 
 
@@ -75,7 +78,7 @@ protected:
 
     //Should be set somewhere in the algorithm's constructor or onInit
     //Sets the supported key length in bits for the algorithm.
-    void setEncryptionKeyWidthInBits(unsigned encryptionKeyWidthInBits);
+    void setEncryptionKeyWidthInBits(unsigned int encryptionKeyWidthInBits);
 
     //Should be set somewhere in the algorithm's constructor or onInit
     //Sets the supported nonce length in bits for the algorithm.
@@ -94,7 +97,7 @@ protected:
     //Sets the buffer size including possible overhead. To be used when isStreamCipher = false
     //This is in case the algorithm adds extra data on encryption like authentication tags.
     //This is to prevent an overflow and a SIGSEGV.
-    void setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead);
+    bool setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead);
 
 
 private:

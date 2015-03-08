@@ -105,7 +105,7 @@ void SDPEncryptionAlgorithmBase::setIsStreamCipher(bool isStreamCipher){
     this->isStreamCipher = isStreamCipher;
 }
 
-void SDPEncryptionAlgorithmBase::setEncryptionKeyWidthInBits(unsigned encryptionKeyWidthInBits){
+void SDPEncryptionAlgorithmBase::setEncryptionKeyWidthInBits(unsigned int encryptionKeyWidthInBits){
     this->encryptionKeyWidthInBits = encryptionKeyWidthInBits;
 }
 
@@ -127,7 +127,13 @@ bool SDPEncryptionAlgorithmBase::setPreferedBufferSize(uint64 preferedBufferSize
     return false;
 }
 
-void SDPEncryptionAlgorithmBase::setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead){
-    bufferSizeWithOverhead = preferedBufferSizeWithOverhead;
+bool SDPEncryptionAlgorithmBase::setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead){
+
+    if(preferedBufferSizeWithOverhead <= maxBufferSize){
+        bufferSizeWithOverhead = preferedBufferSizeWithOverhead;
+        return true;
+    }
+
+    return false;
 }
 
