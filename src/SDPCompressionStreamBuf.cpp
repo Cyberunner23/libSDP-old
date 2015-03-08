@@ -106,40 +106,10 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::pbackfail(int_type ch
 
 int SDPCompressionStreamBuf::sync(){
 
-    //Compress whats left
-    if(outStream && uncompressedBuffer.size() != 0){
-
-        RawFileIO rawFileIO;
-
-        compressedBuffer.clear();
-        compressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSizeWithOverhead);//add overhead comprensation
-
-        uint64 numCompressedBytes;
-        numCompressedBytes = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedBuffer.size());
-
+    //If there's anything left in the buffer, compress and write it.
+    if(outStream != nullptr && uncompressedBuffer.size() != 0){
+        compressAndWriteNextChunk();
         currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onSync();
-
-        //check if we encountered an unompressible block.
-        //if the num of compressed bytes is bigger or equal than the
-        //than the input size (blockSize) then might as
-        //well write the uncompressed block.
-        if(numCompressedBytes >= currentCompressionAlgorithmInfo.bufferSize){
-            //write block size
-            rawFileIO.write(currentCompressionAlgorithmInfo.bufferSize, outStream, RawFileIO::BIG__ENDIAN);
-            //Write is compressed tag (false)
-			uint8 falseTag = 0x00;
-            rawFileIO.write(falseTag, outStream);
-            //Write block data
-            outStream->write((char*) uncompressedBuffer.data(), currentCompressionAlgorithmInfo.bufferSize);
-        }else{
-            //write compressed block size
-            rawFileIO.write(numCompressedBytes, outStream, RawFileIO::BIG__ENDIAN);
-            //write is compressed block (true)
-			uint8 trueTag;
-            rawFileIO.write(trueTag, outStream);
-            //Write block data
-            outStream->write((char*) compressedBuffer.data(), numCompressedBytes);
-        }
     }
 
     outStream->flush();
@@ -169,63 +139,7 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::getNextChar(bool doAd
     //or if the first block has not been read yet
     if(bufferIterator == uncompressedBuffer.end() || !hasFirstBlockBeenRead){
 
-        RawFileIO rawFileIO;
-
-        unsigned int gCount;
-
-        uncompressedBuffer.clear();
-        compressedBuffer.clear();
-
-        uint64 numCompressedBytes;
-
-
-        //Read compressed data size
-        if(rawFileIO.read(numCompressedBytes, inStream, RawFileIO::BIG__ENDIAN) != sizeof numCompressedBytes ){
-            return traits_type::eof();
-        }
-
-        if(numCompressedBytes > currentCompressionAlgorithmInfo.bufferSize){
-            return traits_type::eof();
-        }
-
-        //Read is data compressed tag
-        uint8 isDataCompressedTag;
-        if(rawFileIO.read(isDataCompressedTag, inStream) != sizeof isDataCompressedTag){
-            return traits_type::eof();
-        }else if (isDataCompressedTag != 0x00 && isDataCompressedTag != 0xFF){
-            return traits_type::eof(); //put better error reporting...
-        }
-
-        if(isDataCompressedTag == 0xFF){ //if block is compressed
-
-            compressedBuffer.resize(numCompressedBytes);
-            inStream->read((char*) compressedBuffer.data(), numCompressedBytes);
-
-            gCount = (unsigned int) inStream->gcount();
-
-            //do some better error reporting...
-            if(gCount != numCompressedBytes){
-                return traits_type::eof();
-            }
-
-            //if we try to read and and it doesn't, assume we're @ EOF
-            if(gCount == 0){
-                return traits_type::eof();
-            }
-
-            uncompressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSize);
-
-            uint64 numBytesUncompressed;
-            numBytesUncompressed = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->decompress(compressedBuffer.data(), uncompressedBuffer.data(), compressedBuffer.size());
-
-            uncompressedBuffer.resize(numBytesUncompressed);
-
-        }else{ //if block is not compressed
-
-            uncompressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSize);
-            inStream->read((char*) uncompressedBuffer.data(), currentCompressionAlgorithmInfo.bufferSize);
-
-        }
+        readAndDecompressNextChunk();
 
         bufferIterator = uncompressedBuffer.begin();
         nextChar       = *bufferIterator;
@@ -249,40 +163,7 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::setNextChar(int_type 
     uncompressedBuffer.emplace_back(ch);
 
     if (uncompressedBuffer.size() == currentCompressionAlgorithmInfo.bufferSize){
-
-        RawFileIO rawFileIO;
-
-        //compressedBuffer.clear();
-        compressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSizeWithOverhead);
-
-        uint64 numCompressedBytes;
-        numCompressedBytes = currentCompressionAlgorithmInfo.compressionAlgorithm.get()->compress(uncompressedBuffer.data(), compressedBuffer.data(), uncompressedBuffer.size());
-
-        //check if we encountered an unompressible block.
-        //if the num of compressed bytes is bigger or equal than the
-        //than the input size (blockSize) then might as
-        //well write the uncompressed block.
-        if(numCompressedBytes >= currentCompressionAlgorithmInfo.bufferSize){
-            //write block size
-            rawFileIO.write(currentCompressionAlgorithmInfo.bufferSize, outStream, RawFileIO::BIG__ENDIAN);
-            //Write is compressed tag (false)
-			uint8 falseTag = 0x00;
-            rawFileIO.write(falseTag, outStream);
-            //Write block data
-            outStream->write((char*) uncompressedBuffer.data(), currentCompressionAlgorithmInfo.bufferSize);
-        }else{
-            //write compressed block size
-            rawFileIO.write(numCompressedBytes, outStream, RawFileIO::BIG__ENDIAN);
-            //write is compressed block (true)
-			uint8 trueTag = 0xFF;
-            rawFileIO.write(trueTag, outStream);
-            //Write block data
-            outStream->write((char*) compressedBuffer.data(), numCompressedBytes);
-        }
-
-        uncompressedBuffer.clear();
-        compressedBuffer.clear();
-
+        compressAndWriteNextChunk();
     }
 
     return traits_type::to_int_type(ch);
