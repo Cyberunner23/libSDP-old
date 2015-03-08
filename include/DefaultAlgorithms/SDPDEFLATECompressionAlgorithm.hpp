@@ -17,6 +17,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPCompressionAlgorithmBase.hpp"
 
 #include "zlib.h"
+#include "../../extlibs/libsodium-CMake/src/libsodium/crypto_stream/aes128ctr/portable/types.h"
 
 class SDPDEFLATECompressionAlgorithm : public SDPCompressionAlgorithmBase{
 
@@ -38,8 +39,7 @@ public:
 
 
 private:
-
-    //Vars
+//Vars
     //Not the actual maximum buffer size supported by zlib but
     //its fine for us.
     static const uint64 maxBufferSize                  = 64 * 1024;
