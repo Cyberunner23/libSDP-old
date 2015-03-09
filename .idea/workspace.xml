@@ -44,7 +44,6 @@
   <component name="ChangeListManager">
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" afterPath="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/main.cpp" afterPath="$PROJECT_DIR$/test/main.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -84,11 +83,11 @@
           <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test/main.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.42281878">
-                  <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
+                <state vertical-scroll-proportion="-0.36241612">
+                  <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
                   <folding>
                     <element signature="e#0#19#0" expanded="true" />
-                    <element signature="e#3448#3490#0" expanded="false" />
+                    <element signature="e#2746#2788#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -153,7 +152,7 @@
           <file leaf-file-name="SDPCompressionStreamBuf.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.63422817">
+                <state vertical-scroll-proportion="3.9865773">
                   <caret line="147" column="10" selection-start-line="147" selection-start-column="10" selection-end-line="147" selection-end-column="10" />
                   <folding />
                 </state>
@@ -221,8 +220,8 @@
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/extlibs/zlib/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/SDPVer.hpp" />
-        <option value="$PROJECT_DIR$/test/main.cpp" />
         <option value="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
+        <option value="$PROJECT_DIR$/test/main.cpp" />
       </list>
     </option>
   </component>
@@ -520,12 +519,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00025" summary="Changed SDPVer class to reflect changes in the SDP Spec. Rev. system. + incremented patch version for lib, added new spec.">
-      <created>1425679785767</created>
-      <option name="number" value="00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1425679785767</updated>
-    </task>
     <task id="LOCAL-00026" summary="Changed tabs to spaces in SDPVer class. (To make it cleaner on github which seems to use 8 space tabs, I prefer 4 space tabs)">
       <created>1425679985680</created>
       <option name="number" value="00026" />
@@ -814,7 +807,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425849484449</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Fixed the SIGSEGV when reading past the last compressed chunk">
+      <created>1425904573498</created>
+      <option name="number" value="00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1425904573500</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -905,7 +904,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Added getting/setting of the encryption algorithm ID in SDPEncryptionAlgorithmBase." />
     <MESSAGE value="Removed checking of bounds for the encryption/compression algorithm ID so that user defined algorithms/IDs don't invalidate the sub-container's header." />
     <MESSAGE value="Missed some types in the uint style conversion." />
     <MESSAGE value="Removed onRewind in SDPEncryptionAlgorithmBase, now useless." />
@@ -930,14 +928,15 @@
     <MESSAGE value="Implemented read/write encrypted data chunk functions for SDPCryptStreamBuf." />
     <MESSAGE value="Made SDPCryptStreamBuf use the read/write functions recently added + compiler error fixes." />
     <MESSAGE value="Fixed some compiler errors on TEST build." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some compiler errors on TEST build." />
+    <MESSAGE value="Fixed the SIGSEGV when reading past the last compressed chunk" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the SIGSEGV when reading past the last compressed chunk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/test/main.cpp</url>
-          <line>95</line>
+          <line>84</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -1306,17 +1305,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42281878">
-          <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#3448#3490#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1327,9 +1315,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63422817">
+        <state vertical-scroll-proportion="3.9865773">
           <caret line="147" column="10" selection-start-line="147" selection-start-column="10" selection-end-line="147" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.36241612">
+          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#2746#2788#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

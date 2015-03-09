@@ -15,10 +15,6 @@ void decompressFile(const char* sourceFileName, const char* destFileName){
     inStream.get()->open(sourceFileName, std::ios_base::in);
     outStream.get()->open(destFileName, std::ios::out);
 
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    bool testBefore = outStream.get() != 0;
-    bool testBefore2 = outStream.get() != 0;
-
     if (inStream.get()->is_open()) {
         if (outStream.get()->is_open()) {
 
@@ -31,14 +27,7 @@ void decompressFile(const char* sourceFileName, const char* destFileName){
                 if(c == EOF){
                     break;
                 }
-                //-----------------------------------------------------------------------------------------------------------------------------------------------------
-                //somehow the pointer gets deleted.
-                bool test = outStream.get() != 0;
-                bool test2 = outStream.get() != 0;
                 outStream.get()->put(c);
-                bool testAfter = outStream.get() != 0;
-                bool testAfter2 = outStream.get() != 0;
-
             }
 
             outStream.get()->flush();
