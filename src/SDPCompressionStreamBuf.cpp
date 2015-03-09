@@ -24,7 +24,7 @@ SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::istream> c
     inStream  = compressedIn;
     outStream = nullptr;
 
-    if(compressionAlgorithm != nullptr){
+    if(compressionAlgorithm){
         currentCompressionAlgorithmInfo = makeCompressionAlgorithmInfo(compressionAlgorithm);
         currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onInit();
         uncompressedBuffer.resize(currentCompressionAlgorithmInfo.bufferSizeWithOverhead);
@@ -44,7 +44,7 @@ SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::ostream> c
     inStream  = nullptr;
     outStream = compressedOut;
 
-    if(compressionAlgorithm != nullptr){
+    if(compressionAlgorithm){
         currentCompressionAlgorithmInfo = makeCompressionAlgorithmInfo(compressionAlgorithm);
         currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onInit();
         uncompressedBuffer.reserve(currentCompressionAlgorithmInfo.bufferSize);
@@ -58,7 +58,7 @@ SDPCompressionStreamBuf::SDPCompressionStreamBuf(std::shared_ptr<std::ostream> c
 }
 
 SDPCompressionStreamBuf::~SDPCompressionStreamBuf(){
-    if(currentCompressionAlgorithmInfo.compressionAlgorithm != nullptr)
+    if(currentCompressionAlgorithmInfo.compressionAlgorithm)
         currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onExit();
 }
 
@@ -107,7 +107,7 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::pbackfail(int_type ch
 int SDPCompressionStreamBuf::sync(){
 
     //If there's anything left in the buffer, compress and write it.
-    if(outStream != nullptr && uncompressedBuffer.size() != 0){
+    if(outStream && uncompressedBuffer.size() != 0){
         compressAndWriteNextChunk();
         currentCompressionAlgorithmInfo.compressionAlgorithm.get()->onSync();
     }
@@ -139,11 +139,14 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::getNextChar(bool doAd
     //or if the first block has not been read yet
     if(bufferIterator == uncompressedBuffer.end() || !hasFirstBlockBeenRead){
 
-        readAndDecompressNextChunk();
+        if(!readAndDecompressNextChunk()){
+            return traits_type::eof();
+        }
 
         bufferIterator = uncompressedBuffer.begin();
-        nextChar       = *bufferIterator;
-        bufferIterator++;
+        nextChar       = (*bufferIterator);
+        //bufferIterator++;
+        std::advance(bufferIterator, 1);
 
         hasFirstBlockBeenRead = true;
 
@@ -152,7 +155,8 @@ SDPCompressionStreamBuf::int_type SDPCompressionStreamBuf::getNextChar(bool doAd
     }else{
 
         nextChar = *bufferIterator;
-        bufferIterator++;
+        //bufferIterator++;
+        std::advance(bufferIterator, 1);
 
         return nextChar;
     }
