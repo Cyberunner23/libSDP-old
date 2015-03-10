@@ -25,6 +25,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPEncryptionAlgorithmBase.hpp"
 
 //TODO: implement seeking
+//TODO?: Use a iostream in constructor?
 
 class SDPCryptStreamBuf : public std::streambuf{
 
@@ -45,7 +46,8 @@ public:
     SDPCryptStreamBuf(std::ostream *cryptOut, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
     ~SDPCryptStreamBuf();
 
-    void setEncryptionAlgorithm(std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
+    void                             setEncryptionAlgorithm(std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
+    SDPEncryptionAlgorithmInfoStruct getEncryptionAlgorithmInfo();
 
     void setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex);
     void setEncryptionKey(std::string encryptionKey, bool isEncryptionKeyInHex);
@@ -61,6 +63,7 @@ protected:
     virtual int_type pbackfail(int_type ch);
 
     virtual int sync();
+
 
 private:
 

@@ -65,6 +65,10 @@ void SDPCryptStreamBuf::setEncryptionAlgorithm(std::shared_ptr<SDPEncryptionAlgo
     currentEncryptionAlgorithmInfo.encryptionAlgorithm.get()->onInit();
 }
 
+SDPCryptStreamBuf::SDPEncryptionAlgorithmInfoStruct SDPCryptStreamBuf::getEncryptionAlgorithmInfo(){
+    return currentEncryptionAlgorithmInfo;
+}
+
 
 void SDPCryptStreamBuf::setEncryptionKeyAndNonce(std::string encryptionKey, bool isEncryptionKeyInHex, std::string nonce, bool isNonceInHex){
     currentEncryptionAlgorithmInfo.encryptionAlgorithm.get()->setEncryptionKeyAndNonce(encryptionKey, isEncryptionKeyInHex, nonce, isNonceInHex);

@@ -30,6 +30,8 @@ Copyright 2014 Alex Frappier Lachapelle
 //TODO: implement xsgetn() xsputn()
 //TODO: implement seeking.
 //TODO: Testing.
+//TODO: Include compression Algorithm ID in SDPCompressionAlgorithmInfoStruct
+//TODO?: Use a iostream in constructor?
 
 class SDPCompressionStreamBuf : public std::streambuf{
 
@@ -92,7 +94,6 @@ private:
 
     bool readAndDecompressNextChunk();
     void compressAndWriteNextChunk();
-
 
 
 };

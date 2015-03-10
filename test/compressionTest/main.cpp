@@ -74,9 +74,9 @@ int main(){
 
 	//SDPXSalsa20EncryptionAlgorithm test;
 
-    std::string uncompressedFile = "TEST";
-    std::string compressedFile   = "TEST_COMPRESSED";
-    std::string decompressedFile = "TEST_DECOMPRESSED";
+    std::string uncompressedFile = "test";
+    std::string compressedFile   = "test_COMPRESSED";
+    std::string decompressedFile = "test_DECOMPRESSED";
 
     compressFile(uncompressedFile.c_str(), compressedFile.c_str());
     decompressFile(compressedFile.c_str(), decompressedFile.c_str());
