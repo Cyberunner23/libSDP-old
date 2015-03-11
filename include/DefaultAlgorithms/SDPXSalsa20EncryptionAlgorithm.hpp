@@ -25,37 +25,39 @@ class SDPXSalsa20EncryptionAlgorithm : public SDPEncryptionAlgorithmBase{
 
 public:
 
-	//Vars
+    //Vars
 
-	//Funcs
+    //Funcs
 
-	SDPXSalsa20EncryptionAlgorithm();
-	~SDPXSalsa20EncryptionAlgorithm();
+    SDPXSalsa20EncryptionAlgorithm();
+    ~SDPXSalsa20EncryptionAlgorithm();
 
-	//These functions will only be used if isStreamCipher = false
-	virtual uint_least64_t decrypt(unsigned char* encryptedBuffer,   unsigned char* decryptedBuffer, uint_least64_t encryptedBufferSize);
-	virtual uint_least64_t encrypt(unsigned char* unencryptedBuffer, unsigned char* encryptedBuffer, uint_least64_t unencryptedBufferSize);
+    virtual uint64 decryptBuffer(uchar* encryptedBuffer,   uchar* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum);
+    virtual uint64 encryptBuffer(uchar* unencryptedBuffer, uchar* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum);
 
-	//These functions will only be used if isStreamCipher = true
-	virtual bool decryptStream(unsigned char *encryptedChar,   unsigned char *unencryptedChar);
-	virtual bool encryptStream(unsigned char *unencryptedChar, unsigned char *encryptedChar);
-
-	virtual void onInit();
-	virtual void onExit();
-	virtual void onSync();
+    virtual void onInit();
+    virtual void onExit();
+    virtual void onSync();
 
 
 protected:
 
-	//Vars
+    //Vars
 
-	//Funcs
+    //Funcs
 
 private:
 
-	//Vars
+    //Vars
 
-	//Funcs
+    static const uint8  encryptionAlgorithmID  = 0x01;
+    static const bool   isStreamCipher         = false;
+    static const int    algorithmBlockSize     = 64;
+    static const int    blocksPerBuffer        = 500;
+    static const uint64 bufferSize             = algorithmBlockSize * blocksPerBuffer;
+    static const uint64 bufferSizeWithOverhead = bufferSize; //1 byte in, 1 byte out.
+
+    //Funcs
 
 
 };

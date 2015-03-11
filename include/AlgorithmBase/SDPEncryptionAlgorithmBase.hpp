@@ -27,6 +27,7 @@ Copyright 2014 Alex Frappier Lachapelle
 
 //TODO: Refactor to use new spec.
 //TODO: Implement seeking.
+//TODO: ability to override buffer size.
 
 class SDPEncryptionAlgorithmBase{
 
@@ -41,8 +42,8 @@ public:
     ~SDPEncryptionAlgorithmBase();
 
     //These functions will only be used if isStreamCompression = false
-    virtual uint64 decrypt(uchar* encryptedBuffer,   uchar* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum) = 0;
-    virtual uint64 encrypt(uchar* unencryptedBuffer, uchar* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum) = 0;
+    virtual uint64 decryptBuffer(uchar* encryptedBuffer,   uchar* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum) = 0;
+    virtual uint64 encryptBuffer(uchar* unencryptedBuffer, uchar* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum) = 0;
 
     //These functions will only be used if isStreamCompression = true
     virtual bool decryptStream(uchar encryptedChar,   uchar* decryptedChar, uint64 charNum) = 0;

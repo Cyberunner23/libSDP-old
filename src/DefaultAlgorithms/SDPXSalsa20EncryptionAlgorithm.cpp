@@ -2,9 +2,13 @@
 
 SDPXSalsa20EncryptionAlgorithm::SDPXSalsa20EncryptionAlgorithm(){
 
-	setIsStreamCipher(true);
-	setEncryptionKeyWidthInBits(crypto_stream_KEYBYTES);
-	setNonceWidthInBits(crypto_stream_NONCEBYTES);
+    setEncryptionAlgorithmID(encryptionAlgorithmID);
+    setIsStreamCipher(isStreamCipher);
+    setEncryptionKeyWidthInBits(crypto_stream_KEYBYTES * 8);
+    setNonceWidthInBits(crypto_stream_NONCEBYTES * 8);
+    setMaxBufferSize(bufferSize);
+    setPreferedBufferSize(bufferSize);
+    setPreferedBufferSizeWithOverhead(bufferSizeWithOverhead);
 
 }
 
@@ -13,21 +17,18 @@ SDPXSalsa20EncryptionAlgorithm::~SDPXSalsa20EncryptionAlgorithm(){
 }
 
 
-uint_least64_t SDPXSalsa20EncryptionAlgorithm::decrypt(unsigned char *encryptedBuffer, unsigned char *decryptedBuffer, uint_least64_t encryptedBufferSize){
+uint64 SDPXSalsa20EncryptionAlgorithm::decryptBuffer(uchar *encryptedBuffer, uchar *decryptedBuffer, uint64 encryptedBufferSize, uint64 chunkNum){
 
+    crypto_stream_xsalsa20_xor_ic(decryptedBuffer, encryptedBuffer, encryptedBufferSize, (uchar*)nonceInBin.c_str(), chunkNum * blocksPerBuffer, (uchar*)encryptionKeyInBin.c_str());
+
+    return encryptedBufferSize; //1 byte in, 1 byte out
 }
 
-uint_least64_t SDPXSalsa20EncryptionAlgorithm::encrypt(unsigned char *unencryptedBuffer, unsigned char *encryptedBuffer, uint_least64_t unencryptedBufferSize){
+uint64 SDPXSalsa20EncryptionAlgorithm::encryptBuffer(uchar *unencryptedBuffer, uchar *encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum){
 
-}
+    crypto_stream_xsalsa20_xor_ic(encryptedBuffer, unencryptedBuffer, unencryptedBufferSize, (uchar*)nonceInBin.c_str(), chunkNum * blocksPerBuffer, (uchar*)encryptionKeyInBin.c_str());
 
-
-bool SDPXSalsa20EncryptionAlgorithm::decryptStream(unsigned char *encryptedChar, unsigned char *unencryptedChar){
-	crypto_stream_xor(unencryptedChar, encryptedChar, 1, (const unsigned char*)nonceInBin.data(), (const unsigned char*)encryptionKeyInBin.data());
-}
-
-bool SDPXSalsa20EncryptionAlgorithm::encryptStream(unsigned char *unencryptedChar, unsigned char *encryptedChar){
-	crypto_stream_xor(encryptedChar, unencryptedChar, 1, (const unsigned char*)nonceInBin.data(), (const unsigned char*)encryptionKeyInBin.data());
+    return unencryptedBufferSize; //1 byte in, 1 byte out
 }
 
 

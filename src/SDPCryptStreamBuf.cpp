@@ -231,7 +231,7 @@ bool SDPCryptStreamBuf::readAndDecompressNextChunk(){
 
     //do decryption
     unencryptedBuffer.resize(unencryptedDataSizeInFile);
-    uint64 numDecryptedBytes = currentEncryptionAlgorithmInfo.encryptionAlgorithm.get()->decrypt(encryptedBuffer.data(), unencryptedBuffer.data(), encryptedBuffer.size(), currentChunkNum);
+    uint64 numDecryptedBytes = currentEncryptionAlgorithmInfo.encryptionAlgorithm.get()->decryptBuffer(encryptedBuffer.data(), unencryptedBuffer.data(), encryptedBuffer.size(), currentChunkNum);
     unencryptedBuffer.resize(numDecryptedBytes);
     currentChunkNum++;
 
@@ -248,7 +248,7 @@ void SDPCryptStreamBuf::encryptAndWriteNextChunk(){
     unencryptedDataSize = unencryptedBuffer.size();
 
     //Encrypt
-    encryptedDataSize = currentEncryptionAlgorithmInfo.encryptionAlgorithm.get()->encrypt(unencryptedBuffer.data(), encryptedBuffer.data(), unencryptedBuffer.size(), currentChunkNum);
+    encryptedDataSize = currentEncryptionAlgorithmInfo.encryptionAlgorithm.get()->encryptBuffer(unencryptedBuffer.data(), encryptedBuffer.data(), unencryptedBuffer.size(), currentChunkNum);
 
     //Write encrypted data size
     rawFileIO.write(encryptedDataSize, outStream, RawFileIO::BIG__ENDIAN);
