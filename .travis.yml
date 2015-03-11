@@ -1,0 +1,12 @@
+language: cpp
+
+compiler:
+  - clang
+  - gcc
+
+before_script:
+  - git submodule update --init --recursive
+  - cd build
+  - cmake ..
+
+script: make
