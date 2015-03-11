@@ -25,6 +25,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPEncryptionAlgorithmBase.hpp"
 
 //TODO: implement seeking
+//TODO: Add license info to all file and update copyright year.
 //TODO?: Use a iostream in constructor?
 
 class SDPCryptStreamBuf : public std::streambuf{
