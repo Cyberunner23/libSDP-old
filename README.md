@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/Cyberunner23/libSDP.svg)](https://travis-ci.org/Cyberunner23/libSDP)
