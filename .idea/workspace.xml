@@ -47,7 +47,6 @@
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -112,8 +111,8 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25139666">
-              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.22625698">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -404,12 +403,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00036" summary="Forgot to add the typedefs to the CMakeLists...">
-      <created>1425682911954</created>
-      <option name="number" value="00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1425682911954</updated>
-    </task>
     <task id="LOCAL-00037" summary="getSDPSubContainerHeader -&gt; getSDPSubContainerInfo">
       <created>1425683761365</created>
       <option name="number" value="00037" />
@@ -698,7 +691,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426122340839</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Cmake is being derpy with zlib (for travis)... attempting to fix that (lets see if updating cmake works.)">
+      <created>1426188533856</created>
+      <option name="number" value="00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1426188533858</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -725,6 +724,7 @@
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48387095" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39892474" sideWeight="0.49394417" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13118279" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2527646" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -739,7 +739,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3935484" sideWeight="0.49499735" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48387095" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -786,7 +785,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Added capability to compression algorithms to be aware of the position in the stream they're working on." />
     <MESSAGE value="Removed support for byte per byte compression, byte in byte out, no compression can happen on a single byte." />
     <MESSAGE value="Added buffer size checking for prefered buffer size with overhead." />
     <MESSAGE value="Forgot a couple things when removing byte per byte compression." />
@@ -811,7 +809,8 @@
     <MESSAGE value="Attempting to fix Travis error with gcc and c++11" />
     <MESSAGE value="Attempting to fix Travis error with gcc and c++11... Again..." />
     <MESSAGE value="Cmake is being derpy with zlib (for travis)... attempting to fix that" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cmake is being derpy with zlib (for travis)... attempting to fix that" />
+    <MESSAGE value="Cmake is being derpy with zlib (for travis)... attempting to fix that (lets see if updating cmake works.)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cmake is being derpy with zlib (for travis)... attempting to fix that (lets see if updating cmake works.)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1205,8 +1204,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25139666">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.22625698">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
           <folding />
         </state>
       </provider>
