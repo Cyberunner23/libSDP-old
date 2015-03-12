@@ -111,8 +111,8 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22625698">
-              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.30167598">
+              <caret line="12" column="70" selection-start-line="12" selection-start-column="70" selection-end-line="12" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -403,12 +403,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00037" summary="getSDPSubContainerHeader -&gt; getSDPSubContainerInfo">
-      <created>1425683761365</created>
-      <option name="number" value="00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1425683761365</updated>
-    </task>
     <task id="LOCAL-00038" summary="Fixed more odd spacing.">
       <created>1425683798202</created>
       <option name="number" value="00038" />
@@ -697,7 +691,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426188533858</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Lets try it with this...">
+      <created>1426189073734</created>
+      <option name="number" value="00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1426189073734</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -785,7 +785,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Removed support for byte per byte compression, byte in byte out, no compression can happen on a single byte." />
     <MESSAGE value="Added buffer size checking for prefered buffer size with overhead." />
     <MESSAGE value="Forgot a couple things when removing byte per byte compression." />
     <MESSAGE value="Gave compression algorithm ability to know the size of the uncompressed chunk." />
@@ -810,7 +809,8 @@
     <MESSAGE value="Attempting to fix Travis error with gcc and c++11... Again..." />
     <MESSAGE value="Cmake is being derpy with zlib (for travis)... attempting to fix that" />
     <MESSAGE value="Cmake is being derpy with zlib (for travis)... attempting to fix that (lets see if updating cmake works.)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cmake is being derpy with zlib (for travis)... attempting to fix that (lets see if updating cmake works.)" />
+    <MESSAGE value="Lets try it with this..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lets try it with this..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1204,8 +1204,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22625698">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.30167598">
+          <caret line="12" column="70" selection-start-line="12" selection-start-column="70" selection-end-line="12" selection-end-column="70" />
           <folding />
         </state>
       </provider>
