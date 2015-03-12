@@ -7,33 +7,33 @@
       <config projectName="libSDP" targetName="example" />
       <config projectName="libSDP" targetName="zlib" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE" />
-      <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
-      <config projectName="libSDP" targetName="CVT_GET" />
-      <config projectName="SDP" targetName="libSDP" />
+      <config projectName="libSDP" targetName="liblz4" />
+      <config projectName="libSDP" targetName="SDP" />
+      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_BUILD_STEP" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_BUILD_STEP" />
-      <config projectName="libSDP" targetName="CryptoPP-Cmake2" />
-      <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_CONFIGURE_STEP" />
-      <config projectName="libSDP" targetName="minigzip64" />
-      <config projectName="libSDP" targetName="CryptoPP-Cmake" />
+      <config projectName="libSDP" targetName="CVT_GET" />
       <config projectName="libSDP" targetName="zlibstatic" />
       <config projectName="libSDP" targetName="sodium" />
-      <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_BUILD_STEP" />
+      <config projectName="libSDP" targetName="CVT" />
       <config projectName="libSDP" targetName="minigzip" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_GET" />
-      <config projectName="libSDP" targetName="example64" />
-      <config projectName="libSDP" targetName="CVT_" />
-      <config projectName="libSDP" targetName="CVT" />
+      <config projectName="SDP" targetName="libSDP" />
+      <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
+      <config projectName="libSDP" targetName="CryptoPP-Cmake" />
       <config projectName="libSDP" targetName="CVT_BUILD_STEP" />
-      <config projectName="libSDP" targetName="CryptoPP-CMake" />
-      <config projectName="libSDP" targetName="SDP" />
+      <config projectName="libSDP" targetName="CryptoPP-Cmake2" />
+      <config projectName="libSDP" targetName="minigzip64" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_CONFIGURE_STEP" />
-      <config projectName="libSDP" targetName="cryptopp" />
+      <config projectName="libSDP" targetName="CVT_" />
       <config projectName="libSDP" targetName="libSDP" />
+      <config projectName="libSDP" targetName="cryptopp" />
       <config projectName="libSDP" targetName="TEST" />
+      <config projectName="libSDP" targetName="example64" />
       <config projectName="libSDP" targetName="CVT_DOWNLOAD_STEP" />
-      <config projectName="libSDP" targetName="liblz4" />
+      <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_CONFIGURE_STEP" />
       <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_DOWNLOAD_STEP" />
+      <config projectName="libSDP" targetName="CryptoPP-CMake" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true" GENERATION_PASS_SYSTEM_ENVIRONMENT="true" BUILD_OUTPUT_DIR="build">
@@ -44,7 +44,6 @@
   <component name="ChangeListManager">
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -98,10 +97,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.5374233">
       <split-first>
         <leaf>
-          <file leaf-file-name="SDPCryptStreamBuf.hpp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="SDPCryptStreamBuf.hpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.12569833">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
                   <folding />
                 </state>
@@ -130,6 +129,16 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name=".gitmodules" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitmodules">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.05027933">
+                  <caret line="2" column="50" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="50" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -138,7 +147,7 @@
             <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+                  <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
                   <folding />
                 </state>
               </provider>
@@ -187,7 +196,7 @@
           <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
+                <state vertical-scroll-proportion="-3.047486">
                   <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
                   <folding />
                 </state>
@@ -233,7 +242,6 @@
         <option value="$PROJECT_DIR$/src/SDPVer.hpp" />
         <option value="$PROJECT_DIR$/src/StreamBufs/SDPCryptStreamBuf.cpp" />
         <option value="$PROJECT_DIR$/include/DefaultAlgorithms/SDPAES256GCMAlgorithm.hpp" />
-        <option value="$PROJECT_DIR$/extlibs/libsodium-CMake/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/build/.gitignore" />
         <option value="$PROJECT_DIR$/src/DefaultAlgorithms/zlib/FAQ" />
         <option value="$PROJECT_DIR$/include/DefaultAlgorithms/zlib/LICENSE" />
@@ -269,6 +277,7 @@
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/extlibs/libsodium-CMake/CMakeLists.txt" />
       </list>
     </option>
   </component>
@@ -472,6 +481,42 @@
               <option name="myItemId" value="extlibs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zlib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libSDP" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libSDP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlibs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libSDP" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libSDP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="extlibs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libsodium-CMake" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -637,12 +682,6 @@
       <created>1421011182436</created>
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Removed unused files in the tools dir.">
-      <created>1425682087341</created>
-      <option name="number" value="00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1425682087341</updated>
     </task>
     <task id="LOCAL-00033" summary="Used a cleaner way to reset the structs.">
       <created>1425682244269</created>
@@ -932,7 +971,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426118319620</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Changed CMake version to work with Travis.">
+      <created>1426118609803</created>
+      <option name="number" value="00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1426118609803</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1023,7 +1068,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Re-added encrypt/decryptStream... They're still useful... + some spacing underpage." />
     <MESSAGE value="SDPCompressionOptions -&gt; SDPCompressionAlgorithmInfoStruct." />
     <MESSAGE value="Made typed uint style for SDPCompressionStreamBuf." />
     <MESSAGE value="Added a tag in the compressed data block to tell if compression was skipped in the case that the block was incompressible." />
@@ -1048,7 +1092,8 @@
     <MESSAGE value="Forgot license info..." />
     <MESSAGE value="Added Travis yml." />
     <MESSAGE value="Added Travis build status." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Travis build status." />
+    <MESSAGE value="Changed CMake version to work with Travis." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed CMake version to work with Travis." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1069,13 +1114,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/include/c++/4.9.2/streambuf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3329646">
-          <caret line="119" column="10" selection-start-line="119" selection-start-column="10" selection-end-line="119" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/stdint.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45232815">
@@ -1216,13 +1254,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/extlibs/zlib/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33924612">
-          <caret line="206" column="57" selection-start-line="206" selection-start-column="57" selection-end-line="206" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/c++/4.9.2/bits/stl_iterator.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1330,14 +1361,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1382,7 +1405,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.12569833">
+        <state vertical-scroll-proportion="0.0">
           <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
           <folding />
         </state>
@@ -1412,14 +1435,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitmodules">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.050139274">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1436,9 +1451,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/extlibs/zlib/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1689944">
+          <caret line="206" column="57" selection-start-line="206" selection-start-column="57" selection-end-line="206" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitmodules">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05027933">
+          <caret line="2" column="50" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extlibs/libsodium-CMake/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.025139665">
+          <caret line="662" column="26" selection-start-line="662" selection-start-column="26" selection-end-line="662" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.047486">
           <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
           <folding />
         </state>
