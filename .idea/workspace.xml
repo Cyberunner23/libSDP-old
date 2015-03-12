@@ -44,7 +44,7 @@
   <component name="ChangeListManager">
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -174,11 +174,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+          <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/README.md">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
+                <state vertical-scroll-proportion="-0.0">
                   <caret line="0" column="107" selection-start-line="0" selection-start-column="107" selection-end-line="0" selection-end-column="107" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -250,7 +260,6 @@
         <option value="$PROJECT_DIR$/include/SDPVer.hpp" />
         <option value="$PROJECT_DIR$/src/SDPCompressionStreamBuf.cpp" />
         <option value="$PROJECT_DIR$/test/main.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/SDPCompressionStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" />
         <option value="$PROJECT_DIR$/src/SDPCryptStreamBuf.cpp" />
@@ -259,6 +268,7 @@
         <option value="$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
       </list>
     </option>
   </component>
@@ -628,12 +638,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00031" summary="Forgot to remove the recursive tag in the sub-container header + reflected changes in SDPStreambuf + incremented minor of spec.">
-      <created>1425681870178</created>
-      <option name="number" value="00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1425681870178</updated>
-    </task>
     <task id="LOCAL-00032" summary="Removed unused files in the tools dir.">
       <created>1425682087341</created>
       <option name="number" value="00032" />
@@ -922,7 +926,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426117786725</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Added Travis build status.">
+      <created>1426118319619</created>
+      <option name="number" value="00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1426118319620</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1013,7 +1023,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Changed data types to uint style in SDPCompressionAlgorithmBase." />
     <MESSAGE value="Re-added encrypt/decryptStream... They're still useful... + some spacing underpage." />
     <MESSAGE value="SDPCompressionOptions -&gt; SDPCompressionAlgorithmInfoStruct." />
     <MESSAGE value="Made typed uint style for SDPCompressionStreamBuf." />
@@ -1038,7 +1047,8 @@
     <MESSAGE value="Implemented XSalsa20 Algorithm + changed encrypt/decrypt -&gt; encryptBuffer/decryptBuffer to avoid possible function name collisions." />
     <MESSAGE value="Forgot license info..." />
     <MESSAGE value="Added Travis yml." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Travis yml." />
+    <MESSAGE value="Added Travis build status." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Travis build status." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1306,13 +1316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76053214">
-          <caret line="149" column="77" selection-start-line="149" selection-start-column="77" selection-end-line="149" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/extlibs/libsodium-CMake/include/sodium/crypto_stream_xsalsa20.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1429,6 +1432,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="107" selection-start-line="0" selection-start-column="107" selection-end-line="0" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
           <folding />
         </state>
       </provider>
