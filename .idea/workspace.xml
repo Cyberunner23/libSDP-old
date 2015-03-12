@@ -44,9 +44,8 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Hopefully cmake updates this time... (travis)">
+    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -121,7 +120,7 @@
       <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.079822615">
+            <state vertical-scroll-proportion="0.13559322">
               <caret line="111" column="32" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
               <folding />
             </state>
@@ -427,12 +426,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00040" summary="Fixed some slight spacing derpage.">
-      <created>1425691984788</created>
-      <option name="number" value="00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1425691984788</updated>
-    </task>
     <task id="LOCAL-00041" summary="Fixed an error check. +  cleaned up a struct resetting I forgot.">
       <created>1425692352760</created>
       <option name="number" value="00041" />
@@ -721,7 +714,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426190121404</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="added some zlib debug in cmake...">
+      <created>1426190652473</created>
+      <option name="number" value="00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1426190652473</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -746,10 +745,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48387095" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39892474" sideWeight="0.49394417" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39892474" sideWeight="0.49394417" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13118279" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2527646" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2" sideWeight="0.49394417" order="8" side_tool="false" content_ui="tabs" />
@@ -809,7 +808,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Gave compression algorithm ability to know the size of the uncompressed chunk." />
     <MESSAGE value="Implemented a read function to read the compressed data chunk in accordance to the new spec." />
     <MESSAGE value="Implemented a write function to write the compressed data chunk in accordance to the new spec." />
     <MESSAGE value="Compression streambuf now uses the read/write function that conforms to the new spec." />
@@ -834,7 +832,8 @@
     <MESSAGE value="Lets try it with this..." />
     <MESSAGE value="Next attempt..." />
     <MESSAGE value="Hopefully cmake updates this time... (travis)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hopefully cmake updates this time... (travis)" />
+    <MESSAGE value="added some zlib debug in cmake..." />
+    <option name="LAST_COMMIT_MESSAGE" value="added some zlib debug in cmake..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1228,7 +1227,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.079822615">
+        <state vertical-scroll-proportion="0.13559322">
           <caret line="111" column="32" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
           <folding />
         </state>
