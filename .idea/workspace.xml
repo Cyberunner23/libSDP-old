@@ -44,6 +44,7 @@
   <component name="ChangeListManager">
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -132,8 +133,8 @@
           <file leaf-file-name=".gitmodules" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.gitmodules">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.05027933">
-                  <caret line="2" column="50" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="50" />
+                <state vertical-scroll-proportion="0.17597765">
+                  <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
@@ -173,11 +174,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
+          <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.travis.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+                <state vertical-scroll-proportion="0.4273743">
+                  <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -188,16 +189,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="-0.0">
                   <caret line="0" column="107" selection-start-line="0" selection-start-column="107" selection-end-line="0" selection-end-column="107" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-3.047486">
-                  <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -274,10 +265,10 @@
         <option value="$PROJECT_DIR$/include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp" />
         <option value="$PROJECT_DIR$/src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp" />
         <option value="$PROJECT_DIR$/include/SDPCryptStreamBuf.hpp" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/extlibs/libsodium-CMake/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -683,12 +674,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00033" summary="Used a cleaner way to reset the structs.">
-      <created>1425682244269</created>
-      <option name="number" value="00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1425682244269</updated>
-    </task>
     <task id="LOCAL-00034" summary="Fixed some odd spacing.">
       <created>1425682306259</created>
       <option name="number" value="00034" />
@@ -977,7 +962,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426118609803</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Attempting to fix Travis error with gcc and c++11">
+      <created>1426120423542</created>
+      <option name="number" value="00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1426120423542</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1068,7 +1059,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="SDPCompressionOptions -&gt; SDPCompressionAlgorithmInfoStruct." />
     <MESSAGE value="Made typed uint style for SDPCompressionStreamBuf." />
     <MESSAGE value="Added a tag in the compressed data block to tell if compression was skipped in the case that the block was incompressible." />
     <MESSAGE value="Added capability to compression algorithms to be aware of the position in the stream they're working on." />
@@ -1093,7 +1083,8 @@
     <MESSAGE value="Added Travis yml." />
     <MESSAGE value="Added Travis build status." />
     <MESSAGE value="Changed CMake version to work with Travis." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed CMake version to work with Travis." />
+    <MESSAGE value="Attempting to fix Travis error with gcc and c++11" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attempting to fix Travis error with gcc and c++11" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1435,34 +1426,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="107" selection-start-line="0" selection-start-column="107" selection-end-line="0" selection-end-column="107" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/extlibs/zlib/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1689944">
           <caret line="206" column="57" selection-start-line="206" selection-start-column="57" selection-end-line="206" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitmodules">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05027933">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -1485,8 +1452,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.047486">
+        <state vertical-scroll-proportion="-2.972067">
           <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitmodules">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17597765">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="107" selection-start-line="0" selection-start-column="107" selection-end-line="0" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4273743">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
