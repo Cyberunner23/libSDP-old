@@ -33,13 +33,13 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPVer.hpp"
 #include "typedefs.hpp"
 
-//FIXME: use a better way to detect eof while parsing SDP
-//TODO: implement eof detection for hash compute loop
-//TODO: finish SDP open sequence
-//TODO: implement virtual streambuf functions
-//TODO: implement seeking
+//TODO:  put more order in the tests.
+//TODO:  finish/make better error reporting
+//TODO:  implement virtual streambuf functions
+//TODO:  implement seeking with change list and whole SDP shifting on write + past EOF support.
+//TODO:  add capability to add subfiles to existing SDP
+//TODO:  implement per sub-container/chunk dump for debugging.
 //TODO?: Remove disable read/write stuff?
-//TODO?: add capability to add subfiles to existing SDP
 
 class SDPStreamBuf : public std::streambuf{
 
