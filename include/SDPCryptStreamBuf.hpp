@@ -43,8 +43,8 @@ public:
     };
 
     //Funcs
-    SDPCryptStreamBuf(std::istream *cryptIn,  std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
-    SDPCryptStreamBuf(std::ostream *cryptOut, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
+    SDPCryptStreamBuf(std::shared_ptr<std::istream> cryptIn,  std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
+    SDPCryptStreamBuf(std::shared_ptr<std::ostream> cryptOut, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
     ~SDPCryptStreamBuf();
 
     void                             setEncryptionAlgorithm(std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm);
@@ -93,7 +93,7 @@ private:
     int_type getNextChar(bool     doAdvance);
     int_type setNextChar(int_type ch);
 
-    bool readAndDecompressNextChunk();
+    bool readAndDecryptsNextChunk();
     void encryptAndWriteNextChunk();
 
 

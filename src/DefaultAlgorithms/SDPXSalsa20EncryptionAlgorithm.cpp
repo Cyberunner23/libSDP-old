@@ -48,6 +48,15 @@ uint64 SDPXSalsa20EncryptionAlgorithm::encryptBuffer(uchar *unencryptedBuffer, u
 }
 
 
+bool SDPXSalsa20EncryptionAlgorithm::decryptStream(uchar encryptedChar,   uchar* decryptedChar, uint64 charNum){
+
+}
+
+bool SDPXSalsa20EncryptionAlgorithm::encryptStream(uchar unencryptedChar, uchar* encryptedChar, uint64 charNum){
+
+}
+
+
 void SDPXSalsa20EncryptionAlgorithm::onInit(){
 
 }

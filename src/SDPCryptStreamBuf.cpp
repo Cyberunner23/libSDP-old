@@ -17,39 +17,43 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPCryptStreamBuf.hpp"
 
 
-SDPCryptStreamBuf::SDPCryptStreamBuf(std::istream *cryptIn, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm)
+SDPCryptStreamBuf::SDPCryptStreamBuf(std::shared_ptr<std::istream> cryptIn, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm)
         : hasFirstBlockBeenRead(false),
           inStream(cryptIn),
           outStream(nullptr),
-          nextChar(traits_type::eof())
+          nextChar(traits_type::eof()),
+          currentChunkNum(0),
+          currentCharNum(0)
 {
 
     currentEncryptionAlgorithmInfo = makeEncryptionAlgorithmInfo(cryptAlgorithm);
     currentEncryptionAlgorithmInfo.encryptionAlgorithm.get()->onInit();
 
     //Is this even needed?
-    if(!currentEncryptionAlgorithmInfo.isStreamCipher){
-        encryptedBuffer.resize(currentEncryptionAlgorithmInfo.bufferSize);
-        unencryptedBuffer.resize(currentEncryptionAlgorithmInfo.bufferSize);
-    }
+    //if(!currentEncryptionAlgorithmInfo.isStreamCipher){
+    //    encryptedBuffer.resize(currentEncryptionAlgorithmInfo.bufferSize);
+    //    unencryptedBuffer.resize(currentEncryptionAlgorithmInfo.bufferSize);
+    //}
 
 }
 
-SDPCryptStreamBuf::SDPCryptStreamBuf(std::ostream *cryptOut, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm)
+SDPCryptStreamBuf::SDPCryptStreamBuf(std::shared_ptr<std::ostream> cryptOut, std::shared_ptr<SDPEncryptionAlgorithmBase> cryptAlgorithm)
         : hasFirstBlockBeenRead(false),
           inStream(nullptr),
           outStream(cryptOut),
-          nextChar(traits_type::eof())
+          nextChar(traits_type::eof()),
+          currentChunkNum(0),
+          currentCharNum(0)
 {
 
     currentEncryptionAlgorithmInfo = makeEncryptionAlgorithmInfo(cryptAlgorithm);
     currentEncryptionAlgorithmInfo.encryptionAlgorithm.get()->onInit();
 
     //Is this even necessary?
-    if(!currentEncryptionAlgorithmInfo.isStreamCipher){
-        encryptedBuffer.resize(currentEncryptionAlgorithmInfo.bufferSize);
-        unencryptedBuffer.resize(currentEncryptionAlgorithmInfo.bufferSize);
-    }
+    //if(!currentEncryptionAlgorithmInfo.isStreamCipher){
+    //    encryptedBuffer.resize(currentEncryptionAlgorithmInfo.bufferSize);
+    //    unencryptedBuffer.resize(currentEncryptionAlgorithmInfo.bufferSize);
+    //}
 
 }
 
@@ -160,11 +164,9 @@ SDPCryptStreamBuf::int_type SDPCryptStreamBuf::getNextChar(bool doAdvance){
 
         if(bufferIterator == unencryptedBuffer.end() || !hasFirstBlockBeenRead){
 
-            if(!readAndDecompressNextChunk()){
+            if(!readAndDecryptsNextChunk()){
                 return traits_type::eof();
             }
-
-            currentChunkNum++;
 
             bufferIterator = unencryptedBuffer.begin();
             nextChar       = *bufferIterator;
@@ -209,7 +211,7 @@ SDPCryptStreamBuf::int_type SDPCryptStreamBuf::setNextChar(int_type ch){
 }
 
 
-bool SDPCryptStreamBuf::readAndDecompressNextChunk(){
+bool SDPCryptStreamBuf::readAndDecryptsNextChunk(){
 
     uint64 encryptedDataSizeInFile;
     uint64 unencryptedDataSizeInFile;
@@ -220,6 +222,7 @@ bool SDPCryptStreamBuf::readAndDecompressNextChunk(){
     //Read encrypted data size
     if(rawFileIO.read(encryptedDataSizeInFile, inStream, RawFileIO::BIG__ENDIAN) != sizeof(encryptedDataSizeInFile))
         return false;
+    //Read decrypted data size
     if(rawFileIO.read(unencryptedDataSizeInFile, inStream, RawFileIO::BIG__ENDIAN) != sizeof(unencryptedDataSizeInFile))
         return false;
 

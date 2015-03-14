@@ -35,6 +35,9 @@ public:
     virtual uint64 decryptBuffer(uchar* encryptedBuffer,   uchar* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum);
     virtual uint64 encryptBuffer(uchar* unencryptedBuffer, uchar* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum);
 
+    virtual bool decryptStream(uchar encryptedChar,   uchar* decryptedChar, uint64 charNum);
+    virtual bool encryptStream(uchar unencryptedChar, uchar* encryptedChar, uint64 charNum);
+
     virtual void onInit();
     virtual void onExit();
     virtual void onSync();
