@@ -34,7 +34,6 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "typedefs.hpp"
 
 //TODO!: DOCUMENTATION
-//TODO:  put more order in the tests.
 //TODO:  finish/make better error reporting
 //TODO:  implement virtual streambuf functions
 //TODO:  implement seeking with change list and whole SDP shifting on write + past EOF support.

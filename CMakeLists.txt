@@ -4,16 +4,14 @@ PROJECT(libSDP C CXX)
 #TODO: MAJOR cleanup.
 #TODO: using ${CMAKE_CURRENT_SOURCE_DIR} -> using ${SOULENGINE_SOURCE_DIR} for lib path finding.
 #TODO: Add include dirs of externallibs to SDP's include dir.
-
-
-
-
-
 #FIXME: LIBSODIUM_CMAKE_DIR option setting stuff
+
+
 
 #----------------------------------------------------------
 ####################### OPTIONS ###########################
 #----------------------------------------------------------
+OPTION(LIBSDP_ENABLE_TESTS          OFF "Enable the building of tests.")
 OPTION(LIBSDP_BUILD_SHARED_LIBRARIES    "Build libSDP as a shared lib (setting this to OFF will compile statically)" ON)
 OPTION(LIBSODIUM_BUILD_SHARED_LIBRARIES "Build libsodium-CMake as a shared lib (setting this to OFF will compile statically)")
 
@@ -134,32 +132,7 @@ TARGET_LINK_LIBRARIES(libSDP liblz4)
 
 
 #Testing stuff
-
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake/include)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/AlgorithmBase)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/lz4)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms/zlib)
-
-#compression test
-SET(COMPRESSION_TEST_SOURCE
-    test/compressionTest/main.cpp
-)
-ADD_EXECUTABLE(COMPRESSION_TEST ${COMPRESSION_TEST_SOURCE})
-SET_TARGET_PROPERTIES(COMPRESSION_TEST PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test/compressionTest
-    EXCLUDE_FROM_ALL TRUE
-)
-TARGET_LINK_LIBRARIES(COMPRESSION_TEST libSDP)
-
-#encryption test
-SET(ENCRYPTION_TEST_SOURCE
-    test/encryptionTest/main.cpp
-)
-ADD_EXECUTABLE(ENCRYPTION_TEST ${ENCRYPTION_TEST_SOURCE})
-SET_TARGET_PROPERTIES(ENCRYPTION_TEST PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test/encryptionTest
-    EXCLUDE_FROM_ALL TRUE
-)
-TARGET_LINK_LIBRARIES(ENCRYPTION_TEST libSDP)
+if(LIBSDP_ENABLE_TESTS)
+    ENABLE_TESTING()
+    ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/test)
+endif()
