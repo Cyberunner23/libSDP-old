@@ -25,6 +25,8 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::openSDP(std::shared_ptr<std::ios
     //Check file header.
     if(getSDPFileHeader(inOutStream, SDPFileInfo.SDPFileHeader) != SDP_NO_ERROR)
         return SDP_INVALID_FILE_HEADER;
+    else
+        SDPFileInfo.isHeaderValid = true;
 
     //Loop through the sub-content headers.
     while(true){
@@ -245,7 +247,7 @@ SDPStreamBuf::SDPStreamBufErrEnum SDPStreamBuf::getSDPSubContainerInfo(std::shar
     uint8 subContainerTypeChar;
     if(rawFileIO.read(subContainerTypeChar, inStream) != sizeof(subContainerTypeChar))
         return SDP_EOS_REACHED; //Assume end of stream.
-    if(subContainerTypeChar < 0x01 || subContainerTypeChar > 0x04)
+    if(subContainerTypeChar < 0x01 || subContainerTypeChar >= 0x04)
         isHeaderValid = false;
     SDPSubContainerInfo.subContainerHeader.subContainerType = static_cast<SDPSubContainerHeaderStruct::subContainerTypeEnum> (subContainerTypeChar);
 

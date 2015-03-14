@@ -33,13 +33,14 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPVer.hpp"
 #include "typedefs.hpp"
 
+//TODO!: DOCUMENTATION
 //TODO:  put more order in the tests.
 //TODO:  finish/make better error reporting
 //TODO:  implement virtual streambuf functions
 //TODO:  implement seeking with change list and whole SDP shifting on write + past EOF support.
+//TODO:  implement other algorithms.
 //TODO:  add capability to add subfiles to existing SDP
 //TODO:  implement per sub-container/chunk dump for debugging.
-//TODO?: Remove disable read/write stuff?
 
 class SDPStreamBuf : public std::streambuf{
 

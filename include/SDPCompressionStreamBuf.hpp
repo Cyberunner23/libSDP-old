@@ -26,12 +26,16 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "RawFileIO.hpp"
 #include "SDPCompressionAlgorithmBase.hpp"
 
-//FIXME?: use of >> in a istream causes an error and to prematurely return eof.
-//TODO: implement xsgetn() xsputn()
-//TODO: implement seeking.
-//TODO: Testing.
-//TODO: Include compression Algorithm ID in SDPCompressionAlgorithmInfoStruct
-//TODO?: Use a iostream in constructor?
+//FIXME?: Use of >> in a istream causes an error and to prematurely return eof.
+//TODO:   Implement seeking.
+//TODO:   Testing.
+//TODO:   Include compression Algorithm ID in SDPCompressionAlgorithmInfoStruct
+//TODO:   Add support for algorithms that depend on data already read.
+//TODO?:  Implement << >> operator overloads.
+//TODO?:  Implement xsgetn() xsputn()
+//TODO?:  Use a iostream in constructor?
+//TODO?:  Make lib thread safe/atomic?
+//TODO?:  Use sub-container fragmentation for concurrent file write?
 
 class SDPCompressionStreamBuf : public std::streambuf{
 
@@ -46,8 +50,8 @@ public:
     };
 
     //Funcs
-    SDPCompressionStreamBuf(std::shared_ptr<std::istream> compressedIn,  std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm = nullptr);
-    SDPCompressionStreamBuf(std::shared_ptr<std::ostream> compressedOut, std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm = nullptr);
+    SDPCompressionStreamBuf(std::shared_ptr<std::istream> compressedIn,  std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm);
+    SDPCompressionStreamBuf(std::shared_ptr<std::ostream> compressedOut, std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm);
     ~SDPCompressionStreamBuf();
 
     //void SDPSetCompressionOptions(SDPCompressionOptions compressionOptions);
