@@ -2,7 +2,6 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.7)
 PROJECT(libSDP C CXX)
 
 #TODO: MAJOR cleanup.
-#TODO: using ${CMAKE_CURRENT_SOURCE_DIR} -> using ${SOULENGINE_SOURCE_DIR} for lib path finding.
 #TODO: Add include dirs of externallibs to SDP's include dir.
 #FIXME: LIBSODIUM_CMAKE_DIR option setting stuff
 
@@ -45,6 +44,7 @@ SET(SOURCE_FILES
     src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
     src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
     src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp
+    src/DefaultAlgorithms/SDPlz4CompressionAlgorithm.cpp
     src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp
 )
 SET(HEADER_FILES
@@ -59,6 +59,7 @@ SET(HEADER_FILES
     include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
     include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
     include/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.hpp
+    include/DefaultAlgorithms/SDPlz4CompressionAlgorithm.hpp
     include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp
 )
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -92,6 +93,8 @@ SET_TARGET_PROPERTIES(libSDP PROPERTIES
 
 IF(LIBSODIUM_CMAKE_DIR STREQUAL "")
     SET(LIBSODIUM_CMAKE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake")
+    MESSAGE("Building libsodium from ${LIBSODIUM_CMAKE_DIR}")
+ELSE()
     MESSAGE("Building libsodium from ${LIBSODIUM_CMAKE_DIR}")
 ENDIF()
 

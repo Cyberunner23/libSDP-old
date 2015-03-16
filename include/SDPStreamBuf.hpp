@@ -35,6 +35,7 @@ Copyright 2014 Alex Frappier Lachapelle
 
 //TODO!: DOCUMENTATION
 //TODO:  finish/make better error reporting
+//TODO:  implement SDP Sub-Container read/write
 //TODO:  implement virtual streambuf functions
 //TODO:  implement seeking with change list and whole SDP shifting on write + past EOF support.
 //TODO:  implement other algorithms.
