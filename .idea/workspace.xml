@@ -115,8 +115,8 @@
           <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.travis.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5636008">
-                  <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.52837574">
+                  <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
                   <folding />
                 </state>
               </provider>
@@ -610,12 +610,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00062" summary="Added buffer size checking for prefered buffer size with overhead.">
-      <created>1425761462440</created>
-      <option name="number" value="00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1425761462440</updated>
-    </task>
     <task id="LOCAL-00063" summary="Forgot a couple things when removing byte per byte compression.">
       <created>1425762826284</created>
       <option name="number" value="00063" />
@@ -904,7 +898,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426468237118</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="Travis, only update g++ if we're using it.">
+      <created>1426468605790</created>
+      <option name="number" value="00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1426468605790</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -971,7 +971,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Cmake is being derpy with zlib (for travis)... attempting to fix that (lets see if updating cmake works.)" />
     <MESSAGE value="Lets try it with this..." />
     <MESSAGE value="Next attempt..." />
     <MESSAGE value="Hopefully cmake updates this time... (travis)" />
@@ -996,7 +995,8 @@
     <MESSAGE value="A bit of travis debugging." />
     <MESSAGE value="More travis debugging." />
     <MESSAGE value="Travis build working, removing debug stuff." />
-    <option name="LAST_COMMIT_MESSAGE" value="Travis build working, removing debug stuff." />
+    <MESSAGE value="Travis, only update g++ if we're using it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Travis, only update g++ if we're using it." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1423,8 +1423,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5636008">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.52837574">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
           <folding />
         </state>
       </provider>
