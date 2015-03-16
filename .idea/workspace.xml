@@ -4,6 +4,7 @@
     <generated>
       <config projectName="libSDP" targetName="cryptopp" />
       <config projectName="libSDP" targetName="ENCRYPTION_TEST" />
+      <config projectName="libSDP" targetName="CryptoPP-Cmake2" />
       <config projectName="libSDP" targetName="CVT_BUILD_STEP" />
       <config projectName="libSDP" targetName="sodium" />
       <config projectName="libSDP" targetName="CVT_" />
@@ -13,9 +14,8 @@
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_GET" />
       <config projectName="libSDP" targetName="lz4" />
       <config projectName="libSDP" targetName="SDP" />
-      <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
       <config projectName="libSDP" targetName="zlibstatic" />
-      <config projectName="libSDP" targetName="COMPRESSION_TEST" />
+      <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_BUILD_STEP" />
       <config projectName="SDP" targetName="libSDP" />
       <config projectName="libSDP" targetName="minigzip64" />
@@ -25,7 +25,7 @@
       <config projectName="libSDP" targetName="CVT_GET" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_DOWNLOAD_STEP" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE" />
-      <config projectName="libSDP" targetName="CryptoPP-Cmake2" />
+      <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
       <config projectName="libSDP" targetName="libSDP" />
       <config projectName="libSDP" targetName="CryptoPP-CMake" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_CONFIGURE_STEP" />
@@ -37,7 +37,7 @@
       <config projectName="libSDP" targetName="example" />
       <config projectName="libSDP" targetName="example64" />
       <config projectName="libSDP" targetName="CryptoPP-Cmake" />
-      <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
+      <config projectName="libSDP" targetName="COMPRESSION_TEST" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true" GENERATION_PASS_SYSTEM_ENVIRONMENT="true" BUILD_OUTPUT_DIR="build">
@@ -49,6 +49,7 @@
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -115,8 +116,18 @@
           <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.travis.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.9295499">
-                  <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+                <state vertical-scroll-proportion="0.7886497">
+                  <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="113" column="26" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
@@ -255,7 +266,6 @@
         <option value="$PROJECT_DIR$/test/encryptionTests/XSalsa20EncryptionTest/main.cpp" />
         <option value="$PROJECT_DIR$/include/SDPStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/include/DefaultAlgorithms/SDPlz4CompressionAlgorithm.h" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/DefaultAlgorithms/SDPlz4CompressionAlgorithm.hpp" />
         <option value="$PROJECT_DIR$/extlibs/lz4/cmake_unofficial/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/DefaultAlgorithms/SDPlz4CompressionAlgorithm.cpp" />
@@ -264,6 +274,7 @@
         <option value="$PROJECT_DIR$/test/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
       </list>
     </option>
   </component>
@@ -418,20 +429,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="DEFLATECompressionTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libSDP" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libSDP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="extlibs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -611,12 +608,6 @@
       <created>1421011182436</created>
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Added a tag in the compressed data block to tell if compression was skipped in the case that the block was incompressible.">
-      <created>1425708188778</created>
-      <option name="number" value="00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1425708188779</updated>
     </task>
     <task id="LOCAL-00060" summary="Added capability to compression algorithms to be aware of the position in the stream they're working on.">
       <created>1425709439491</created>
@@ -906,7 +897,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426466969246</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="A bit of travis debugging.">
+      <created>1426467647585</created>
+      <option name="number" value="00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1426467647586</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -973,7 +970,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Attempting to fix Travis error with gcc and c++11" />
     <MESSAGE value="Attempting to fix Travis error with gcc and c++11... Again..." />
     <MESSAGE value="Cmake is being derpy with zlib (for travis)... attempting to fix that" />
     <MESSAGE value="Cmake is being derpy with zlib (for travis)... attempting to fix that (lets see if updating cmake works.)" />
@@ -998,7 +994,8 @@
     <MESSAGE value="Fixed a typo in .travis.yml" />
     <MESSAGE value="Added compression test for lz4." />
     <MESSAGE value="Fixed a typo." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a typo." />
+    <MESSAGE value="A bit of travis debugging." />
+    <option name="LAST_COMMIT_MESSAGE" value="A bit of travis debugging." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1365,14 +1362,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1624266">
-          <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/compressionTests/DEFLATECompressionTest/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1405,14 +1394,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4357035">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1421,10 +1402,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4357035">
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="113" column="26" selection-start-line="113" selection-start-column="26" selection-end-line="113" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9295499">
-          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.7886497">
+          <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
           <folding />
         </state>
       </provider>

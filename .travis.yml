@@ -20,10 +20,9 @@ before_script:
 
 script:
   - make
-  - cd ..
-  - cd test/compressionTests/DEFLARECompressionTest && ls
-  - cd ..
-  - cd lz4CompressionTest && ls
-  - cd ..
-  - cd ..
-  - cd encryptionTests/XSalsa20EncryptionTest && ls
+  - cd /home/travis/build/Cyberunner23/libSDP/test/compressionTests/DEFLATECompressionTest
+  - ls
+  - cd /home/travis/build/Cyberunner23/libSDP/test/compressionTests/lz4CompressionTest
+  - ls
+  - cd /home/travis/build/Cyberunner23/libSDP/test/encryptionTests/XSalsa20EncryptionTest
+  - ls
