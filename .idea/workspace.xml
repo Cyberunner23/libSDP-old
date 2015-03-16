@@ -116,7 +116,7 @@
             <entry file="file://$PROJECT_DIR$/.travis.yml">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.45792565">
-                  <caret line="13" column="70" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
+                  <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
@@ -193,8 +193,8 @@
           <file leaf-file-name="SDPDEFLATECompressionAlgorithm.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.21135029">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.66927594">
+                  <caret line="25" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -610,12 +610,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00065" summary="Implemented a read function to read the compressed data chunk in accordance to the new spec.">
-      <created>1425767347382</created>
-      <option name="number" value="00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1425767347382</updated>
-    </task>
     <task id="LOCAL-00066" summary="Implemented a write function to write the compressed data chunk in accordance to the new spec.">
       <created>1425780600051</created>
       <option name="number" value="00066" />
@@ -904,7 +898,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426468979470</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="You know what, it's getting late, I'll do this later.">
+      <created>1426469155123</created>
+      <option name="number" value="00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1426469155123</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -971,7 +971,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Hopefully cmake updates this time... (travis)" />
     <MESSAGE value="added some zlib debug in cmake..." />
     <MESSAGE value="Lets see if that works......" />
     <MESSAGE value="Another test............... This is getting annoying..." />
@@ -996,7 +995,8 @@
     <MESSAGE value="Travis, only update g++ if we're using it." />
     <MESSAGE value="Trying to fix that..." />
     <MESSAGE value="Ugly, but should fix it." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ugly, but should fix it." />
+    <MESSAGE value="You know what, it's getting late, I'll do this later." />
+    <option name="LAST_COMMIT_MESSAGE" value="You know what, it's getting late, I'll do this later." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1363,14 +1363,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21135029">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/compressionTests/DEFLATECompressionTest/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1421,10 +1413,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66927594">
+          <caret line="25" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45792565">
-          <caret line="13" column="70" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
           <folding />
         </state>
       </provider>
