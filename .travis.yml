@@ -20,4 +20,10 @@ before_script:
 
 script:
   - make
-  - make test
+  - cd ..
+  - cd test/compressionTests/DEFLARECompressionTest && ls
+  - cd ..
+  - cd lz4CompressionTest && ls
+  - cd ..
+  - cd ..
+  - cd encryptionTests/XSalsa20EncryptionTest && ls

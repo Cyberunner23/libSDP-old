@@ -46,11 +46,9 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Fixed a typo in .travis.yml">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/CMakeLists.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/main.cpp" />
+    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/CMakeLists.txt" afterPath="$PROJECT_DIR$/test/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -75,7 +73,7 @@
               <entry file="file://$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/CMakeLists.txt">
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.4357035">
-                    <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+                    <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
                     <folding />
                   </state>
                 </provider>
@@ -114,11 +112,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.61877024">
       <split-first>
         <leaf>
-          <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
+          <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.travis.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.9295499">
+                  <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
                   <folding />
                 </state>
               </provider>
@@ -154,11 +152,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
+          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/CMakeLists.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3522505">
-                  <caret line="10" column="68" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="68" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -255,7 +253,6 @@
         <option value="$PROJECT_DIR$/test/compressionTests/DEFLATECompressionTest/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/test/encryptionTests/XSalsa20EncryptionTest/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/test/encryptionTests/XSalsa20EncryptionTest/main.cpp" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/include/SDPStreamBuf.hpp" />
         <option value="$PROJECT_DIR$/include/DefaultAlgorithms/SDPlz4CompressionAlgorithm.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
@@ -266,6 +263,7 @@
         <option value="$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/main.cpp" />
         <option value="$PROJECT_DIR$/test/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -354,6 +352,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libSDP" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libSDP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="encryptionTests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XSalsa20EncryptionTest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -591,18 +611,6 @@
       <created>1421011182436</created>
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
-    </task>
-    <task id="LOCAL-00057" summary="SDPCompressionOptions -&gt; SDPCompressionAlgorithmInfoStruct.">
-      <created>1425707196815</created>
-      <option name="number" value="00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1425707196816</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Made typed uint style for SDPCompressionStreamBuf.">
-      <created>1425707475799</created>
-      <option name="number" value="00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1425707475799</updated>
     </task>
     <task id="LOCAL-00059" summary="Added a tag in the compressed data block to tell if compression was skipped in the case that the block was incompressible.">
       <created>1425708188778</created>
@@ -886,7 +894,19 @@
       <option name="project" value="LOCAL" />
       <updated>1426377216651</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Added compression test for lz4.">
+      <created>1426466713975</created>
+      <option name="number" value="00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1426466713977</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Fixed a typo.">
+      <created>1426466969245</created>
+      <option name="number" value="00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1426466969246</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -911,14 +931,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40860215" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4204301" sideWeight="0.49394417" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13118279" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2527646" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2" sideWeight="0.49394417" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1864139" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1864139" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32258064" sideWeight="0.50394946" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32258064" sideWeight="0.49605057" order="10" side_tool="false" content_ui="tabs" />
@@ -953,8 +973,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Added Travis build status." />
-    <MESSAGE value="Changed CMake version to work with Travis." />
     <MESSAGE value="Attempting to fix Travis error with gcc and c++11" />
     <MESSAGE value="Attempting to fix Travis error with gcc and c++11... Again..." />
     <MESSAGE value="Cmake is being derpy with zlib (for travis)... attempting to fix that" />
@@ -978,7 +996,9 @@
     <MESSAGE value="Some small edits." />
     <MESSAGE value="Cleaned up tests." />
     <MESSAGE value="Fixed a typo in .travis.yml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a typo in .travis.yml" />
+    <MESSAGE value="Added compression test for lz4." />
+    <MESSAGE value="Fixed a typo." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a typo." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1353,14 +1373,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/compressionTests/DEFLATECompressionTest/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1393,18 +1405,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3522505">
-          <caret line="10" column="68" selection-start-line="10" selection-start-column="68" selection-end-line="10" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.4357035">
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/test/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4357035">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9295499">
+          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
           <folding />
         </state>
       </provider>
