@@ -3,6 +3,7 @@ PROJECT(libSDP C CXX)
 
 #TODO: MAJOR cleanup.
 #TODO: Add include dirs of externallibs to SDP's include dir.
+#TODO: unit tests, TEST EVERYTHING
 #FIXME: LIBSODIUM_CMAKE_DIR option setting stuff
 
 
