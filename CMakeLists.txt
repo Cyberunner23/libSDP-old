@@ -22,14 +22,6 @@ SET(LIBSODIUM_CMAKE_DIR "" CACHE STRING "Directory where libsodium-CMake is plac
 SET(ZLIB_CMAKE_DIR      "" CACHE STRING "Directory where zlib is placed. (Don't set this if zlib is in extlibs/)")
 SET(LZ4_CMAKE_DIR       "" CACHE STRING "Directory where lz4 is placed. (Don't set this if lz4 is in extlibs/)")
 
-#SET(SOULENGINE_SOURCE_DIR "" PATH "Top level directory of Soul Engine (Will be set by Soul Engine's CMakeLists.txt, setting this will cause ${PROJECT_NAME} to use Soul Engine's libraries.)")
-#SET(LIBSODIUM_BUILD_SHARED_LIBRARIES ON)
-#----------------------------------------------------------
-#################### INTERNAL/DEV VARS ####################
-#----------------------------------------------------------
-SET(IS_DEV_BUILD                ON CACHE BOOL  "Set to ON if its a development build for libSDP, set to OFF otherwise.")
-SET(EXTERNAL_LIB_ALREADY_CLONED OFF CACHE BOOL "Sets if the external libraries were already cloned")# FORCE) #Add FORCE to reset if needed.
-
 #----------------------------------------------------------
 ##################### COMPILER FLAGS ######################
 #----------------------------------------------------------
