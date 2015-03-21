@@ -42,36 +42,38 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 #################### SOURCE / HEADERS #####################
 #----------------------------------------------------------
 SET(SOURCE_FILES
-    src/Endianness.cpp
-    src/HexBinTool.cpp
-    src/RawFileIO.cpp
-    src/SDPCompressionStreamBuf.cpp
-    src/SDPCryptStreamBuf.cpp
-    src/SDPStreamBuf.cpp
     src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
     src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
     src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp
     src/DefaultAlgorithms/SDPlz4CompressionAlgorithm.cpp
     src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp
+    src/StreamBufs/SDPCompressionStreamBuf.cpp
+    src/StreamBufs/SDPCryptStreamBuf.cpp
+    src/StreamBufs/SDPStreamBuf.cpp
+    src/Tools/Endianness.cpp
+    src/Tools/HexBinTool.cpp
+    src/Tools/RawFileIO.cpp
 )
 SET(HEADER_FILES
-    include/Endianness.hpp
-    include/HexBinTool.hpp
-    include/RawFileIO.hpp
-    include/SDPCompressionStreamBuf.hpp
-    include/SDPCryptStreamBuf.hpp
-    include/SDPStreamBuf.hpp
     include/SDPVer.hpp
-    include/Typedefs.hpp
     include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
     include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
     include/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.hpp
     include/DefaultAlgorithms/SDPlz4CompressionAlgorithm.hpp
     include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp
+    include/StreamBufs/SDPCompressionStreamBuf.hpp
+    include/StreamBufs/SDPCryptStreamBuf.hpp
+    include/StreamBufs/SDPStreamBuf.hpp
+    include/Tools/Endianness.hpp
+    include/Tools/HexBinTool.hpp
+    include/Tools/RawFileIO.hpp
+    include/Tools/Typedefs.hpp
 )
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/AlgorithmBase)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/StreamBufs)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/Tools)
 
 
 #----------------------------------------------------------
