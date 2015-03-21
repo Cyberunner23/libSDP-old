@@ -26,7 +26,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "SDPCompressionStreamBuf.hpp"
 #include "SDPEncryptionAlgorithmBase.hpp"
 #include "SDPCompressionAlgorithmBase.hpp"
-#include "typedefs.hpp"
+#include "Typedefs.hpp"
 
 bool compressFile(const char* sourceFileName,   const char* destFileName, std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm);
 bool decompressFile(const char* sourceFileName, const char* destFileName, std::shared_ptr<SDPCompressionAlgorithmBase> compressionAlgorithm);
