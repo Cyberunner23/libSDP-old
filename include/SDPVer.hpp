@@ -18,7 +18,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #define SDPVER_HPP
 
 
-#include "typedefs.hpp"
+#include "Typedefs.hpp"
 
 #ifdef USE_IN_SOUL_ENGINE
 namespace SE{

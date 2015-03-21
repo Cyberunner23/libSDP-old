@@ -1,9 +1,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.7)
 PROJECT(libSDP C CXX)
 
-#TODO: Use an alternative to git submodules...
-#           submodules messes with the way I
-#           want to handle dependencies in SoulDevKit.
 #TODO: MAJOR cleanup.
 #TODO: Add include dirs of externallibs to SDP's include dir.
 #TODO: unit tests, TEST EVERYTHING
@@ -51,7 +48,7 @@ SET(HEADER_FILES
     include/SDPCryptStreamBuf.hpp
     include/SDPStreamBuf.hpp
     include/SDPVer.hpp
-    include/typedefs.hpp
+    include/Typedefs.hpp
     include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
     include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
     include/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.hpp

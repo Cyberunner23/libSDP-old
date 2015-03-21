@@ -22,7 +22,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include <stdint.h>
 
 #include "Endianness.hpp"
-#include "typedefs.hpp"
+#include "Typedefs.hpp"
 
 class RawFileIO{
 

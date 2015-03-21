@@ -31,7 +31,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include "HexBinTool.hpp"
 #include "RawFileIO.hpp"
 #include "SDPVer.hpp"
-#include "typedefs.hpp"
+#include "Typedefs.hpp"
 
 //TODO!: DOCUMENTATION
 //TODO:  finish/make better error reporting

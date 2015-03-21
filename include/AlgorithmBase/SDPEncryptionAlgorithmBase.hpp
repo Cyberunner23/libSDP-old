@@ -21,7 +21,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #include <string>
 
 #include "HexBinTool.hpp"
-#include "typedefs.hpp"
+#include "Typedefs.hpp"
 
 #include "sodium.h"
 

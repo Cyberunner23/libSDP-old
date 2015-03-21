@@ -17,7 +17,7 @@ Copyright 2014 Alex Frappier Lachapelle
 #ifndef SDPCOMPRESSIONALGORITHMBASE_H
 #define SDPCOMPRESSIONALGORITHMBASE_H
 
-#include "typedefs.hpp"
+#include "Typedefs.hpp"
 
 class SDPCompressionAlgorithmBase{
 
