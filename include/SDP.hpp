@@ -98,6 +98,7 @@ public:
         std::unordered_map<std::string, SDPSubContainerInfoStruct> subContainersInSDPFile;
         uint64                                                     numOfSubContainers;
         SDPSubContainerInfoStruct                                  currentSubContainerInUse;
+        std::shared_ptr<std::iostream>                             currentAlgorithmInUse;
     };
 
     enum SDPErrEnum{
@@ -113,8 +114,8 @@ public:
     SDP();
     ~SDP();
 
-    SDPErrEnum openSDP(std::string &SDPFileName,                   bool stopOnParseErr = false);
-    SDPErrEnum openSDP(std::shared_ptr<std::iostream> inOutStream, bool stopOnParseErr = false);
+    SDPErrEnum openSDP(std::string &SDPFileName);
+    SDPErrEnum openSDP(std::shared_ptr<std::iostream> inOutStream);
 
     SDPFileInfoStruct*         getSDPFileInfo();
     SDPSubContainerInfoStruct* getCurrentSubContainerInfo();
@@ -155,13 +156,12 @@ private:
 
     //Funcs
 
-
-    //Parse the header at current stream position
-    SDPErrEnum parseSDPFileInfo(std::shared_ptr<std::istream> inStream, SDPFileHeaderStruct &SDPFileHeader);
-    //Parse the sub-container's header at current stream position
+    //Parse the SDP file header.
+    SDPErrEnum parseSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPFileHeaderStruct &SDPFileHeader);
+    //Parse the SDP file at current stream position and fill in info struct.
+    SDPErrEnum parseSDPFileInfo(std::shared_ptr<std::istream> inStream, SDPFileInfoStruct &SDPFileInfo);
+    //Parse the sub-container's info at current stream position.
     SDPErrEnum parseSubContainerInfo(std::shared_ptr<std::istream> inStream, SDPSubContainerInfoStruct &SDPSubContainerInfo);
-    //Parse the whole SDP file at current stream porision.
-    SDPErrEnum parseSDPFile(std::shared_ptr<std::istream> inStream, SDPFileInfoStruct &SDPFileInfo);
 
 
 };
