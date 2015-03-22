@@ -42,6 +42,7 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 #################### SOURCE / HEADERS #####################
 #----------------------------------------------------------
 SET(SOURCE_FILES
+    src/SDP.cpp
     src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
     src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
     src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp
@@ -49,12 +50,12 @@ SET(SOURCE_FILES
     src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp
     src/StreamBufs/SDPCompressionStreamBuf.cpp
     src/StreamBufs/SDPCryptStreamBuf.cpp
-    src/StreamBufs/SDPStreamBuf.cpp
     src/Tools/Endianness.cpp
     src/Tools/HexBinTool.cpp
     src/Tools/RawFileIO.cpp
 )
 SET(HEADER_FILES
+    include/SDP.hpp
     include/SDPVer.hpp
     include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
     include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
@@ -63,7 +64,6 @@ SET(HEADER_FILES
     include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp
     include/StreamBufs/SDPCompressionStreamBuf.hpp
     include/StreamBufs/SDPCryptStreamBuf.hpp
-    include/StreamBufs/SDPStreamBuf.hpp
     include/Tools/Endianness.hpp
     include/Tools/HexBinTool.hpp
     include/Tools/RawFileIO.hpp
