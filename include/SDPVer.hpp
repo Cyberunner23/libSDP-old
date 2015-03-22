@@ -32,8 +32,8 @@ public:
     //Vars
     struct SDPLibVerStruct{
         uint8 major = 0;
-        uint8 minor = 1;
-        uint8 patch = 3;
+        uint8 minor = 2;
+        uint8 patch = 0;
     }SDPLibVer;
 
     struct SDPSpecRevStruct{

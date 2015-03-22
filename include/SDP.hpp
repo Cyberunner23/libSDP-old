@@ -31,9 +31,15 @@ Copyright 2015 Alex Frappier Lachapelle
 #include "Typedefs.hpp"
 
 
+//TODO:  Use new base class sys. to make seek + shifting possible
+//           StreamBufBase deriving streambuf, compression/Crypt streamBuf
+//           deriving StreamBufBase. Intent is to make the StreamBufs
+//           usable as normal while also giving SDP direct access to
+//           buffers to see if shifting is needed + perform shifting.
 //TODO:  Error reporting on createSDP()
 //TODO:  Error reporting on setAlgorithm()
 //TODO?: Use shared_ptr/unique_ptr in info functions?
+//TODO?: Use SDP to recreate SDPStreamBuf? (SqueezeIn functions will be missing though...)
 
 class SDP{
 

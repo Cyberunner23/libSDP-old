@@ -46,12 +46,10 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/include/StreamBufs/SDPStreamBuf.hpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/StreamBufs/SDPStreamBuf.cpp" afterPath="" />
+    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Added TODO">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDP.cpp" afterPath="$PROJECT_DIR$/src/SDP.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDP.hpp" afterPath="$PROJECT_DIR$/include/SDP.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPVer.hpp" afterPath="$PROJECT_DIR$/include/SDPVer.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -108,27 +106,27 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SDP.hpp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="SDP.hpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/SDP.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.5">
-                  <caret line="116" column="47" selection-start-line="116" selection-start-column="47" selection-end-line="116" selection-end-column="47" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="37" column="69" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
                   <folding>
                     <element signature="e#646#664#0" expanded="true" />
-                    <element signature="e#1098#2397#1" expanded="false" />
-                    <element signature="e#2404#2704#1" expanded="false" />
-                    <element signature="e#2711#3033#1" expanded="false" />
-                    <element signature="e#3603#3762#1" expanded="false" />
+                    <element signature="e#1539#2838#1" expanded="false" />
+                    <element signature="e#2845#3145#1" expanded="false" />
+                    <element signature="e#3152#3474#1" expanded="false" />
+                    <element signature="e#4044#4203#1" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SDPVer.hpp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="SDPVer.hpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+                <state vertical-scroll-proportion="0.24571429">
+                  <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -141,8 +139,8 @@
           <file leaf-file-name="SDP_Spec.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="25" column="59" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
+                <state vertical-scroll-proportion="0.61714286">
+                  <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
                   <folding />
                 </state>
               </provider>
@@ -209,11 +207,11 @@
         <option value="$PROJECT_DIR$/test/encryptionTests/XSalsa20EncryptionTest/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/test/compressionTests/lz4CompressionTest/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/test/compressionTests/DEFLATECompressionTest/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/include/SDPVer.hpp" />
         <option value="$PROJECT_DIR$/include/StreamBufs/SDPStreamBuf.hpp" />
-        <option value="$PROJECT_DIR$/include/SDP.hpp" />
         <option value="$PROJECT_DIR$/src/SDP.cpp" />
         <option value="$PROJECT_DIR$/src/StreamBufs/SDPStreamBuf.cpp" />
+        <option value="$PROJECT_DIR$/include/SDP.hpp" />
+        <option value="$PROJECT_DIR$/include/SDPVer.hpp" />
       </list>
     </option>
   </component>
@@ -543,12 +541,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00076" summary="Moved test. + Added get encryption info function to SDPCryotStreamBuf.">
-      <created>1425947360964</created>
-      <option name="number" value="00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1425947360966</updated>
-    </task>
     <task id="LOCAL-00077" summary="Implemented XSalsa20 Algorithm + changed encrypt/decrypt -&gt; encryptBuffer/decryptBuffer to avoid possible function name collisions.">
       <created>1426036007028</created>
       <option name="number" value="00077" />
@@ -837,7 +829,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427048794059</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="Started working on API implementation + removed SDPStreamBuf.">
+      <created>1427060215266</created>
+      <option name="number" value="00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1427060215268</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -862,13 +860,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40537634" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41935483" sideWeight="0.49394417" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13118279" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2527646" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19742489" sideWeight="0.49289098" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1864139" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19742489" sideWeight="0.49289098" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1864139" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19892474" sideWeight="0.507109" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32258064" sideWeight="0.49605057" order="10" side_tool="false" content_ui="tabs" />
@@ -878,7 +877,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32832617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3935484" sideWeight="0.49499735" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4064516" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -904,7 +902,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Now that stuff is fixed, lets try to compile on OSX" />
     <MESSAGE value="Never mind for osx..." />
     <MESSAGE value="Made a test for encryption, which works locally + fixed bugs that was corrupting the decrypted data." />
     <MESSAGE value="Updated TODOs" />
@@ -929,7 +926,8 @@
     <MESSAGE value="Changed directory structure. Preparing to ditch SDPStreamBuf to custom API." />
     <MESSAGE value="Started conversion to new API." />
     <MESSAGE value="Fixed Travis build crash." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Travis build crash." />
+    <MESSAGE value="Started working on API implementation + removed SDPStreamBuf." />
+    <option name="LAST_COMMIT_MESSAGE" value="Started working on API implementation + removed SDPStreamBuf." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1260,14 +1258,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1285,8 +1275,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/SDP_Spec.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="59" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.61714286">
+          <caret line="55" column="4" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1304,15 +1294,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/SDP.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5">
-          <caret line="116" column="47" selection-start-line="116" selection-start-column="47" selection-end-line="116" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="69" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
           <folding>
             <element signature="e#646#664#0" expanded="true" />
-            <element signature="e#1098#2397#1" expanded="false" />
-            <element signature="e#2404#2704#1" expanded="false" />
-            <element signature="e#2711#3033#1" expanded="false" />
-            <element signature="e#3603#3762#1" expanded="false" />
+            <element signature="e#1539#2838#1" expanded="false" />
+            <element signature="e#2845#3145#1" expanded="false" />
+            <element signature="e#3152#3474#1" expanded="false" />
+            <element signature="e#4044#4203#1" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/SDPVer.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24571429">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
