@@ -25,6 +25,7 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "RawFileIO.hpp"
 #include "SDPCompressionAlgorithmBase.hpp"
+#include "SDPStreamBufBase.hpp"
 
 //FIXME?: Use of >> in a istream causes an error and to prematurely return eof.
 //TODO:   Implement seeking.
@@ -37,7 +38,7 @@ Copyright 2015 Alex Frappier Lachapelle
 //TODO?:  Make lib thread safe/atomic?
 //TODO?:  Use sub-container fragmentation for concurrent file write?
 
-class SDPCompressionStreamBuf : public std::streambuf{
+class SDPCompressionStreamBuf : public SDPStreamBufBase{
 
 public:
 

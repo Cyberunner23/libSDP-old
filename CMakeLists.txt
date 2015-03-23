@@ -50,6 +50,7 @@ SET(SOURCE_FILES
     src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp
     src/StreamBufs/SDPCompressionStreamBuf.cpp
     src/StreamBufs/SDPCryptStreamBuf.cpp
+    src/StreamBufs/SDPStreamBufBase.cpp
     src/Tools/Endianness.cpp
     src/Tools/HexBinTool.cpp
     src/Tools/RawFileIO.cpp
@@ -64,6 +65,7 @@ SET(HEADER_FILES
     include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp
     include/StreamBufs/SDPCompressionStreamBuf.hpp
     include/StreamBufs/SDPCryptStreamBuf.hpp
+    include/StreamBufs/SDPStreamBufBase.hpp
     include/Tools/Endianness.hpp
     include/Tools/HexBinTool.hpp
     include/Tools/RawFileIO.hpp

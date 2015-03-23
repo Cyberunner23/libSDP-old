@@ -23,12 +23,13 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "RawFileIO.hpp"
 #include "SDPEncryptionAlgorithmBase.hpp"
+#include "SDPStreamBufBase.hpp"
 
 //TODO: implement seeking
 //TODO: Add license info to all file and update copyright year.
 //TODO?: Use a iostream in constructor?
 
-class SDPCryptStreamBuf : public std::streambuf{
+class SDPCryptStreamBuf : public SDPStreamBufBase{
 
 public:
 

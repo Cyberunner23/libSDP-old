@@ -29,7 +29,7 @@ SDP::SDPErrEnum SDP::openSDP(std::string &SDPFileName){
         return SDP_CANNOT_OPEN_FILE;
 
     SDPInOutStream = tmpStream;
-    return parseSDPFileInfo(tmpStream, SDPFileInfo);
+    return parseSDPFileInfo(SDPInOutStream, SDPFileInfo);
 }
 
 SDP::SDPErrEnum SDP::openSDP(std::shared_ptr<std::iostream> inOutStream){
