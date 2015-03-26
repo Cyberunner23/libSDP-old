@@ -32,6 +32,7 @@ Copyright 2015 Alex Frappier Lachapelle
 
 
 //TODO:  Implement new algorithm stack idea (with double Buffers for squeezeIn features)
+//TODO:  Unify compression and encryption block structure in the spec.
 //TODO:  Dont forget copy constructors on the unified algorithm block.
 //TODO:  Error reporting on createSDP()
 //TODO:  Error reporting on setAlgorithm()
