@@ -35,6 +35,7 @@ Copyright 2015 Alex Frappier Lachapelle
 //TODO:  Add a switch for algorithms to determine if its a compression or encryption algorithm
 //           so that the right block header is read/written.
 //TODO:  Dont forget copy constructors on the unified algorithm block.
+//TODO:  Dont forget to add checks so that the bottom layer biffers don't overlap.
 //TODO:  Error reporting on createSDP()
 //TODO:  Error reporting on setAlgorithm()
 //TODO?: Use shared_ptr/unique_ptr in info functions?

@@ -16,9 +16,9 @@
       <config projectName="libSDP" targetName="lz4" />
       <config projectName="libSDP" targetName="sodium" />
       <config projectName="libSDP" targetName="SDP" />
+      <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
       <config projectName="libSDP" targetName="zlibstatic" />
       <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
-      <config projectName="libSDP" targetName="COMPRESSION_TEST" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_BUILD_STEP" />
       <config projectName="libSDP" targetName="minigzip64" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_DOWNLOAD_STEP" />
@@ -37,7 +37,7 @@
       <config projectName="libSDP" targetName="example" />
       <config projectName="libSDP" targetName="example64" />
       <config projectName="libSDP" targetName="CryptoPP-Cmake" />
-      <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
+      <config projectName="libSDP" targetName="COMPRESSION_TEST" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true" GENERATION_PASS_SYSTEM_ENVIRONMENT="true" BUILD_OUTPUT_DIR="build">
@@ -85,15 +85,15 @@
           <file leaf-file-name="SDP.hpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/SDP.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.25">
-                  <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
+                <state vertical-scroll-proportion="0.65">
+                  <caret line="37" column="82" selection-start-line="37" selection-start-column="82" selection-end-line="37" selection-end-column="82" />
                   <folding>
                     <element signature="e#646#664#0" expanded="true" />
-                    <element signature="e#1505#2804#1" expanded="false" />
-                    <element signature="e#2811#3111#1" expanded="false" />
-                    <element signature="e#3118#3440#1" expanded="false" />
-                    <element signature="e#3447#4003#1" expanded="false" />
-                    <element signature="e#4010#4169#1" expanded="false" />
+                    <element signature="e#1588#2887#1" expanded="false" />
+                    <element signature="e#2894#3194#1" expanded="false" />
+                    <element signature="e#3201#3523#1" expanded="false" />
+                    <element signature="e#3530#4086#1" expanded="false" />
+                    <element signature="e#4093#4252#1" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -595,12 +595,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00081" summary="Changed CMake version to work with Travis.">
-      <created>1426118609803</created>
-      <option name="number" value="00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1426118609803</updated>
-    </task>
     <task id="LOCAL-00082" summary="Attempting to fix Travis error with gcc and c++11">
       <created>1426120423542</created>
       <option name="number" value="00082" />
@@ -889,7 +883,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427330477095</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="Modified a TODO.">
+      <created>1427417379524</created>
+      <option name="number" value="00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1427417379526</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -927,14 +927,14 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="131" y="152" width="1722" height="854" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32795697" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3935484" sideWeight="0.49499735" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28387097" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32903227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -956,7 +956,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Fixed a typo in .travis.yml" />
     <MESSAGE value="Added compression test for lz4." />
     <MESSAGE value="Fixed a typo." />
     <MESSAGE value="A bit of travis debugging." />
@@ -981,7 +980,8 @@
     <MESSAGE value="Changed a TODO + did some implementation." />
     <MESSAGE value="Changed a TODO + added another." />
     <MESSAGE value="Added a TODO." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a TODO." />
+    <MESSAGE value="Modified a TODO." />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified a TODO." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1028,11 +1028,11 @@
           <caret line="37" column="69" selection-start-line="37" selection-start-column="69" selection-end-line="37" selection-end-column="69" />
           <folding>
             <element signature="e#646#664#0" expanded="true" />
-            <element signature="e#1505#2804#1" expanded="false" />
-            <element signature="e#2811#3111#1" expanded="false" />
-            <element signature="e#3118#3440#1" expanded="false" />
-            <element signature="e#3447#4003#1" expanded="false" />
-            <element signature="e#4010#4169#1" expanded="false" />
+            <element signature="e#1588#2887#1" expanded="false" />
+            <element signature="e#2894#3194#1" expanded="false" />
+            <element signature="e#3201#3523#1" expanded="false" />
+            <element signature="e#3530#4086#1" expanded="false" />
+            <element signature="e#4093#4252#1" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1335,7 +1335,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.47047618">
           <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1403,15 +1402,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/SDP.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25">
-          <caret line="35" column="60" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.65">
+          <caret line="37" column="82" selection-start-line="37" selection-start-column="82" selection-end-line="37" selection-end-column="82" />
           <folding>
             <element signature="e#646#664#0" expanded="true" />
-            <element signature="e#1505#2804#1" expanded="false" />
-            <element signature="e#2811#3111#1" expanded="false" />
-            <element signature="e#3118#3440#1" expanded="false" />
-            <element signature="e#3447#4003#1" expanded="false" />
-            <element signature="e#4010#4169#1" expanded="false" />
+            <element signature="e#1588#2887#1" expanded="false" />
+            <element signature="e#2894#3194#1" expanded="false" />
+            <element signature="e#3201#3523#1" expanded="false" />
+            <element signature="e#3530#4086#1" expanded="false" />
+            <element signature="e#4093#4252#1" expanded="false" />
           </folding>
         </state>
       </provider>
