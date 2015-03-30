@@ -43,6 +43,7 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 #----------------------------------------------------------
 SET(SOURCE_FILES
     src/SDP.cpp
+    src/SDPAlgorithmBase.cpp
     src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
     src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
     src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp
@@ -57,6 +58,7 @@ SET(SOURCE_FILES
 )
 SET(HEADER_FILES
     include/SDP.hpp
+    include/SDPAlgorithmBase.hpp
     include/SDPVer.hpp
     include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
     include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
