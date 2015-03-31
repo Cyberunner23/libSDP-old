@@ -151,10 +151,10 @@ void SDPAlgorithmBase::setCompressionLevel(uint64 compressionLevel){
 }
 
 
-void SDPAlgorithmBase::setEncryptionKeyWidthInBits(unsigned int encryptionKeyWidthInBits){
+void SDPAlgorithmBase::setEncryptionKeyWidthInBits(uint64 encryptionKeyWidthInBits){
     this->encryptionKeyWidthInBits = encryptionKeyWidthInBits;
 }
 
-void SDPAlgorithmBase::setNonceWidthInBits(unsigned int nonceWidthInBits){
+void SDPAlgorithmBase::setNonceWidthInBits(uint64 nonceWidthInBits){
     this->nonceWidthInBits = nonceWidthInBits;
 }

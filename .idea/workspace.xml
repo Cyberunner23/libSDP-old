@@ -3,41 +3,41 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="true">
     <generated>
       <config projectName="libSDP" targetName="cryptopp" />
-      <config projectName="libSDP" targetName="CVT_BUILD_STEP" />
-      <config projectName="libSDP" targetName="sodium" />
-      <config projectName="libSDP" targetName="CVT_" />
-      <config projectName="libSDP" targetName="TEST" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_BUILD_STEP" />
+      <config projectName="libSDP" targetName="CVT_DOWNLOAD_STEP" />
+      <config projectName="libSDP" targetName="CVT_BUILD_STEP" />
+      <config projectName="libSDP" targetName="TEST" />
+      <config projectName="libSDP" targetName="CVT_" />
+      <config projectName="SDP" targetName="libSDP" />
+      <config projectName="libSDP" targetName="lz4c" />
+      <config projectName="libSDP" targetName="ENCRYPTION_TEST" />
       <config projectName="libSDP" targetName="CVT_RUN" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_GET" />
       <config projectName="libSDP" targetName="lz4" />
-      <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_CONFIGURE_STEP" />
+      <config projectName="libSDP" targetName="sodium" />
       <config projectName="libSDP" targetName="SDP" />
+      <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
       <config projectName="libSDP" targetName="zlibstatic" />
-      <config projectName="libSDP" targetName="libSDP" />
-      <config projectName="libSDP" targetName="COMPRESSION_TEST" />
+      <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_BUILD_STEP" />
-      <config projectName="SDP" targetName="libSDP" />
       <config projectName="libSDP" targetName="minigzip64" />
-      <config projectName="libSDP" targetName="CVT_DOWNLOAD_STEP" />
+      <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_DOWNLOAD_STEP" />
       <config projectName="libSDP" targetName="CVT" />
       <config projectName="libSDP" targetName="zlib" />
       <config projectName="libSDP" targetName="CVT_GET" />
-      <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_DOWNLOAD_STEP" />
+      <config projectName="libSDP" targetName="minigzip" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE" />
-      <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
-      <config projectName="libSDP" targetName="ENCRYPTION_TEST" />
+      <config projectName="libSDP" targetName="CryptoPP-Cmake2" />
+      <config projectName="libSDP" targetName="libSDP" />
       <config projectName="libSDP" targetName="CryptoPP-CMake" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_CONFIGURE_STEP" />
       <config projectName="libSDP" targetName="liblz4" />
-      <config projectName="libSDP" targetName="CryptoPP-Cmake2" />
+      <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_CONFIGURE_STEP" />
       <config projectName="libSDP" targetName="CRYPTOPP-CMAKE_DOWNLOAD_STEP" />
-      <config projectName="libSDP" targetName="lz4c" />
-      <config projectName="libSDP" targetName="minigzip" />
       <config projectName="libSDP" targetName="example" />
       <config projectName="libSDP" targetName="example64" />
       <config projectName="libSDP" targetName="CryptoPP-Cmake" />
-      <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
+      <config projectName="libSDP" targetName="COMPRESSION_TEST" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true" GENERATION_PASS_SYSTEM_ENVIRONMENT="true" BUILD_OUTPUT_DIR="build">
@@ -47,10 +47,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SDPAlgorithmBase.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/SDPAlgorithmBase.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SDPAlgorithmBase.cpp" afterPath="$PROJECT_DIR$/src/SDPAlgorithmBase.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPAlgorithmBase.hpp" afterPath="$PROJECT_DIR$/include/SDPAlgorithmBase.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -87,8 +86,8 @@
           <file leaf-file-name="SDPAlgorithmBase.hpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/SDPAlgorithmBase.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="2.9341693">
-                  <caret line="104" column="32" selection-start-line="104" selection-start-column="32" selection-end-line="104" selection-end-column="32" />
+                <state vertical-scroll-proportion="1.299169">
+                  <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
                   <folding>
                     <element signature="e#668#685#0" expanded="true" />
                   </folding>
@@ -115,8 +114,8 @@
           <file leaf-file-name="SDPAlgorithmBase.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/SDPAlgorithmBase.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="2.5799372">
-                  <caret line="158" column="46" selection-start-line="158" selection-start-column="46" selection-end-line="158" selection-end-column="46" />
+                <state vertical-scroll-proportion="0.601108">
+                  <caret line="149" column="47" selection-start-line="149" selection-start-column="47" selection-end-line="149" selection-end-column="47" />
                   <folding />
                 </state>
               </provider>
@@ -207,8 +206,8 @@
         <option value="$PROJECT_DIR$/src/SDPAlgorithmBase.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" />
-        <option value="$PROJECT_DIR$/include/SDPAlgorithmBase.hpp" />
         <option value="$PROJECT_DIR$/src/SDPAlgorithmBase.cpp" />
+        <option value="$PROJECT_DIR$/include/SDPAlgorithmBase.hpp" />
       </list>
     </option>
   </component>
@@ -556,12 +555,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00085" summary="Cmake is being derpy with zlib (for travis)... attempting to fix that (lets see if updating cmake works.)">
-      <created>1426188533856</created>
-      <option name="number" value="00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1426188533858</updated>
-    </task>
     <task id="LOCAL-00086" summary="Lets try it with this...">
       <created>1426189073734</created>
       <option name="number" value="00086" />
@@ -850,7 +843,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427663155341</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="Created a unified algorithm base class.">
+      <created>1427730152555</created>
+      <option name="number" value="00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1427730152560</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -879,14 +878,14 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1569247" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13118279" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28387097" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527897" sideWeight="0.48235914" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19527897" sideWeight="0.48235914" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527897" sideWeight="0.5176409" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32258064" sideWeight="0.49605057" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2527646" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41935483" sideWeight="0.49394417" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28387097" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="131" y="152" width="1722" height="854" />
@@ -917,7 +916,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="A bit of travis debugging." />
     <MESSAGE value="More travis debugging." />
     <MESSAGE value="Travis build working, removing debug stuff." />
     <MESSAGE value="Travis, only update g++ if we're using it." />
@@ -942,7 +940,8 @@
     <MESSAGE value="Added a TODO." />
     <MESSAGE value="Fixed a typo." />
     <MESSAGE value="test push" />
-    <option name="LAST_COMMIT_MESSAGE" value="test push" />
+    <MESSAGE value="Created a unified algorithm base class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a unified algorithm base class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1256,10 +1255,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
-          <folding>
-            <element signature="e#2995#6467#0" expanded="false" />
-            <element signature="e#7711#16494#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1267,7 +1262,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1275,7 +1269,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1283,13 +1276,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49778762">
           <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
-          <folding>
-            <element signature="e#1588#2887#1" expanded="false" />
-            <element signature="e#2894#3194#1" expanded="false" />
-            <element signature="e#3201#3523#1" expanded="false" />
-            <element signature="e#3530#4086#1" expanded="false" />
-            <element signature="e#4093#4252#1" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1305,9 +1291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3490305">
           <caret line="85" column="31" selection-start-line="85" selection-start-column="31" selection-end-line="85" selection-end-column="31" />
-          <folding>
-            <element signature="e#668#685#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1349,16 +1332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/SDPAlgorithmBase.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.9341693">
-          <caret line="104" column="32" selection-start-line="104" selection-start-column="32" selection-end-line="104" selection-end-column="32" />
-          <folding>
-            <element signature="e#668#685#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1380,9 +1353,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SDPAlgorithmBase.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.5799372">
-          <caret line="158" column="46" selection-start-line="158" selection-start-column="46" selection-end-line="158" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.601108">
+          <caret line="149" column="47" selection-start-line="149" selection-start-column="47" selection-end-line="149" selection-end-column="47" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/SDPAlgorithmBase.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.299169">
+          <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
+          <folding>
+            <element signature="e#668#685#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

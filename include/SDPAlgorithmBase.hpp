@@ -77,11 +77,11 @@ protected:
     //Funcs
 
     void setAlgorithmType(AlgorithmType algorithmType);
-    void setAlgorithmID(uint8 algorithmID);
-    void setIsStreamAlgorithm(bool isStreamAlgorithm);
+    void setAlgorithmID(uint8           algorithmID);
+    void setIsStreamAlgorithm(bool      isStreamAlgorithm);
 
-    void setMaxBufferSize(uint64 maxBufferSize);
-    bool setPreferedBufferSize(uint64 preferedBufferSize);
+    void setMaxBufferSize(uint64                  maxBufferSize);
+    bool setPreferedBufferSize(uint64             preferedBufferSize);
     bool setPreferedBufferSizeWithOverhead(uint64 preferedBufferSizeWithOverhead);
 
     //Only used when algorithmType is set to SDP_COMPRESSION
@@ -91,11 +91,11 @@ protected:
 
     //Should be set somewhere in the algorithm's constructor or onInit
     //Sets the supported key length in bits for the algorithm.
-    void setEncryptionKeyWidthInBits(unsigned int encryptionKeyWidthInBits);
+    void setEncryptionKeyWidthInBits(uint64 encryptionKeyWidthInBits);
 
     //Should be set somewhere in the algorithm's constructor or onInit
     //Sets the supported nonce length in bits for the algorithm.
-    void setNonceWidthInBits(unsigned int nonceWidthInBits);
+    void setNonceWidthInBits(uint64 nonceWidthInBits);
 
 
 private:
@@ -124,8 +124,8 @@ private:
 
     uint64 compresseionLevel;
 
-    uint encryptionKeyWidthInBits;
-    uint nonceWidthInBits;
+    uint64 encryptionKeyWidthInBits;
+    uint64 nonceWidthInBits;
 
     //Funcs
 
