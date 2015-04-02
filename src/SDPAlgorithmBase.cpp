@@ -44,6 +44,10 @@ bool SDPAlgorithmBase::getIsStreamAlgorithm(){
     return isStreamAlgorithm;
 }
 
+bool SDPAlgorithmBase::getIsAlgorithmSeekable(){
+    return isAlgorithmSeekable;
+}
+
 
 uint64 SDPAlgorithmBase::getBufferSize(){
     return bufferSize;
@@ -118,6 +122,10 @@ void SDPAlgorithmBase::setAlgorithmID(uint8 algorithmID){
 
 void SDPAlgorithmBase::setIsStreamAlgorithm(bool isStreamAlgorithm){
     this->isStreamAlgorithm = isStreamAlgorithm;
+}
+
+void SDPAlgorithmBase::setIsAlgorithmSeekable(bool isAlgorithmSeekable){
+    this->isAlgorithmSeekable = isAlgorithmSeekable;
 }
 
 

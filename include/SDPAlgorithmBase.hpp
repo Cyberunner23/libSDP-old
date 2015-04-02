@@ -55,6 +55,7 @@ public:
     AlgorithmType getAlgorithmType();
     uint8         getAlgorithmID();
     bool          getIsStreamAlgorithm();
+    bool          getIsAlgorithmSeekable();
 
     uint64 getBufferSize();
     uint64 getBufferSizeWithOverhead();
@@ -79,6 +80,7 @@ protected:
     void setAlgorithmType(AlgorithmType algorithmType);
     void setAlgorithmID(uint8           algorithmID);
     void setIsStreamAlgorithm(bool      isStreamAlgorithm);
+    void setIsAlgorithmSeekable(bool    isAlgorithmSeekable);
 
     void setMaxBufferSize(uint64                  maxBufferSize);
     bool setPreferedBufferSize(uint64             preferedBufferSize);
@@ -106,6 +108,7 @@ private:
     uint8         algorithmID;
 
     bool isStreamAlgorithm;
+    bool isAlgorithmSeekable;
 
     //Maximum buffer size supported by the algorithm,
     //Used when isStreamCompression = false
