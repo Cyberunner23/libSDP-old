@@ -22,6 +22,8 @@ Copyright 2015 Alex Frappier Lachapelle
 #include "HexBinTool.hpp"
 #include "Typedefs.hpp"
 
+//TODO: Add derivable copy constructor.
+
 class SDPAlgorithmBase{
 
 public:
