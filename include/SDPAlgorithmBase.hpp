@@ -23,6 +23,7 @@ Copyright 2015 Alex Frappier Lachapelle
 #include "Typedefs.hpp"
 
 //TODO: Add derivable copy constructor.
+//Do I really need to check if the buffer sizes are smaller than what's supported by the algorithm?...
 
 class SDPAlgorithmBase{
 

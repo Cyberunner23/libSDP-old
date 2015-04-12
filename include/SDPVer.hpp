@@ -20,10 +20,6 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "Typedefs.hpp"
 
-#ifdef USE_IN_SOUL_ENGINE
-namespace SE{
-namespace IO{
-#endif
 
 class SDPVer{
 
@@ -42,11 +38,6 @@ public:
     }SDPSpecRev;
 
 };
-
-#ifdef USE_IN_SOUL_ENGINE
-}
-}
-#endif
 
 #endif // SDPVER_HPP
 
