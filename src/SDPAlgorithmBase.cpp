@@ -20,6 +20,22 @@ SDPAlgorithmBase::SDPAlgorithmBase(){
 
 }
 
+SDPAlgorithmBase::SDPAlgorithmBase(const SDPAlgorithmBase &algorithmBase)
+    : encryptionKeyInBin(algorithmBase.encryptionKeyInBin),
+      nonceInBin(algorithmBase.nonceInBin),
+      algorithmType(algorithmBase.algorithmType),
+      algorithmID(algorithmBase.algorithmID),
+      isStreamAlgorithm(algorithmBase.isStreamAlgorithm),
+      isAlgorithmSeekable(algorithmBase.isAlgorithmSeekable),
+      maxBufferSize(algorithmBase.maxBufferSize),
+      bufferSize(algorithmBase.bufferSize),
+      bufferSizeWithOverhead(algorithmBase.bufferSizeWithOverhead),
+      compresseionLevel(algorithmBase.compresseionLevel),
+      encryptionKeyWidthInBits(algorithmBase.encryptionKeyWidthInBits),
+      nonceWidthInBits(algorithmBase.nonceWidthInBits){
+
+}
+
 SDPAlgorithmBase::~SDPAlgorithmBase(){
 
 }

@@ -39,6 +39,7 @@ public:
     //Funcs
 
     SDPAlgorithmBase();
+    SDPAlgorithmBase(const SDPAlgorithmBase &algorithmBase);
     ~SDPAlgorithmBase();
 
     //Compress/Encrypt
