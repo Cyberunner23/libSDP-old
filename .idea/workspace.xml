@@ -16,9 +16,9 @@
       <config projectName="libSDP" targetName="lz4" />
       <config projectName="libSDP" targetName="sodium" />
       <config projectName="libSDP" targetName="SDP" />
+      <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
       <config projectName="libSDP" targetName="zlibstatic" />
       <config projectName="libSDP" targetName="CVT_CONFIGURE_STEP" />
-      <config projectName="libSDP" targetName="COMPRESSION_TEST" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_BUILD_STEP" />
       <config projectName="libSDP" targetName="minigzip64" />
       <config projectName="libSDP" targetName="LIBSODIUM-CMAKE_DOWNLOAD_STEP" />
@@ -37,7 +37,7 @@
       <config projectName="libSDP" targetName="example" />
       <config projectName="libSDP" targetName="example64" />
       <config projectName="libSDP" targetName="CryptoPP-Cmake" />
-      <config projectName="libSDP" targetName="CryptoPP-CMAKE" />
+      <config projectName="libSDP" targetName="COMPRESSION_TEST" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true" GENERATION_PASS_SYSTEM_ENVIRONMENT="true" BUILD_OUTPUT_DIR="build">
@@ -46,9 +46,10 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
+    <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="Another test.">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
     </list>
     <ignored path="libSDP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -84,7 +85,7 @@
           <file leaf-file-name="SDPAlgorithmBase.hpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/SDPAlgorithmBase.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.10285714">
+                <state vertical-scroll-proportion="0.48539326">
                   <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
                   <folding />
                 </state>
@@ -96,9 +97,7 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
                   <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#674#693#0" expanded="true" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -110,8 +109,8 @@
           <file leaf-file-name="SDPAlgorithmBase.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/SDPAlgorithmBase.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+                <state vertical-scroll-proportion="0.5258427">
+                  <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -522,12 +521,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00091" summary="Another test............... This is getting annoying...">
-      <created>1426197249459</created>
-      <option name="number" value="00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1426197249459</updated>
-    </task>
     <task id="LOCAL-00092" summary="If this doesn't work I don't know what to do...">
       <created>1426199669391</created>
       <option name="number" value="00092" />
@@ -816,7 +809,13 @@
       <option name="project" value="LOCAL" />
       <updated>1428812569579</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="Another test.">
+      <created>1428973261215</created>
+      <option name="number" value="00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1428973261217</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -841,18 +840,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14074855" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14074855" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13118279" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39760348" sideWeight="0.48235914" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2832244" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39651415" sideWeight="0.48235914" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19527897" sideWeight="0.5176409" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32258064" sideWeight="0.49605057" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3224401" sideWeight="0.49605057" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2527646" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41845495" sideWeight="0.49394417" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41830066" sideWeight="0.49394417" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28387097" sideWeight="0.49605057" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="131" y="152" width="1722" height="854" />
@@ -883,7 +882,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Ugly, but should fix it." />
     <MESSAGE value="You know what, it's getting late, I'll do this later." />
     <MESSAGE value="Forgot that little sudo..." />
     <MESSAGE value="Added a TODO" />
@@ -908,7 +906,8 @@
     <MESSAGE value="Added a TODO." />
     <MESSAGE value="Removed unused namespace stuff." />
     <MESSAGE value="Implemented base class copy constructor." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented base class copy constructor." />
+    <MESSAGE value="Another test." />
+    <option name="LAST_COMMIT_MESSAGE" value="Another test." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -949,13 +948,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/include/c++/4.9.2/bits/shared_ptr_base.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1055" column="0" selection-start-line="1055" selection-start-column="0" selection-end-line="1055" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/extlibs/zlib/test/example.c">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.0794979">
@@ -1236,28 +1228,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="e#674#693#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="136" column="17" selection-start-line="131" selection-start-column="4" selection-end-line="136" selection-end-column="17" />
-          <folding>
-            <element signature="e#768#1400#0" expanded="false" />
-            <element signature="e#1402#1769#0" expanded="false" />
-            <element signature="e#1771#2058#0" expanded="false" />
-            <element signature="e#2061#2158#0" expanded="false" />
-            <element signature="e#2160#2242#0" expanded="false" />
-            <element signature="e#2245#2329#0" expanded="false" />
-            <element signature="e#2331#2439#0" expanded="false" />
-            <element signature="e#2442#2562#0" expanded="false" />
-            <element signature="e#2564#2681#0" expanded="false" />
-            <element signature="e#2985#3100#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1317,16 +1288,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/SDPAlgorithmBase.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.10285714">
+        <state vertical-scroll-proportion="0.48539326">
           <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="136" column="17" selection-start-line="131" selection-start-column="4" selection-end-line="136" selection-end-column="17" />
+          <folding>
+            <element signature="e#768#1400#0" expanded="false" />
+            <element signature="e#1402#1769#0" expanded="false" />
+            <element signature="e#1771#2058#0" expanded="false" />
+            <element signature="e#2061#2158#0" expanded="false" />
+            <element signature="e#2160#2242#0" expanded="false" />
+            <element signature="e#2245#2329#0" expanded="false" />
+            <element signature="e#2331#2439#0" expanded="false" />
+            <element signature="e#2442#2562#0" expanded="false" />
+            <element signature="e#2564#2681#0" expanded="false" />
+            <element signature="e#2985#3100#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/codeStyleSettings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SDPAlgorithmBase.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.5258427">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
