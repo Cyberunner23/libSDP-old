@@ -42,6 +42,8 @@ public:
     SDPAlgorithmBase(const SDPAlgorithmBase &algorithmBase);
     ~SDPAlgorithmBase();
 
+    virtual SDPAlgorithmBase* clone() = 0;
+
     //Compress/Encrypt
     virtual uint64 processBuffer(uchar* unprocessedBuffer, uint64 unprocessedBufferSize, uchar* processedBuffer, uint64 expectedProcessedBufferSize, uint64 chunkNum);
     //Decompress/Decrypt
@@ -52,7 +54,7 @@ public:
     //Decompress/Decrypt
     virtual bool unprocessChar(uchar &processedChar, uchar &deprocessedChar, uint64 charNum);
 
-    virtual void onInit() = 0;
+    virtual bool onInit() = 0;
     virtual void onSync() = 0;
     virtual void onExit() = 0;
 
