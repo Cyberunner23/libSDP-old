@@ -36,7 +36,7 @@ SET(LZ4_CMAKE_DIR       "" CACHE STRING "Directory where lz4 is placed. (Don't s
 #----------------------------------------------------------
 ##################### COMPILER FLAGS ######################
 #----------------------------------------------------------
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 #----------------------------------------------------------
 #################### SOURCE / HEADERS #####################

@@ -47,12 +47,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93f6ad34-7f0c-4e03-8a70-018851387646" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/Tools/DevMacros.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SDPChainBlock.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/SDPChainBlock.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extlibs/zlib" afterPath="$PROJECT_DIR$/extlibs/zlib" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/SDPAlgorithmBase.hpp" afterPath="$PROJECT_DIR$/include/SDPAlgorithmBase.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="libSDP.iws" />
@@ -76,11 +72,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.4283088">
       <split-first>
         <leaf>
-          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+          <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
+                <state vertical-scroll-proportion="0.45644984">
+                  <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
                   <folding />
                 </state>
               </provider>
@@ -96,10 +92,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SDPChainBlock.hpp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="SDPChainBlock.hpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/SDPChainBlock.hpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6617312">
+                <state vertical-scroll-proportion="-20.034483">
                   <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
                   <folding>
                     <element signature="e#662#681#0" expanded="true" />
@@ -226,10 +222,10 @@
         <option value="$PROJECT_DIR$/src/SDPAlgorithmBase.cpp" />
         <option value="$PROJECT_DIR$/src/ChainBlock.h" />
         <option value="$PROJECT_DIR$/include/SDPAlgorithmBase.hpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/Tools/DevMacros.hpp" />
         <option value="$PROJECT_DIR$/src/SDPChainBlock.cpp" />
         <option value="$PROJECT_DIR$/include/SDPChainBlock.hpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
       </list>
     </option>
   </component>
@@ -544,12 +540,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00093" summary="If this doesn't work I don't know what to do...">
-      <created>1426199780906</created>
-      <option name="number" value="00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1426199780906</updated>
-    </task>
     <task id="LOCAL-00094" summary="OK.... well that worked... lets see if ittle work for lz4">
       <created>1426200245253</created>
       <option name="number" value="00094" />
@@ -838,7 +828,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429401299373</updated>
     </task>
-    <option name="localTasksCounter" value="142" />
+    <task id="LOCAL-00142" summary="Worked on the algorithm chain blocks.">
+      <created>1429936324742</created>
+      <option name="number" value="00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1429936324743</updated>
+    </task>
+    <option name="localTasksCounter" value="143" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -905,7 +901,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Forgot that little sudo..." />
     <MESSAGE value="Added a TODO" />
     <MESSAGE value="Removed unused variables and comments in root CmakeLists.txt" />
     <MESSAGE value="typedefs.hpp -&gt; Typedefs.hpp" />
@@ -930,7 +925,8 @@
     <MESSAGE value="Implemented base class copy constructor." />
     <MESSAGE value="Another test." />
     <MESSAGE value="Stopped tracking workspace.xml, updated (and bought licence for) CLion to version 1.0 (Weeeeee its released!!)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stopped tracking workspace.xml, updated (and bought licence for) CLion to version 1.0 (Weeeeee its released!!)" />
+    <MESSAGE value="Worked on the algorithm chain blocks." />
+    <option name="LAST_COMMIT_MESSAGE" value="Worked on the algorithm chain blocks." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1285,14 +1281,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.11907387">
@@ -1335,11 +1323,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/SDPChainBlock.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6617312">
+        <state vertical-scroll-proportion="-20.034483">
           <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
           <folding>
             <element signature="e#662#681#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45644984">
+          <caret line="38" column="50" selection-start-line="38" selection-start-column="50" selection-end-line="38" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
