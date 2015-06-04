@@ -72,8 +72,8 @@ private:
     std::shared_ptr<std::iostream>  fileStream;
     std::shared_ptr<SDPChainBlock> childChainBlock;
 
-    AlgorithmBufferPack               readAlgBufPack;
-    AlgorithmBufferPack               writeAlgBufPack;
+    AlgorithmBufferPack readAlgBufPack;
+    AlgorithmBufferPack writeAlgBufPack;
 
     //Funcs
 

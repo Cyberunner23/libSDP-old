@@ -25,7 +25,7 @@ PROJECT(libSDP C CXX)
 #----------------------------------------------------------
 ####################### OPTIONS ###########################
 #----------------------------------------------------------
-OPTION(LIBSDP_ENABLE_TESTS          OFF "Enable the building of tests.")
+OPTION(LIBSDP_ENABLE_TESTS              "Enable the building of tests.")
 OPTION(LIBSDP_BUILD_SHARED_LIBRARIES    "Build libSDP as a shared lib (setting this to OFF will compile statically)" ON)
 OPTION(LIBSODIUM_BUILD_SHARED_LIBRARIES "Build libsodium-CMake as a shared lib (setting this to OFF will compile statically)")
 
@@ -115,7 +115,8 @@ ELSE()
 ENDIF()
 
 ADD_SUBDIRECTORY(${LIBSODIUM_CMAKE_DIR} EXCLUDE_FROM_ALL)
-INCLUDE_DIRECTORIES(${LIBSODIUM_CMAKE_DIR}/include)
+INCLUDE_DIRECTORIES(${LIBSODIUM_CMAKE_DIR}/src/libsodium)
+INCLUDE_DIRECTORIES(${LIBSODIUM_CMAKE_DIR}/src/libsodium/include)
 TARGET_LINK_LIBRARIES(libSDP sodium)
 
 ########################## zlib ##########################
