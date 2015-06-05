@@ -41,6 +41,7 @@ SET(SOURCE_FILES
     src/SDP.cpp
     src/SDPAlgorithmBase.cpp
     src/SDPChainBlock.cpp
+    src/SDPParser.cpp
     src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
     src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
     src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp
@@ -57,6 +58,8 @@ SET(HEADER_FILES
     include/SDP.hpp
     include/SDPAlgorithmBase.hpp
     include/SDPChainBlock.hpp
+    include/SDPError.hpp
+    include/SDPParser.hpp
     include/SDPVer.hpp
     include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
     include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
