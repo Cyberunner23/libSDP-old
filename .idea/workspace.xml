@@ -86,8 +86,8 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49541286">
-              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.62752295">
+              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -446,12 +446,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00098" summary="Just a little test with Travis..... lets see if the variable's description really matters...">
-      <created>1426204107613</created>
-      <option name="number" value="00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1426204107613</updated>
-    </task>
     <task id="LOCAL-00099" summary="Now that stuff is fixed, lets try to compile on OSX">
       <created>1426204737824</created>
       <option name="number" value="00099" />
@@ -740,7 +734,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433469913399</updated>
     </task>
-    <option name="localTasksCounter" value="147" />
+    <task id="LOCAL-00147" summary="attempt #2...">
+      <created>1433470097417</created>
+      <option name="number" value="00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1433470097418</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -807,7 +807,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="After months of procrastinating... Copyright year has been updated." />
     <MESSAGE value="Changed directory structure. Preparing to ditch SDPStreamBuf to custom API." />
     <MESSAGE value="Started conversion to new API." />
     <MESSAGE value="Fixed Travis build crash." />
@@ -832,7 +831,8 @@
     <MESSAGE value="just testing something...." />
     <MESSAGE value="cleaned up CMakeLists.txt and updated .travis.yml to use cmake 3" />
     <MESSAGE value="attempting to make travis update to cmake 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="attempting to make travis update to cmake 3" />
+    <MESSAGE value="attempt #2..." />
+    <option name="LAST_COMMIT_MESSAGE" value="attempt #2..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1230,8 +1230,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49541286">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.62752295">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
           <folding />
         </state>
       </provider>
