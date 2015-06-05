@@ -12,31 +12,27 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.7)
-PROJECT(libSDP C CXX)
 
-#TODO: MAJOR cleanup.
-#TODO: Add include dirs of externallibs to SDP's include dir.
 #TODO: unit tests, TEST EVERYTHING
-#FIXME: LIBSODIUM_CMAKE_DIR option setting stuff
+#TODO?: Add include dirs of externallibs to SDP's include dir.
 
-
+CMAKE_MINIMUM_REQUIRED(VERSION 3.1.3)
+PROJECT(libSDP C CXX)
 
 #----------------------------------------------------------
 ####################### OPTIONS ###########################
 #----------------------------------------------------------
-OPTION(LIBSDP_ENABLE_TESTS              "Enable the building of tests.")
-OPTION(LIBSDP_BUILD_SHARED_LIBRARIES    "Build libSDP as a shared lib (setting this to OFF will compile statically)" ON)
-OPTION(LIBSODIUM_BUILD_SHARED_LIBRARIES "Build libsodium-CMake as a shared lib (setting this to OFF will compile statically)")
 
-SET(LIBSODIUM_CMAKE_DIR "" CACHE STRING "Directory where libsodium-CMake is placed. (Don't set this if libsodium-CMake is in extlibs/)")
-SET(ZLIB_CMAKE_DIR      "" CACHE STRING "Directory where zlib is placed. (Don't set this if zlib is in extlibs/)")
-SET(LZ4_CMAKE_DIR       "" CACHE STRING "Directory where lz4 is placed. (Don't set this if lz4 is in extlibs/)")
+OPTION(LIBSDP_ENABLE_TESTS              "Enable the building of tests.")
+OPTION(LIBSDP_BUILD_SHARED_LIBRARIES    "Build libSDP as a shared lib (setting this to OFF will compile statically)"          ON)
+OPTION(LIBSODIUM_BUILD_SHARED_LIBRARIES "Build libsodium-CMake as a shared lib (setting this to OFF will compile statically)" OFF)
+
+SET(EXTLIBS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extlibs")
 
 #----------------------------------------------------------
 ##################### COMPILER FLAGS ######################
 #----------------------------------------------------------
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+SET(CMAKE_CXX_STANDARD 11)
 
 #----------------------------------------------------------
 #################### SOURCE / HEADERS #####################
@@ -94,8 +90,8 @@ ELSE(LIBSDP_BUILD_SHARED_LIBRARIES)
 ENDIF(LIBSDP_BUILD_SHARED_LIBRARIES)
 
 SET_TARGET_PROPERTIES(libSDP PROPERTIES
-    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
-    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
+    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
+    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
     OUTPUT_NAME "SDP"
 )
 
@@ -107,51 +103,60 @@ SET_TARGET_PROPERTIES(libSDP PROPERTIES
 ######################## libsodium #######################
 #If directory not specified, use files from extlibs folder
 
-IF(LIBSODIUM_CMAKE_DIR STREQUAL "")
-    SET(LIBSODIUM_CMAKE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extlibs/libsodium-CMake")
-    MESSAGE("Building libsodium from ${LIBSODIUM_CMAKE_DIR}")
-ELSE()
-    MESSAGE("Building libsodium from ${LIBSODIUM_CMAKE_DIR}")
+SET(LIBSODIUM_DIR ${EXTLIBS_DIR}/libsodium-CMake)
+
+MESSAGE("\nBuilding libsodium from ${LIBSODIUM_DIR}/")
+
+ADD_SUBDIRECTORY(${LIBSODIUM_DIR} EXCLUDE_FROM_ALL)
+INCLUDE_DIRECTORIES(${LIBSODIUM_DIR}/src/libsodium)
+INCLUDE_DIRECTORIES(${LIBSODIUM_DIR}/src/libsodium/include)
+TARGET_LINK_LIBRARIES(libSDP sodium)
+
+IF(LIBSODIUM_BUILD_SHARED_LIBRARIES)
+    MESSAGE("libsodium will be built as a shared library, library file will be placed in libSDP/bin/")
+    SET_TARGET_PROPERTIES(sodium PROPERTIES
+        LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
+        PROJECT_LABEL "libsodium"
+    )
 ENDIF()
 
-ADD_SUBDIRECTORY(${LIBSODIUM_CMAKE_DIR} EXCLUDE_FROM_ALL)
-INCLUDE_DIRECTORIES(${LIBSODIUM_CMAKE_DIR}/src/libsodium)
-INCLUDE_DIRECTORIES(${LIBSODIUM_CMAKE_DIR}/src/libsodium/include)
-TARGET_LINK_LIBRARIES(libSDP sodium)
 
 ########################## zlib ##########################
 #If directory not specified, use files from extlibs folder
 
-IF(ZLIB_CMAKE_DIR STREQUAL "")
-    SET(ZLIB_CMAKE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extlibs/zlib")
-    MESSAGE("Building zlib from ${ZLIB_CMAKE_DIR}")
-ENDIF()
+SET(ZLIB_DIR ${EXTLIBS_DIR}/zlib)
+
+MESSAGE("\nBuilding zlib from ${ZLIB_DIR}/")
 
 SET(DISABLE_EXAMPLE_BINARIES ON CACHE BOOL "")
 SET(BUILD_SHARED_LIBS OFF CACHE BOOL "")
 SET(SKIP_INSTALL_ALL ON CACHE BOOL "")
 SET(COMPILE_STATIC_LIB_WITH_FPIC ON CACHE BOOL "")
-ADD_SUBDIRECTORY(${ZLIB_CMAKE_DIR} EXCLUDE_FROM_ALL)
-INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIRS})
+
+ADD_SUBDIRECTORY(${ZLIB_DIR} EXCLUDE_FROM_ALL)
+INCLUDE_DIRECTORIES(${ZLIB_PUBLIC_HDRS})
 TARGET_LINK_LIBRARIES(libSDP zlibstatic)
+
 
 ########################## lz4 ###########################
 #If directory not specified, use files from extlibs folder
 
-IF(LZ4_CMAKE_DIR STREQUAL "")
-    SET(LZ4_CMAKE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extlibs/lz4")
-    MESSAGE("Building lz4 from ${LZ4_CMAKE_DIR}")
-ENDIF()
+SET(LZ4_DIR ${EXTLIBS_DIR}/lz4)
+
+MESSAGE("\nBuilding lz4 from ${LZ4_DIR}/")
 
 SET(BUILD_TOOLS OFF CACHE BOOL "")
 SET(BUILD_LIBS  ON  CACHE BOOL "")
-ADD_SUBDIRECTORY(${LZ4_CMAKE_DIR}/cmake_unofficial EXCLUDE_FROM_ALL)
+
+ADD_SUBDIRECTORY(${LZ4_DIR}/cmake_unofficial EXCLUDE_FROM_ALL)
 INCLUDE_DIRECTORIES (${LZ4_CMAKE_DIR}/lib)
-ADD_DEPENDENCIES(libSDP liblz4)
 TARGET_LINK_LIBRARIES(libSDP liblz4)
 
 
-#Testing stuff
+#----------------------------------------------------------
+###################### LIBSDP TESTS #######################
+#----------------------------------------------------------
+
 if(LIBSDP_ENABLE_TESTS)
     ENABLE_TESTING()
     ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/test)
