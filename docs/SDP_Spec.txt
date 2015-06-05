@@ -1,5 +1,5 @@
 
-SDP (Soul Data Pack) File spec Rev. 2.2 :
+SDP (Soul Data Pack) File spec Rev. 2.3 :
     by: Alex Frappier Lachapelle
 
 *Note that the data in the headers are in big endian.
@@ -22,10 +22,9 @@ SDP (Soul Data Pack) File spec Rev. 2.2 :
 /       | HEADER ----------------------------------------------------------------------------------------------------------------------- |       /
 /       |                                                                                                                                |       /
 /       |       uint64       : Size of the name for the file stored in the container.                                                    |       /
-/       |                          (Value ignored if the Sub-Container is in another Sub-Container)                                      |       /
 /       |       string       : Name of the file stored in the container.                                                                 |       /
-/       |                          (Contents ignored if the Sub-Container is in another Sub-Container)                                   |       /
-/       |       uint8        : Sub-Container type. : 0x01 Raw data.                                                                      |       /
+/       |       uint8        : Sub-Container type. : 0x00 Data processed through (an) algorithm(s) determined by API calls.              |       /
+/       |                                            0x01 Raw data.                                                                      |       /
 /       |                                            0x02 Compressed data.                                                               |       /
 /       |                                            0x03 Encrypted data.                                                                |       /
 /       |                                            0x04 Compressed and encrypted data.                                                 |       /
@@ -49,9 +48,12 @@ SDP (Soul Data Pack) File spec Rev. 2.2 :
 /       |                                                                                                                                |       /
 /       | END OF HEADER----------------------------------------------------------------------------------------------------------------- |       /
 /       |                                                                                                                                |       /
-/       |       vector<uchar> : Sub-Container data. (The file that is stores in the container)                                           |       /
+/       |       vector<uchar> : Sub-Container data. (The file that is stored in the container)                                           |       /
 /       |                                           (If compression AND encryption is to be done, the data is compressed first,          |       /
-/       |                                                then encrypted and then written to the sub-container.)                          |       /
+/       |                                                then encrypted and then written to the sub-container. This is done unless       |       /
+/       |                                                the algorithms have been manually determined through the API, in that case      |       /
+/       |                                                the order will depend on the order used when setting the algorithms through     |       /
+/       |                                                the API.)                                                                       |       /
 /       |                                                                                                                                |       /
 /       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////       /
 /                                                                                                                                                /
