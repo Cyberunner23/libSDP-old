@@ -86,8 +86,8 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6605505">
-              <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.4293578">
+              <caret line="13" column="75" selection-start-line="13" selection-start-column="75" selection-end-line="13" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -446,12 +446,6 @@
       <option name="number" value="Default" />
       <updated>1421011182436</updated>
     </task>
-    <task id="LOCAL-00100" summary="Never mind for osx...">
-      <created>1426205229065</created>
-      <option name="number" value="00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1426205229065</updated>
-    </task>
     <task id="LOCAL-00101" summary="Made a test for encryption, which works locally + fixed bugs that was corrupting the decrypted data.">
       <created>1426297903820</created>
       <option name="number" value="00101" />
@@ -740,7 +734,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433470463320</updated>
     </task>
-    <option name="localTasksCounter" value="149" />
+    <task id="LOCAL-00149" summary="attempt #4...">
+      <created>1433470911479</created>
+      <option name="number" value="00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1433470911479</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -807,7 +807,6 @@
       <path value="$PROJECT_DIR$/extlibs/zlib" />
       <path value="$PROJECT_DIR$/extlibs/lz4" />
     </ignored-roots>
-    <MESSAGE value="Started conversion to new API." />
     <MESSAGE value="Fixed Travis build crash." />
     <MESSAGE value="Started working on API implementation + removed SDPStreamBuf." />
     <MESSAGE value="Added TODO + updated SDPVer." />
@@ -832,7 +831,8 @@
     <MESSAGE value="attempting to make travis update to cmake 3" />
     <MESSAGE value="attempt #2..." />
     <MESSAGE value="attempt #3..." />
-    <option name="LAST_COMMIT_MESSAGE" value="attempt #3..." />
+    <MESSAGE value="attempt #4..." />
+    <option name="LAST_COMMIT_MESSAGE" value="attempt #4..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1230,8 +1230,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6605505">
-          <caret line="20" column="45" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.4293578">
+          <caret line="13" column="75" selection-start-line="13" selection-start-column="75" selection-end-line="13" selection-end-column="75" />
           <folding />
         </state>
       </provider>
