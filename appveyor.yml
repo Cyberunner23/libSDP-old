@@ -1,0 +1,20 @@
+
+clone_folder: C:\projects\libSDP
+
+branches:
+  only:
+    - master
+
+install:
+  - cmd: git submodule update --init --recursive
+
+platform: x64
+
+before_build:
+  - echo running cmake...
+  - mkdir C:\projects\libSDP\build
+  - cd C:\projects\libSDP\build
+  - cmake -G "Visual Studio 12 Win64" -DLIBSDP_ENABLE_TESTS=ON ..
+
+build: C:\projects\libSDP\libSDP.vcxproj
+
