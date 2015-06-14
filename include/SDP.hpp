@@ -32,7 +32,8 @@ Copyright 2015 Alex Frappier Lachapelle
 #include "SDPVer.hpp"
 #include "Typedefs.hpp"
 
-
+//TODO!: WRITE DOCUMENTATION FFS!!!
+//TODO:  Use UTF-8 within API and in file (for the file names.)
 //TODO:  Implement new algorithm stack idea (with double Buffers for squeezeIn features)
 //TODO:  Add a switch for algorithms to determine if its a compression or encryption algorithm
 //           so that the right block header is read/written.
