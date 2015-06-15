@@ -74,6 +74,10 @@ SET(HEADER_FILES
     include/Utils/HexBinTool.hpp
     include/Utils/RawFileIO.hpp
     include/Utils/Typedefs.hpp
+    include/Utils/utf8.h
+    include/Utils/utf8/checked.h
+    include/Utils/utf8/core.h
+    include/Utils/utf8/unchecked.h
 )
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/AlgorithmBase)
