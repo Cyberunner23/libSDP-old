@@ -50,9 +50,9 @@ SET(SOURCE_FILES
     src/StreamBufs/SDPCompressionStreamBuf.cpp
     src/StreamBufs/SDPCryptStreamBuf.cpp
     src/StreamBufs/SDPStreamBufBase.cpp
-    src/Tools/Endianness.cpp
-    src/Tools/HexBinTool.cpp
-    src/Tools/RawFileIO.cpp
+    src/Utils/Endianness.cpp
+    src/Utils/HexBinTool.cpp
+    src/Utils/RawFileIO.cpp
 )
 SET(HEADER_FILES
     include/SDP.hpp
@@ -69,17 +69,17 @@ SET(HEADER_FILES
     include/StreamBufs/SDPCompressionStreamBuf.hpp
     include/StreamBufs/SDPCryptStreamBuf.hpp
     include/StreamBufs/SDPStreamBufBase.hpp
-    include/Tools/DevMacros.hpp
-    include/Tools/Endianness.hpp
-    include/Tools/HexBinTool.hpp
-    include/Tools/RawFileIO.hpp
-    include/Tools/Typedefs.hpp
+    include/Utils/DevMacros.hpp
+    include/Utils/Endianness.hpp
+    include/Utils/HexBinTool.hpp
+    include/Utils/RawFileIO.hpp
+    include/Utils/Typedefs.hpp
 )
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/AlgorithmBase)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/StreamBufs)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/Tools)
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/Utils)
 
 
 #----------------------------------------------------------
