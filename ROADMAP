@@ -11,3 +11,4 @@ pre-1.0.0
 post-1.0.0
 - Add option to use lib as streambufs?
 - Integrate a SubContainer editing feature? with squeeze-in?
+- Add support for non-stream encryption algorithms.

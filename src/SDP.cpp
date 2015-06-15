@@ -116,13 +116,5 @@ uint64 SDP::getWriteCount(){
 }
 
 
-bool SDP::squeezeIn(uchar *data, uint64 writeSize){
-
-}
-
-SDP& SDP::operator<<=(uchar &c){
-
-}
-
 
 

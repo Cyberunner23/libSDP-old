@@ -80,9 +80,6 @@ public:
     SDP&   operator<<(uchar &c);
     uint64 getWriteCount();
 
-    bool squeezeIn(uchar* data, uint64 writeSize = 1);
-    SDP& operator<<=(uchar &c);
-
 
 private:
 
