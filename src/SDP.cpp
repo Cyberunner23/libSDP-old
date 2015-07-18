@@ -54,15 +54,28 @@ SDPParser::SDPSubContainerInfoStruct* SDP::getSubContainerInfo(std::string &subC
 }
 
 
-void SDP::createSDP(std::string &SDPFileName, std::vector<uchar> &extraField){
+void SDP::createSDP(std::string &SDPFileName, const std::vector<uchar> &extraField){
 
 }
 
-void SDP::createSDP(std::shared_ptr<std::iostream> inOutStream, std::vector<uchar> &extraField){
+void SDP::createSDP(std::shared_ptr<std::iostream> inOutStream, const std::vector<uchar> &extraField){
 
 }
 
-void SDP::addSubContainerToSDP(std::string &SubContainerFileName, std::vector<uchar> &extraField){
+
+void SDP::addSubContainerToSDP(std::string &SubContainerFileName, compressionAlgorithmsEnum compAlg, encryptionAlgorithmsEnum encAlg, const std::vector<uchar> &extraField){
+
+}
+
+void SDP::addSubContainerToSDP(std::string &SubContainerFileName, std::shared_ptr<std::iostream> algorithm, const std::vector<uchar> &extraField){
+
+}
+
+void SDP::finalizeSubContainer(){
+
+}
+
+void SDP::removeSubContainerFromSDP(std::string &subContainerName){
 
 }
 
