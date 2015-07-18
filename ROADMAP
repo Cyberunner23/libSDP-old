@@ -5,6 +5,7 @@ pre-1.0.0
 - Functional multi-algorithm chaining (includes read seeking support).
 - Functional SDP File creation.
 - Functional SubContainer creation and deletion.
+- Integrated support for previous file Spec Revisions.
 - Integrated support for lz4 and DEFLATE (zlib) compression algorithms.
 - Integrated support for ChaCha20, Salsa20, XSalsa20 and AES-128-CTR encryption algorithms.
 
