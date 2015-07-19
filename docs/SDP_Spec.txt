@@ -1,5 +1,5 @@
 
-SDP (Soul Data Pack) File spec Rev. 2.3 :
+SDP (Soul Data Pack) File spec Rev. 1.0 :
     by: Alex Frappier Lachapelle
 
 *Note that the data in the headers are in big endian.
@@ -8,10 +8,10 @@ SDP (Soul Data Pack) File spec Rev. 2.3 :
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 / SDP FILE HEADER:                                                                                                                               /
 /                                                                                                                                                /
-/       MagicNumber = 0x53445041 (SDPA)                                                                                                          /
+/       MagicNumber = 0x53445041 ("SDPA")                                                                                                          /
 /       //SDP Spec                                                                                                                               /
-/       uint8         : SDP Spec Rev. Major (Currently 2)                                                                                        /
-/       uint8         : SDP Spec Rev. Minor (Currently 3)                                                                                        /
+/       uint8         : SDP Spec Rev. Major (Currently 1)                                                                                        /
+/       uint8         : SDP Spec Rev. Minor (Currently 0)                                                                                        /
 /       uint64        : Size of extra field.                                                                                                     /
 /       vector<uchar> : Extra field.                                                                                                             /
 /       string        : Expected SHA-256 hash of SDP file header.                                                                                /
@@ -46,7 +46,7 @@ SDP (Soul Data Pack) File spec Rev. 2.3 :
 /       |       string        : Expected SHA-256 hash of SDP Sub-Container header. (This hash includes all values in the                 |       /
 /       |                                                                           header except the hash itself.)                      |       /
 /       |                                                                                                                                |       /
-/       | END OF HEADER----------------------------------------------------------------------------------------------------------------- |       /
+/       | END OF HEADER ---------------------------------------------------------------------------------------------------------------- |       /
 /       |                                                                                                                                |       /
 /       |       vector<uchar> : Sub-Container data. (The file that is stored in the container)                                           |       /
 /       |                                           (If compression AND encryption is to be done, the data is compressed first,          |       /

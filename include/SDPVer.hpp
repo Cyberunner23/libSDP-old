@@ -33,8 +33,8 @@ public:
     }SDPLibVer;
 
     struct SDPSpecRevStruct{
-        uint8 major = 2;
-        uint8 minor = 3;
+        uint8 major = 1;
+        uint8 minor = 0;
     }SDPSpecRev;
 
 };
