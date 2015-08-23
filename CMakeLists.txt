@@ -50,6 +50,7 @@ SET(SOURCE_FILES
     src/Utils/Endianness.cpp
     src/Utils/HexBinTool.cpp
     src/Utils/RawFileIO.cpp
+    src/Utils/SHA256Hash.cpp
 )
 SET(HEADER_FILES
     include/SDP.hpp
@@ -67,6 +68,7 @@ SET(HEADER_FILES
     include/Utils/Endianness.hpp
     include/Utils/HexBinTool.hpp
     include/Utils/RawFileIO.hpp
+    include/Utils/SHA256Hash.hpp
     include/Utils/Typedefs.hpp
     include/Utils/utf8.h
     include/Utils/utf8/checked.h

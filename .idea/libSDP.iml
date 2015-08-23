@@ -84,8 +84,6 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_pwhash/scryptsalsa208sha256/sse/pwhash_scryptsalsa208sha256_sse.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_pwhash/scryptsalsa208sha256/sysendian.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/crypto_scalarmult.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/donna_c64/base_curve25519_donna_c64.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/donna_c64/smult_curve25519_donna_c64.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/ref10/api.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/ref10/base_curve25519_ref10.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/ref10/fe.h" isTestSource="false" />
@@ -337,6 +335,7 @@
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/Endianness.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/HexBinTool.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/RawFileIO.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Utils/SHA256Hash.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/Typedefs.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8/checked.h" isTestSource="false" />
@@ -354,6 +353,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Utils/Endianness.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Utils/HexBinTool.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Utils/RawFileIO.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Utils/SHA256Hash.cpp" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
