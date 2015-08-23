@@ -17,7 +17,6 @@ Copyright 2015 Alex Frappier Lachapelle
 #ifndef LIBSDP_SHA256HASH_HPP
 #define LIBSDP_SHA256HASH_HPP
 
-#include <cassert>
 #include <string>
 #include <vector>
 
@@ -55,19 +54,6 @@ namespace Utils{
         std::vector<uchar>       digest;
 
         //Funcs
-
-        /*
-         * Not sure if this one will be called
-         * instead of the overloaded ones.
-         * //NOTE: Remove this function if it
-         *         asserts even when supplying
-         *         it with valid data types.
-         *         User will have to interpret
-         *         the cryptic? compiler error...
-         */
-        template<typename... Args>
-        void updateHash(Args... args);
-
         template<typename... Args>
         void updateHash(uchar val, Args... args);
 

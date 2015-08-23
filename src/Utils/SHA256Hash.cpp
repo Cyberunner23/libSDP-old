@@ -41,27 +41,6 @@ std::vector<uchar> SHA256Hash::getHashVec(Args... args){
 
 
 template<typename... Args>
-void SHA256Hash::updateHash(Args... args){
-    /*
-     * Assert when receiving an unsupported argument type.
-     * NOTE: Valid types are:
-     * - uchar
-     * - uchar* (Must include size)
-     * - uint8
-     * - uint16
-     * - uint32
-     * - uint64
-     * - std::string
-     * - std::vector<uchar>
-     * - std::vector<uint8>
-     * - std::vector<uint16>
-     * - std::vector<uint32>
-     * - std::vector<uint64>
-     */
-    assert(false);
-}
-
-template<typename... Args>
 void SHA256Hash::updateHash(uchar val, Args... args){
     crypto_hash_sha256_update(&sha256State,
                               &val,
