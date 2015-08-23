@@ -105,7 +105,7 @@ template<typename... Args>
 void SHA256Hash::updateHash(std::string val, Args... args){
     crypto_hash_sha256_update(&sha256State,
                               reinterpret_cast<const uchar*>(val.c_str()),
-                              sizeof(reinterpret_cast<uchar*>(val.c_str())));
+                              sizeof(reinterpret_cast<const uchar*>(val.c_str())));
     updateHash(args...);
 }
 
