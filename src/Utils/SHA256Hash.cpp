@@ -80,32 +80,32 @@ void SHA256Hash::updateHash(uchar* val, uint64 size, Args... args){
 template<typename... Args>
 void SHA256Hash::updateHash(uint16 val, Args... args){
     crypto_hash_sha256_update(&sha256State,
-                              reinterpret_cast<uchar*>(val),
-                              sizeof(reinterpret_cast<uchar*>(val)));
+                              static_cast<uchar*>(val),
+                              sizeof(static_cast<uchar*>(val)));
     updateHash(args...);
 }
 
 template<typename... Args>
 void SHA256Hash::updateHash(uint32 val, Args... args){
     crypto_hash_sha256_update(&sha256State,
-                              reinterpret_cast<uchar*>(val),
-                              sizeof(reinterpret_cast<uchar*>(val)));
+                              static_cast<uchar*>(val),
+                              sizeof(static_cast<uchar*>(val)));
     updateHash(args...);
 }
 
 template<typename... Args>
 void SHA256Hash::updateHash(uint64 val, Args... args){
     crypto_hash_sha256_update(&sha256State,
-                              reinterpret_cast<uchar*>(val),
-                              sizeof(reinterpret_cast<uchar*>(val)));
+                              static_cast<uchar*>(val),
+                              sizeof(static_cast<uchar*>(val)));
     updateHash(args...);
 }
 
 template<typename... Args>
 void SHA256Hash::updateHash(std::string val, Args... args){
     crypto_hash_sha256_update(&sha256State,
-                              reinterpret_cast<const uchar*>(val.c_str()),
-                              sizeof(reinterpret_cast<const uchar*>(val.c_str())));
+                              static_cast<const uchar*>(val.c_str()),
+                              sizeof(static_cast<const uchar*>(val.c_str())));
     updateHash(args...);
 }
 
@@ -120,24 +120,24 @@ void SHA256Hash::updateHash(std::vector<uchar> val, Args... args){
 template<typename... Args>
 void SHA256Hash::updateHash(std::vector<uint16> val, Args... args){
     crypto_hash_sha256_update(&sha256State,
-                              reinterpret_cast<uchar*>(val.data()),
-                              sizeof(reinterpret_cast<uchar*>(val.data())));
+                              static_cast<uchar*>(val.data()),
+                              sizeof(static_cast<uchar*>(val.data())));
     updateHash(args...);
 }
 
 template<typename... Args>
 void SHA256Hash::updateHash(std::vector<uint32> val, Args... args){
     crypto_hash_sha256_update(&sha256State,
-                              reinterpret_cast<uchar*>(val.data()),
-                              sizeof(reinterpret_cast<uchar*>(val.data())));
+                              static_cast<uchar*>(val.data()),
+                              sizeof(static_cast<uchar*>(val.data())));
     updateHash(args...);
 }
 
 template<typename... Args>
 void SHA256Hash::updateHash(std::vector<uint64> val, Args... args){
     crypto_hash_sha256_update(&sha256State,
-                              reinterpret_cast<uchar*>(val.data()),
-                              sizeof(reinterpret_cast<uchar*>(val.data())));
+                              static_cast<uchar*>(val.data()),
+                              sizeof(static_cast<uchar*>(val.data())));
     updateHash(args...);
 }
 
