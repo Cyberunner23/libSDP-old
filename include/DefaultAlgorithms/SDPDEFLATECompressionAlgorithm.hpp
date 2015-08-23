@@ -14,39 +14,57 @@ Copyright 2015 Alex Frappier Lachapelle
    limitations under the License.
 */
 
+#ifndef _LIBSDP_SDPDEFLATECOMPRESSIONALGORITHM_H_
+#define _LIBSDP_SDPDEFLATECOMPRESSIONALGORITHM_H_
+
 #include "SDPCompressionAlgorithmBase.hpp"
 
 #include "zlib.h"
 
-class SDPDEFLATECompressionAlgorithm : public SDPCompressionAlgorithmBase{
+namespace libSDP{
+namespace DefaultAlgorithms{
 
-public:
+    using namespace libSDP::AlgorithmBase;
+    using namespace libSDP::Utils;
 
-    //Vars
+    class SDPDEFLATECompressionAlgorithm : public SDPCompressionAlgorithmBase{
 
-    //Funcs
+    public:
 
-    SDPDEFLATECompressionAlgorithm();
-    ~SDPDEFLATECompressionAlgorithm();
+        //Vars
 
-    virtual uint64 decompressBuffer(uchar* compressedBuffer,   uchar* decompressedBuffer, uint64 compressedBufferSize,   uint64 decompressedDataSize,  uint64 chunkNum);
-    virtual uint64 compressBuffer(uchar*   uncompressedBuffer, uchar* compressedBuffer,   uint64 uncompressedBufferSize, uint64 chunkNum);
+        //Funcs
 
-    virtual void onInit();
-    virtual void onExit();
-    virtual void onSync();
+        SDPDEFLATECompressionAlgorithm();
+
+        ~SDPDEFLATECompressionAlgorithm();
+
+        virtual uint64 decompressBuffer(uchar *compressedBuffer, uchar *decompressedBuffer, uint64 compressedBufferSize,
+                                        uint64 decompressedDataSize, uint64 chunkNum);
+
+        virtual uint64 compressBuffer(uchar *uncompressedBuffer, uchar *compressedBuffer, uint64 uncompressedBufferSize,
+                                      uint64 chunkNum);
+
+        virtual void onInit();
+
+        virtual void onExit();
+
+        virtual void onSync();
 
 
-private:
+    private:
 //Vars
-    //Not the actual maximum buffer size supported by zlib but
-    //its fine for us.
-    static const uint64 maxBufferSize                  = 64 * 1024;
-    static const uint64 preferedBufferSize             = 32 * 1024;
-    //Not actual size with overhead but its nice to have a safety margin.
-    static const uint64 preferedBufferSizeWithOverhead = (preferedBufferSize * 1.2) + 12;
+        //Not the actual maximum buffer size supported by zlib but
+        //its fine for us.
+        static const uint64 maxBufferSize=64 * 1024;
+        static const uint64 preferedBufferSize=32 * 1024;
+        //Not actual size with overhead but its nice to have a safety margin.
+        static const uint64 preferedBufferSizeWithOverhead=(preferedBufferSize * 1.2) + 12;
 
-    //Funcs
+        //Funcs
 
+    };
+}
+}
 
-};
+#endif //_LIBSDP_SDPDEFLATECOMPRESSIONALGORITHM_H_

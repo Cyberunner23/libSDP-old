@@ -17,6 +17,8 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "SDPlz4CompressionAlgorithm.hpp"
 
+using namespace libSDP::DefaultAlgorithms;
+
 SDPlz4CompressionAlgorithm::SDPlz4CompressionAlgorithm(){
 
     setMaxBufferSize(maxBufferSize);

@@ -17,12 +17,15 @@ Copyright 2015 Alex Frappier Lachapelle
 #ifndef LIBSDP_SDPERROR_HPP
 #define LIBSDP_SDPERROR_HPP
 
-enum SDPErrEnum{
-    NO_ERR,
-    CANNOT_OPEN_FILE,
-    INVALID_FILE_HEADER,
-    INVALID_HEADER,
-    EOS_REACHED
-};
+namespace libSDP{
+
+    enum SDPErrEnum{
+        NO_ERR,
+        CANNOT_OPEN_FILE,
+        INVALID_FILE_HEADER,
+        INVALID_HEADER,
+        EOS_REACHED
+    };
+}
 
 #endif //LIBSDP_SDPERROR_HPP

@@ -20,24 +20,28 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "Typedefs.hpp"
 
+namespace libSDP{
 
-class SDPVer{
+    using namespace libSDP::Utils;
 
-public:
+    class SDPVer{
 
-    //Vars
-    struct SDPLibVerStruct{
-        uint8 major = 0;
-        uint8 minor = 2;
-        uint8 patch = 0;
-    }SDPLibVer;
+    public:
 
-    struct SDPSpecRevStruct{
-        uint8 major = 1;
-        uint8 minor = 0;
-    }SDPSpecRev;
+        //Vars
+        struct SDPLibVerStruct{
+            uint8 major=0;
+            uint8 minor=2;
+            uint8 patch=0;
+        } SDPLibVer;
 
-};
+        struct SDPSpecRevStruct{
+            uint8 major=1;
+            uint8 minor=0;
+        } SDPSpecRev;
+
+    };
+}
 
 #endif // SDPVER_HPP
 

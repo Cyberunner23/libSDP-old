@@ -16,6 +16,8 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "SDPAlgorithmBase.hpp"
 
+using namespace libSDP;
+
 SDPAlgorithmBase::SDPAlgorithmBase(){
 
 }

@@ -16,6 +16,8 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "SDPXSalsa20EncryptionAlgorithm.hpp"
 
+using namespace libSDP::DefaultAlgorithms;
+
 SDPXSalsa20EncryptionAlgorithm::SDPXSalsa20EncryptionAlgorithm(){
 
     setEncryptionAlgorithmID(encryptionAlgorithmID);

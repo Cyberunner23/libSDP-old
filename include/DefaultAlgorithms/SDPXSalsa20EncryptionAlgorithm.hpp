@@ -21,48 +21,58 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "SDPEncryptionAlgorithmBase.hpp"
 
-class SDPXSalsa20EncryptionAlgorithm : public SDPEncryptionAlgorithmBase{
+namespace libSDP{
+namespace DefaultAlgorithms{
 
-public:
+    using namespace libSDP::AlgorithmBase;
+    using namespace libSDP::Utils;
 
-    //Vars
+    class SDPXSalsa20EncryptionAlgorithm : public SDPEncryptionAlgorithmBase{
 
-    //Funcs
+    public:
 
-    SDPXSalsa20EncryptionAlgorithm();
-    ~SDPXSalsa20EncryptionAlgorithm();
+        //Vars
 
-    virtual uint64 decryptBuffer(uchar* encryptedBuffer,   uchar* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum);
-    virtual uint64 encryptBuffer(uchar* unencryptedBuffer, uchar* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum);
+        //Funcs
 
-    virtual bool decryptStream(uchar encryptedChar,   uchar* decryptedChar, uint64 charNum);
-    virtual bool encryptStream(uchar unencryptedChar, uchar* encryptedChar, uint64 charNum);
+        SDPXSalsa20EncryptionAlgorithm();
+        ~SDPXSalsa20EncryptionAlgorithm();
 
-    virtual void onInit();
-    virtual void onExit();
-    virtual void onSync();
+        virtual uint64 decryptBuffer(uchar* encryptedBuffer,   uchar* decryptedBuffer, uint64 encryptedBufferSize,   uint64 chunkNum);
+        virtual uint64 encryptBuffer(uchar* unencryptedBuffer, uchar* encryptedBuffer, uint64 unencryptedBufferSize, uint64 chunkNum);
 
+        virtual bool decryptStream(uchar encryptedChar,   uchar* decryptedChar, uint64 charNum);
+        virtual bool encryptStream(uchar unencryptedChar, uchar* encryptedChar, uint64 charNum);
 
-protected:
-
-    //Vars
-
-    //Funcs
-
-private:
-
-    //Vars
-
-    static const uint8  encryptionAlgorithmID  = 0x01;
-    static const bool   isStreamCipher         = false;
-    static const int    algorithmBlockSize     = 64;
-    static const int    blocksPerBuffer        = 500;
-    static const uint64 bufferSize             = algorithmBlockSize * blocksPerBuffer;
-    static const uint64 bufferSizeWithOverhead = bufferSize; //1 byte in, 1 byte out.
-
-    //Funcs
+        virtual void onInit();
+        virtual void onExit();
+        virtual void onSync();
 
 
-};
+    protected:
+
+        //Vars
+
+        //Funcs
+
+    private:
+
+        //Vars
+
+        static const uint8  encryptionAlgorithmID  = 0x01;
+        static const bool   isStreamCipher         = false;
+        static const int    algorithmBlockSize     = 64;
+        static const int    blocksPerBuffer        = 500;
+        static const uint64 bufferSize             = algorithmBlockSize * blocksPerBuffer;
+        static const uint64 bufferSizeWithOverhead = bufferSize; //1 byte in, 1 byte out.
+
+        //Funcs
+
+
+    };
+}
+}
+
+
 
 #endif //SDPXSALSA20ENCRYPTIONALGORITHM_HPP

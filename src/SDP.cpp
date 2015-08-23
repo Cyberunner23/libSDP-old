@@ -16,6 +16,7 @@ See the License for the specific language governing permissions and
 
 #include "SDP.hpp"
 
+using namespace libSDP;
 
 SDP::SDP(){}
 SDP::~SDP(){}

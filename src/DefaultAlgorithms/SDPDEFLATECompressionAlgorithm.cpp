@@ -16,6 +16,8 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "SDPDEFLATECompressionAlgorithm.hpp"
 
+using namespace libSDP::DefaultAlgorithms;
+
 SDPDEFLATECompressionAlgorithm::SDPDEFLATECompressionAlgorithm(){
 
     setMaxBufferSize(maxBufferSize);

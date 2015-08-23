@@ -16,6 +16,8 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "RawFileIO.hpp"
 
+using namespace libSDP;
+using namespace libSDP::Utils;
 
 RawFileIO::RawFileIO(){
     isSysBigEndian = endian.isSysBigEndian();

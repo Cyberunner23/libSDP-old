@@ -23,37 +23,52 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "lz4.h"
 
-class SDPlz4CompressionAlgorithm : public SDPCompressionAlgorithmBase{
+namespace libSDP{
+namespace DefaultAlgorithms{
 
-public:
+    using namespace libSDP::AlgorithmBase;
+    using namespace libSDP::Utils;
 
-    //Vars
+    class SDPlz4CompressionAlgorithm : public SDPCompressionAlgorithmBase{
 
+    public:
 
-    //Funcs
-
-    SDPlz4CompressionAlgorithm();
-    ~SDPlz4CompressionAlgorithm();
-
-    virtual uint64 decompressBuffer(uchar* compressedBuffer,   uchar* decompressedBuffer, uint64 compressedBufferSize,   uint64 decompressedDataSize,  uint64 chunkNum);
-    virtual uint64 compressBuffer(uchar*   uncompressedBuffer, uchar* compressedBuffer,   uint64 uncompressedBufferSize, uint64 chunkNum);
-
-    virtual void onInit();
-    virtual void onExit();
-    virtual void onSync();
+        //Vars
 
 
-private:
+        //Funcs
 
-    //Vars
-    static const uint64 maxBufferSize                  = LZ4_MAX_INPUT_SIZE;
-    static const uint64 preferedBufferSize             = 32 * 1024;
-    static const uint64 preferedBufferSizeWithOverhead = LZ4_COMPRESSBOUND(preferedBufferSize);
+        SDPlz4CompressionAlgorithm();
 
-    //Funcs
+        ~SDPlz4CompressionAlgorithm();
+
+        virtual uint64 decompressBuffer(uchar *compressedBuffer, uchar *decompressedBuffer, uint64 compressedBufferSize,
+                                        uint64 decompressedDataSize, uint64 chunkNum);
+
+        virtual uint64 compressBuffer(uchar *uncompressedBuffer, uchar *compressedBuffer, uint64 uncompressedBufferSize,
+                                      uint64 chunkNum);
+
+        virtual void onInit();
+
+        virtual void onExit();
+
+        virtual void onSync();
 
 
-};
+    private:
+
+        //Vars
+        static const uint64 maxBufferSize=LZ4_MAX_INPUT_SIZE;
+        static const uint64 preferedBufferSize=32 * 1024;
+        static const uint64 preferedBufferSizeWithOverhead=LZ4_COMPRESSBOUND(preferedBufferSize);
+
+        //Funcs
+
+
+    };
+
+}
+}
 
 
 #endif //_LIBSDP_SDPLZ4COMPRESSIONALGORITHM_H_

@@ -28,96 +28,104 @@ Copyright 2015 Alex Frappier Lachapelle
 #include "SDPVer.hpp"
 #include "Typedefs.hpp"
 
+namespace libSDP{
 
-class SDPParser{
+    using namespace libSDP::Utils;
 
-public:
+    class SDPParser{
 
-    //Vars
+    public:
 
-    struct SDPSubContainerHeaderStruct{
-        uint64      fileNameLength;
-        std::string fileName;
+        //Vars
 
-        enum subContainerTypeEnum : uint8{
-            DETERMINED_BY_API_CALL = 0x00,
-            RAW_DATA               = 0x01,
-            COMPRESSED_DATA        = 0x02,
-            ENCRYPTED_DATA         = 0x03
-        } subContainerType;
+        struct SDPSubContainerHeaderStruct{
+            uint64 fileNameLength;
+            std::string fileName;
 
-        enum compressionAlgorithmIDEnum : uint8{
-            COMPRESSION_DETERMINED_BY_API_CALL = 0x00,
-            COMPRESSION_ZLIB                   = 0x01,
-            COMPRESSION_LZ4                    = 0x02
-        } compressionAlgorithmID;
+            enum subContainerTypeEnum : uint8{
+                DETERMINED_BY_API_CALL=0x00,
+                RAW_DATA=0x01,
+                COMPRESSED_DATA=0x02,
+                ENCRYPTED_DATA=0x03
+            } subContainerType;
 
-        enum encryptionAlgorithmIDEnum : uint8{
-            ENCRYPTION_DETERMINED_BY_API_CALL = 0x00,
-            ENCRYPTION_XSALSA20               = 0x01,
-            ENCRYPTION_XSALSA20_WITH_POLY1305 = 0x02,
-            ENCRYPTION_SALSA20                = 0x03,
-            ENCRYPTION_CHACHA20               = 0x04,
-            ENCRYPTION_AES_128_CTR            = 0x05,
-        }encryptionAlgorithmID;
+            enum compressionAlgorithmIDEnum : uint8{
+                COMPRESSION_DETERMINED_BY_API_CALL=0x00,
+                COMPRESSION_ZLIB=0x01,
+                COMPRESSION_LZ4=0x02
+            } compressionAlgorithmID;
 
-        uint64             extraFieldSize;
-        std::vector<uchar> extraField;
-        uint64             subContainerDataSize;
-        std::string        expectedSubContainerDataHash;
-        std::string        actualSubContainerDataHash;
-        std::string        expectedSubContainerHeaderHash;
-        std::string        actualSubContainerHeaderHash;
+            enum encryptionAlgorithmIDEnum : uint8{
+                ENCRYPTION_DETERMINED_BY_API_CALL=0x00,
+                ENCRYPTION_XSALSA20=0x01,
+                ENCRYPTION_XSALSA20_WITH_POLY1305=0x02,
+                ENCRYPTION_SALSA20=0x03,
+                ENCRYPTION_CHACHA20=0x04,
+                ENCRYPTION_AES_128_CTR=0x05,
+            } encryptionAlgorithmID;
+
+            uint64 extraFieldSize;
+            std::vector<uchar> extraField;
+            uint64 subContainerDataSize;
+            std::string expectedSubContainerDataHash;
+            std::string actualSubContainerDataHash;
+            std::string expectedSubContainerHeaderHash;
+            std::string actualSubContainerHeaderHash;
+        };
+
+        struct SDPSubContainerInfoStruct{
+            std::string subContainerFileName;
+            SDPSubContainerHeaderStruct subContainerHeader;
+            bool isHeaderValid;
+            uint64 begDataPos;
+            uint64 endDataPos;
+        };
+
+        struct SDPFileHeaderStruct{
+            uint32 magicNumber;
+            SDPVer::SDPSpecRevStruct SDPSpecRev;
+            uint64 extraFieldSize;
+            std::vector<uchar> extraField;
+            std::string expectedHeaderHash;
+            std::string actualHeaderHash;
+        };
+
+        struct SDPFileInfoStruct{
+            SDPFileHeaderStruct SDPFileHeader;
+            bool isHeaderValid;
+            std::unordered_map<std::string, SDPSubContainerInfoStruct> subContainersInSDPFile;
+            uint64 numOfSubContainers;
+            SDPSubContainerInfoStruct currentSubContainerInUse;
+            std::shared_ptr<std::iostream> currentAlgorithmInUse;
+        };
+
+        //Funcs
+
+        SDPParser();
+
+        ~SDPParser();
+
+        SDPErrEnum parseSDPFile(std::shared_ptr<std::istream> inStream, SDPFileInfoStruct &SDPFileInfo);
+
+
+    private:
+
+        //Vars
+
+        static const uint32 magicWord=0x53445041; //"SDPA"
+        SDPVer SDPVersion;
+
+        RawFileIO rawFileIO;
+
+        //Funcs
+
+        SDPErrEnum parseSDPFileHeader(std::shared_ptr<std::istream> inStream,
+                                      SDPParser::SDPFileHeaderStruct &SDPFileHeader);
+
+        SDPErrEnum parseSDPSubContainer(std::shared_ptr<std::istream> inStream,
+                                        SDPParser::SDPSubContainerInfoStruct &SDPSubContainerInfo);
+
     };
-
-    struct SDPSubContainerInfoStruct{
-        std::string                 subContainerFileName;
-        SDPSubContainerHeaderStruct subContainerHeader;
-        bool                        isHeaderValid;
-        uint64                      begDataPos;
-        uint64                      endDataPos;
-    };
-
-    struct SDPFileHeaderStruct{
-        uint32                   magicNumber;
-        SDPVer::SDPSpecRevStruct SDPSpecRev;
-        uint64                   extraFieldSize;
-        std::vector<uchar>       extraField;
-        std::string              expectedHeaderHash;
-        std::string              actualHeaderHash;
-    };
-
-    struct SDPFileInfoStruct{
-        SDPFileHeaderStruct                                        SDPFileHeader;
-        bool                                                       isHeaderValid;
-        std::unordered_map<std::string, SDPSubContainerInfoStruct> subContainersInSDPFile;
-        uint64                                                     numOfSubContainers;
-        SDPSubContainerInfoStruct                                  currentSubContainerInUse;
-        std::shared_ptr<std::iostream>                             currentAlgorithmInUse;
-    };
-
-    //Funcs
-
-    SDPParser();
-    ~SDPParser();
-
-    SDPErrEnum parseSDPFile(std::shared_ptr<std::istream> inStream, SDPFileInfoStruct &SDPFileInfo);
-
-
-private:
-
-    //Vars
-
-    static const uint32 magicWord = 0x53445041; //"SDPA"
-    SDPVer              SDPVersion;
-
-    RawFileIO rawFileIO;
-
-    //Funcs
-
-    SDPErrEnum parseSDPFileHeader(std::shared_ptr<std::istream> inStream, SDPParser::SDPFileHeaderStruct &SDPFileHeader);
-    SDPErrEnum parseSDPSubContainer(std::shared_ptr<std::istream> inStream, SDPParser::SDPSubContainerInfoStruct &SDPSubContainerInfo);
-
-};
+}
 
 #endif //LIBSDP_SDPPARSER_H

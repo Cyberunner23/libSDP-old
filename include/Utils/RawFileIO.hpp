@@ -24,50 +24,57 @@ Copyright 2015 Alex Frappier Lachapelle
 #include "Endianness.hpp"
 #include "Typedefs.hpp"
 
-class RawFileIO{
+namespace libSDP{
+namespace Utils{
 
-public:
+    class RawFileIO{
 
-    //Vars
+    public:
 
-    //Endianness of the source fileStream
-    enum Endian{
-        LITTLE__ENDIAN,
-        BIG__ENDIAN
+        //Vars
+
+        //Endianness of the source fileStream
+        enum Endian{
+            LITTLE__ENDIAN,
+            BIG__ENDIAN
+        };
+
+        //Funcs
+
+        RawFileIO();
+
+        //Reads a value from a file and converts it to the system's
+        //endianness if necessary
+        size_t read(uint8  &val, std::shared_ptr<std::istream> inStream);
+        size_t read(uint16 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
+        size_t read(uint32 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
+        size_t read(uint64 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
+
+        //Writes a value from a file and converts it to the system's
+        //endianness if necessary
+        void write(uint8  &val, std::shared_ptr<std::ostream> outStream);
+        void write(uint16 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
+        void write(uint32 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
+        void write(uint64 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
+
+
+    private:
+
+        //Vars
+
+        bool isSysBigEndian;
+        Endianness endian;
+
+        //Funcs
+
+        //Does the endianness of the file and the system match?
+        //True:  they match
+        //False: they don't match
+        bool isFileAndSysEndianSame(Endian fileEndian);
     };
-
-    //Funcs
-
-    RawFileIO();
-
-    //Reads a value from a file and converts it to the system's
-    //endianness if necessary
-    size_t read(uint8  &val, std::shared_ptr<std::istream> inStream);
-    size_t read(uint16 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
-    size_t read(uint32 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
-    size_t read(uint64 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
-
-    //Writes a value from a file and converts it to the system's
-    //endianness if necessary
-    void write(uint8  &val, std::shared_ptr<std::ostream> outStream);
-    void write(uint16 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
-    void write(uint32 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
-    void write(uint64 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
+}
+}
 
 
-private:
-
-    //Vars
-
-    bool isSysBigEndian;
-    Endianness endian;
-
-    //Funcs
-
-    //Does the endianness of the file and the system match?
-    //True:  they match
-    //False: they don't match
-    bool isFileAndSysEndianSame(Endian fileEndian);
-};
 
 #endif // RAWREAD_H

@@ -26,59 +26,70 @@ Copyright 2015 Alex Frappier Lachapelle
 #include "SDPAlgorithmBase.hpp"
 #include "Typedefs.hpp"
 
-class SDPChainBlock{
+namespace libSDP{
 
-public:
+    using namespace libSDP::Utils;
 
-    //Vars
+    class SDPChainBlock{
 
-    enum ChainBlockType{
-        NORMAL_CHAINBLOCK,
-        BOTTOM_CHAINBLOCK
+    public:
+
+        //Vars
+
+        enum ChainBlockType{
+            NORMAL_CHAINBLOCK,
+            BOTTOM_CHAINBLOCK
+        };
+
+        //Funcs
+
+        SDPChainBlock()=delete;
+
+        //Add child chain block.
+        SDPChainBlock(std::shared_ptr<SDPChainBlock> childChainBlock);
+
+        //Used if last block in the chain.
+        SDPChainBlock(std::shared_ptr<std::iostream> fileStream);
+
+        ~SDPChainBlock();
+
+        bool setAlgorithm(std::unique_ptr<SDPAlgorithmBase> &algorithm);
+
+        bool read(uchar *data, uint64 size);
+
+        SDPChainBlock &operator>>(const uchar &c);
+
+        bool write(uchar *data, uint64 size);
+
+        SDPChainBlock &operator<<(const uchar &c);
+
+        uint64 getBottomBlockReadChunkNum();
+
+        uint64 getBottomBlockWriteChunkNum();
+
+
+    private:
+
+        //Vars
+
+        struct AlgorithmBufferPack{
+            std::vector<uchar> buffer;
+            SDPAlgorithmBase *algorithm;
+            //BufferManager
+            bool isPackSetUp;
+        };
+
+        std::shared_ptr<std::iostream> fileStream;
+        std::shared_ptr<SDPChainBlock> childChainBlock;
+
+        AlgorithmBufferPack readAlgBufPack;
+        AlgorithmBufferPack writeAlgBufPack;
+
+        //Funcs
+
+        ChainBlockType chainBlockType;
+
     };
-
-    //Funcs
-
-    SDPChainBlock() = delete;
-    //Add child chain block.
-    SDPChainBlock(std::shared_ptr<SDPChainBlock> childChainBlock);
-    //Used if last block in the chain.
-    SDPChainBlock(std::shared_ptr<std::iostream> fileStream);
-    ~SDPChainBlock();
-
-    bool setAlgorithm(std::unique_ptr<SDPAlgorithmBase> &algorithm);
-
-    bool           read(uchar* data, uint64 size);
-    SDPChainBlock& operator>>(const uchar &c);
-
-    bool           write(uchar* data, uint64 size);
-    SDPChainBlock& operator<<(const uchar &c);
-
-    uint64 getBottomBlockReadChunkNum();
-    uint64 getBottomBlockWriteChunkNum();
-
-
-private:
-
-    //Vars
-
-    struct AlgorithmBufferPack{
-        std::vector<uchar> buffer;
-        SDPAlgorithmBase *algorithm;
-        //BufferManager
-        bool isPackSetUp;
-    };
-
-    std::shared_ptr<std::iostream>  fileStream;
-    std::shared_ptr<SDPChainBlock> childChainBlock;
-
-    AlgorithmBufferPack readAlgBufPack;
-    AlgorithmBufferPack writeAlgBufPack;
-
-    //Funcs
-
-    ChainBlockType chainBlockType;
-
-};
+}
 
 #endif //LIBSDP_SDPCHAINBLOCK_H

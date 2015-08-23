@@ -23,7 +23,7 @@ PROJECT(libSDP C CXX)
 ####################### OPTIONS ###########################
 #----------------------------------------------------------
 
-OPTION(LIBSDP_ENABLE_TESTS              "Enable the building of tests.")
+OPTION(LIBSDP_ENABLE_TESTS              "Enable the building of tests."                                                       OFF)
 OPTION(LIBSDP_BUILD_SHARED_LIBRARIES    "Build libSDP as a shared lib (setting this to OFF will compile statically)"          ON)
 OPTION(LIBSODIUM_BUILD_SHARED_LIBRARIES "Build libsodium-CMake as a shared lib (setting this to OFF will compile statically)" OFF)
 
@@ -47,9 +47,6 @@ SET(SOURCE_FILES
     src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp
     src/DefaultAlgorithms/SDPlz4CompressionAlgorithm.cpp
     src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp
-    src/StreamBufs/SDPCompressionStreamBuf.cpp
-    src/StreamBufs/SDPCryptStreamBuf.cpp
-    src/StreamBufs/SDPStreamBufBase.cpp
     src/Utils/Endianness.cpp
     src/Utils/HexBinTool.cpp
     src/Utils/RawFileIO.cpp
@@ -66,9 +63,6 @@ SET(HEADER_FILES
     include/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.hpp
     include/DefaultAlgorithms/SDPlz4CompressionAlgorithm.hpp
     include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp
-    include/StreamBufs/SDPCompressionStreamBuf.hpp
-    include/StreamBufs/SDPCryptStreamBuf.hpp
-    include/StreamBufs/SDPStreamBufBase.hpp
     include/Utils/DevMacros.hpp
     include/Utils/Endianness.hpp
     include/Utils/HexBinTool.hpp
@@ -164,7 +158,7 @@ TARGET_LINK_LIBRARIES(libSDP liblz4)
 ###################### LIBSDP TESTS #######################
 #----------------------------------------------------------
 
-if(LIBSDP_ENABLE_TESTS)
-    ENABLE_TESTING()
-    ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/test)
-endif()
+#if(LIBSDP_ENABLE_TESTS)
+#    ENABLE_TESTING()
+#    ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/test)
+#endif()

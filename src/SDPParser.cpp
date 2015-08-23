@@ -16,6 +16,8 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "SDPParser.hpp"
 
+using namespace libSDP;
+
 SDPParser::SDPParser(){}
 
 SDPParser::~SDPParser(){}

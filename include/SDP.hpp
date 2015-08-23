@@ -45,73 +45,96 @@ Copyright 2015 Alex Frappier Lachapelle
 //TODO?: Use shared_ptr/unique_ptr in info functions?
 //TODO?: Use SDP to recreate SDPStreamBuf? (SqueezeIn functions will be missing though...)
 
-class SDP{
+namespace libSDP{
 
-public:
+    using namespace libSDP::Utils;
 
-    //Vars
+    class SDP{
 
-    enum compressionAlgorithmsEnum{
-        NO_COMPERSSION_ALG,
-        LZ4,
-        DEFLATE
+    public:
+
+        //Vars
+
+        enum compressionAlgorithmsEnum{
+            NO_COMPERSSION_ALG,
+            LZ4,
+            DEFLATE
+        };
+
+        enum encryptionAlgorithmsEnum{
+            NO_ENCRYPTION_ALG,
+            CHACHA20,
+            SALSA20,
+            XSALSA20,
+            AES_128_CTR
+        };
+
+        //Funcs
+
+        SDP();
+
+        ~SDP();
+
+        SDPErrEnum openSDP(std::string &SDPFileName);
+
+        SDPErrEnum openSDP(std::shared_ptr<std::iostream> inOutStream);
+
+        SDPParser::SDPFileInfoStruct *getSDPFileInfo();
+
+        SDPParser::SDPSubContainerInfoStruct *getCurrentSubContainerInfo();
+
+        SDPParser::SDPSubContainerInfoStruct *getSubContainerInfo(std::string &subContainerFileName);
+
+        bool setSDPSubContainer(std::string &subContainerFileName, std::shared_ptr<std::iostream> algorithm={});
+
+        //Return type void for now. Must change later.
+        void createSDP(std::string &SDPFileName, const std::vector<uchar> &extraField={});
+
+        void createSDP(std::shared_ptr<std::iostream> inOutStream, const std::vector<uchar> &extraField={});
+
+        void addSubContainerToSDP(std::string &SubContainerFileName,
+                                  compressionAlgorithmsEnum compAlg=NO_COMPERSSION_ALG,
+                                  encryptionAlgorithmsEnum encAlg=NO_ENCRYPTION_ALG,
+                                  const std::vector<uchar> &extraField={});
+
+        void addSubContainerToSDP(std::string &SubContainerFileName, std::shared_ptr<std::iostream> algorithm,
+                                  const std::vector<uchar> &extraField={});
+
+        void finalizeSubContainer();
+
+        void removeSubContainerFromSDP(std::string &subContainerName);
+
+        std::shared_ptr<std::iostream> getInternalStream();
+
+        void setAlgorithm(std::shared_ptr<std::iostream> algorithm);
+
+        bool read(uchar *data, uint64 readSize=1);
+
+        SDP &operator>>(uchar &c);
+
+        uint64 getReadCount();
+
+        bool write(uchar *data, uint64 writeSize=1);
+
+        SDP &operator<<(uchar &c);
+
+        uint64 getWriteCount();
+
+
+    private:
+
+        //Vars
+
+        SDPParser parser;
+        SDPParser::SDPFileInfoStruct SDPFileInfo;
+
+        std::shared_ptr<std::iostream> SDPInOutStream;
+
+        //Funcs
+
+
     };
-
-    enum encryptionAlgorithmsEnum{
-        NO_ENCRYPTION_ALG,
-        CHACHA20,
-        SALSA20,
-        XSALSA20,
-        AES_128_CTR
-    };
-
-    //Funcs
-
-    SDP();
-    ~SDP();
-
-    SDPErrEnum openSDP(std::string &SDPFileName);
-    SDPErrEnum openSDP(std::shared_ptr<std::iostream> inOutStream);
-
-    SDPParser::SDPFileInfoStruct*         getSDPFileInfo();
-    SDPParser::SDPSubContainerInfoStruct* getCurrentSubContainerInfo();
-    SDPParser::SDPSubContainerInfoStruct* getSubContainerInfo(std::string &subContainerFileName);
-    bool                                  setSDPSubContainer(std::string &subContainerFileName, std::shared_ptr<std::iostream> algorithm = {});
-
-    //Return type void for now. Must change later.
-    void createSDP(std::string                    &SDPFileName, const std::vector<uchar> &extraField  = {});
-    void createSDP(std::shared_ptr<std::iostream> inOutStream,  const std::vector<uchar> &extraField  = {});
-
-    void addSubContainerToSDP(std::string         &SubContainerFileName, compressionAlgorithmsEnum      compAlg = NO_COMPERSSION_ALG, encryptionAlgorithmsEnum encAlg = NO_ENCRYPTION_ALG, const std::vector<uchar> &extraField  = {});
-    void addSubContainerToSDP(std::string         &SubContainerFileName, std::shared_ptr<std::iostream> algorithm, const std::vector<uchar> &extraField  = {});
-    void finalizeSubContainer();
-    void removeSubContainerFromSDP(std::string &subContainerName);
-
-    std::shared_ptr<std::iostream> getInternalStream();
-    void                           setAlgorithm(std::shared_ptr<std::iostream> algorithm);
-
-    bool   read(uchar* data, uint64 readSize = 1);
-    SDP&   operator>>(uchar &c);
-    uint64 getReadCount();
-
-    bool   write(uchar* data, uint64 writeSize = 1);
-    SDP&   operator<<(uchar &c);
-    uint64 getWriteCount();
-
-
-private:
-
-    //Vars
-
-    SDPParser                    parser;
-    SDPParser::SDPFileInfoStruct SDPFileInfo;
-
-    std::shared_ptr<std::iostream> SDPInOutStream;
-
-    //Funcs
-
-
-};
+}
 
 #endif //_LIBSDP_SDP_H_
 

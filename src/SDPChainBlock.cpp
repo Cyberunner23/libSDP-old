@@ -16,6 +16,8 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "SDPChainBlock.hpp"
 
+using namespace libSDP;
+
 SDPChainBlock::SDPChainBlock(std::shared_ptr<SDPChainBlock> childChainBlock)
     : childChainBlock(childChainBlock),
       chainBlockType(NORMAL_CHAINBLOCK){

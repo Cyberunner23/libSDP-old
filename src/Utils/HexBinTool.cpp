@@ -16,6 +16,9 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "HexBinTool.hpp"
 
+using namespace libSDP;
+using namespace libSDP::Utils;
+
 int HexBinTool::hexToBin(std::string hex, std::string &bin) {
 	bin.resize(hex.size()/2);
 	return sodium_hex2bin((unsigned char*)bin.data(), bin.size(), hex.c_str(), hex.size(), NULL, nullptr, nullptr);

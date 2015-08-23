@@ -16,6 +16,8 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "SDPCompressionAlgorithmBase.hpp"
 
+using namespace libSDP::AlgorithmBase;
+
 SDPCompressionAlgorithmBase::SDPCompressionAlgorithmBase(){
 
 }

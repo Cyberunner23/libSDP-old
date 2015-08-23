@@ -19,28 +19,35 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include <stdint.h>
 
-class Endianness{
+namespace libSDP{
+namespace Utils{
 
-public:
+    class Endianness{
 
-    //Vars
+    public:
 
-    //Funcs
+        //Vars
 
-    bool isSysBigEndian();
+        //Funcs
 
-    uint_least16_t  byteSwap(uint_least16_t uint16);
-    uint_least32_t  byteSwap(uint_least32_t uint32);
-    uint_least64_t  byteSwap(uint_least64_t uint64);
+        bool isSysBigEndian();
 
+        uint_least16_t byteSwap(uint_least16_t uint16);
 
-private:
+        uint_least32_t byteSwap(uint_least32_t uint32);
 
-    //Vars
-
-    //Funcs
+        uint_least64_t byteSwap(uint_least64_t uint64);
 
 
-};
+    private:
+
+        //Vars
+
+        //Funcs
+
+
+    };
+}
+}
 
 #endif // ENDIANESS_H

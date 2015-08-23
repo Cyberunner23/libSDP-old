@@ -16,6 +16,8 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "SDPEncryptionAlgorithmBase.hpp"
 
+using namespace libSDP::AlgorithmBase;
+
 SDPEncryptionAlgorithmBase::SDPEncryptionAlgorithmBase(){
 
 }

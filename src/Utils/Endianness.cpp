@@ -16,6 +16,9 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "Endianness.hpp"
 
+using namespace libSDP;
+using namespace libSDP::Utils;
+
 bool Endianness::isSysBigEndian(){
 
     union {
