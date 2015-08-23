@@ -26,6 +26,7 @@ Copyright 2015 Alex Frappier Lachapelle
 #include "RawFileIO.hpp"
 #include "SDPError.hpp"
 #include "SDPVer.hpp"
+#include "SHA256Hash.hpp"
 #include "Typedefs.hpp"
 
 namespace libSDP{

@@ -94,19 +94,14 @@ SDPErrEnum SDPParser::parseSDPFileHeader(std::shared_ptr<std::istream> inStream,
     hexBinTool.binToHex(expectedHashInFile, SDPFileHeader.expectedHeaderHash);
 
     //Compute actual header file.
-    uchar digest[crypto_hash_sha256_BYTES];
-    crypto_hash_sha256_state sha256Hash;
-    //NOTE: This reinterpret_cast mess it to avoid "cast to pointer from integer of different size" warnings.
-    crypto_hash_sha256_init(&sha256Hash);
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.magicNumber),          sizeof(reinterpret_cast<uchar*>(SDPFileHeader.magicNumber)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.SDPSpecRev.major),     sizeof(reinterpret_cast<uchar*>(SDPFileHeader.SDPSpecRev.major)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.SDPSpecRev.minor),     sizeof(reinterpret_cast<uchar*>(SDPFileHeader.SDPSpecRev.minor)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPFileHeader.extraFieldSize),       sizeof(reinterpret_cast<uchar*>(SDPFileHeader.extraFieldSize)));
-    crypto_hash_sha256_update(&sha256Hash, SDPFileHeader.extraField.data(),                              sizeof(SDPFileHeader.extraField.data()));
-    crypto_hash_sha256_final(&sha256Hash,  digest);
+    std::string actualHeaderHash = SHA256Hash().getHashStr(SDPFileHeader.magicNumber,
+                                                           SDPFileHeader.SDPSpecRev.major,
+                                                           SDPFileHeader.SDPSpecRev.minor,
+                                                           SDPFileHeader.extraFieldSize,
+                                                           SDPFileHeader.extraField);
 
     //Compare expected and actual header hash.
-    hexBinTool.binToHex(std::string(reinterpret_cast<char*>(digest), crypto_hash_sha256_BYTES), SDPFileHeader.actualHeaderHash);
+    hexBinTool.binToHex(actualHeaderHash, SDPFileHeader.actualHeaderHash);
     if(SDPFileHeader.actualHeaderHash != SDPFileHeader.expectedHeaderHash)
         isHeaderValid = false;
 
@@ -180,23 +175,18 @@ SDPErrEnum SDPParser::parseSDPSubContainer(std::shared_ptr<std::istream> inStrea
     hexBinTool.binToHex(expectedSubContainerHeaderHash, SDPSubContainerInfo.subContainerHeader.expectedSubContainerHeaderHash);
 
     //Compute actual hash of sub-container header.
-    uchar digest[crypto_hash_sha256_BYTES];
-    crypto_hash_sha256_state sha256Hash;
-    //NOTE: This reinterpret_cast mess it to avoid "cast to pointer from integer of different size" warnings.
-    crypto_hash_sha256_init(&sha256Hash);
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.fileNameLength),                            sizeof(reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.fileNameLength)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<const uchar*>(SDPSubContainerInfo.subContainerHeader.fileName.data()),                     sizeof(reinterpret_cast<const uchar*>(SDPSubContainerInfo.subContainerHeader.fileName.data())));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(subContainerTypeChar),                                                             sizeof(reinterpret_cast<uchar*>(subContainerTypeChar)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(compressionAlgorithmIDChar),                                                       sizeof(reinterpret_cast<uchar*>(compressionAlgorithmIDChar)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(encryptionAlgorithmIDChar),                                                        sizeof(reinterpret_cast<uchar*>(encryptionAlgorithmIDChar)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.extraFieldSize),                            sizeof(reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.extraFieldSize)));
-    crypto_hash_sha256_update(&sha256Hash, SDPSubContainerInfo.subContainerHeader.extraField.data(),                                                   sizeof(SDPSubContainerInfo.subContainerHeader.extraField.data()));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.subContainerDataSize),                      sizeof(reinterpret_cast<uchar*>(SDPSubContainerInfo.subContainerHeader.subContainerDataSize)));
-    crypto_hash_sha256_update(&sha256Hash, reinterpret_cast<const uchar*>(SDPSubContainerInfo.subContainerHeader.expectedSubContainerDataHash.data()), sizeof(reinterpret_cast<const uchar*>(SDPSubContainerInfo.subContainerHeader.expectedSubContainerDataHash.data())));
-    crypto_hash_sha256_final(&sha256Hash,  digest);
+    std::string actualSubContainerHeaderHash = SHA256Hash().getHashStr(SDPSubContainerInfo.subContainerHeader.fileNameLength,
+                                                                       SDPSubContainerInfo.subContainerHeader.fileName,
+                                                                       subContainerTypeChar,
+                                                                       compressionAlgorithmIDChar,
+                                                                       encryptionAlgorithmIDChar,
+                                                                       SDPSubContainerInfo.subContainerHeader.extraFieldSize,
+                                                                       SDPSubContainerInfo.subContainerHeader.extraField,
+                                                                       SDPSubContainerInfo.subContainerHeader.subContainerDataSize,
+                                                                       SDPSubContainerInfo.subContainerHeader.expectedSubContainerDataHash);
 
     //Compare expected and actual sub-container header hash.
-    hexBinTool.binToHex(std::string(reinterpret_cast<char*>(digest), crypto_hash_sha256_BYTES), SDPSubContainerInfo.subContainerHeader.actualSubContainerHeaderHash);
+    hexBinTool.binToHex(actualSubContainerHeaderHash, SDPSubContainerInfo.subContainerHeader.actualSubContainerHeaderHash);
     if(SDPSubContainerInfo.subContainerHeader.actualSubContainerHeaderHash != SDPSubContainerInfo.subContainerHeader.expectedSubContainerHeaderHash)
         isHeaderValid = false;
 
