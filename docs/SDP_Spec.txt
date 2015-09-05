@@ -23,17 +23,17 @@ SDP (Soul Data Pack) File spec Rev. 1.0 :
 /       |                                                                                                                                |       /
 /       |       uint64       : Size of the name for the file stored in the container.                                                    |       /
 /       |       string       : Name of the file stored in the container.                                                                 |       /
-/       |       uint8        : Compression algorithm ID. (Value ignored if compression not used) : 0x00 No algorithm used.               |       /
-/       |                                                                                          0xFF User defined through API call.   |       /
-/       |                                                                                          0x01 DEFLATE (zlib)                   |       /
-/       |                                                                                          0x02 lz4                              |       /
-/       |       uint8        : Encryption Algorithm ID.  (Value ignored if encryption not used)  : 0x00 No algorithm used.               |       /
-/       |                                                                                          0xFF User defined through API call.   |       /
-/       |                                                                                          0x01 XSalsa20                         |       /
-/       |                                                                                          0x02 XSalsa20 with Poly1305 MAC       |       /
-/       |                                                                                          0x03 Salsa20                          |       /
-/       |                                                                                          0x04 ChaCha20                         |       /
-/       |                                                                                          0x05 AES 128 (CTR mode)               |       /
+/       |       uint8        : Compression algorithm ID. : 0x00 No algorithm used.                                                       |       /
+/       |                                                  0xFF User defined through API call.                                           |       /
+/       |                                                  0x01 DEFLATE (zlib)                                                           |       /
+/       |                                                  0x02 lz4                                                                      |       /
+/       |       uint8        : Encryption Algorithm ID.  : 0x00 No algorithm used.                                                       |       /
+/       |                                                  0xFF User defined through API call.                                           |       /
+/       |                                                  0x01 XSalsa20                                                                 |       /
+/       |                                                  0x02 XSalsa20 with Poly1305 MAC                                               |       /
+/       |                                                  0x03 Salsa20                                                                  |       /
+/       |                                                  0x04 ChaCha20                                                                 |       /
+/       |                                                  0x05 AES 128 (CTR mode)                                                       |       /
 /       |       uint64        : Size of extra field.                                                                                     |       /
 /       |       vector<uchar> : Extra field.                                                                                             |       /
 /       |       uint64        : Sub-Container data size.                                                                                 |       /
