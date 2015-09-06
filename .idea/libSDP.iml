@@ -320,16 +320,14 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zlib.pc.cmakein" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zutil.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zutil.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/DefaultAlgorithms/SDPlz4CompressionAlgorithm.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDP.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPAlgorithmBase.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPChainBlock.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPError.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPParser.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/SDPSourceSinkBase.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/SDPSpecBase.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/SDPStack.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPVer.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/DevMacros.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/Endianness.hpp" isTestSource="false" />
@@ -341,15 +339,13 @@
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8/checked.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8/core.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8/unchecked.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/DefaultAlgorithms/SDPlz4CompressionAlgorithm.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDP.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPAlgorithmBase.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPChainBlock.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPParser.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/SDPSourceSinkBase.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/SDPSpecBase.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/SDPStack.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Utils/Endianness.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Utils/HexBinTool.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Utils/RawFileIO.cpp" isTestSource="false" />

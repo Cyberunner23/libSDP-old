@@ -42,6 +42,9 @@ SET(SOURCE_FILES
     src/SDPAlgorithmBase.cpp
     src/SDPChainBlock.cpp
     src/SDPParser.cpp
+    src/SDPSourceSinkBase.cpp
+    src/SDPSpecBase.cpp
+    src/SDPStack.cpp
     src/Utils/Endianness.cpp
     src/Utils/HexBinTool.cpp
     src/Utils/RawFileIO.cpp
@@ -53,6 +56,9 @@ SET(HEADER_FILES
     include/SDPChainBlock.hpp
     include/SDPError.hpp
     include/SDPParser.hpp
+    include/SDPSourceSinkBase.hpp
+    include/SDPSpecBase.hpp
+    include/SDPStack.hpp
     include/SDPVer.hpp
     include/Utils/DevMacros.hpp
     include/Utils/Endianness.hpp
