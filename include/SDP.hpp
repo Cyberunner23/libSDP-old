@@ -25,8 +25,6 @@ Copyright 2015 Alex Frappier Lachapelle
 #include <vector>
 
 #include "RawFileIO.hpp"
-#include "SDPCompressionAlgorithmBase.hpp"
-#include "SDPEncryptionAlgorithmBase.hpp"
 #include "SDPError.hpp"
 #include "SDPParser.hpp"
 #include "SDPVer.hpp"

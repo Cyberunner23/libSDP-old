@@ -42,11 +42,6 @@ SET(SOURCE_FILES
     src/SDPAlgorithmBase.cpp
     src/SDPChainBlock.cpp
     src/SDPParser.cpp
-    src/AlgorithmBase/SDPCompressionAlgorithmBase.cpp
-    src/AlgorithmBase/SDPEncryptionAlgorithmBase.cpp
-    src/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.cpp
-    src/DefaultAlgorithms/SDPlz4CompressionAlgorithm.cpp
-    src/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.cpp
     src/Utils/Endianness.cpp
     src/Utils/HexBinTool.cpp
     src/Utils/RawFileIO.cpp
@@ -59,11 +54,6 @@ SET(HEADER_FILES
     include/SDPError.hpp
     include/SDPParser.hpp
     include/SDPVer.hpp
-    include/AlgorithmBase/SDPCompressionAlgorithmBase.hpp
-    include/AlgorithmBase/SDPEncryptionAlgorithmBase.hpp
-    include/DefaultAlgorithms/SDPDEFLATECompressionAlgorithm.hpp
-    include/DefaultAlgorithms/SDPlz4CompressionAlgorithm.hpp
-    include/DefaultAlgorithms/SDPXSalsa20EncryptionAlgorithm.hpp
     include/Utils/DevMacros.hpp
     include/Utils/Endianness.hpp
     include/Utils/HexBinTool.hpp
