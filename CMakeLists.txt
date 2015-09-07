@@ -39,8 +39,7 @@ SET(CMAKE_CXX_STANDARD 11)
 #----------------------------------------------------------
 SET(SOURCE_FILES
     src/SDP.cpp
-    src/SDPAlgorithmBase.cpp
-    src/SDPChainBlock.cpp
+    src/SDPChainBlockBase.cpp
     src/SDPParser.cpp
     src/SDPSourceSinkBase.cpp
     src/SDPSpecBase.cpp
@@ -52,8 +51,7 @@ SET(SOURCE_FILES
 )
 SET(HEADER_FILES
     include/SDP.hpp
-    include/SDPAlgorithmBase.hpp
-    include/SDPChainBlock.hpp
+    include/SDPChainBlockBase.hpp
     include/SDPError.hpp
     include/SDPParser.hpp
     include/SDPSourceSinkBase.hpp

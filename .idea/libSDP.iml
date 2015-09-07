@@ -322,7 +322,7 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zutil.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDP.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPAlgorithmBase.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/SDPChainBlock.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/SDPChainBlockBase.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPError.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPParser.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPSourceSinkBase.hpp" isTestSource="false" />
@@ -341,7 +341,7 @@
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8/unchecked.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDP.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPAlgorithmBase.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/SDPChainBlock.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/SDPChainBlockBase.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPParser.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPSourceSinkBase.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPSpecBase.cpp" isTestSource="false" />
