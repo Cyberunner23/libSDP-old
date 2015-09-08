@@ -49,20 +49,6 @@ bool SDPChainBlockBase::init(){
     }
 }
 
-void SDPChainBlockBase::sync(){
-    INCOMPLETE_FUNC(__FILE__, __LINE__)
-    //Assert if they BOTH point to nothing.
-    assert(!(childChainBlock == nullptr && specReadWrite == nullptr));
-    //Assert if they BOTH point to something.
-    assert(!(childChainBlock != nullptr && specReadWrite != nullptr));
-    onSync();
-    if(childChainBlock != nullptr)
-        childChainBlock.get()->sync();
-    if(specReadWrite != nullptr){
-        //TODO: call appropriate func for specReadWrite.
-    }
-}
-
 void SDPChainBlockBase::exit(){
     INCOMPLETE_FUNC(__FILE__, __LINE__)
     //Assert if they BOTH point to nothing.
@@ -77,6 +63,17 @@ void SDPChainBlockBase::exit(){
     }
 }
 
+void SDPChainBlockBase::reset(){
+    INCOMPLETE_FUNC(__FILE__, __LINE__)
+    //Assert if they BOTH point to nothing.
+    assert(!(childChainBlock == nullptr && specReadWrite == nullptr));
+    //Assert if they BOTH point to something.
+    assert(!(childChainBlock != nullptr && specReadWrite != nullptr));
+    onReset();
+    if(childChainBlock != nullptr)
+        childChainBlock.get()->reset();
+    //TODO?: Do something with the specReadWrite when resetting the algorithms?
+}
 
 
 bool SDPChainBlockBase::read(std::vector<uchar> &data, uint64 size){

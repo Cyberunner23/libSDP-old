@@ -30,29 +30,11 @@ using namespace libSDP::Utils;
 
 namespace libSDP{
 
-    struct SDPAlgorithmInfoStruct{
-
-        //Type info.
-        enum SDPAlgorithmTypeEnum{
-            SDP_COMPRESSION,
-            SDP_ENCRYPTION,
-            SDP_OTHER
-        } algorithmType;
-        uint8 algorithmID;
-
-        //Capability info.
-        struct SDPAlgorithmSeekInfoStruct{
-            bool canAlgorithmForwardSeek;
-            bool canAlgorithmBackwardSeek;
-        } algorithmSeekInfo;
-    };
-
     class SDPChainBlockBase{
 
     public:
 
         //Vars
-
 
         //Funcs
         SDPChainBlockBase() = delete;
@@ -62,9 +44,9 @@ namespace libSDP{
         SDPChainBlockBase(std::shared_ptr<SDPSpecBase> specReadWrite);
         ~SDPChainBlockBase();
 
-        virtual bool init();
-        virtual void sync();
-        virtual void exit();
+        bool init();
+        void exit();
+        void reset();
 
         bool read(std::vector<uchar>  &data, uint64 size);
         bool write(std::vector<uchar> &data, uint64 size);
@@ -77,15 +59,16 @@ namespace libSDP{
     protected:
 
         //Vars
-        SDPAlgorithmInfoStruct algorithmInfo;
+        uint8 algorithmID;
+        bool  canAlgorithmBackwardSeek;
 
         //Funcs
         virtual uint64 encodeBuffer() = 0;
         virtual uint64 decodeBuffer() = 0;
 
-        virtual bool onInit() = 0;
-        virtual void onSync() = 0;
-        virtual void onExit() = 0;
+        virtual bool onInit()  = 0;
+        virtual void onExit()  = 0;
+        virtual void onReset() = 0;
 
 
     private:
