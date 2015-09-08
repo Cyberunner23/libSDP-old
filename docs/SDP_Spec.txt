@@ -61,15 +61,10 @@ SDP (Soul Data Pack) File spec Rev. 1.0 :
 / Encoded data structure.                                                                                                   /
 /                                                                                                                           /
 /       /////////////////////////////////////////////////////////////////////////////////////////////////////////////       /
-/       | Encoded data chunk. (Chunk size depends on the algorithm)                                                 |       /
+/       | Encoded data chunk. (Chunk size depends on the algorithms and stack buffer size)                          |       /
 /       |                                                                                                           |       /
 /       |       uint64        : Encoded (Compressed, Encrypted, etc.) data size.                                    |       /
-/       |       uint64        : Decoded (Decompressed, Decrypted, etc.) data size.                                  |       /
-/       |       uint8 (bool)  : Is the data compressed. : 0x00 False (skip compression on incompressible blocks)    |       /
-/       |                                                 0xFF True                                                 |       /
-/       |                                                 (Value ignored if bottom algorithm is not a compression   |       /
-/       |                                                     algorithm.)                                           |       /
-/       |       vector<uchar> : Compressed data.                                                                    |       /
+/       |       vector<uchar> : Encoded data.                                                                       |       /
 /       |                                                                                                           |       /
 /       |////////////////////////////////////////////////////////////////////////////////////////////////////////////       /
 /                                                                                                                           /
