@@ -48,8 +48,8 @@ namespace libSDP{
         void exit();
         void reset();
 
-        bool read(std::vector<uchar>  &data, uint64 size);
-        bool write(std::vector<uchar> &data, uint64 size);
+        bool encode(std::unique_ptr<std::vector<uchar>> data, uint64 chunkNum);
+        bool decode(std::unique_ptr<std::vector<uchar>> data, uint64 chunkNum);
 
         //NOTE: Really need this? can access that data directly from specReadWrite (shared ptr)
         uint64 getBottomBlockReadChunkNum();
@@ -61,8 +61,8 @@ namespace libSDP{
         //Vars
 
         //Funcs
-        virtual uint64 encodeBuffer() = 0;
-        virtual uint64 decodeBuffer() = 0;
+        virtual uint64 encodeBuffer(std::vector<uchar> *data, uint64 chunkNum) = 0;
+        virtual uint64 decodeBuffer(std::vector<uchar> *data, uint64 chunkNum) = 0;
 
         virtual bool onInit()  = 0;
         virtual void onExit()  = 0;

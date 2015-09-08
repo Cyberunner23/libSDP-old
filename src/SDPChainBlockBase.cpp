@@ -76,13 +76,39 @@ void SDPChainBlockBase::reset(){
 }
 
 
-bool SDPChainBlockBase::read(std::vector<uchar> &data, uint64 size){
-    STUB_FUNC(__FILE__, __LINE__)
+bool SDPChainBlockBase::encode(std::unique_ptr<std::vector<uchar>> data, uint64 chunkNum){
+    INCOMPLETE_FUNC(__FILE__, __LINE__)
+    //Assert if they BOTH point to nothing.
+    assert(!(childChainBlock == nullptr && specReadWrite == nullptr));
+    //Assert if they BOTH point to something.
+    assert(!(childChainBlock != nullptr && specReadWrite != nullptr));
+
+    encodeBuffer(data.get(), chunkNum);
+
+    if(childChainBlock != nullptr)
+        childChainBlock.get()->encode(std::move(data), chunkNum);
+    if(specReadWrite != nullptr){
+        //TODO: call appropriate func for specReadWrite.
+    }
+
 }
 
 
-bool SDPChainBlockBase::write(std::vector<uchar> &data, uint64 size){
-    STUB_FUNC(__FILE__, __LINE__)
+bool SDPChainBlockBase::decode(std::unique_ptr<std::vector<uchar>> data, uint64 chunkNum){
+    INCOMPLETE_FUNC(__FILE__, __LINE__)
+    //Assert if they BOTH point to nothing.
+    assert(!(childChainBlock == nullptr && specReadWrite == nullptr));
+    //Assert if they BOTH point to something.
+    assert(!(childChainBlock != nullptr && specReadWrite != nullptr));
+
+    decodeBuffer(data.get(), chunkNum);
+
+    if(childChainBlock != nullptr)
+        childChainBlock.get()->decode(std::move(data), chunkNum);
+    if(specReadWrite != nullptr){
+        //TODO: call appropriate func for specReadWrite.
+    }
+
 }
 
 

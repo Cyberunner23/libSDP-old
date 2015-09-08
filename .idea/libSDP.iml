@@ -195,8 +195,6 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/chacha20/ref/stream_chacha20_ref.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/chacha20/stream_chacha20_api.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/crypto_stream.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/amd64_xmm6/api.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/amd64_xmm6/stream_salsa20_amd64_xmm6.S" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/ref/api.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/ref/stream_salsa20_ref.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/ref/xor_salsa20_ref.c" isTestSource="false" />

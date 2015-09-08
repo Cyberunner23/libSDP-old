@@ -18,7 +18,25 @@ Copyright 2015 Alex Frappier Lachapelle
 
 using namespace libSDP;
 
-SDPStack::SDPStack() {
+SDPStack::SDPStack(std::shared_ptr<SDPChainBlockBase> algorithmBlockChain, std::shared_ptr<SDPSpecBase> specReadWrite, std::shared_ptr<SDPSourceSinkBase> sourceSink, uint64 stackBufferSize)
+    : algorithmBlockChain(algorithmBlockChain)
+    , specReadWrite(specReadWrite)
+    , sourceSink(sourceSink)
+    , stackBufferSize(stackBufferSize){
+
+    algorithmBlockChain->init();
+    //NOTE: readStackBuffer will be set by the algorithm chain.
+    writeStackBuffer->resize(stackBufferSize);
+
+}
+
+SDPStack::SDPStack(std::shared_ptr<SDPSpecBase> specReadWrite, std::shared_ptr<SDPSourceSinkBase> sourceSink, uint64 stackBufferSize)
+        : specReadWrite(specReadWrite)
+        , sourceSink(sourceSink)
+        , stackBufferSize(stackBufferSize){
+
+    //NOTE: readStackBuffer will be set by the algorithm chain.
+    writeStackBuffer->resize(stackBufferSize);
 
 }
 
@@ -27,11 +45,20 @@ SDPStack::~SDPStack() {
 }
 
 
+void SDPStack::setAlgorithmBlockChain(std::shared_ptr<SDPChainBlockBase> algorithmBlockChain){
+    if(this->algorithmBlockChain != nullptr){
+        this->algorithmBlockChain->exit();
+    }
+    this->algorithmBlockChain = algorithmBlockChain;
+    this->algorithmBlockChain->init();
+}
+
+
 void SDPStack::read(uint8* data, uint64 aize){
     STUB_FUNC(__FILE__, __LINE__)
 }
 
-void SDPStack::read(std::vector<uint8> data, uint64 size){
+void SDPStack::read(std::vector<uint8> data){
     STUB_FUNC(__FILE__, __LINE__)
 }
 
@@ -44,7 +71,7 @@ void SDPStack::write(uint8* data, uint64 aize){
     STUB_FUNC(__FILE__, __LINE__)
 }
 
-void SDPStack::write(std::vector<uint8> data, uint64 size){
+void SDPStack::write(std::vector<uint8> data){
     STUB_FUNC(__FILE__, __LINE__)
 }
 

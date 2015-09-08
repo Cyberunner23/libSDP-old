@@ -37,15 +37,23 @@ namespace libSDP {
         //Vars
 
         //Funcs
-        SDPStack();
+        SDPStack(std::shared_ptr<SDPChainBlockBase> algorithmBlockChain,
+                 std::shared_ptr<SDPSpecBase>       specReadWrite,
+                 std::shared_ptr<SDPSourceSinkBase> sourceSink,
+                 uint64                             stackBufferSize);
+        SDPStack(std::shared_ptr<SDPSpecBase>       specReadWrite,
+                 std::shared_ptr<SDPSourceSinkBase> sourceSink,
+                 uint64                             stackBufferSize);
         ~SDPStack();
 
-        void read(uint8* data,             uint64 aize);
-        void read(std::vector<uint8> data, uint64 size);
+        void setAlgorithmBlockChain(std::shared_ptr<SDPChainBlockBase> algorithmBlockChain);
+
+        void read(uint8* data, uint64 aize);
+        void read(std::vector<uint8> data);
         SDPStack &operator>>(const uchar &c);
 
-        void write(uint8* data,             uint64 aize);
-        void write(std::vector<uint8> data, uint64 size);
+        void write(uint8* data, uint64 aize);
+        void write(std::vector<uint8> data);
         SDPStack &operator<<(const uchar &c);
 
         void seek(uint64 pos);
@@ -55,12 +63,13 @@ namespace libSDP {
 
         //Vars
 
+        uint64                             stackBufferSize;
         std::unique_ptr<std::vector<char>> readStackBuffer;
         std::unique_ptr<std::vector<char>> writeStackBuffer;
 
-        std::shared_ptr<SDPChainBlockBase> algorithmBlockChain;
-        std::shared_ptr<SDPSpecBase>       specReadWrite;
-        std::shared_ptr<SDPSourceSinkBase> sourceSink;
+        std::shared_ptr<SDPChainBlockBase> algorithmBlockChain = nullptr;
+        std::shared_ptr<SDPSpecBase>       specReadWrite       = nullptr;
+        std::shared_ptr<SDPSourceSinkBase> sourceSink          = nullptr;
 
         //Funcs
 
