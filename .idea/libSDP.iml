@@ -84,8 +84,6 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_pwhash/scryptsalsa208sha256/sse/pwhash_scryptsalsa208sha256_sse.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_pwhash/scryptsalsa208sha256/sysendian.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/crypto_scalarmult.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/donna_c64/base_curve25519_donna_c64.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/donna_c64/smult_curve25519_donna_c64.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/ref10/api.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/ref10/base_curve25519_ref10.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/ref10/fe.h" isTestSource="false" />
@@ -197,6 +195,8 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/chacha20/ref/stream_chacha20_ref.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/chacha20/stream_chacha20_api.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/crypto_stream.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/amd64_xmm6/api.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/amd64_xmm6/stream_salsa20_amd64_xmm6.S" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/ref/api.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/ref/stream_salsa20_ref.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/ref/xor_salsa20_ref.c" isTestSource="false" />
@@ -323,6 +323,7 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zutil.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zutil.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDP.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/SDPChainBlockBase.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPError.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPParser.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPSourceSinkBase.hpp" isTestSource="false" />

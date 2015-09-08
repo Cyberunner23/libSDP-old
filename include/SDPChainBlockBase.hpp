@@ -59,8 +59,6 @@ namespace libSDP{
     protected:
 
         //Vars
-        uint8 algorithmID;
-        bool  canAlgorithmBackwardSeek;
 
         //Funcs
         virtual uint64 encodeBuffer() = 0;
