@@ -17,7 +17,18 @@ Copyright 2015 Alex Frappier Lachapelle
 #ifndef LIBSDP_SDPSTACK_HPP
 #define LIBSDP_SDPSTACK_HPP
 
+#include <memory>
+#include <vector>
+
+#include "DevMacros.hpp"
+#include "SDPChainBlockBase.hpp"
+#include "SDPSourceSinkBase.hpp"
+#include "SDPSpecBase.hpp"
+#include "Typedefs.hpp"
+
 namespace libSDP {
+
+    using namespace libSDP::Utils;
 
     class SDPStack {
 
@@ -27,13 +38,29 @@ namespace libSDP {
 
         //Funcs
         SDPStack();
-
         ~SDPStack();
+
+        void read(uint8* data,             uint64 aize);
+        void read(std::vector<uint8> data, uint64 size);
+        SDPStack &operator>>(const uchar &c);
+
+        void write(uint8* data,             uint64 aize);
+        void write(std::vector<uint8> data, uint64 size);
+        SDPStack &operator<<(const uchar &c);
+
+        void seek(uint64 pos);
 
 
     private:
 
         //Vars
+
+        std::unique_ptr<std::vector<char>> readStackBuffer;
+        std::unique_ptr<std::vector<char>> writeStackBuffer;
+
+        std::shared_ptr<SDPChainBlockBase> algorithmBlockChain;
+        std::shared_ptr<SDPSpecBase>       specReadWrite;
+        std::shared_ptr<SDPSourceSinkBase> sourceSink;
 
         //Funcs
 

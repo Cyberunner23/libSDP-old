@@ -25,3 +25,34 @@ SDPStack::SDPStack() {
 SDPStack::~SDPStack() {
 
 }
+
+
+void SDPStack::read(uint8* data, uint64 aize){
+    STUB_FUNC(__FILE__, __LINE__)
+}
+
+void SDPStack::read(std::vector<uint8> data, uint64 size){
+    STUB_FUNC(__FILE__, __LINE__)
+}
+
+SDPStack &SDPStack::operator>>(const uchar &c){
+    STUB_FUNC(__FILE__, __LINE__)
+}
+
+
+void SDPStack::write(uint8* data, uint64 aize){
+    STUB_FUNC(__FILE__, __LINE__)
+}
+
+void SDPStack::write(std::vector<uint8> data, uint64 size){
+    STUB_FUNC(__FILE__, __LINE__)
+}
+
+SDPStack &SDPStack::operator<<(const uchar &c){
+    STUB_FUNC(__FILE__, __LINE__)
+}
+
+
+void SDPStack::seek(uint64 pos){
+    STUB_FUNC(__FILE__, __LINE__)
+}

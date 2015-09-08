@@ -84,6 +84,8 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_pwhash/scryptsalsa208sha256/sse/pwhash_scryptsalsa208sha256_sse.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_pwhash/scryptsalsa208sha256/sysendian.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/crypto_scalarmult.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/donna_c64/base_curve25519_donna_c64.c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/donna_c64/smult_curve25519_donna_c64.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/ref10/api.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/ref10/base_curve25519_ref10.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_scalarmult/curve25519/ref10/fe.h" isTestSource="false" />
@@ -321,8 +323,6 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zutil.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zutil.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDP.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/SDPAlgorithmBase.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/SDPChainBlockBase.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPError.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPParser.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPSourceSinkBase.hpp" isTestSource="false" />
@@ -340,7 +340,6 @@
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8/core.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8/unchecked.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDP.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/SDPAlgorithmBase.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPChainBlockBase.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPParser.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPSourceSinkBase.cpp" isTestSource="false" />

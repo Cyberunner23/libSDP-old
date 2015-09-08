@@ -92,7 +92,7 @@ namespace libSDP{
 
         //Vars
         std::shared_ptr<SDPChainBlockBase> childChainBlock;
-        std::shared_ptr<SDPSpecBase>   specReadWrite;
+        std::shared_ptr<SDPSpecBase>       specReadWrite;
 
         //Funcs
 
