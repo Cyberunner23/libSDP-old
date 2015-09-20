@@ -17,7 +17,55 @@ Copyright 2015 Alex Frappier Lachapelle
 #ifndef LIBSDP_SDPSPECBASE_HPP
 #define LIBSDP_SDPSPECBASE_HPP
 
+#include <memory>
+#include <unordered_map>
+#include <vector>
+
+#include "SDPSourceSinkBase.hpp"
+#include "SDPVer.hpp"
+#include "Typedefs.hpp"
+
 namespace libSDP {
+
+    using namespace libSDP::Utils;
+
+    struct SDPSubContainerHeaderStruct{
+        std::string        fileName;
+        uint64             extraFieldSize;
+        std::vector<uchar> extraField;
+        uint64             subContainerDataSize;
+        //TODO?: use a vector<uchar> for hashes?
+        std::string        expectedSubContainerDataHash;
+        std::string        actualSubContainerDataHash;
+        std::string        expectedSubContainerHeaderHash;
+        std::string        actualSubContainerHeaderHash;
+    };
+
+    struct SDPSubContainerInfoStruct{
+        std::string                 subContainerFileName;
+        SDPSubContainerHeaderStruct subContainerHeader;
+        bool                        isHeaderValid;
+        uint64                      begDataPos;
+        uint64                      endDataPos;
+    };
+
+    struct SDPFileHeaderStruct{
+        uint32                   magicNumber;
+        SDPVer::SDPSpecRevStruct SDPSpecRev;
+        uint64                   extraFieldSize;
+        std::vector<uchar>       extraField;
+        std::string              expectedHeaderHash;
+        std::string              actualHeaderHash;
+    };
+
+    struct SDPFileInfoStruct{
+        SDPFileHeaderStruct                                        SDPFileHeader;
+        bool                                                       isHeaderValid;
+        std::unordered_map<std::string, SDPSubContainerInfoStruct> subContainersInSDPFile;
+        uint64                                                     numOfSubContainers;
+        SDPSubContainerInfoStruct                                  currentSubContainerInUse;
+        std::shared_ptr<std::iostream>                             currentAlgorithmInUse;
+    };
 
     class SDPSpecBase {
 
@@ -26,13 +74,24 @@ namespace libSDP {
         //Vars
 
         //Funcs
-        SDPSpecBase();
+        SDPSpecBase(std::shared_ptr<SDPSourceSinkBase> sourceSink);
         ~SDPSpecBase();
+
+        bool parseSDPFile();
+
+        SDPFileInfoStruct* getFileInfo();
+
+        void readChunk();
+        void writeChunk();
 
 
     private:
 
         //Vars
+        SDPFileInfoStruct                  fileInfo;
+        std::shared_ptr<SDPSourceSinkBase> sourceSink;
+        uint64                             readChunkNum;
+        uint64                             writeChunkNum;
 
         //Funcs
 

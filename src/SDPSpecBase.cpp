@@ -18,10 +18,28 @@ Copyright 2015 Alex Frappier Lachapelle
 
 using namespace libSDP;
 
-SDPSpecBase::SDPSpecBase() {
+SDPSpecBase::SDPSpecBase(std::shared_ptr<SDPSourceSinkBase> sourceSink) {
 
 }
 
 SDPSpecBase::~SDPSpecBase() {
+
+}
+
+bool SDPSpecBase::parseSDPFile(){
+
+}
+
+
+SDPFileInfoStruct* SDPSpecBase::getFileInfo(){
+
+}
+
+
+void SDPSpecBase::readChunk(){
+
+}
+
+void SDPSpecBase::writeChunk(){
 
 }
