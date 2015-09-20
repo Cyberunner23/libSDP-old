@@ -24,109 +24,103 @@ SDP::~SDP(){}
 
 SDPErrEnum SDP::openSDP(std::string &SDPFileName){
 
-    std::shared_ptr<std::fstream> tmpStream = std::make_shared<std::fstream>();
-    tmpStream.get()->open(SDPFileName.c_str(), std::fstream::in | std::fstream::out | std::fstream::binary);
-    if(!tmpStream.get()->is_open())
-        return SDPErrEnum::CANNOT_OPEN_FILE;
-
-    SDPInOutStream = tmpStream;
-    return parser.parseSDPFile(SDPInOutStream, SDPFileInfo);
+    STUB_FUNC(__FILE, __LINE__)
+    //Setup default Source/Sink
+    //Get Spec version.
+    //Set Spec class.
+    //create stack with empty algorithm chain.
+    //parse headers.
+    //return status;
 }
 
-SDPErrEnum SDP::openSDP(std::shared_ptr<std::iostream> inOutStream){
-    SDPInOutStream = inOutStream;
-    return parser.parseSDPFile(SDPInOutStream, SDPFileInfo);
+SDPErrEnum SDP::openSDP(std::shared_ptr<SDPSourceSinkBase> inOutStream){
+
+    STUB_FUNC(__FILE__, __LINE__)
+    //Get Spec verison.
+    //Set Spec class.
+    //create stack with empty algorithm chain.
+    //parse headers.
+    //return status;
 }
+
+
+std::shared_ptr<SDPStack> setStack(std::shared_ptr<SDPStack> stack){
+STUB_FUNC(__FILE__, __LINE__)
+}
+
+void setAlgorithmChain(std::shared_ptr<SDPChainBlockBase> algorithmChain){
+STUB_FUNC(__FILE__, __LINE__)
+}
+
+std::shared_ptr<SDPSourceSinkBase> getSourceSink(){
+STUB_FUNC(__FILE__, __LINE__)
+}
+
 
 
 SDPParser::SDPFileInfoStruct* SDP::getSDPFileInfo(){
-    return &SDPFileInfo;
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 SDPParser::SDPSubContainerInfoStruct* SDP::getCurrentSubContainerInfo(){
-    return &SDPFileInfo.currentSubContainerInUse;
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 SDPParser::SDPSubContainerInfoStruct* SDP::getSubContainerInfo(std::string &subContainerFileName){
-
-    if(SDPFileInfo.subContainersInSDPFile.find(subContainerFileName) == SDPFileInfo.subContainersInSDPFile.end())
-        return nullptr;
-    return &SDPFileInfo.subContainersInSDPFile[subContainerFileName];
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 
 void SDP::createSDP(std::string &SDPFileName, const std::vector<uchar> &extraField){
-
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
-void SDP::createSDP(std::shared_ptr<std::iostream> inOutStream, const std::vector<uchar> &extraField){
-
+void SDP::createSDP(std::shared_ptr<SDPSourceSinkBase> inOutStream, const std::vector<uchar> &extraField){
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
-
-void SDP::addSubContainerToSDP(std::string &SubContainerFileName, compressionAlgorithmsEnum compAlg, encryptionAlgorithmsEnum encAlg, const std::vector<uchar> &extraField){
-
-}
 
 void SDP::addSubContainerToSDP(std::string &SubContainerFileName, std::shared_ptr<std::iostream> algorithm, const std::vector<uchar> &extraField){
-
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 void SDP::finalizeSubContainer(){
-
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 void SDP::removeSubContainerFromSDP(std::string &subContainerName){
-
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 
 bool SDP::setSDPSubContainer(std::string &subContainerFileName, std::shared_ptr<std::iostream> algorithm){
-
-    if(SDPFileInfo.subContainersInSDPFile.find(subContainerFileName) == SDPFileInfo.subContainersInSDPFile.end())
-        return false;
-    else
-        SDPFileInfo.currentSubContainerInUse = SDPFileInfo.subContainersInSDPFile[subContainerFileName];
-
-    if(algorithm)
-        setAlgorithm(algorithm);
-
-    return true;
-}
-
-
-std::shared_ptr<std::iostream> SDP::getInternalStream(){
-    return SDPInOutStream;
-}
-
-void SDP::setAlgorithm(std::shared_ptr<std::iostream> algorithm){
-    SDPFileInfo.currentAlgorithmInUse = algorithm;
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 
 bool SDP::read(uchar *data, uint64 readSize){
-
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 SDP& SDP::operator>>(uchar &c){
-
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 uint64 SDP::getReadCount(){
-
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 
 bool SDP::write(uchar *data, uint64 writeSize){
-
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 SDP& SDP::operator<<(uchar &c){
-
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 uint64 SDP::getWriteCount(){
-
+    STUB_FUNC(__FILE__, __LINE__)
 }
 
 

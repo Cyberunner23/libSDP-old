@@ -24,24 +24,22 @@ Copyright 2015 Alex Frappier Lachapelle
 #include <string>
 #include <vector>
 
+#include "DevMacros.hpp"
 #include "RawFileIO.hpp"
 #include "SDPError.hpp"
 #include "SDPParser.hpp"
+#include "SDPStack.hpp"
 #include "SDPVer.hpp"
 #include "Typedefs.hpp"
+#include "SDPSourceSinkBase.hpp"
 
 //TODO!: WRITE DOCUMENTATION FFS!!!
 //TODO:  Redo tests.
 //TODO:  Use UTF-8 within API and in file (for the file names.)
-//TODO:  Implement new algorithm stack idea (with double Buffers for squeezeIn features)
-//TODO:  Add a switch for algorithms to determine if its a compression or encryption algorithm
-//           so that the right block header is read/written.
-//TODO:  Dont forget copy constructors on the unified algorithm block.
 //TODO:  Dont forget to add checks so that the bottom layer buffers don't overlap.
 //TODO:  Error reporting on createSDP()
 //TODO:  Error reporting on setAlgorithm()
 //TODO?: Use shared_ptr/unique_ptr in info functions?
-//TODO?: Use SDP to recreate SDPStreamBuf? (SqueezeIn functions will be missing though...)
 
 namespace libSDP{
 
@@ -53,47 +51,35 @@ namespace libSDP{
 
         //Vars
 
-        enum compressionAlgorithmsEnum{
-            NO_COMPERSSION_ALG,
-            LZ4,
-            DEFLATE
-        };
-
-        enum encryptionAlgorithmsEnum{
-            NO_ENCRYPTION_ALG,
-            CHACHA20,
-            SALSA20,
-            XSALSA20,
-            AES_128_CTR
-        };
-
         //Funcs
-
         SDP();
-
         ~SDP();
 
         SDPErrEnum openSDP(std::string &SDPFileName);
+        SDPErrEnum openSDP(std::shared_ptr<SDPSourceSinkBase> inOutStream);
 
-        SDPErrEnum openSDP(std::shared_ptr<std::iostream> inOutStream);
+        //Stack Modifiers.
+        std::shared_ptr<SDPStack>          setStack(std::shared_ptr<SDPStack> stack);
+        void                               setAlgorithmChain(std::shared_ptr<SDPChainBlockBase> algorithmChain);
+        std::shared_ptr<SDPSourceSinkBase> getSourceSink();
 
-        SDPParser::SDPFileInfoStruct *getSDPFileInfo();
-
+        //File Info.
+        SDPParser::SDPFileInfoStruct         *getSDPFileInfo();
         SDPParser::SDPSubContainerInfoStruct *getCurrentSubContainerInfo();
-
         SDPParser::SDPSubContainerInfoStruct *getSubContainerInfo(std::string &subContainerFileName);
 
-        bool setSDPSubContainer(std::string &subContainerFileName, std::shared_ptr<std::iostream> algorithm={});
+        bool setSDPSubContainer(std::string &subContainerFileName, std::shared_ptr<std::iostream> algorithm = {});
 
+#ifndef SDP_DISABLE_WRITE
         //Return type void for now. Must change later.
         void createSDP(std::string &SDPFileName, const std::vector<uchar> &extraField={});
 
-        void createSDP(std::shared_ptr<std::iostream> inOutStream, const std::vector<uchar> &extraField={});
+        void createSDP(std::shared_ptr<SDPSourceSinkBase> inOutStream, const std::vector<uchar> &extraField = {});
 
-        void addSubContainerToSDP(std::string &SubContainerFileName,
-                                  compressionAlgorithmsEnum compAlg=NO_COMPERSSION_ALG,
-                                  encryptionAlgorithmsEnum encAlg=NO_ENCRYPTION_ALG,
-                                  const std::vector<uchar> &extraField={});
+        //void addSubContainerToSDP(std::string &SubContainerFileName,
+        //                          compressionAlgorithmsEnum compAlg=NO_COMPERSSION_ALG,
+        //                          encryptionAlgorithmsEnum encAlg=NO_ENCRYPTION_ALG,
+        //                          const std::vector<uchar> &extraField={});
 
         void addSubContainerToSDP(std::string &SubContainerFileName, std::shared_ptr<std::iostream> algorithm,
                                   const std::vector<uchar> &extraField={});
@@ -101,22 +87,20 @@ namespace libSDP{
         void finalizeSubContainer();
 
         void removeSubContainerFromSDP(std::string &subContainerName);
+#endif
 
-        std::shared_ptr<std::iostream> getInternalStream();
-
-        void setAlgorithm(std::shared_ptr<std::iostream> algorithm);
-
-        bool read(uchar *data, uint64 readSize=1);
-
+        //Read Write
+#ifndef SDP_DISABLE_READ
+        bool read(uchar *data, uint64 readSize);
         SDP &operator>>(uchar &c);
-
         uint64 getReadCount();
+#endif
 
-        bool write(uchar *data, uint64 writeSize=1);
-
+#ifndef SDP_DISABLE_WRITE
+        bool write(uchar *data, uint64 writeSize);
         SDP &operator<<(uchar &c);
-
         uint64 getWriteCount();
+#endif
 
 
     private:
