@@ -39,11 +39,12 @@ SET(CMAKE_CXX_STANDARD 11)
 #----------------------------------------------------------
 SET(SOURCE_FILES
     src/SDP.cpp
-    src/SDPChainBlockBase.cpp
     src/SDPParser.cpp
-    src/SDPSourceSinkBase.cpp
-    src/SDPSpecBase.cpp
     src/SDPStack.cpp
+    src/Algorithms/SDPChainBlockBase.cpp
+    src/SourceSink/SDPFileSourceSink.cpp
+    src/SourceSink/SDPVectorSourceSink.cpp
+    src/Specs/SDPSpecRev_1_0.cpp
     src/Utils/Endianness.cpp
     src/Utils/HexBinTool.cpp
     src/Utils/RawFileIO.cpp
@@ -51,13 +52,17 @@ SET(SOURCE_FILES
 )
 SET(HEADER_FILES
     include/SDP.hpp
-    include/SDPChainBlockBase.hpp
     include/SDPError.hpp
+    include/SDPParseException.hpp
     include/SDPParser.hpp
-    include/SDPSourceSinkBase.hpp
-    include/SDPSpecBase.hpp
     include/SDPStack.hpp
     include/SDPVer.hpp
+    include/Algorithms/SDPChainBlockBase.hpp
+    include/SourceSink/SDPSourceSinkBase.hpp
+    include/SourceSink/SDPFileSourceSink.hpp
+    include/SourceSink/SDPVectorSourceSink.hpp
+    include/Specs/SDPSpecBase.hpp
+    include/Specs/SDPSpecRev_1_0.hpp
     include/Utils/DevMacros.hpp
     include/Utils/Endianness.hpp
     include/Utils/HexBinTool.hpp

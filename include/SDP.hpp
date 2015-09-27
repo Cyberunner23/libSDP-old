@@ -24,14 +24,14 @@ Copyright 2015 Alex Frappier Lachapelle
 #include <string>
 #include <vector>
 
-#include "Utils/DevMacros.hpp"
-#include "Utils/RawFileIO.hpp"
-#include "Utils/Typedefs.hpp"
 #include "SDPError.hpp"
 #include "SDPParser.hpp"
 #include "SDPStack.hpp"
 #include "SDPVer.hpp"
-#include "SDPSourceSinkBase.hpp"
+#include "SourceSink/SDPSourceSinkBase.hpp"
+#include "Utils/DevMacros.hpp"
+#include "Utils/RawFileIO.hpp"
+#include "Utils/Typedefs.hpp"
 
 //TODO!: WRITE DOCUMENTATION FFS!!!
 //TODO:  Redo tests.
@@ -64,9 +64,9 @@ namespace libSDP{
         std::shared_ptr<SDPSourceSinkBase> getSourceSink();
 
         //File Info.
-        SDPParser::SDPFileInfoStruct         *getSDPFileInfo();
-        SDPParser::SDPSubContainerInfoStruct *getCurrentSubContainerInfo();
-        SDPParser::SDPSubContainerInfoStruct *getSubContainerInfo(std::string &subContainerFileName);
+        SDPFileInfoStruct         *getSDPFileInfo();
+        SDPSubContainerInfoStruct *getCurrentSubContainerInfo();
+        SDPSubContainerInfoStruct *getSubContainerInfo(std::string &subContainerFileName);
 
         bool setSDPSubContainer(std::string &subContainerFileName, std::shared_ptr<std::iostream> algorithm = {});
 

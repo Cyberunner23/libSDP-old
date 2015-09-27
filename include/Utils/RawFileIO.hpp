@@ -21,11 +21,15 @@ Copyright 2015 Alex Frappier Lachapelle
 #include <memory>
 #include <stdint.h>
 
-#include "Endianness.hpp"
-#include "Typedefs.hpp"
+#include "SourceSink/SDPSourceSinkBase.hpp"
+#include "DevMacros.hpp"
+#include "Utils/Endianness.hpp"
+#include "Utils/Typedefs.hpp"
 
 namespace libSDP{
 namespace Utils{
+
+    using namespace SourceSink;
 
     class RawFileIO{
 
@@ -42,6 +46,7 @@ namespace Utils{
         //Funcs
 
         RawFileIO();
+        ~RawFileIO();
 
         //Reads a value from a file and converts it to the system's
         //endianness if necessary
@@ -50,12 +55,22 @@ namespace Utils{
         size_t read(uint32 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
         size_t read(uint64 &val, std::shared_ptr<std::istream> inStream, Endian fileEndian);
 
+        size_t read(uint8  &val, std::shared_ptr<SDPSourceSinkBase> sourceSink);
+        size_t read(uint16 &val, std::shared_ptr<SDPSourceSinkBase> sourceSink, Endian fileEndian);
+        size_t read(uint32 &val, std::shared_ptr<SDPSourceSinkBase> sourceSink, Endian fileEndian);
+        size_t read(uint64 &val, std::shared_ptr<SDPSourceSinkBase> sourceSink, Endian fileEndian);
+
         //Writes a value from a file and converts it to the system's
         //endianness if necessary
         void write(uint8  &val, std::shared_ptr<std::ostream> outStream);
         void write(uint16 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
         void write(uint32 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
         void write(uint64 &val, std::shared_ptr<std::ostream> outStream, Endian fileEndian);
+
+        void write(uint8  &val, std::shared_ptr<SDPSourceSinkBase> sourceSink);
+        void write(uint16 &val, std::shared_ptr<SDPSourceSinkBase> sourceSink, Endian fileEndian);
+        void write(uint32 &val, std::shared_ptr<SDPSourceSinkBase> sourceSink, Endian fileEndian);
+        void write(uint64 &val, std::shared_ptr<SDPSourceSinkBase> sourceSink, Endian fileEndian);
 
 
     private:

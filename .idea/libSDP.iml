@@ -195,8 +195,6 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/chacha20/ref/stream_chacha20_ref.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/chacha20/stream_chacha20_api.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/crypto_stream.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/amd64_xmm6/api.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/amd64_xmm6/stream_salsa20_amd64_xmm6.S" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/ref/api.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/ref/stream_salsa20_ref.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/libsodium-CMake/src/libsodium/crypto_stream/salsa20/ref/xor_salsa20_ref.c" isTestSource="false" />
@@ -322,14 +320,18 @@
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zlib.pc.cmakein" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zutil.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extlibs/zlib/zutil.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Algorithms/SDPChainBlockBase.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDP.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/SDPChainBlockBase.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPError.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/SDPParseException.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPParser.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/SDPSourceSinkBase.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/SDPSpecBase.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPStack.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/SDPVer.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/SourceSink/SDPFileSourceSink.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/SourceSink/SDPSourceSinkBase.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/SourceSink/SDPVectorSourceSink.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Specs/SDPSpecBase.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Specs/SDPSpecRev_1_0.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/DevMacros.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/Endianness.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/HexBinTool.hpp" isTestSource="false" />
@@ -340,12 +342,13 @@
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8/checked.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8/core.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Utils/utf8/unchecked.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Algorithms/SDPChainBlockBase.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDP.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/SDPChainBlockBase.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPParser.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/SDPSourceSinkBase.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/SDPSpecBase.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SDPStack.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/SourceSink/SDPFileSourceSink.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/SourceSink/SDPVectorSourceSink.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Specs/SDPSpecRev_1_0.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Utils/Endianness.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Utils/HexBinTool.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Utils/RawFileIO.cpp" isTestSource="false" />

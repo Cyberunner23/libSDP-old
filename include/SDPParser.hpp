@@ -103,7 +103,6 @@ namespace libSDP{
         //Funcs
 
         SDPParser();
-
         ~SDPParser();
 
         SDPErrEnum parseSDPFile(std::shared_ptr<std::istream> inStream, SDPFileInfoStruct &SDPFileInfo);
@@ -114,7 +113,7 @@ namespace libSDP{
         //Vars
 
         static const uint32 magicWord=0x53445041; //"SDPA"
-        SDPVer SDPVersion;
+        SDPVer              SDPVersion;
 
         RawFileIO rawFileIO;
 

@@ -58,15 +58,15 @@ STUB_FUNC(__FILE__, __LINE__)
 
 
 
-SDPParser::SDPFileInfoStruct* SDP::getSDPFileInfo(){
+SDPFileInfoStruct* SDP::getSDPFileInfo(){
     STUB_FUNC(__FILE__, __LINE__)
 }
 
-SDPParser::SDPSubContainerInfoStruct* SDP::getCurrentSubContainerInfo(){
+SDPSubContainerInfoStruct* SDP::getCurrentSubContainerInfo(){
     STUB_FUNC(__FILE__, __LINE__)
 }
 
-SDPParser::SDPSubContainerInfoStruct* SDP::getSubContainerInfo(std::string &subContainerFileName){
+SDPSubContainerInfoStruct* SDP::getSubContainerInfo(std::string &subContainerFileName){
     STUB_FUNC(__FILE__, __LINE__)
 }
 

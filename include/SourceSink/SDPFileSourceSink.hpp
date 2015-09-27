@@ -14,32 +14,29 @@ Copyright 2015 Alex Frappier Lachapelle
    limitations under the License.
 */
 
-#include "SDPSpecBase.hpp"
-
-using namespace libSDP;
-
-SDPSpecBase::SDPSpecBase(std::shared_ptr<SDPSourceSinkBase> sourceSink) {
-
-}
-
-SDPSpecBase::~SDPSpecBase() {
-
-}
-
-bool SDPSpecBase::parseSDPFile(){
-
-}
+#ifndef LIBSDP_SDPFILESOURCESINK_HPP
+#define LIBSDP_SDPFILESOURCESINK_HPP
 
 
-SDPFileInfoStruct* SDPSpecBase::getFileInfo(){
+class SDPFileSourceSink{
 
-}
+public:
+
+    //Vars
+
+    //Funcs
+
+    SDPFileSourceSink();
+
+    ~SDPFileSourceSink();
 
 
-void SDPSpecBase::readChunk(){
+private:
 
-}
+    //Vars
 
-void SDPSpecBase::writeChunk(){
+    //Funcs
 
-}
+};
+
+#endif //LIBSDP_SDPFILESOURCESINK_HPP

@@ -14,14 +14,12 @@ Copyright 2015 Alex Frappier Lachapelle
    limitations under the License.
 */
 
-#include "SDPSourceSinkBase.hpp"
+#include "SourceSink/SDPVectorSourceSink.hpp"
 
-using namespace libSDP;
-
-SDPSourceSinkBase::SDPSourceSinkBase() {
+SDPVectorSourceSink::SDPVectorSourceSink(){
 
 }
 
-SDPSourceSinkBase::~SDPSourceSinkBase() {
+SDPVectorSourceSink::~SDPVectorSourceSink(){
 
 }

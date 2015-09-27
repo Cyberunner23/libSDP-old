@@ -24,11 +24,12 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "Utils/DevMacros.hpp"
 #include "Utils/Typedefs.hpp"
-#include "SDPSpecBase.hpp"
-
-using namespace libSDP::Utils;
+#include "Specs/SDPSpecBase.hpp"
 
 namespace libSDP{
+
+    using namespace libSDP::Utils;
+    using namespace libSDP::Spec;
 
     class SDPChainBlockBase{
 

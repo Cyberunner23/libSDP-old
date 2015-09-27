@@ -14,7 +14,7 @@ Copyright 2015 Alex Frappier Lachapelle
    limitations under the License.
 */
 
-#include "SDPChainBlockBase.hpp"
+#include "Algorithms/SDPChainBlockBase.hpp"
 
 using namespace libSDP;
 

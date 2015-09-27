@@ -14,29 +14,38 @@ Copyright 2015 Alex Frappier Lachapelle
    limitations under the License.
 */
 
-#ifndef LIBSDP_SDPSOURCESINKBASE_HPP
-#define LIBSDP_SDPSOURCESINKBASE_HPP
+#ifndef LIBSDP_SDPPARSEEXCEPTION_HPP
+#define LIBSDP_SDPPARSEEXCEPTION_HPP
 
-namespace libSDP {
+#include <exception>
+#include <string>
 
-    class SDPSourceSinkBase {
+namespace libSDP{
+
+    class SDPParseException : public std::exception{
 
     public:
 
         //Vars
 
         //Funcs
-        SDPSourceSinkBase();
-        ~SDPSourceSinkBase();
 
+        SDPParseException(const char* whatArg){whatString = whatArg;}
+        SDPParseException(std::string whatArg){whatString = whatArg.c_str();}
+        ~SDPParseException(){}
+
+        virtual const char* what() noexcept final{
+            return whatString;
+        }
 
     private:
 
         //Vars
+        const char* whatString;
 
         //Funcs
 
     };
 }
 
-#endif //LIBSDP_SDPSOURCESINKBASE_HPP
+#endif //LIBSDP_SDPPARSEEXCEPTION_HPP

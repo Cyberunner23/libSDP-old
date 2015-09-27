@@ -22,13 +22,14 @@ Copyright 2015 Alex Frappier Lachapelle
 
 #include "Utils/DevMacros.hpp"
 #include "Utils/Typedefs.hpp"
-#include "SDPChainBlockBase.hpp"
-#include "SDPSourceSinkBase.hpp"
-#include "SDPSpecBase.hpp"
+#include "Algorithms/SDPChainBlockBase.hpp"
+#include "SourceSink/SDPSourceSinkBase.hpp"
+#include "Specs/SDPSpecBase.hpp"
 
 namespace libSDP {
 
     using namespace libSDP::Utils;
+    using namespace libSDP::SourceSink;
 
     class SDPStack {
 
