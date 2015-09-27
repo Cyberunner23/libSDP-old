@@ -22,12 +22,12 @@ Copyright 2015 Alex Frappier Lachapelle
 #include <string>
 #include <vector>
 
-#include "HexBinTool.hpp"
-#include "RawFileIO.hpp"
+#include "Utils/HexBinTool.hpp"
+#include "Utils/RawFileIO.hpp"
+#include "Utils/SHA256Hash.hpp"
+#include "Utils/Typedefs.hpp"
 #include "SDPError.hpp"
 #include "SDPVer.hpp"
-#include "SHA256Hash.hpp"
-#include "Typedefs.hpp"
 
 namespace libSDP{
 

@@ -20,11 +20,11 @@ Copyright 2015 Alex Frappier Lachapelle
 #include <memory>
 #include <vector>
 
-#include "DevMacros.hpp"
+#include "Utils/DevMacros.hpp"
+#include "Utils/Typedefs.hpp"
 #include "SDPChainBlockBase.hpp"
 #include "SDPSourceSinkBase.hpp"
 #include "SDPSpecBase.hpp"
-#include "Typedefs.hpp"
 
 namespace libSDP {
 

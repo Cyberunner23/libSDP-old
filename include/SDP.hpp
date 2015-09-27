@@ -24,13 +24,13 @@ Copyright 2015 Alex Frappier Lachapelle
 #include <string>
 #include <vector>
 
-#include "DevMacros.hpp"
-#include "RawFileIO.hpp"
+#include "Utils/DevMacros.hpp"
+#include "Utils/RawFileIO.hpp"
+#include "Utils/Typedefs.hpp"
 #include "SDPError.hpp"
 #include "SDPParser.hpp"
 #include "SDPStack.hpp"
 #include "SDPVer.hpp"
-#include "Typedefs.hpp"
 #include "SDPSourceSinkBase.hpp"
 
 //TODO!: WRITE DOCUMENTATION FFS!!!

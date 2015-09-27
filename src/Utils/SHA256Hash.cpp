@@ -14,7 +14,7 @@ Copyright 2015 Alex Frappier Lachapelle
    limitations under the License.
 */
 
-#include "SHA256Hash.hpp"
+#include "Utils/SHA256Hash.hpp"
 
 using namespace libSDP::Utils;
 

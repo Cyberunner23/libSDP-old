@@ -21,9 +21,9 @@ Copyright 2015 Alex Frappier Lachapelle
 #include <unordered_map>
 #include <vector>
 
+#include "Utils/Typedefs.hpp"
 #include "SDPSourceSinkBase.hpp"
 #include "SDPVer.hpp"
-#include "Typedefs.hpp"
 
 namespace libSDP {
 

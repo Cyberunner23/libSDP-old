@@ -70,10 +70,6 @@ SET(HEADER_FILES
     include/Utils/utf8/unchecked.h
 )
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/AlgorithmBase)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/DefaultAlgorithms)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/StreamBufs)
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include/Utils)
 
 
 #----------------------------------------------------------

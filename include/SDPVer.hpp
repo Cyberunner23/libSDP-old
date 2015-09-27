@@ -18,7 +18,7 @@ Copyright 2015 Alex Frappier Lachapelle
 #define SDPVER_HPP
 
 
-#include "Typedefs.hpp"
+#include "Utils/Typedefs.hpp"
 
 namespace libSDP{
 

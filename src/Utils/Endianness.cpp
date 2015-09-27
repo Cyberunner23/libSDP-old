@@ -14,7 +14,7 @@ Copyright 2015 Alex Frappier Lachapelle
    limitations under the License.
 */
 
-#include "Endianness.hpp"
+#include "Utils/Endianness.hpp"
 
 using namespace libSDP;
 using namespace libSDP::Utils;
