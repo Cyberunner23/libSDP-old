@@ -43,7 +43,7 @@ before_script:
   - git submodule update --init --recursive
   - mkdir build
   - cd build
-  - cmake .. -DLIBSDP_ENABLE_TESTS=ON
+  - ../cmake-3.4.0-Linux-x86_64/bin/cmake .. -DLIBSDP_ENABLE_TESTS=ON
 
 script:
   - make
