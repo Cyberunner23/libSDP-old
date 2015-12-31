@@ -18,6 +18,14 @@ See the License for the specific language governing permissions and
 
 using namespace libSDP;
 
+// metadata
+// all contained in SDP
+// bootstrap file spec
+// SDP file;
+// file.fromFilePath(string);
+// file fromCharVector(vec);
+// file.fromCustomSourceSink(std::streambuf);
+
 SDP::SDP(){}
 SDP::~SDP(){}
 
