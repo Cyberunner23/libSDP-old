@@ -1,3 +1,6 @@
+*This project is no longer developed, it is kept for possible future reference.*
+
+
 libSDP
 ======
 
